@@ -1,0 +1,708 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2023.4.25)  23 MAR 2024 18:25
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"modern quantum chemistry.tex"
+(./modern quantum chemistry.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-03-06>
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/ctexart.cls
+(d:/texlive/2020/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-03-06 L3 programming layer (loader) 
+
+(d:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count167
+\l__pdf_internal_box=\box45
+))
+Document Class: ctexart 2019/05/29 v2.4.16 Chinese adapter for class article (C
+TEX)
+(d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2020-03-06 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count168
+\g__xparse_grabber_int=\count169
+\l__xparse_m_args_int=\count170
+\l__xparse_v_nesting_int=\count171
+)
+(d:/texlive/2020/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2020-03-06 LaTeX2e option processing using LaTeX3 keys
+)
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/ctexhook.sty
+Package: ctexhook 2019/05/29 v2.4.16 Document and package hooks (CTEX)
+)
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/ctexpatch.sty
+Package: ctexpatch 2019/05/29 v2.4.16 Patching commands (CTEX)
+)
+(d:/texlive/2020/texmf-dist/tex/latex/base/fix-cm.sty
+Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
+
+(d:/texlive/2020/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+))
+(d:/texlive/2020/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\l__ctex_tmp_int=\count172
+\l__ctex_tmp_box=\box46
+\l__ctex_tmp_dim=\dimen134
+\g__ctex_section_depth_int=\count173
+\g__ctex_font_size_int=\count174
+
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
+File: ctexopts.cfg 2019/05/29 v2.4.16 Option configuration file (CTEX)
+)
+(d:/texlive/2020/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(d:/texlive/2020/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count175
+\c@section=\count176
+\c@subsection=\count177
+\c@subsubsection=\count178
+\c@paragraph=\count179
+\c@subparagraph=\count180
+\c@figure=\count181
+\c@table=\count182
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen135
+)
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/engine/ctex-engine-pdftex.def
+File: ctex-engine-pdftex.def 2019/05/29 v2.4.16 (pdf)LaTeX adapter (CTEX)
+
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/CJKutf8.sty
+Package: CJKutf8 2015/04/18 4.8.4
+
+(d:/texlive/2020/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+
+(d:/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+(d:/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+)
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/CJK.sty
+Package: CJK 2015/04/18 4.8.4
+
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty
+Package: MULEenc 2015/04/18 4.8.4
+)
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/CJK.enc
+File: CJK.enc 2015/04/18 4.8.4
+Now handling font encoding C00 ...
+... no UTF-8 mapping file for font encoding C00
+Now handling font encoding C05 ...
+... no UTF-8 mapping file for font encoding C05
+Now handling font encoding C09 ...
+... no UTF-8 mapping file for font encoding C09
+Now handling font encoding C10 ...
+... no UTF-8 mapping file for font encoding C10
+Now handling font encoding C20 ...
+... no UTF-8 mapping file for font encoding C20
+Now handling font encoding C19 ...
+... no UTF-8 mapping file for font encoding C19
+Now handling font encoding C40 ...
+... no UTF-8 mapping file for font encoding C40
+Now handling font encoding C42 ...
+... no UTF-8 mapping file for font encoding C42
+Now handling font encoding C43 ...
+... no UTF-8 mapping file for font encoding C43
+Now handling font encoding C50 ...
+... no UTF-8 mapping file for font encoding C50
+Now handling font encoding C52 ...
+... no UTF-8 mapping file for font encoding C52
+Now handling font encoding C49 ...
+... no UTF-8 mapping file for font encoding C49
+Now handling font encoding C60 ...
+... no UTF-8 mapping file for font encoding C60
+Now handling font encoding C61 ...
+... no UTF-8 mapping file for font encoding C61
+Now handling font encoding C63 ...
+... no UTF-8 mapping file for font encoding C63
+Now handling font encoding C64 ...
+... no UTF-8 mapping file for font encoding C64
+Now handling font encoding C65 ...
+... no UTF-8 mapping file for font encoding C65
+Now handling font encoding C70 ...
+... no UTF-8 mapping file for font encoding C70
+Now handling font encoding C31 ...
+... no UTF-8 mapping file for font encoding C31
+Now handling font encoding C32 ...
+... no UTF-8 mapping file for font encoding C32
+Now handling font encoding C33 ...
+... no UTF-8 mapping file for font encoding C33
+Now handling font encoding C34 ...
+... no UTF-8 mapping file for font encoding C34
+Now handling font encoding C35 ...
+... no UTF-8 mapping file for font encoding C35
+Now handling font encoding C36 ...
+... no UTF-8 mapping file for font encoding C36
+Now handling font encoding C37 ...
+... no UTF-8 mapping file for font encoding C37
+Now handling font encoding C80 ...
+... no UTF-8 mapping file for font encoding C80
+Now handling font encoding C81 ...
+... no UTF-8 mapping file for font encoding C81
+Now handling font encoding C01 ...
+... no UTF-8 mapping file for font encoding C01
+Now handling font encoding C11 ...
+... no UTF-8 mapping file for font encoding C11
+Now handling font encoding C21 ...
+... no UTF-8 mapping file for font encoding C21
+Now handling font encoding C41 ...
+... no UTF-8 mapping file for font encoding C41
+Now handling font encoding C62 ...
+... no UTF-8 mapping file for font encoding C62
+)
+LaTeX Info: Redefining \selectfont on input line 755.
+\CJK@indent=\box47
+)
+(d:/texlive/2020/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+))
+(d:/texlive/2020/texmf-dist/tex/latex/cjkpunct/CJKpunct.sty
+Package: CJKpunct 2016/05/14 4.8.4
+\CJKpunct@cnta=\count183
+\CJKpunct@cntb=\count184
+\CJKpunct@cntc=\count185
+\CJKpunct@cntd=\count186
+\CJKpunct@cnte=\count187
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2026 (decimal 8230)
+
+(d:/texlive/2020/texmf-dist/tex/latex/cjkpunct/CJKpunct.spa))
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/CJKspace.sty
+Package: CJKspace 2015/04/18 3.8.0
+)
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/ctexspa.def
+File: ctexspa.def 2019/05/29 v2.4.16 Space info for CJKpunct (CTEX)
+)
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
+Package: CJKfntef 2015/04/18 4.8.4
+
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/CJKulem.sty
+Package: CJKulem 2015/04/18 4.8.4
+
+(d:/texlive/2020/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box48
+\UL@hyphenbox=\box49
+\UL@skip=\skip49
+\UL@hook=\toks17
+\UL@height=\dimen136
+\UL@pe=\count188
+\UL@pixel=\dimen137
+\ULC@box=\box50
+Package: ulem 2019/11/18
+\ULdepth=\dimen138
+)
+\UL@lastkern=\dimen139
+\CJK@skip=\skip50
+)
+\CJK@fntefSkip=\skip51
+\CJK@nest=\count189
+\CJK@fntefDimen=\dimen140
+\CJK@underdotBox=\box51
+\CJK@ULbox=\box52
+\CJK@underanyskip=\dimen141
+)
+\ccwd=\dimen142
+\l__ctex_ccglue_skip=\skip52
+)
+\l__ctex_ziju_dim=\dimen143
+
+(d:/texlive/2020/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+Package: zhnumber 2019/04/07 v2.7 Typesetting numbers with Chinese glyphs
+\l__zhnum_scale_int=\count190
+\l__zhnum_byte_min_int=\count191
+\l__zhnum_byte_max_int=\count192
+
+(d:/texlive/2020/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
+File: zhnumber-utf8.cfg 2019/04/07 v2.7 Chinese numerals with UTF8 encoding
+))
+\l__ctex_heading_skip=\skip53
+
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-article.d
+ef
+File: ctex-scheme-chinese-article.def 2019/05/29 v2.4.16 Chinese scheme for art
+icle (CTEX)
+ (d:/texlive/2020/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
+File: ctex-name-utf8.cfg 2019/05/29 v2.4.16 Caption with encoding UTF8 (CTEX)
+))
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/ctex-c5size.clo
+File: ctex-c5size.clo 2019/05/29 v2.4.16 c5size option (CTEX)
+)
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows.def
+File: ctex-fontset-windows.def 2019/05/29 v2.4.16 Windows fonts definition (CTE
+X)
+
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windowsnew.def
+File: ctex-fontset-windowsnew.def 2019/05/29 v2.4.16 Windows fonts definition f
+or Vista or later version (CTEX)
+
+(d:/texlive/2020/texmf-dist/tex/generic/ctex/zhwindowsfonts.tex
+File: zhwindowsfonts.tex 2019/05/29 v2.4.16 Windows font map loader for pdfTeX 
+and DVIPDFMx (CTEX)
+{d:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{UGBK.sfd}{Unicod
+e.sfd}))))
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/config/ctex.cfg
+File: ctex.cfg 2019/05/29 v2.4.16 Configuration file (CTEX)
+)
+(d:/texlive/2020/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2019/10/16 v2.13 Sectioning titles
+\ttl@box=\box53
+\beforetitleunit=\skip54
+\aftertitleunit=\skip55
+\ttl@plus=\dimen144
+\ttl@minus=\dimen145
+\ttl@toksa=\toks18
+\titlewidth=\dimen146
+\titlewidthlast=\dimen147
+\titlewidthfirst=\dimen148
+)
+(d:/texlive/2020/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip56
+
+For additional information on amsmath, use the `?' option.
+(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen149
+))
+(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen150
+)
+(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count193
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count194
+\leftroot@=\count195
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count196
+\DOTSCASE@=\count197
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+\big@size=\dimen151
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count198
+\c@MaxMatrixCols=\count199
+\dotsspace@=\muskip16
+\c@parentequation=\count266
+\dspbrk@lvl=\count267
+\tag@help=\toks20
+\row@=\count268
+\column@=\count269
+\maxfields@=\count270
+\andhelp@=\toks21
+\eqnshift@=\dimen152
+\alignsep@=\dimen153
+\tagshift@=\dimen154
+\tagwidth@=\dimen155
+\totwidth@=\dimen156
+\lineht@=\dimen157
+\@envbody=\toks22
+\multlinegap=\skip57
+\multlinetaggap=\skip58
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(d:/texlive/2020/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+)
+
+Package ctex Warning: Command \CTEXsetup is deprecated.
+(ctex)                \ctexset { section = {  name={Chapter{\hspace {0.2em}}},
+(ctex)                number={{\thesection }}, nameformat={\zihao {4}},
+(ctex)                titleformat={\zihao {4}} } } is set.
+
+
+Package ctex Warning: Command \CTEXsetup is deprecated.
+(ctex)                \ctexset { subsection = {  name={exercise{\hspace
+(ctex)                {0.2em}},}, number={{\thesubsection }}, format={\center
+(ctex)                }, nameformat+={\zihao {-4}\bfseries \fangsong } } } is
+(ctex)                set.
+
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.bdg
+File: UTF8.bdg 2015/04/18 4.8.4
+)
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.enc
+File: UTF8.enc 2015/04/18 4.8.4
+)
+(d:/texlive/2020/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.chr
+File: UTF8.chr 2015/04/18 4.8.4
+)
+(./modern quantum chemistry.aux)
+\openout1 = `"modern quantum chemistry.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+ ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 34.
+LaTeX Font Info:    Trying to load font information for C70+rm on input line 43
+.
+
+(d:/texlive/2020/texmf-dist/tex/latex/ctex/fd/c70rm.fd
+File: c70rm.fd 2019/05/29 v2.4.16 Chinese font definition (CTEX)
+)
+(./modern quantum chemistry.toc)
+\tf@toc=\write3
+\openout3 = `"modern quantum chemistry.toc"'.
+
+ [1
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
+
+
+(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
+
+
+(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 58
+.
+
+(d:/texlive/2020/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
+(Font)              size <10.95> substituted on input line 58.
+
+
+Overfull \hbox (30.97098pt too wide) detected at line 81
+[][]
+ []
+
+[1]
+Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (
+quanjiao) on input line 106.
+ [2] [3]
+Overfull \hbox (0.54556pt too wide) detected at line 163
+[][]
+ []
+
+
+Overfull \hbox (74.76482pt too wide) detected at line 177
+\OMS/cmsy/m/n/10.53937 h\OT1/cmr/m/n/10.53937 2[]\OMS/cmsy/m/n/10.53937 j\OML/c
+mm/m/it/10.53937 h\OT1/cmr/m/n/10.53937 (1)\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/i
+t/10.53937  []\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.53937 = [] [][] d\OML/cm
+m/m/it/10.53937 x[] [][] \OT1/cmr/m/n/10.53937 d\OML/cmm/m/it/10.53937 x[]\OT1/
+cmr/m/n/10.53937 [\OML/cmm/m/it/10.53937 ^^_[]\OT1/cmr/m/n/10.53937 (1)\OML/cmm
+/m/it/10.53937 ^^_[]\OT1/cmr/m/n/10.53937 (2) \OMS/cmsy/m/n/10.53937 ^^@ \OML/c
+mm/m/it/10.53937 ^^_[]\OT1/cmr/m/n/10.53937 (2)\OML/cmm/m/it/10.53937 ^^_[]\OT1
+/cmr/m/n/10.53937 (1)][]\OML/cmm/m/it/10.53937 h\OT1/cmr/m/n/10.53937 (1)[\OML/
+cmm/m/it/10.53937 ^^_[]\OT1/cmr/m/n/10.53937 (1)\OML/cmm/m/it/10.53937 ^^_[]\OT
+1/cmr/m/n/10.53937 (2) \OMS/cmsy/m/n/10.53937 ^^@ \OML/cmm/m/it/10.53937 ^^_[]\
+OT1/cmr/m/n/10.53937 (1)\OML/cmm/m/it/10.53937 ^^_[]\OT1/cmr/m/n/10.53937 (1)] 
+= 0\OML/cmm/m/it/10.53937 :
+ []
+
+
+Overfull \hbox (243.83943pt too wide) detected at line 208
+[][]
+ []
+
+[4]
+Overfull \hbox (11.94786pt too wide) detected at line 232
+\OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 j\U/rs
+fs/m/n/10.95 H\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/1
+0.53937 i \OT1/cmr/m/n/10.53937 = \OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.5393
+7  []\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 #[]\OMS/cmsy/m/n/10.53937 j
+\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.53937 + \OMS
+/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 j\OML/cmm/
+m/it/10.53937 #[]\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/
+n/10.53937 i \OT1/cmr/m/n/10.53937 = \OMS/cmsy/m/n/10.53937 h\OT1/cmr/m/n/10.53
+937 3\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 h\OMS/cmsy/m/n/10.53937 j\O
+T1/cmr/m/n/10.53937 3\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.53937 + \OMS/cmsy
+/m/n/10.53937 h\OT1/cmr/m/n/10.53937 4\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.
+53937 h\OMS/cmsy/m/n/10.53937 j\OT1/cmr/m/n/10.53937 4\OMS/cmsy/m/n/10.53937 i 
+\OT1/cmr/m/n/10.53937 + \OMS/cmsy/m/n/10.53937 h\OT1/cmr/m/n/10.53937 34\OMS/cm
+sy/m/n/10.53937 j\OT1/cmr/m/n/10.53937 34\OMS/cmsy/m/n/10.53937 i ^^@ h\OT1/cmr
+/m/n/10.53937 34\OMS/cmsy/m/n/10.53937 j\OT1/cmr/m/n/10.53937 43\OMS/cmsy/m/n/1
+0.53937 i\OML/cmm/m/it/10.53937 :
+ []
+
+[5]
+Overfull \hbox (6.01677pt too wide) in paragraph at lines 263--264
+[]\C70/rm/m/n/10.53937/52 ) \C70/rm/m/n/10.53937/75 ( \C70/rm/m/n/10.53937/77 é
+ \C70/rm/m/n/10.53937/96 5 \C70/rm/m/n/10.53937/51 C \C70/rm/m/n/10.53937/8b ¡ 
+\C70/rm/m/n/10.53937/7b — \C70/rm/m/n/10.53937/76 „ \C70/rm/m/n/10.53937/4e ^^@
+ \C70/rm/m/n/10.53937/82 , \C70/rm/m/n/10.53937/89 Ä \C70/rm/m/n/10.53937/52 ^^
+Y \C70/rm/m/n/10.53937/8b ¡ \C70/rm/m/n/10.53937/7b — \C70/rm/m/n/10.53937/53 s
+ ï\OT1/cmr/m/n/10.53937 . \C70/rm/m/n/10.53937/65 Y \C70/rm/m/n/10.53937/67 P \
+C70/rm/m/n/10.53937/5f ^^O\OT1/cmr/m/n/10.53937 (2.111)-(2.114)\C70/rm/m/n/10.5
+3937/5d ò \C70/rm/m/n/10.53937/89 ã \C70/rm/m/n/10.53937/91 Ê$\OT1/cmr/m/n/10.5
+3937 H[]$\C70/rm/m/n/10.53937/67 ^^@
+ []
+
+
+Overfull \hbox (33.49483pt too wide) in paragraph at lines 271--272
+[]\C70/rm/m/n/10.53937/54 ^^L \C70/rm/m/n/10.53937/74 ^^F\OT1/cmr/m/n/10.53937 
+, $\OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 j\U
+/rsfs/m/n/10.95 H\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/
+n/10.53937 i \OT1/cmr/m/n/10.53937 = \OMS/cmsy/m/n/10.53937 h\OT1/cmr/m/n/10.53
+937 34\OMS/cmsy/m/n/10.53937 jj\OT1/cmr/m/n/10.53937 12\OMS/cmsy/m/n/10.53937 i
+$\OT1/cmr/m/n/10.53937 , \C70/rm/m/n/10.53937/80 ^^L$\OMS/cmsy/m/n/10.53937 h\O
+ML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 #[]\OMS/
+cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 i \OT1/cmr/
+m/n/10.53937 = \OMS/cmsy/m/n/10.53937 h\OT1/cmr/m/n/10.53937 3\OMS/cmsy/m/n/10.
+53937 j\OML/cmm/m/it/10.53937 h \OT1/cmr/m/n/10.53937 3\OMS/cmsy/m/n/10.53937 i
+ \OT1/cmr/m/n/10.53937 + \OMS/cmsy/m/n/10.53937 h\OT1/cmr/m/n/10.53937 4\OMS/cm
+sy/m/n/10.53937 j\OML/cmm/m/it/10.53937 h \OT1/cmr/m/n/10.53937 4\OMS/cmsy/m/n/
+10.53937 i\OML/cmm/m/it/10.53937 ; \OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.539
+37  []\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 #[]\OMS/cmsy/m/n/10.53937 
+j\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.53937 =
+ []
+
+[6]
+Overfull \hbox (25.41618pt too wide) in paragraph at lines 281--282
+[]\C70/rm/m/n/10.53937/5f S$\OML/cmm/m/it/10.53937 a \OT1/cmr/m/n/10.53937 = \O
+ML/cmm/m/it/10.53937 b; r \OMS/cmsy/m/n/10.53937 6\OT1/cmr/m/n/10.53937 = \OML/
+cmm/m/it/10.53937 s$\C70/rm/m/n/10.53937/65 ö\OT1/cmr/m/n/10.53937 , $\OMS/cmsy
+/m/n/10.53937 h\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/
+10.53937 #[]\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.
+53937 i \OT1/cmr/m/n/10.53937 = \OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937 
+ []\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 #[]\OMS/cmsy/m/n/10.53937 j\O
+ML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 i$\C70/rm/m/n/10.53937/4e - \C70
+/rm/m/n/10.53937/67 	 \C70/rm/m/n/10.53937/4e ^^@ \C70/rm/m/n/10.53937/75 5 \C7
+0/rm/m/n/10.53937/5b P \C70/rm/m/n/10.53937/4e ^^M \C70/rm/m/n/10.53937/54 ^^L\
+OT1/cmr/m/n/10.53937 , \C70/rm/m/n/10.53937/4e Î \C70/rm/m/n/10.53937/80 ^^L$\O
+MS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 j\OML/cm
+m/m/it/10.53937 #[]\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937  []\OMS/cmsy/
+m/n/10.53937 i \OT1/cmr/m/n/10.53937 =
+ []
+
+
+Overfull \hbox (47.00351pt too wide) in paragraph at lines 283--284
+[]\C70/rm/m/n/10.53937/5f S$\OML/cmm/m/it/10.53937 a \OMS/cmsy/m/n/10.53937 6\O
+T1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 b; r \OT1/cmr/m/n/10.53937 = \OML/
+cmm/m/it/10.53937 s$\C70/rm/m/n/10.53937/65 ö\OT1/cmr/m/n/10.53937 , $\OMS/cmsy
+/m/n/10.53937 h\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/
+10.53937 #[]\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.
+53937 i \OT1/cmr/m/n/10.53937 = \OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937 
+ []\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 #[]\OMS/cmsy/m/n/10.53937 j\O
+ML/cmm/m/it/10.53937  []\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.53937 = \OMS/c
+msy/m/n/10.53937 h[] \OML/cmm/m/it/10.53937 ^^_[] [] ^^_[] [] \OMS/cmsy/m/n/10.
+53937 j\OML/cmm/m/it/10.53937 #[]\OMS/cmsy/m/n/10.53937 j [] \OML/cmm/m/it/10.5
+3937 ^^_[] [] ^^_[] [] \OT1/cmr/m/n/10.53937 =
+ []
+
+
+Overfull \hbox (56.16093pt too wide) detected at line 297
+[][]
+ []
+
+[7]
+Overfull \hbox (1.00356pt too wide) in paragraph at lines 324--325
+[]\C70/rm/m/n/10.53937/82 å$\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 K[]\
+OMS/cmsy/m/n/10.53937 i$\C70/rm/m/n/10.53937/4e ^^N$\OMS/cmsy/m/n/10.53937 j\OM
+L/cmm/m/it/10.53937 L\OMS/cmsy/m/n/10.53937 i$\C70/rm/m/n/10.53937/4e ^^M \C70/
+rm/m/n/10.53937/76 ø \C70/rm/m/n/10.53937/54 ^^L\OT1/cmr/m/n/10.53937 , \C70/rm
+/m/n/10.53937/53 s$\OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937 K[]\OMS/cmsy/
+m/n/10.53937 j\OML/cmm/m/it/10.53937 L\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.
+53937 = 0$. \C70/rm/m/n/10.53937/52 ^^Y \C70/rm/m/n/10.53937/75 1 \C70/rm/m/n/1
+0.53937/76 ø \C70/rm/m/n/10.53937/54 ^^L \C70/rm/m/n/10.53937/79 Í \C70/rm/m/n/
+10.53937/7c { \C70/rm/m/n/10.53937/8f h \C70/rm/m/n/10.53937/90 S \C70/rm/m/n/1
+0.53937/67 „ \C70/rm/m/n/10.53937/62 ^^P \C70/rm/m/n/10.53937/76 „$\OMS/cmsy/m/
+n/10.53937 j\OML/cmm/m/it/10.53937 K\OMS/cmsy/m/n/10.53937 i$\C70/rm/m/n/10.539
+37/5f Å
+ []
+
+
+Overfull \hbox (72.67152pt too wide) in paragraph at lines 324--325
+\C70/rm/m/n/10.53937/71 6 \C70/rm/m/n/10.53937/67 	$\OMS/cmsy/m/n/10.53937 h\OM
+L/cmm/m/it/10.53937 K\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53937 L\OMS/cmsy/
+m/n/10.53937 i \OT1/cmr/m/n/10.53937 = 0$; \C70/rm/m/n/10.53937/53 Í \C70/rm/m/
+n/10.53937/4e K\OT1/cmr/m/n/10.53937 , \C70/rm/m/n/10.53937/82 å$\OMS/cmsy/m/n/
+10.53937 h\OML/cmm/m/it/10.53937 K[]\OMS/cmsy/m/n/10.53937 j\OML/cmm/m/it/10.53
+937 L\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.53937 = 1$\C70/rm/m/n/10.53937/62
+ ^^V$\OMS/cmsy/m/n/10.53937 h\OML/cmm/m/it/10.53937 K[]\OMS/cmsy/m/n/10.53937 j
+\OML/cmm/m/it/10.53937 L\OMS/cmsy/m/n/10.53937 i \OT1/cmr/m/n/10.53937 = \OMS/c
+msy/m/n/10.53937 ^^@\OT1/cmr/m/n/10.53937 1$, \C70/rm/m/n/10.53937/52 ^^Y$[][]\
+OT1/cmr/m/n/10.53937 (\OMS/cmsy/m/n/10.53937 ^^@\OT1/cmr/m/n/10.53937 1)[]\OML/
+cmm/m/it/10.53937 ^^N[]$\C70/rm/m/n/10.53937/4e -
+ []
+
+[8] [9] [10]
+Overfull \vbox (182.20078pt too high) has occurred while \output is active []
+
+
+[11]
+Overfull \vbox (1253.29626pt too high) has occurred while \output is active []
+
+
+[12] (./modern quantum chemistry.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.41063pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 7019 strings out of 480608
+ 125818 string characters out of 5907536
+ 352276 words of memory out of 5000000
+ 22624 multiletter control sequences out of 15000+600000
+ 557763 words of font info for 120 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 46i,11n,59p,607b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/s
+imsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows
+/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:
+/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun
+.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Font
+s/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Wind
+ows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc>
+<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/sim
+sun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/F
+onts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/W
+indows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.t
+tc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/
+simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Window
+s/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
+:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsu
+n.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fon
+ts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Win
+dows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc
+><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/si
+msun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/
+Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/
+Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.
+ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts
+/simsun.ttc><c:/Windows/Fonts/simsun.ttc><d:/texlive/2020/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/t
+exlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/202
+0/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2020/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2020/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr7.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsl10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:/te
+xlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/2020
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><d:/texlive/2020/tex
+mf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on "modern quantum chemistry.pdf" (13 pages, 492932 bytes).
+PDF statistics:
+ 431 PDF objects out of 1000 (max. 8388607)
+ 271 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 249 words of extra memory for PDF output out of 10000 (max. 10000000)
+

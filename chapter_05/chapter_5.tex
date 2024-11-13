@@ -1,0 +1,284 @@
+\documentclass[a4paper]{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{geometry}
+\geometry{
+	left=2cm,
+	right=2cm,
+	top=2cm,
+	bottom=2cm,
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,            %链接颜色
+    linkcolor=blue,             %内部链接
+    filecolor=magenta,          %本地文档
+    urlcolor=cyan,              %网址链接
+}
+\usepackage[none]{hyphenat}		% 阻止长单词分在两行
+\usepackage{mathrsfs}
+\usepackage[version=4]{mhchem}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+    boxed title style={colback=magenta},
+	breakable,
+	enhanced,
+	sharp corners,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight,  yshifttext=-.75\baselineskip},
+	boxed title style={boxsep=1pt,sharp corners},
+    fonttitle=\bfseries\sffamily,
+}
+
+\definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
+    title={Exercise~\thetcbcounter},
+    colframe=skyblue,
+    colback=skyblue!12!white,
+    boxed title style={colback=skyblue},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=skyblue,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
+    title={Solution~\thetcbcounter},
+    colframe=teal!60!green,
+    colback=green!12!white,
+    boxed title style={colback=teal!60!green},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=red,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+% special new commands for common symbols used in the article
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+\newcommand\lr[2]{\langle#1\|#2\rangle}
+\newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand\Tr[3]{#1\mathrm\#2#3}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+\newcommand{\HF}{{\rm HF}}
+
+\newcommand{\A}{{\bf A}}
+\newcommand{\B}{{\bf B}}
+\newcommand{\C}{{\bf C}}
+\newcommand{\I}{{\bf 1}}
+\newcommand{\U}{{\bf U}}
+\newcommand{\Op}{{\bf O}}
+
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}\filleft}
+  [\vspace{1ex}\titlerule]
+  
+\allowdisplaybreaks
+
+\begin{document}
+
+	\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}
+
+	\chapter{Pair and Coupled-Pair Theories}
+	
+	\section{The Independent Electron Pair Approximation (IEPA)}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-1 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-2 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-3 so
+	\end{solution}
+	
+	\subsection{Invariance under Unitary Transformations: An Example}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-4 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-5 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-6 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-7 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-8 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-9 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-10 so
+	\end{solution}
+	
+	\subsection{Some Illustrative Calculations}
+	
+	\section{Coupled-Pair Theories}
+	
+	\subsection{The Coupled Cluster Approximation (CCA)}
+	
+	\subsection{The Cluster Expansion of the Wave Function}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-11 so
+	\end{solution}
+	
+	\subsection{Linear CCA and the Coupled Electron Pair Approximation (CEPA)}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-12 so
+	\end{solution}
+	
+	\subsection{Some Illustrative Calculations}
+	
+	\section{Many-Electron Theories with Single Particle Hamiltonians}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-13 so
+	\end{solution}
+	
+	\subsection{The Relaxation Energy via CI, IEPA, CEPA, and CCA}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-14 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-15 so
+	\end{solution}
+	
+	\subsection{The Resonance Energy of Polyenes in H{\"u}ckel Theory}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-16 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-17 so
+	\end{solution}
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-18 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-19 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-20 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		5-21 so
+	\end{solution}
+	
+
+\end{document}

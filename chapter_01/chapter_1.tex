@@ -1,0 +1,296 @@
+\documentclass[a4paper]{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{geometry}
+\geometry{
+	left=2cm,
+	right=2cm,
+	top=2cm,
+	bottom=2cm,
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,            %链接颜色
+    linkcolor=blue,             %内部链接
+    filecolor=magenta,          %本地文档
+    urlcolor=cyan,              %网址链接
+}
+\usepackage[none]{hyphenat}		% 阻止长单词分在两行
+\usepackage{mathrsfs}
+\usepackage[version=4]{mhchem}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+    boxed title style={colback=magenta},
+	breakable,
+	enhanced,
+	sharp corners,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight,  yshifttext=-.75\baselineskip},
+	boxed title style={boxsep=1pt,sharp corners},
+    fonttitle=\bfseries\sffamily,
+}
+
+\definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
+    title={Exercise~\thetcbcounter},
+    colframe=skyblue,
+    colback=skyblue!12!white,
+    boxed title style={colback=skyblue},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=skyblue,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
+    title={Solution~\thetcbcounter},
+    colframe=teal!60!green,
+    colback=green!12!white,
+    boxed title style={colback=teal!60!green},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=red,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+% special new commands for common symbols used in the article
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+\newcommand\lr[2]{\langle#1\|#2\rangle}
+\newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand\diff[1]{\mathrm{d}#1}
+\newcommand\Tr[3]{#1\mathrm\#2#3}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+
+\newcommand{\A}{{\bf A}}
+\newcommand{\B}{{\bf B}}
+\newcommand{\C}{{\bf C}}
+\newcommand{\I}{{\bf 1}}
+\newcommand{\U}{{\bf U}}
+\newcommand{\Op}{{\bf O}}
+
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}\filleft}
+  [\vspace{1ex}\titlerule]
+  
+\allowdisplaybreaks
+
+\begin{document}
+
+	\chapter{Mathematical Review}
+	
+	\section{Linear Algebra}
+	
+	\subsection{Three-Dimensional Vector Algebra}
+	
+	\begin{exercise}
+	a) Show that $O_{ij} = \hat e_i \cdot \mathscr{O} \hat{e}_j$. b) If $\vartheta \vec{a} = \vec{b}$ show that $b_i = \displaystyle \sum_j O_{ij} a_j$.
+	\end{exercise}
+	
+	\begin{solution}
+	\begin{enumerate}
+	
+	\item From Eq.(1.13), we know
+	\[
+		\mathscr{O} \hat{e}_j = \sum_{k=1}^3\hat{e}_k O_{kj},
+	\]
+	then
+	\begin{equation}
+		\hat{e}_i \cdot \mathscr{O} \hat{e}_j = \hat{e}_i \cdot \sum_{k=1}^3 \hat{e}_k O_{kj} = \sum_{k=1}^3 \hat{e}_i \cdot  \hat{e}_k O_{kj} = \sum_{k=1}^3 \delta_{ik} O_{kj} = O_{ij}.
+	\end{equation}
+	
+	\item Similarly,
+	\[
+		\vec{b} = \sum_{i=1}^3 b_i\hat{e}_i = \mathscr{O} \vec{a} = \mathscr{O} \sum_{j=1}^3 a_j \hat{e}_j = \sum_{j=1}^3 a_j \mathscr{O} \hat{e}_j = \sum_{j=1}^3 a_j \sum_{i=1}^3 \hat{e}_i O_{ij} = \sum_{i=1}^3 \Big( \sum_{j=1}^3 O_{ij} a_j \Big) \hat{e}_i.
+	\]
+		
+	From the uniqueness of linear expression by a basis, we arrive at
+	\begin{equation}
+		b_i = \sum_{j=1}^3 O_{ij} a_j.
+	\end{equation}
+	These two conclusions have been proved.
+	
+	\end{enumerate}
+	\end{solution}
+	
+	\begin{exercise}
+	Calculate $[\A,\B]$ and $\{\A,\B\}$ when
+	\[
+		\A = \begin{pmatrix}
+					1 & 1 & 0 \\
+					1 & 2 & 2 \\
+					0 & 2 & -1
+		\end{pmatrix}, \, \B = \begin{pmatrix}
+					1 & -1 & 1 \\
+					-1 & 0 & 0 \\
+					1 & 0 & 1
+		\end{pmatrix}.
+	\]
+	\end{exercise}
+
+	\begin{solution}
+	\begin{equation}
+		[\A,\B]\equiv \A\B-\B\A= \begin{pmatrix}
+					0 & -2 & 4 \\
+					2 & 0 & 3 \\
+					-4 & -3 & 0
+		\end{pmatrix}, \, \{\A,\B\}\equiv \A\B + \B\A =
+		\begin{pmatrix}
+					0	&	0	&	-2	\\
+					0	&	-2	&	3	\\
+					-2	&	3	&	-2
+		\end{pmatrix}.
+	\end{equation}
+	\end{solution}
+	
+	\subsection{Matrices}
+	
+	\begin{exercise}
+		If $\A$ is an $N \times M$ matrix and $\B$ is a $M \times K$ matrix show that $(\A\B)^\dagger = \B^\dagger \A^\dagger$.
+	\end{exercise}
+	
+	\begin{solution}
+	It is obvious that
+	\begin{equation}
+		(\A\B)^\dagger = \B^\dagger \A^\dagger \Leftrightarrow [(\A\B)^\dagger](i;j) = (\B^\dagger \A^\dagger)(i;j).
+	\end{equation}
+	Thus, we find
+	\begin{align*}
+		[(\A\B)^\dagger](i;j) &= [(\A\B)](j;i)^* = \left(\sum_{k=1}^M \A(j;k)\B(k;i)\right)^* , \\
+		(\B^\dagger \A^\dagger)(i;j) &= \sum_{k=1}^M (\B^\dagger)(i;k) (\A^\dagger)(k;j) = \sum_{k=1}^M (\B(k;i))^* (\A(j;k))^* = \left(\sum_{k=1}^M \A(j;k)\B(k;i)\right)^*,
+	\end{align*}
+	which means that $(\A\B)^\dagger = \B^\dagger \A^\dagger$ is correct.
+	\end{solution}
+	
+	\begin{exercise}
+	Show that 
+	\begin{enumerate}
+	
+	\item[a.] $\tr{\A\B} = \tr{\B\A}$.
+	
+	\item[b.] $(\A\B)^{-1}=\B^{-1}\A^{-1}$.
+	
+	\item[c.] If $\U$ is unitary and $\B = \U^\dagger \A \U$, then $\A = \U \B \U^\dagger$.
+	
+	\item[d.] If the product $\C=\A\B$ of two Hermitian matrices is also Hermitian, then $\A$ and $\B$ commute.
+	
+	\item[e.] If $\A$ is Hermitian then $\A^{-1}$, if exists, is also Hermitian.
+	
+	\item[f.] If $\A=\begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22}	\end{pmatrix}$, then $\A^{-1}=\frac{1}{ ( A_{11} A_{22} - A_{12} A_{21} ) }\begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11}	\end{pmatrix}$.
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	\begin{enumerate}
+	
+	\item[a.] At this time, we assume that $\A$ is an $N \times M$ matrix while $\B$ is a $M \times N$ matrix. Then,
+	\begin{align}
+		\tr{\A\B} &= \sum_{i=1}^N [(\A\B)](i;i) = \sum_{i=1}^N \sum_{k=1}^M (\A)(i;k) (\B)(k;i) = \sum_{k=1}^M \sum_{i=1}^N (\B)(k;i) (\A)(i;k)  \notag \\
+		&= \sum_{k=1}^M \left[ \sum_{i=1}^N (\B)(k;i) (\A)(i;k) \right] = \sum_{k=1}^M (\B\A)(k;k) = \tr{\B\A}.
+	\end{align}
+	
+	\item[b.] From this issue, we assume that both $\A$ and $\B$ are $N \times N$ matrices. We find
+	\begin{equation}
+		\A\B (\B^{-1}\A^{-1}) = \A(\B \B^{-1})\A^{-1} = \A \A^{-1} = \I.
+	\end{equation}
+	Thus, with the uniqueness of matrix inversion, we conclude that $(\A\B)^{-1}=\B^{-1}\A^{-1}$.
+	
+	\item[c.] Due to $\B = \U^\dagger \A \U$, we can find
+	\begin{equation}
+		\A = \I \A \I = (\U \U^\dagger) \A (\U \U^\dagger) = \U (\U^\dagger \A \U )\U^\dagger = \U \B \U^\dagger.
+	\end{equation}
+	
+	\item[d.] Because $\C=\A\B$ of two Hermitian matrices is also Hermitian, we know
+	\[
+		\C^\dagger = (\A\B)^\dagger = \B^\dagger \A^\dagger = \C = \A \B. 
+	\]
+	With
+	\[
+		\A^\dagger = \A, \, \B^\dagger = \B,
+	\]
+	we find
+	\begin{equation}
+		\B^\dagger \A^\dagger = \B \A = \A \B.
+	\end{equation}
+	In other words, $\A$ and $\B$ commute.
+	
+	\item[e.] It is obvious that
+	\[
+		(\A^{-1})^\dagger \A^\dagger = (\A \A^{-1})^\dagger = \I^\dagger = \I.
+	\]
+	We know $(\A^\dagger)^{-1} = (\A^{-1})^\dagger$. Then, with $\A = \A^\dagger$
+	\begin{equation}
+		(\A^{-1})^\dagger = (\A^\dagger)^{-1} = \A^{-1}.
+	\end{equation}
+	We proved that $\A^{-1}$ is also Hermite if it exists.
+	
+	\item[f.] If $A_{11}A_{22}-A_{12}A_{21}\neq 0$, we can find
+	\[
+		\A \times \frac{1}{A_{11}A_{22}-A_{12}A_{21}}\begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11}	\end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
+	\]
+	It means that if $A_{11}A_{22}-A_{12}A_{21}\neq 0$,
+	\begin{equation}
+		\A^{-1} = \frac{1}{ ( A_{11} A_{22} - A_{12} A_{21} ) }\begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11}	\end{pmatrix}.
+	\end{equation}
+		
+	\end{enumerate}
+	\end{solution}
+	
+	\subsection{Determinants}
+	
+	\begin{exercise}
+		Verify the above properties for $2 \times 2$ determinants.
+	\end{exercise}
+	
+	\begin{solution}
+		1-5 so
+	\end{solution}
+	
+	\begin{exercise}
+	Using properties (1)-(5) prove that in general
+	\begin{enumerate}
+
+	\item If any two rows (or columns) of a determinant are equal, the value of the determinant is zero.
+	
+	\item $|\A^{-1}|=(|\A|)^{-1}$.
+	
+	\item If $\A \A^\dagger = \bf{1}$, then $|\A|(|\A|)^* = 1$.
+	
+	\item If $\U^\dagger \Op \U = \bf{\Omega}$ and $\U^\dagger \U = \U \U^\dagger = \bf{1}$, then $|\Op|=|\bf{\Omega}|$.
+
+	\end{enumerate}		
+	\end{exercise}
+	
+	\begin{solution}
+		222
+	\end{solution}
+	
+	\begin{exercise}
+	Using Eq.(1.39), note that the inverse of a $2 \times 2$ matrix $\A$ obtained in Exercise 1.4f can be written as
+	\begin{equation*}
+		\A^{-1} = \frac{1}{|\A|}\begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11}	\end{pmatrix}
+	\end{equation*}
+	and thus $\A^{-1}$ does not exist when $|\A|=0$. This result holds in general for $N \times N$ matrices. Show that the equation
+	\begin{equation*}
+		\A {\bf c} = {\bf 0}
+	\end{equation*}
+	where $\A$ is an $N \times N$ matrix and ${\bf c}$ is a column with elements $c_i$, $i = 1,2,\cdots,N$ can have a nontrivial solution (${\bf c}\neq{\bf 0}$) only when $|\A|=0$.
+	\end{exercise}
+	
+	\begin{solution}
+		1-7 so
+	\end{solution}	
+	
+	
+\end{document}

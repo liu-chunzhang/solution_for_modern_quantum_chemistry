@@ -1,0 +1,477 @@
+\documentclass[a4paper]{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{geometry}
+\geometry{
+	left=2cm,
+	right=2cm,
+	top=2cm,
+	bottom=2cm,
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,            %链接颜色
+    linkcolor=blue,             %内部链接
+    filecolor=magenta,          %本地文档
+    urlcolor=cyan,              %网址链接
+}
+\usepackage[none]{hyphenat}		% 阻止长单词分在两行
+\usepackage{mathrsfs}
+\usepackage[version=4]{mhchem}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+    boxed title style={colback=magenta},
+	breakable,
+	enhanced,
+	sharp corners,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight,  yshifttext=-.75\baselineskip},
+	boxed title style={boxsep=1pt,sharp corners},
+    fonttitle=\bfseries\sffamily,
+}
+
+\definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
+    title={Exercise~\thetcbcounter},
+    colframe=skyblue,
+    colback=skyblue!12!white,
+    boxed title style={colback=skyblue},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=skyblue,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
+    title={Solution~\thetcbcounter},
+    colframe=teal!60!green,
+    colback=green!12!white,
+    boxed title style={colback=teal!60!green},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=red,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+% special new commands for common symbols used in the article
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+\newcommand\lr[2]{\langle#1\|#2\rangle}
+\newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand\Tr[3]{#1\mathrm\#2#3}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+\newcommand{\HF}{{\rm HF}}
+
+\newcommand{\A}{{\bf A}}
+\newcommand{\B}{{\bf B}}
+\newcommand{\C}{{\bf C}}
+\newcommand{\I}{{\bf 1}}
+\newcommand{\U}{{\bf U}}
+\newcommand{\Op}{{\bf O}}
+
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}\filleft}
+  [\vspace{1ex}\titlerule]
+  
+\allowdisplaybreaks
+
+\begin{document}
+
+	\stepcounter{chapter}
+
+	\chapter{Many Electron Wave Functions and Operators}
+	
+	\section{The Electron Problem}
+	
+	\subsection{Atomic Units}
+	
+	\subsection{The Born-Oppenheimer Approximation}
+	
+	\subsection{The Antisymmetry or Pauli Exclusion Principle}
+	
+	\section{Orbitals, Slater Determinants, and Basis Functions}
+	
+	\subsection{Spin Orbitals and Spatial Orbitals}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-1 so
+	\end{solution}
+	
+	\subsection{Hartree Products}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-2 so
+	\end{solution}
+	
+	\subsection{Slater Determinants}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-3 so
+	\end{solution}
+
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-4 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-5 so
+	\end{solution}
+	
+	\subsection{The Hartree-Fock Approximation}
+	
+	\subsection{The Minimal Basis \texorpdfstring{$\ce{H2}$}- Model}
+	
+	\begin{exercise}
+	Show that $\psi_1$ and $\psi_2$ form an orthonormal set.
+	\end{exercise}
+	
+	\begin{solution}
+		2-6 so
+	\end{solution}
+	
+	\subsection{Excited Determinants}
+	
+	\subsection{Form of the Exact Wave Function and Configuration Interaction}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-7 so
+	\end{solution}
+	
+	\section{Operators and Matrix Elements}
+	
+	\subsection{Minimal Basis \texorpdfstring{$\ce{H2}$}- Matrix Elements}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-8 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-9 so
+	\end{solution}
+	
+	\subsection{Notations for One- and Two-Electron Integrals}
+	
+	\subsection{General Rules for Matrix Elements}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-10 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-11 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-12 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-13 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-14 so
+	\end{solution}
+	
+	\subsection{Derivation of the Rules for Matrix Elements}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-15 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-16 so
+	\end{solution}
+	
+	\subsection{Transition from Spin Orbitals to Spatial Orbitals}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-17 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-18 so
+	\end{solution}
+	
+	\subsection{Coulomb and Exchange Integrals}
+
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-19 so
+	\end{solution}
+	
+	\begin{exercise}
+	Show that for {\it real} spatial orbitals
+	\[
+		K_{ij} = (ij|ij) = (ji|ji) = \langle ii | jj \rangle = \langle jj | ii \rangle.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+		2-20 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-21 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-22 so
+	\end{solution}
+	
+	\subsection{Pseudo-Classical Interpretation of Determinantal Energies}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-23 so
+	\end{solution}
+	
+	\section{Second Quantization}
+	
+	\subsection{Creation and Annihilation Operators and Their Anticommutation Relations}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-24 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-25 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-26 so
+	\end{solution}
+
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-27 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-28 so
+	\end{solution}
+	
+	\subsection{Second-Quantized Operators and Their Matrix Elements}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-29 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-30 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-31 so
+	\end{solution}
+	
+	\section{Spin-Adapted Configurations}
+	
+	\subsection{Spin Operators}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-32 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-33 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-34 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-35 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-36 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-37 so
+	\end{solution}
+	
+	\subsection{Restricted Determinants and Spin-Adapted Configurations}
+	
+	\begin{solution}
+		2-38 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-39 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-40 so
+	\end{solution}
+	
+	\subsection{Unrestricted Determinants}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		2-41 so
+	\end{solution}
+	
+
+
+\end{document}

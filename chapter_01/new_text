@@ -1,0 +1,391 @@
+\subsection{\texorpdfstring{$N$}--Dimentional Complex Vector Spaces}
+	
+	\subsection{Change of Basis}
+	
+	\begin{exercise}
+		Show that the trace of a matrix is invariant under a unitary transformation, i.e., if
+		\begin{equation*}
+			\bf{\Omega} = \U^\dagger \Op \U
+		\end{equation*}
+		then show that $\tr{\bf{\Omega}}=\tr{\Op}$.
+	\end{exercise}
+	
+	\begin{solution}
+		1-8 so
+	\end{solution}
+	
+	\subsection{The Eigenvalue Problem}
+	
+	\begin{exercise}
+		Show that Eq.(1.90) contains Eq.(1.87) for all $\alpha=1,2,\cdots,N$.
+	\end{exercise}
+	
+	\begin{solution}
+		1-9 so
+	\end{solution}
+	
+	\begin{exercise}
+	Since the components of an eigenvector can be found from the eigenvalue equation only to within a multiplicative constant, which is later determined by the normalization, one can set $c_1 = 1$ and $c_2 = c$ in Eq.(1.94). If this is done, Eq.(1.94) becomes
+	\begin{align*}
+		O_{11} + O_{12} c &= \omega \\
+		O_{21} + O_{22} c &= \omega c. 
+	\end{align*}
+	After eliminating $c$, find the two roots of the resulting equation and show that they are the same as those given in Eq.(1.96). This technique, which we shall use numerous times in the book for finding the lowest eigenvalue of a matrix, is basically the secular determinant approach without determinants. Thus one can use it to find the lowest eigenvalue of certain $N \times N$ matrices without having to evaluate an $N \times N$ determinant.
+	\end{exercise}
+	
+	\begin{solution}
+		1-10 so
+	\end{solution}
+	
+	\begin{exercise}
+	Consider the matrices
+	\begin{equation*}
+		\A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}, \,  \B = \begin{pmatrix} 3 & 1 \\ 1 & 2 \end{pmatrix}.
+	\end{equation*}
+	Find numerical values for the eigenvalues and corresponding eigenvectors of these matrices by a) the secular determinant approach; b) the unitary transformation approach. You will see that approach (b) is much easier.
+	\end{exercise}
+	
+	\begin{solution}
+		1-11
+	\end{solution}
+
+	\subsection{Functions of Matrices}
+	
+	\begin{exercise}
+	Given that
+	\begin{equation*}
+		\U^\dagger \A \U = \bf{a} = \begin{pmatrix} a_1 & 0 & \cdots & 0 \\ & a_2 & \cdots & 0 \\ \cdots & \cdots & \cdots & \cdots \\ 0 & 0 & \cdots & a_N \end{pmatrix}
+	\end{equation*}
+	or
+	\begin{equation*}
+		\A {\bf c^\alpha} = a_\alpha {\bf c^\alpha} , \, \alpha = 1,2,\cdots, N.
+	\end{equation*}
+	Show that
+	\begin{enumerate}
+	
+	\item[a.] $\det{\A^n}=a^n_1 a^n_2 \cdots a^n_N$.
+
+	\item[b.] $\tr{\A^n}=\displaystyle\sum_{\alpha=1}^N a^n_\alpha$.
+	
+	\item[c.] If ${\bf G}(\omega) = (\omega\I - \A)^{-1}$, then
+	\begin{equation*}
+		({\bf G}(\omega))_{ij} = \sum_{\alpha=1}^N \frac{U_{i\alpha}U^*_{j\alpha}}{\omega-a_\alpha} = \sum_{\alpha=1}^N \frac{c^\alpha_i {c^\alpha_j}^*}{\omega-a_\alpha}.
+	\end{equation*}
+	Show that using Dirac notation this can be rewritten as
+	\begin{equation*}
+		({\bf G}(\omega))_{ij} \equiv \langle i | \mathcal{G}(\omega) | j \rangle = \sum_{\alpha} \frac{\langle i | \alpha \rangle \langle \alpha | j \rangle }{\omega - a_\alpha}.
+	\end{equation*}
+	As an interesting application of this relation consider the problem of solving the following set of inhomogeneous linear equations
+	\begin{equation*}
+		(\omega\I-\A){\bf x} = {\bf c}
+	\end{equation*}
+	for ${\bf x}$. The most straightforward way to proceed is to invert $\omega \I - \A$, i.e., 
+	\begin{equation*}
+		{\bf x} = (\omega \I - \A)^{-1} {\bf c} = {\bf G}(\omega) {\bf c}
+	\end{equation*}
+	If we want ${\bf x}$ as a function of $\omega$ we need to invert the matrix for {\it each} value of $\omega$. However, if we diagonalize $\A$, we can write
+	\begin{equation*}
+		x_i = \sum_j ({\bf G}(\omega))_{ij}c_j = \sum_{j\alpha} \frac{ U_{i\alpha}U^*_{j\alpha} c_j}{\omega-a_\alpha}.
+	\end{equation*}
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+		1-12 so
+	\end{solution}
+
+	\begin{exercise}
+	If
+	\begin{equation*}
+		\A = \begin{pmatrix} a & b \\ b & a \end{pmatrix}			
+	\end{equation*}
+	show that
+	\begin{equation*}
+		f(\A) = \begin{pmatrix}
+		\frac{1}{2}[f(a+b)+f(a-b)] & \frac{1}{2}[f(a+b)-f(a-b)] \\
+		\frac{1}{2}[f(a+b)-f(a-b)] & \frac{1}{2}[f(a+b)+f(a-b)]
+		\end{pmatrix}.
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+		222
+	\end{solution}
+	
+	\section{Orthogonal Functions, Eigenfunctions, and Operators}
+	
+	\begin{exercise}
+	Using the above representation of $\delta(x)$, show that
+	\begin{equation*}
+		a(0) = \int_{-\infty}^\infty \dif x \, a(x) \delta(x)
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+		222
+	\end{solution}
+
+	\begin{exercise}
+	As a further illustration of the consistency of our notation, consider the matrix representation of an operator $\vartheta$ in the basis $\{\psi_i(x)\}$. Starting with
+	\begin{equation*}
+		\vartheta \psi_i(x) = \sum_{j} \psi_j(x) O_{ji}
+	\end{equation*}
+	Show that
+	\begin{equation}
+		O_{ji} = \int \dif x \psi^*_j(x)\vartheta\psi_i(x)
+	\end{equation}
+	Then using Eqs.(1.127a) and (1.138) rewrite (1) in the bra-ket notation and show that it is identical to Eq.(1.55).
+	\end{exercise}
+	
+	\begin{solution}
+		222
+	\end{solution}
+
+	\begin{exercise}
+	Consider the eigenvalue problem
+	\begin{equation}
+		\mathcal{O} \phi(x) = \omega \phi(x).
+	\end{equation}
+	By expanding $\phi$ in the complete set $\{\psi_i(x),i=1,2,\cdots\}$ as
+	\begin{equation*}
+		\phi(x) = \sum_{i=1}^\infty c_i \psi_i(x)
+	\end{equation*}
+	show that it becomes equivalent to the matrix eigenvalue problem
+	\begin{equation*}
+		\Op {\bf c} = \omega {\bf c}
+	\end{equation*}
+	where $({\bf c})_i=c_i$ and $({\bf O})_{ij} = \int \dif x \psi^*_i(x)\mathcal{O}\psi_j(x)$. Do this with and without using bra-ket notation. Note that $\Op$ is an infinite matrix. In practice, we cannot handle infinite matrices. To keep things manageable, one uses only a finite subset of the set $\{\psi_i(x)\}$, i.e., $\{\psi_i(x),i=1,2,\cdots, N\}$. If the above analysis is repeated in this subspace, we obtain an $N \times N$ eigenvalue problem. As we shall see in Section 1.3, the corresponding $N$ eigenvalues approximate the true eigenvalues. In particular, we shall prove that the lowest eigenvalue of the truncated eigenvalue problem is greater or equal to the exact lowest eigenvalue.
+	\end{exercise}
+	
+	\begin{solution}
+		1-16 so
+	\end{solution}
+	
+	\begin{exercise}
+	In this subsection we have used a watered-down version of Dirac notation that is sufficient for our purposes but that oversimplifies the deep relationship between vectors and functions. The purpose of this exercise is to provide a glimpse at Dirac notation in its full glory. Consider a denumerably infinite set of complete orthonormal basis vectors, i.e.,
+	\begin{subequations}
+	\begin{equation*}
+		\sum_{i=1}^\infty | i \rangle \langle i | = \I \tag{1a}
+	\end{equation*}
+	
+	\begin{equation*}
+		\langle i | j \rangle = \delta_{ij} \tag{1b}
+	\end{equation*}
+	\end{subequations}
+	Let us introduce a continuously infinite complete set of basis vectors denoted by $|x\rangle$. The analogue of (1a) is
+	\begin{equation*}
+		\int \dif x | x \rangle \langle x | = 1, \tag{2a}
+	\end{equation*}
+	that is, we have replaced the summation in (1a) by an integral. If we multiply (2a) on the left by $\langle a |$ and on the right by $| b \rangle$ we have
+	\begin{equation*}
+		\int \dif x \langle a | x \rangle \langle x | b \rangle = \langle a | b \rangle.
+	\end{equation*}
+	Comparing this to Eq.(1.128) suggests that we identify $a^*(x)$ with $\langle a | x \rangle$ and $b(x)$ with $\langle x | b \rangle$. Recall that $\langle i | a \rangle$ is the component of $| a \rangle$ along the basis vector $| i \rangle$. Thus we can regard a function $b(x)$ as the x component of the abstract vector $| b \rangle$ in a coordinate system with a continuously infinite number of axes.
+	\begin{enumerate}
+	
+	\item[a.] Multiply (2a) on the left by $\langle i |$ and on the right by $| j \rangle$. Using (1b) show that the resulting equation is identical to (1.116) if
+	\begin{equation*}
+		\psi^*_i(x) = \langle i | x \rangle, \, \psi_j(x) = \langle x | j \rangle.
+	\end{equation*}
+	
+	\item[b.] Multiply (1a) by $\langle x |$ on the left and $| x^\prime \rangle$ on the right. Show that the resulting equation is identical to (1.120) if
+	\begin{equation*}
+		\langle x | x^\prime \rangle = \delta( x - x^\prime ). \tag{2b}
+	\end{equation*}
+	This is just the continuous analogue of (1b).
+	
+	\item[c.] Multiply (2a) by $\langle x^\prime |$ on the left and $| a \rangle$ on the right. Show that the resulting expression is identical to (1.121).
+	
+	\item[d.] Consider an abstract operator $\mathcal{O}$. Its matrix elements in the continuous basis $| x \rangle$ are
+	\begin{equation*}
+		\langle x | \mathcal{O} | x^\prime \rangle = O(x,x^\prime).
+	\end{equation*}
+	Starting with the relation $\mathcal{O}| a \rangle = | b \rangle$ and inserting unity, we have
+	\begin{equation*}
+		\mathcal{O} | a \rangle = \mathcal{O} \I | a \rangle = \int \dif x \mathcal{O} | x \rangle \langle x | a \rangle = | b \rangle
+	\end{equation*}
+	Multiply this equation by $\langle x^\prime |$ and show that the result is identical to Eq.(1.133).
+	If $O_{ij} = \langle i | \mathcal{O} | j \rangle$, show that
+	\begin{equation*}
+		O(x,x^\prime) = \sum_{ij} \psi_i(x) O_{ij} \psi^*_j(x^\prime).
+	\end{equation*}
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+		1-17
+	\end{solution}
+	
+	\section{The Variation Method}
+	
+	\subsection{The Variation Principle}
+	
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) of an electron moving in one dimension under the influence of the potential $-\delta(x)$ is
+	\begin{equation*}
+		\left(-\frac 12 \frac{\dif^2}{\dif x^2}-\delta(x)\right) | \Phi \rangle = \mathscr{E} | \Phi \rangle
+	\end{equation*}
+	Use the variation method with the trial function
+	\begin{equation*}
+		| \tilde{\Phi} \rangle = N e^{-\alpha x^2}
+	\end{equation*}
+	to show that $-\pi^{-1}$ is an upper bound to the exact ground state energy (which is -0.5). You will need the integral
+	\begin{equation*}
+		\int_{-\infty}^{\infty} \dif x x^{2m} e^{-\alpha x^2} = \frac{(2m)!\pi^{1/2}}{2^{2m}m!\alpha^{m+1/2}}.
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+		1-18
+	\end{solution}
+
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) for the hydrogen atom is
+	\[
+		(-\frac{1}{2}\nabla^2 - \frac{1}{r})|\Phi\rangle = \mathscr{E} | \Phi \rangle
+	\]
+	Use the variation method with the trial function
+	\[
+		|\tilde{\Phi}\rangle = N e^{-\alpha r^2}
+	\]
+	to show that $-4/3\pi=-0.4244$ is an upper bound to the exact ground state energy (which is -0.5). You will need the relations
+	\begin{subequations}
+	\[
+		\nabla^2 f(r) = r^{-2} \frac{\dif }{\dif r}\left( r^2 \frac{\dif}{\dif r}\right) f(r),
+	\]
+	\[
+		\int_0^\infty \dif r \, r^{2m} e^{-\alpha r^2} = \frac{ (2m)! \pi^{1/2} }{ 2^{2m+1} m! \alpha^{m+1/2} },
+	\]
+	\[
+		\int_0^\infty \dif r \, r^{2m+1} e^{-\alpha r^2} = \frac{ (m)! }{ 2 \alpha^{m+1} }.
+	\]
+	\end{subequations}
+	\end{exercise}
+	
+	\begin{solution}
+		1-19
+	\end{solution}
+	
+	\begin{exercise}
+	The variation principle as applied to matrix eigenvalue problems states that if ${\bf c}$ is a normalized (${\bf c}^\dagger {\bf c}=1$) column vector, then ${\bf c}^\dagger\Op{\bf c}$ is greater or equal to the lowest eigenvalue of $\Op$. For the $2\times2$ symmetric matrix ($O_{12}=O_{21}$)
+	\[
+		\Op = \begin{pmatrix} O_{11} & O_{12} \\ O_{21} & O_{22} \end{pmatrix},
+	\]
+	consider the trial vector
+	\[
+		{\bf c} = \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}
+	\]
+	which is normalized for any value of $\theta$. Calculate
+	\[
+		\omega(\theta) = {\bf c}^\dagger \Op {\bf c}
+	\]
+	and find the value of $\theta$ (i.e., $\theta_0$) for which $\omega(\theta)$ is a minimum. Show that $\omega(\theta_0)$ is exactly equal to the lowest eigenvalue of $\Op$ (see Eqs.(1.105) and (1.106a)). Why should you have anticipated this result?
+	\end{exercise}
+	
+	\begin{solution}
+		222
+	\end{solution}
+	
+	\subsection{The Linear Variational Problem}
+	
+	\begin{exercise}
+	Consider a normalized trial function $|\tilde{\Phi}^\prime \rangle$ that is orthogonal to the exact ground state wave function, i.e., $\langle \tilde{\Phi}^\prime | \Phi_0 \rangle = 0$.
+	\begin{enumerate}
+	
+	\item[a.] Generalize the proof of the variation principle of Subsection 1.3.1 to show that
+	\[
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle \geq \mathscr{E}_1.
+	\]	
+
+	\item[b.] Consider the function
+	\[
+		| \tilde{\Phi}^\prime \rangle = x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle
+	\]
+	where $| \tilde{\Phi}^\prime_\alpha \rangle$, $\alpha = 0, 1$ are given by Eq.(1.168). Show that if it is normalized, then
+	\[
+		|x|^2 + |y|^2 = 1.
+	\]
+	
+	\item[c.] When $x$ and $y$ are chosen so that $| \tilde{\Phi}^\prime \rangle$ is normalized and so that $\langle \tilde{\Phi}^\prime | \Phi_0 \rangle = 0$, then from part (a) it follows that $\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle \geq \mathscr{E}_1$. Show that
+	\[
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = E_1 - |x|^2 ( E_1 - E_0 ).
+	\]
+	Since $E_1 \geq E_0$, conclude that $E_1 \geq \mathscr{E}_1$. The above argument can be generalized to show that $E_\alpha \geq \mathscr{E}_\alpha$, $\alpha=2,3,\cdots$.
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	\begin{enumerate}
+	\item[a.]
+	\begin{equation*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \sum_\beta \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle \langle \tilde{\Phi}_\alpha |\mathscr{H} | \tilde{\Phi}_\beta \rangle \langle \tilde{\Phi}_\beta | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2
+	\end{equation*}
+	
+	Due to $\varepsilon_0 \leqslant \varepsilon_1 \leqslant \varepsilon_2 \leqslant ... \leqslant \varepsilon_{N - 1}$ and $\langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle = 0$,
+	\begin{equation}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 \geqslant \sum_\alpha \varepsilon_1 | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_1.
+	\end{equation}
+			
+	\item[b.]
+	\begin{align}
+		1 &= \langle \tilde{\Phi}^\prime | \tilde{\Phi}^\prime \rangle = ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
+		&= |x|^2 + |y|^2 + x^*y \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle +  xy^* \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle = |x|^2 + |y|^2.
+	\end{align}
+				
+	\item[c.]
+	
+	\begin{align*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle &= ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) \mathscr{H} ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
+		&= |x|^2 E_0 + |y|^2 E_1 = ( |x|^2 + |y|^2 ) E_1 - |x|^2 E_1 + |x|^2 E_0
+	\end{align*}
+				
+	\begin{equation}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = E_1 - |x|^2 ( E_1 - E_0 ) \geqslant E_0. 
+	\end{equation}
+	
+	\end{enumerate}
+			
+	\end{solution}
+	
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) for a hydrogen atom in a uniform electric field $F$ in the $z$ direction is
+	\[
+		\left( -\frac{1}{2}\nabla^2 - \frac{1}{r} + Fr\cos\theta \right) | \Phi \rangle = ( \mathscr{H}_0 + Fr \cos\theta ) | \Phi \rangle = \mathscr{E}(F) | \Phi \rangle.
+	\]
+	Use the trial function
+	\[
+		| \tilde{\Phi} \rangle = c_1 | 1s \rangle + c_2 | 2p_z \rangle
+	\]
+	where $|1s\rangle$ and $|2p_z\rangle$ are the normalized eigenfunctions of $\mathscr{H}_0$, i.e.,
+	\begin{subequations}
+	\[
+		| 1s \rangle = \pi^{-1/2} e^{-r},
+	\]
+	\[
+		| 2p_z \rangle = (32\pi)^{-1/2} r e^{-r/2} \cos\theta
+	\]
+	\end{subequations}
+	to find an upper bound to $\mathscr{E}(F)$. In constructing the matrix representation of $\mathscr{H}$, you can avoid a lot of work by noting that
+	\[
+		\mathscr{H}_0 | 1s \rangle = -\frac{1}{2} | 1s \rangle, \, \mathscr{H}_0 | 2p_z \rangle = -\frac{1}{8} | 2p_z \rangle.
+	\]
+	Using $(1+x)^{1/2} \approx 1 + x/2$, expand your answer in a Taylor series in $F$, i.e.,
+	\[
+		E(F) = E(0) - \frac{1}{2} \alpha F^2 + \cdots.
+	\]
+	Show that the coefficient $\alpha$, which is the approximate dipole polarizability of the system, is equal to 2.96. The exact result is 4.5.
+	\end{exercise}
+	
+	\begin{solution}
+		
+	\begin{align*}
+		\langle 1s | \mathscr{H}_0 | 1s \rangle &= -\frac{1}{2}, \\
+		\langle 1s | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 1s | 2p_z \rangle = -\frac{1}{8} \int_0^{+\infty} r^3 e^{ -\frac{3}{2}r } {\rm d}r \int_0^\pi \sin\theta \cos\theta {\rm d}\theta \int_0^{2\pi} {\rm d}\varphi \cdot \frac{1}{ \sqrt{\pi} } \cdot \frac{1}{ \sqrt{32\pi} } = 0, \\
+		\langle 2p_z | \mathscr{H}_0 | 1s \rangle &= (\langle 1s | \mathscr{H}_0 | 2p_z \rangle)^* = 0, \\
+		\langle 2p_z | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 2p_z | 2p_z \rangle = -\frac{1}{8}.
+ 	\end{align*}
+	
+	\end{solution}	
+
+

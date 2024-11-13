@@ -1,0 +1,536 @@
+\documentclass[a4paper]{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{geometry}
+\geometry{
+	left=2cm,
+	right=2cm,
+	top=2cm,
+	bottom=2cm,
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,            %链接颜色
+    linkcolor=blue,             %内部链接
+    filecolor=magenta,          %本地文档
+    urlcolor=cyan,              %网址链接
+}
+\usepackage[none]{hyphenat}		% 阻止长单词分在两行
+\usepackage{mathrsfs}
+\usepackage[version=4]{mhchem}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+    boxed title style={colback=magenta},
+	breakable,
+	enhanced,
+	sharp corners,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight,  yshifttext=-.75\baselineskip},
+	boxed title style={boxsep=1pt,sharp corners},
+    fonttitle=\bfseries\sffamily,
+}
+
+\definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
+    title={Exercise~\thetcbcounter},
+    colframe=skyblue,
+    colback=skyblue!12!white,
+    boxed title style={colback=skyblue},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=skyblue,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
+    title={Solution~\thetcbcounter},
+    colframe=teal!60!green,
+    colback=green!12!white,
+    boxed title style={colback=teal!60!green},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=red,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+% special new commands for common symbols used in the article
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+\newcommand\lr[2]{\langle#1\|#2\rangle}
+\newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand\Tr[3]{#1\mathrm\#2#3}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+\newcommand{\HF}{{\rm HF}}
+
+\newcommand{\A}{{\bf A}}
+\newcommand{\B}{{\bf B}}
+\newcommand{\C}{{\bf C}}
+\newcommand{\I}{{\bf 1}}
+\newcommand{\U}{{\bf U}}
+\newcommand{\Op}{{\bf O}}
+
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}\filleft}
+  [\vspace{1ex}\titlerule]
+  
+\allowdisplaybreaks
+
+\begin{document}
+
+	\stepcounter{chapter}\stepcounter{chapter}
+
+	\chapter{The Hartree-Fock Approximation}
+	
+	\section{The Hartree-Fock Equations}
+	
+	\subsection{The Coulomb and Exchange Operators}
+	
+	\subsection{The Fock Operator}
+	
+	\begin{exercise}
+	Show that the general matrix element of the Fock operator has the form
+	\[
+		\langle \chi_i | f | \chi_j \rangle = \langle i | h | j \rangle + \sum_b [ij|bb] - [ib|bj] = \langle i | h | j \rangle + \sum_b \lr{ib}{jb}.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+		3-2 so
+	\end{solution}
+	
+	\section{Derivation of the Hartree-Fock Equations}
+	
+	\subsection{Functional Variation}
+	
+	\subsection{Minimization of the Energy of a Single Determinant}
+
+	\begin{exercise}
+	Prove Eq.(3.40).
+	\end{exercise}
+	
+	\begin{solution}
+		3-2 so
+	\end{solution}
+	
+	\begin{exercise}
+	Manipulate Eq.(3.44) to show that
+	\[
+		\delta E_0 = \sum_{a=1}^N [\delta \chi_a | h | \chi_a ] + \sum_{a=1}^N \sum_{b=1}^N [\delta \chi_a \chi_a | \chi_b \chi_b] - [\delta \chi_a \chi_b | \chi_b \chi_a] + \text{complex conjugate}.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+		3-2 so
+	\end{solution}
+	
+	\subsection{The Canonical Hartree-Fock Equations}
+	
+	\section{Interpretation of Solutions to the Hartree-Fock Equations}
+	
+	\subsection{Orbital Energies and Koopmans' Theorem}
+	
+	\begin{exercise}
+	Use the result of Exercise 3.1 to show that the Fock operator is a Hermitian operator, by showing that $f_{ij}=\langle \chi_i | f | \chi_j \rangle$ is an element of a Hermitian matrix.
+	\end{exercise}
+	
+	\begin{solution}
+		3-4 so
+	\end{solution}
+	
+	\begin{exercise}
+	Show that the energy required to remove an electron from $\chi_c$ and one from $\chi_d$ to produce the $(N-2)$-electron single determinant $|^{N-2}\Psi_{cd}\rangle$ is $-\varepsilon_c - \varepsilon_d + \langle cd | cd \rangle - \langle cd | dc \rangle$.
+	\end{exercise}
+	
+	\begin{solution}
+		3-5 so
+	\end{solution}
+	
+	\begin{exercise}
+	Use Eq.(3.87) to obtain an expression for $^{N+1}E^r$ and then subtract it from $^NE_0$ (Eq.(3.88)) to show that
+	\[
+		^N E_0 - ^{N+1} E^r = - \langle r | h | r \rangle - \sum_b \lr{rb}{rb}.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+		3-6 so
+	\end{solution}
+	
+	\subsection{Brillouin's Theorem}
+	
+	\subsection{The Hartree-Fock Hamiltonian}
+	
+	\begin{exercise}
+	Use definition (2.115) of a Slater determinant and the fact that $\mathscr{H}_0$ commutes with any operator that permutes the electron labels, to show that $|\Psi_0\rangle$ is an eigenfunction of $\mathscr{H}_0$ with eigenvalue $\displaystyle \sum_a \varepsilon_a$. Why does $\mathscr{H}_0$ commute with the permutation operator?
+	\end{exercise}
+	
+	\begin{solution}
+		3-7 so
+	\end{solution}
+	
+	\begin{exercise}
+	Use expression (3.108) for $\mathscr{V}$, expression (3.18) for the Hartree-Fock potential $v^{\HF}(i)$, and the rules for evaluating matrix elements to explicitly show that $\displaystyle \langle \Psi_0 | \mathscr{V} | \Psi_0 \rangle = -\frac{1}{2} \sum_a \sum_b \lr{ab}{ab}$ and hence that $E^{[1]}_0$ cancels the double counting of electron-electron repulsions in $\displaystyle E^{(0)}_0=\sum_a \varepsilon_a$ to give the correct Hartree-Fock energy $E_0$.
+	\end{exercise}
+	
+	\begin{solution}
+		3-8 so
+	\end{solution}
+	
+	\section{Restricted Closed-Shell Hartree-Fock: The Roothaan Equations}
+	
+	\subsection{Closed-Shell Hartree-Fock: Restricted Spin Orbitals}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-9 so
+	\end{solution}
+	
+	\subsection{Introduction of a Basis: The Roothaan Equations}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-10 so
+	\end{solution}
+	
+	\subsection{The Charge Density}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-11 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-12 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-13 so
+	\end{solution}
+	
+	\subsection{Expression for the Fock Matrix}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-14 so
+	\end{solution}
+	
+	\subsection{Orthogonalization of the Basis}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-15 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-16 so
+	\end{solution}
+
+	\subsection{The SCF Procedure}
+	
+	\subsection{Expectation Values and Population Analysis}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-17 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-18 so
+	\end{solution}
+	
+	\section{Model Calculations on \texorpdfstring{$\ce{H2}$}- and \texorpdfstring{$\ce{HeH+}$}-}
+	
+	\subsection{The \texorpdfstring{$1s$}- Minimal STO-3G Basis set}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-19 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-20 so
+	\end{solution}
+	
+	\subsection{STO-3G \texorpdfstring{$\ce{H2}$}-}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-21 so
+	\end{solution}
+	
+	\begin{exercise}
+	Derive the coefficients $[2(1+S_{12})]^{-1/2}$ and $[2(1-S_{12})]^{-1/2}$ in the basis function expansion of $\psi_1$ and $\psi_2$ by requiring $\psi_1$ and $\psi_2$ to be normalized.
+	\end{exercise}
+	
+	\begin{solution}
+		3-22 so
+	\end{solution}
+
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-23 so
+	\end{solution}
+
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-24 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-25 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-26 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-27 so
+	\end{solution}
+	
+	\subsection{An SCF Calculation on STO-3G \texorpdfstring{$\ce{HeH+}$}-}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-28 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-29 so
+	\end{solution}
+	
+	\section{Polyatomic Basis Sets}
+	
+	\subsection{Contracted Gaussian Functions}
+	
+	\subsection{Minimal Basis Sets: STO-3G}
+	
+	\subsection{Double Zeta Basis Sets: 4-31G}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-30 so
+	\end{solution}
+	
+	\subsection{Polarized Basis Sets: 6-31G* and 6-31G**}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-31 so
+	\end{solution}
+	
+	\section{Some Illustrative Closed-Shell Calculations}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-32 so
+	\end{solution}
+	
+	\subsection{Total Energies}
+	
+	\subsection{Ionization Potentials}
+	
+	\subsection{Equilibrium Geometries}
+	
+	\subsection{Population Analysis and Dipole Moments}
+	
+	\section{Unrestricted Open-Shell Hartree-Fock: The Pople-Nesbet Equations}
+	
+	\subsection{Open-Shell Hartree Fock: Unrestricted Spin Orbitals}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-33 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-34 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-35 so
+	\end{solution}
+	
+	\subsection{Introduction of a Basis: The Pople-Nesbet Equations}
+	
+	\subsection{Unrestricted Density Matrices}
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-36 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-37 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-38 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-39 so
+	\end{solution}
+	
+	\subsection{Expression for the Fock Matrices}
+	
+	\subsection{Solution of the Unrestricted SCF Equations}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-40 so
+	\end{solution}
+	
+	\subsection{Illustrative Unrestricted Calculations}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-41 so
+	\end{solution}
+	
+	\subsection{The Dissociation Problem and its Unrestricted Solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-42 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		3-43 so
+	\end{solution}
+	
+	\begin{exercise}
+	Derive Eq.(3.379) from Eq.(3.382).
+	\end{exercise}
+	
+	\begin{solution}
+		3-44 so
+	\end{solution}
+
+\end{document}

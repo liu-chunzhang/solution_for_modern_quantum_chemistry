@@ -1,0 +1,228 @@
+\documentclass[a4paper]{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{geometry}
+\geometry{
+	left=2cm,
+	right=2cm,
+	top=2cm,
+	bottom=2cm,
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,            %链接颜色
+    linkcolor=blue,             %内部链接
+    filecolor=magenta,          %本地文档
+    urlcolor=cyan,              %网址链接
+}
+\usepackage[none]{hyphenat}		% 阻止长单词分在两行
+\usepackage{mathrsfs}
+\usepackage[version=4]{mhchem}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+    boxed title style={colback=magenta},
+	breakable,
+	enhanced,
+	sharp corners,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight,  yshifttext=-.75\baselineskip},
+	boxed title style={boxsep=1pt,sharp corners},
+    fonttitle=\bfseries\sffamily,
+}
+
+\definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
+    title={Exercise~\thetcbcounter},
+    colframe=skyblue,
+    colback=skyblue!12!white,
+    boxed title style={colback=skyblue},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=skyblue,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
+    title={Solution~\thetcbcounter},
+    colframe=teal!60!green,
+    colback=green!12!white,
+    boxed title style={colback=teal!60!green},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=red,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+% special new commands for common symbols used in the article
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+\newcommand\lr[2]{\langle#1\|#2\rangle}
+\newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand\Tr[3]{#1\mathrm\#2#3}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+\newcommand{\HF}{{\rm HF}}
+
+\newcommand{\A}{{\bf A}}
+\newcommand{\B}{{\bf B}}
+\newcommand{\C}{{\bf C}}
+\newcommand{\I}{{\bf 1}}
+\newcommand{\U}{{\bf U}}
+\newcommand{\Op}{{\bf O}}
+
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}\filleft}
+  [\vspace{1ex}\titlerule]
+  
+\allowdisplaybreaks
+
+\begin{document}
+
+	\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}
+
+	\chapter{Configuration Interaction}
+	
+	\section{Multiconfigurational Wave Functions and the Structure of the Full CI Matrix}
+	
+	\subsection{Intermediate Normalization and an Expression for the Correlation Energy}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-1 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-2 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-3 so
+	\end{solution}
+	
+	\section{Doubly Excited CI}
+	
+	\section{Some Illustrative Calculations}
+	
+	\section{Natural Orbitals and the One-Particle Reduced Density Matrix}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-4 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-5 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-6 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-7 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-8 so
+	\end{solution}
+	
+	\section{The Multiconfiguration Self-Consistent Field (MCSCF) and \texorpdfstring{\\}- Generalized Valence Bond (GVB) Methods}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-9 so
+	\end{solution}
+	
+	\section{Truncated CI and the Size-Consistency Problem}	
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-10 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-11 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-12 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-13 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-14 so
+	\end{solution}
+	
+	\begin{exercise}
+	111
+	\end{exercise}
+	
+	\begin{solution}
+		4-15 so
+	\end{solution}
+	
+\end{document}

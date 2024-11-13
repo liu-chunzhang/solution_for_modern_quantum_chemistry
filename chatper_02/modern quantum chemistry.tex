@@ -1,0 +1,619 @@
+\documentclass[UTF8]{ctexart}
+
+% list packages used in the article
+\usepackage{titlesec}							% to give fine structure of whole article
+\usepackage{setspace}							% to set suited gap between lines of title
+\usepackage{amsmath}							% fundamental package for mathmatical expression
+\usepackage{amssymb}							% package for AMS character
+\usepackage{mathrsfs}							% package for decorated letter
+
+% some fundamental setting of titles
+\CTEXsetup[
+name={Chapter{\hspace{0.2em}}},
+number={{\thesection}},
+nameformat={\zihao{4}},
+titleformat={\zihao{4}}]{section}
+
+\CTEXsetup[
+name={exercise{\hspace{0.2em}},},
+number={{\thesubsection}},
+format={\center},
+nameformat+={\zihao{-4}\bfseries\fangsong}]{subsection}
+
+% special new commands for common symbols used in the article
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+\newcommand\lr[2]{\langle#1\|#2\rangle}
+\newcommand\lrs[3]{\langle#1|#2|#3\rangle}
+\newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand\diff[1]{\mathrm{d}#1}
+\newcommand\Tr[3]{#1\mathrm\#2#3}
+\renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+\newcommand\psum[2]{\sum_{#1}^{#2}{^\prime}}
+
+\begin{document}
+
+	\begin{titlepage}	
+		\vspace*{\fill}
+		\begin{center}
+			\normalfont
+			\setlength\lineskip{5bp}
+			{\zihao{-2}\bfseries the Manual Solution of Modern Quantum Chemistry(Szabo,1982)}
+			\bigskip \\
+			{\Large supplyed by 霜城雪 and 超锂化雪}\\
+			\medskip
+			2021.11.10-\\
+			\setcounter{tocdepth}{1}
+			\tableofcontents
+		\end{center}
+		\vspace{\stretch{3}}
+	\end{titlepage}
+
+	\section{Mathematical Review}
+	
+	\subsection{}
+
+\section{Many Electron Wave Functions and Operators}
+	\subsection{}
+		\[
+			\langle \chi _{2i-1} | \chi _{2j-1} \rangle = \langle \psi_i^\alpha |\psi_j^\beta \rangle = \delta_{ij} \cdot 1 = \delta_{ij} \ ; \
+			\langle \chi _{2i} | \chi _{2j} \rangle = \langle \psi_i^\beta |\psi_j^\beta \rangle = \delta_{ij} \cdot 1 = \delta_{ij}.
+		\]
+		\[
+		\langle \chi _{2i-1} | \chi _{2j} \rangle = \langle \psi_i^\alpha |\psi_j^\beta \rangle = \delta_{ij} \cdot 0 = 0 \ ; \
+		\langle \chi _{2i} | \chi _{2j-1} \rangle = \langle \psi_i^\beta |\psi_j^\alpha \rangle = \delta_{ij} \cdot 0 = 0.
+		\]
+	
+	\subsection{}
+		\[
+			\mathscr{H} \psi^{HP} = \sum_{i=1}^N h(i) \psi^{HP} = \sum_{i=1}^N \varepsilon_i \psi^{HP} = \Big(\sum_{i=1}^N \varepsilon_i \Big) \psi^{HP}
+		\]
+		\[
+			\therefore E = \sum_{i=1}^N \varepsilon_i.
+		\]
+	
+	\subsection{}
+		\[
+		\begin{aligned}
+			\langle \Psi | \Psi \rangle =& \int_{\Omega_1} \diff x_1 \int_{\Omega_2} \diff x_2 \frac{1}{\sqrt{2}} [ \chi _i(1) \chi _j(2) - \chi _j(1) \chi _i(2) ]^* \frac{1}{\sqrt{2}} [ \chi _i(1) \chi _j(2) - \chi _j(1) \chi _i(2) ] \\
+			=& \frac{1}{2}(1+0+0+1) = 1.
+		\end{aligned}
+		\]
+	
+	\subsection{}
+		\[
+		\begin{aligned}
+			&\mathscr{H} \frac{1}{\sqrt{2}} ( \chi _i(1) \chi _j(2) - \chi _j(1) \chi _i(2) ) \\
+			=& h(1)\frac{1}{\sqrt{2}} ( \chi _i(1) \chi _j(2) - \chi _j(1) \chi _i(2) ) + h(2)\frac{1}{\sqrt{2}} ( \chi _i(1) \chi _j(2) - \chi _j(1) \chi _i(2) ) \\
+			=& \varepsilon_i \frac{1}{\sqrt{2}} \chi _i(1) \chi _j(2) - \varepsilon_j \frac{1}{\sqrt{2}} \chi _j(1) \chi _i(2) + \frac{1}{\sqrt{2}} \varepsilon_j \chi _i(1) \chi _j(2) - \frac{1}{\sqrt{2}} \varepsilon_i \chi _j(1) \chi _i(2) \\
+			=& ( \varepsilon_i + \varepsilon_j ) \frac{1}{\sqrt{2}} ( \chi _i(1) \chi _j(2) - \chi _j(1) \chi _i(2) ).
+		\end{aligned}
+		\]
+	
+		从而$|\Psi^{HP}\rangle$能量为$\varepsilon_i + \varepsilon_j$.
+	
+	\subsection{}
+		\[
+		\begin{aligned}
+			&\langle K | L \rangle = \langle ij | kl \rangle \\
+			=& \frac{1}{2} \int_{\Omega_1} \diff x_1 \int_{\Omega_2} \diff x_2 [ \chi _i(1) \chi _j(2) - \chi _j(1) \chi _i(2) ]^* [ \chi _k(1) \chi _l(2) - \chi _l(1) \chi _k(2) ] \\
+			=& \frac{1}{2} [ \langle ij | kl \rangle - \langle ij | lk \rangle - \langle ji | kl \rangle + \langle ji | lk \rangle ] \\
+			=& \frac{1}{2} [ \delta_{ik}\delta_{jl} - \delta_{il}\delta_{jk} - \delta_{jk}\delta_{il} + \delta_{jl}\delta_{ik} ] \\
+			=& \delta_{ik}\delta_{jl} - \delta_{jk}\delta_{il} \equiv \delta_{ij}^{kl}.
+		\end{aligned}
+		\]
+		
+		推广：我们知道，在平直空间张量分析中，$\delta_{ij}^{kl} \equiv \delta_{ik}\delta_{jl} - \delta_{jk}\delta_{il}$。故而大胆猜测有
+		\[
+			\langle \chi_{i_1} \chi_{i_2} \cdots \chi_{i_N} | \chi_{j_1} \chi_{j_2} \cdots \chi_{j_N} \rangle = \delta_{i_1i_2\cdots i_N}^{j_1j_2\cdots j_N}.
+		\]
+		
+		证明：
+		\[
+		\begin{aligned}
+			&\langle i_1i_2\cdots i_N | j_1j_2 \cdots j_N \rangle \\
+			=& \frac{1}{N!} \sum_{i_1i_2\cdots i_N}\sum_{j_1j_2 \cdots j_N} (-1)^{ \tau(i_1i_2\cdots i_N) } (-1)^{ \tau(j_1j_2 \cdots j_N) } \delta_{i_1i_2\cdots i_N}^{j_1j_2 \cdots j_N} \\
+			=& \sum_{i_1i_2\cdots i_N} (-1)^{ \tau(i_1i_2\cdots i_N) + \tau(j_1j_2 \cdots j_N) } \delta_{i_1}^{j_1} \delta_{i_2}^{j_2} \cdots \delta_{i_N}^{j_N} \\
+			=& \delta_{i_1i_2\cdots i_N}^{j_1j_2 \cdots j_N}.
+		\end{aligned}
+		\]
+	
+	\subsection{}
+		\[
+		\begin{aligned}
+			\langle \psi_1 | \psi_1 \rangle \\
+			=& \frac{1}{ 2(1 + S_{12}) } \int_{\Omega_{r_1}} \diff r_1 \int_{\Omega_{r_2}} \diff r_2 ( \phi_1 + \phi_2 )^* ( \phi_1 + \phi_2 ) \\
+			=& \frac{1}{ 2(1 + S_{12}) } ( 1 + S_{12} + S_{12} + 1 ) = 1.
+		\end{aligned}
+		\]
+		
+		同理
+		\[
+			\langle \psi_2 | \psi_2 \rangle = 1.
+		\]
+		\[
+		\begin{aligned}
+		\langle \psi_1 | \psi_2 \rangle \\
+		=& \frac{1}{ 2\sqrt{ 1 - S_{12}^2 } } \int_{\Omega_{r_1}} \diff r_1 \int_{\Omega_{r_2}} \diff r_2 ( \phi_1 + \phi_2 )^* ( \phi_1 - \phi_2 ) \\
+		=& \frac{1}{ 2\sqrt{ 1 - S_{12}^2 } } ( 1 - S_{12} + S_{12} - 1 ) = 0.
+		\end{aligned}
+		\]
+		
+		故$\psi_1$与$\psi_2$形成一个标准正交基.
+		
+	
+	\subsection{}
+		苯分子有42个电子(1个碳原子提供6个，1个氢原子提供1个)，却有36个原子轨道(1个碳原子提供1s, 2s及2p三种五个轨道从，1个氢原子提供1s一种一个轨道)，考虑到一个原子轨道可容纳一对(自旋相反的)电子，由电子的不可分辨性，有$C_{72}^{42} = 1.64 \times 10^{20}$种方法，此即Full CI中行列式总数.
+		
+		单激发态需选1个电子填充另一组空轨道，从而有$C_{42}^1C_{30}^1 \doteq 1260$种.
+		
+		类似地，双激发态有$C_{32}^2C_{40}^2 \doteq 3.74 \times 10^5$种.
+	
+	\subsection{}
+		\[
+			\langle \psi_{12}^{34} | \vartheta_1 | \psi_{12}^{34} \rangle = \langle \psi_{12}^{34} | h(1) | \psi_{12}^{34} \rangle + \langle \psi_{12}^{34} | h(2) | \psi_{12}^{34} \rangle.
+		\]
+		\[
+		\begin{aligned}
+			&\langle 2\bar{2} | h(1) | 2\bar{2} \rangle \\
+			=& \frac{1}{2} \int_{\Omega_1} \diff x_1 \int_{\Omega_2} \diff x_2 [ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ]^* h(1) [ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ] \\
+			=& \frac{1}{2} \int_{\Omega_1} \diff x_1 [ \chi_3^*(1) h(1) \chi_3(1) + \chi_4^*(1) h(1) \chi_4(1) ] \\
+			=& \frac{1}{2} [ \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle ],
+		\end{aligned}
+		\]
+		
+		同理,
+		\[
+			\langle 2\bar{2} | h(2) | 2\bar{2} \rangle = \frac{1}{2} [ \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle ].
+		\]
+		\[
+			\therefore \langle 2\bar{2} | \vartheta_1 | 2\bar{2} \rangle = \langle 2\bar{2} | h(1) | 2\bar{2} \rangle + \langle 2\bar{2} | h(2) | 2\bar{2} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle.
+		\]
+		
+		而
+		\[
+			\langle 2\bar{2} | h(1) | \psi_0 \rangle 
+			= \frac{1}{2} \int_{\Omega_1} \diff x_1 \int_{\Omega_2} \diff x_2 [ \chi_3(1) \chi_4(2) - \chi_3(2) \chi_4(1) ]^* h(1) [ \chi_1(1) \chi_2(2) - \chi_2(1) \chi_1(1) ] = 0.
+		\]
+		
+		同理
+		\[
+			\langle \psi_{12}^{34} | h(2) | \psi_0 \rangle = 0.
+		\]
+		
+		从而
+		\[
+			\langle \psi_{12}^{34} | \vartheta_1 | \psi_0 \rangle = 0.
+		\]
+		
+		同理
+		\[
+			\langle \psi_0 | \vartheta_1 | \psi_{12}^{34} \rangle = 0.
+		\]
+	
+	\subsection{}
+		同教材方法推导即可. 注意重积分的值和积分变量无关，允许交换积分傀标. 
+		\[
+		\begin{aligned}
+			&\langle \psi_0 | \vartheta_2 | \psi_{12}^{34} \rangle \\
+			=& \frac{1}{2} \int_{\Omega_1}\diff x_1 \int_{\Omega_2}\diff x_2 [ \chi_1(1) \chi_2(2) - \chi_2(1)\chi_1(2) ]^* r_{12}^{-1} [ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ] \\
+			=& \frac{1}{2} \int_{\Omega_1}\diff x_1 \int_{\Omega_2}\diff x_2 [ \chi_1^*(1) \chi_2^*(2) r_{12}^{-1} \chi_3(1) \chi_4(2) - 
+			\chi_1^*(1) \chi_2^*(2) r_{12}^{-1} \chi_3(2) \chi_4(1) - 
+			\chi_2^*(1) \chi_1^*(2) r_{12}^{-1} \chi_3(1) \chi_4(2) + 
+			\chi_2^*(1) \chi_1^*(2) r_{12}^{-1} \chi_4(1) \chi_3(2) ] \\
+			=& \frac{1}{2} [ \langle 12 | 34 \rangle + \langle 21 | 43 \rangle - \langle 12 | 43 \rangle - \langle 21 | 34 \rangle ] \\
+			=& \frac{1}{2} [ \langle 12 | 34 \rangle + \langle 12 | 34 \rangle - \langle 12 | 43 \rangle - \langle 12 | 43 \rangle ] \\
+			=& \langle 12 | 34 \rangle - \langle 12 | 43 \rangle.
+		\end{aligned}
+		\]
+		\[
+			\therefore \langle \psi_0 | \mathscr{H} | \psi_{12}^{34} \rangle = \langle \psi_0 | \vartheta_1 | \psi_{12}^{34} \rangle + \langle \psi_0 | \vartheta_2 | \psi_{12}^{34} \rangle .
+		\]
+		
+		由练习2.8得
+		\[
+			\langle \psi_0 | \vartheta_1 | \psi_{12}^{34} \rangle = 0 , \ \therefore
+			\langle \psi_0 | \mathscr{H} | \psi_{12}^{34} \rangle = \langle 12 | 34 \rangle - \langle 12 | 43 \rangle.
+		\]
+		
+		同理
+		\[
+			\langle \psi_{12}^{34} | \mathscr{H} | \psi_0 \rangle = \langle 34 | 12 \rangle - \langle 34 | 21 \rangle.
+		\]
+		
+		由教材知
+		\[
+			\langle \psi_0 | \mathscr{H} | \psi_0 \rangle = \langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 12 | 12 \rangle - \langle 12 | 21 \rangle .
+		\]
+		
+		同理
+		\[
+			\langle \psi_{12}^{34} | \mathscr{H} | \psi_0 \rangle = \langle \psi_{12}^{34} | \vartheta_1 | \psi_{12}^{34} \rangle + \langle \psi_{12}^{34} | \vartheta_2 | \psi_{12}^{34} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle + \langle 34 | 34 \rangle - \langle 34 | 43 \rangle.
+		\]
+	
+	\subsection{}
+		先推导式(2.109a)与式(2.109.b), 再以之推导他式. 
+		\[
+			\langle mm || mm \rangle = \langle mm | mm \rangle - \langle mm | mm |rangle = 0.
+		\]
+		
+		同理, $\langle nn || nn \rangle = 0$. 式(2.109a)得证. 
+		\[
+			\langle mn || mn \rangle = \langle mn | mn \rangle - \langle mn | nm \rangle = \langle nm | nm \rangle - \langle nm | mn \rangle = \langle nm || nm \rangle.
+		\]
+		
+		式(2.109b)得证. 从式(2.107)推导式(2.110)如下
+		\[
+		\begin{aligned}
+			&\langle K | \mathscr{H} | K \rangle \\
+			=& \sum_m^N \langle m | h | m \rangle + \frac{1}{2} \sum_m^N \sum_n^N \langle mn || mn \rangle \\
+			=& \sum_m^N \langle m | h | m \rangle + \sum_{n > m}^N \sum_m^N \langle mn || mn \rangle \\
+			=& \sum_m^N \langle m | h | m \rangle + \sum_{n > m}^N \sum_m^N [ \langle mn | mn \rangle - \langle mn | nm \rangle ] \\
+			=& \sum_m^N \langle m | h | m \rangle + \sum_{n > m}^N \sum_m^N ( [mm | nn] - [mn | nm] ).
+		\end{aligned}
+		\]
+	
+	\subsection{}
+		利用练习2.10结论立得
+		\[
+			\langle K | \mathscr{H} | K \rangle = \langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 3 | h | 3 \rangle + \langle 12 || 12 \rangle + \langle 13 || 13 \rangle + \langle 23 || 23 \rangle.
+		\]
+	
+	\subsection{}
+		利用矩阵元计算的一般规则计算即可. 教材式(2.111)-(2.114)已解释$\rm H_2$最小基中$\langle \psi_0 | \mathscr{H} | \psi_0 \rangle$由来. 而
+		\[
+			\langle \psi_0 | \vartheta_1 | \psi_{12}^{34} \rangle = 0, \ \langle \psi_0 | \vartheta_2 | \psi_{12}^{34} \rangle = \langle 12 || 34 \rangle,
+		\]
+		\[
+			\therefore \langle \psi_0 | \mathscr{H} | \psi_{12}^{34} \rangle = \langle \psi_0 | \vartheta_1 | \psi_{12}^{34} \rangle + \langle \psi_0 | \vartheta_2 | \psi_{12}^{34} \rangle = \langle 12 || 34 \rangle .
+		\]
+		
+		同理, $\langle \psi_{12}^{34} | \mathscr{H} | \psi_0 \rangle = \langle 34 || 12 \rangle$, 而$\langle \psi_{12}^{34} | \vartheta_1 | \psi_{12}^{34} \rangle = \langle 3 | h \ 3 \rangle + \langle 4 | h \ 4 \rangle, \langle \psi_{12}^{34} | \vartheta_2 | \psi_{12}^{34} \rangle = \langle 34 || 34 \rangle$, 
+		\[
+			\therefore \langle \psi_{12}^{34} | \mathscr{H} | \psi_{12}^{34} \rangle = \langle \psi_{12}^{34} | \vartheta_1 | \psi_{12}^{34} \rangle + \langle \psi_{12}^{34} | \vartheta_2 | \psi_{12}^{34} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle + \langle 34 || 34 \rangle.
+		\]
+	
+	\subsection{}
+		利用规则计算即可. 只是题目叙述不严谨, $ab$及$rs$应是紧邻的两轨道, 否则不能应用表2.3. 
+		
+		当$a \neq b, r \neq s$时, $\langle \psi_a^r | \vartheta_1 | \psi_b^s \rangle$中有两电子不同, 从而$\langle \psi_a^r | \vartheta_1 | \psi_b^s \rangle = 0$; 
+		
+		当$a = b, r \neq s$时, $\langle \psi_a^r | \vartheta_1 | \psi_b^s \rangle = \langle \psi_a^r | \vartheta_1 | \psi_a^s \rangle$中有一电子不同, 从而$\langle \psi_a^r | \vartheta_1 | \psi_a^s \rangle = \langle r | h | s \rangle$; 
+		
+		当$a \neq b, r = s$时, $\langle \psi_a^r | \vartheta_1 | \psi_b^s \rangle = \langle \psi_a^r | \vartheta_1 | \psi_b^r \rangle = \langle \cdots \chi_r \cdots \chi_b \cdots | \vartheta_1 | \cdots \chi_a \cdots \chi_r \cdots = - \langle \cdots \chi_b \cdots \chi_r \cdots | \vartheta_1 | \cdots \chi_a \cdots \chi_r \cdots$, 从而$\langle \psi_a^r | \vartheta_1 | \psi_b^s \rangle = -\langle b | h | a \rangle$; 
+		
+		当$a = b, r = s$时, $\langle \psi_a^r | \vartheta_1 | \psi_b^s \rangle = \langle \psi_a^r | \vartheta_1 | \psi_a^r \rangle = \sum_c^N \langle c | h | c \rangle - \langle a | h | a \rangle + \langle r | h | r \rangle$. 
+		
+		综上, 知原命题成立. 
+	
+	\subsection{}
+		用定义验证即可, 带撇号的求和对除去$a$以外的所有项求和, 否则是对所有项求和. 
+		\[
+		\begin{aligned}
+			& ^NE_0 - ^{N-1}E_0 = \Big[ \sum_b^N \langle b | h | b \rangle + \frac{1}{2} \sum_c^N \sum_d^N \langle cd || cd \rangle \Big] - 
+			\Big[ \psum{b}{N} \langle b | h | b \rangle + \frac{1}{2} \psum{c}{N} \psum{d}{N} \langle cd || cd \rangle \Big] \\
+			=& \lrs{a}{h}{a} + \frac{1}{2} \psum{c}{N} \lr{ca}{ca} + \frac{1}{2} \psum{d}{N} \lr{ad}{ad} + \lr{aa}{aa} = \lrs{a}{h}{a} + \sum_b^N \lr{ab}{ab}.
+		\end{aligned}
+		\]
+	
+	\subsection{}
+		\[
+		\begin{aligned}
+			&\mathscr{H}|\chi_i \chi_j \cdots \chi_k\rangle \\
+			=& \mathscr{H}\frac{1}{\sqrt{N!}} \sum_{i_1i_2 \cdots i_N} (-1)^{\tau(i_1i_2 \cdots i_N)} \chi_{i_1}(1) \chi_{i_2}(2) \cdots \chi_{i_N}(N) \\
+			=& \sum_{i=1}^N h(i) \frac{1}{\sqrt{N!}} \sum_{i_1i_2 \cdots i_N} (-1)^{\tau(i_1i_2 \cdots i_N)} \chi_{i_1}(1) \chi_{i_2}(2) \cdots \chi_{i_N}(N) \\
+			=& \sum_{i=1}^N \frac{1}{\sqrt{N!}} \sum_{i_1i_2 \cdots i_N} (-1)^{\tau(i_1i_2 \cdots i_N)} h(i) \chi_{i_1}(1) \chi_{i_2}(2) \cdots \chi_{i_N}(N) \\
+			=& \frac{1}{\sqrt{N!}} \sum_{i=1}^N \sum_{i_1i_2 \cdots i_N} (-1)^{\tau(i_1i_2 \cdots i_N)} \varepsilon(i) \chi_{i_1}(1) \chi_{i_2}(2) \cdots \chi_{i_N}(N) \\
+			=& \sum_{i=1}^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{i_1i_2 \cdots i_N} (-1)^{\tau(i_1i_2 \cdots i_N)} \chi_{i_1}(1) \chi_{i_2}(2) \cdots \chi_{i_N}(N) \\
+			=& \Big( \sum_{i=1}^N \varepsilon_i \Big) | \chi_i \chi_j \cdots \chi_k \rangle .
+		\end{aligned}
+		\]
+	
+	\subsection{}
+		由练习2.15. $ \mathscr{H}|\chi_i\chi_j \cdots \chi_k \rangle = \Big( \sum_{i=1}^N \varepsilon_i \Big) | \chi_i \chi_j \cdots \chi_k \rangle $, 
+		
+		由练习2.2. $ \mathscr{H} |K^{HP}\rangle = \Big( \sum_{i=1}^N \varepsilon_i \Big) |K^{HP}\rangle $.
+		\[
+		\begin{aligned}
+			\therefore \langle K | \mathscr{H} | L \rangle =& \sum_{i=1}^N \varepsilon_i \langle K | L \rangle \\
+			=& \sum_{i=1}^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)}\langle i_1i_2\cdots i_N | L \rangle \\
+			=& \sum_{i=1}^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)} \delta_{i_1i_2\cdots i_N}^L.
+		\end{aligned}
+		\]
+		
+		若$|K^{HP}\rangle$与$|L\rangle$不相同, 即$\langle K^{HP} | L \rangle = 0$. 则由相同种类轨道构成的$|K\rangle$必然有$\langle K|L\rangle = 0$; 反之, 若$\langle K^{HP}|L\rangle = 1$或$\langle K^{HP}|L\rangle = -1$, 则$ \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)}\delta_{i_1i_2\cdots i_N}^L $中有且仅有一项为1, 其余为0，从而
+		\[
+			\lrs{K}{\mathscr{H}}{L} = \frac{1}{\sqrt{N!}} \sum_{i=1}^N \varepsilon_i \langle K_{i}^{HP} | L \rangle = \frac{1}{\sqrt{N!}} \langle K^{HP} | L \rangle.
+		\]
+		
+		证明单电子积分的运算规则的可参考个人读后感2.3.4节，有详细同思路证明。
+	
+	\subsection{}
+		依次化简练习2.9中的矩阵元，结果为
+		\[
+		\begin{aligned}
+			&H(1,1) = \la 1|h|1 \ra + \la 2|h|2 \ra + \la 12|12 \ra + \la 12 | 21\ra \\
+			&= [1|h|1] + [\bar 1|h|\bar 1] + [11|\bar1 \bar1] + [1\bar1 | \bar11] \\
+			&= (1|h|1) + (1|h|1) + (11|11) = 2(1|h|1) + (11|11).
+		\end{aligned}
+		\]
+		\[
+			H(1,2) = \la12|34\ra - \la12|43\ra = [12|\bar1\bar2] - [1\bar2|\bar12] = (12|12).
+		\]
+		\[
+			H(2,1) = \la34|12\ra - \la34|21\ra = [21|\bar2\bar1] - [2\bar1|\bar21] = (21|21).
+		\]
+		\[
+		\begin{aligned}
+			&H(2,2) = \la3|h|3\ra + \la4|h|4\ra + \la34|34\ra - \la34|43\ra \\
+			&= [2|h|2] + [\bar2|h|\bar2] + [22|\bar2\bar2] - [2\bar2|\bar22] \\
+			&= (2|h|2) + (2|h|2) + (22|22) = 2(2|h|2) + (22|22).
+		\end{aligned}
+		\]
+	
+	\subsection{}
+		类比于教材中将电子傀标在闭壳层结构下折半为电子对傀标，我也如此处理。此外，由于对闭壳层系统，同一能级上电子能量（不论其自旋）相同，即成立$\varepsilon_i = \varepsilon_{i'}$，从而求和范围折半后，和表达式的分母不变，从而在不改变结果的情况下，我将求和过程中出现的分母略去不写，以使过程简便，在最后结果中再加上它。那么，先分析求和范围变化，原求和裂为$2^4 = 16$组求和，而由求和表达式
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+		EWFEW
+
+\section{The Hartree-Fock Approximation}
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	ESGRZBT
+	\subsection{}
+	
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	W4AY5HET
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+
+\section{Configuration Interaction}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+
+\section{Pair and Coupled-Pair Theories}
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+
+\section{Many-Body Perturbation Theory}
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+
+%\ldots{}
+
+\end{document}
