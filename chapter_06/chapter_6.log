@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  13 NOV 2024 16:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  16 NOV 2024 15:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -157,6 +157,20 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layoutvoffset=\dimen166
 \Gm@dimlist=\toks24
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
 
@@ -292,7 +306,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip54
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 20.
+Package hyperref Info: Option `colorlinks' set `true' on input line 21.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/hyphenat/hyphenat.sty
 Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
 \langwohyphens=\language89
@@ -337,20 +351,6 @@ Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use
 \l__chemgreek_tmpa_int=\count298
 \g__chemgreek_tmpa_int=\count299
 )
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 107.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
-))
 \l__mhchem_ce_distanceFromLastComma_int=\count300
 \__mhchem_arrow_extPgfLength_skip=\skip58
 \mhchem@minispace@tmp=\skip59
@@ -763,24 +763,24 @@ Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
  (./chapter_6.aux)
 \openout1 = `chapter_6.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -819,15 +819,6 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 88.
-(./chapter_6.out) (./chapter_6.out)
-\@outlinefile=\write4
-\openout4 = `chapter_6.out'.
-
-
-Package chemgreek Info: Activating mapping `default' on line 88.
-
-
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count335
@@ -850,31 +841,84 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package hyperref Info: Link coloring ON on input line 89.
+
+(./chapter_6.out) (./chapter_6.out)
+\@outlinefile=\write4
+\openout4 = `chapter_6.out'.
+
+
+Package chemgreek Info: Activating mapping `default' on line 89.
+
+
 Chapter 6.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 102
+LaTeX Font Info:    Trying to load font information for U+msa on input line 103
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 102
+LaTeX Font Info:    Trying to load font information for U+msb on input line 103
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
-2.
+3.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [1
+)
+<./pictures/336.png, id=71, 388.6018pt x 80.24982pt>
+File: ./pictures/336.png Graphic file (type png)
+<use ./pictures/336.png>
+Package pdftex.def Info: ./pictures/336.png  used on input line 119.
+(pdftex.def)             Requested size: 388.60085pt x 80.2496pt.
+ [1
 
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \vbox (badness 1748) has occurred while \output is active []
-
- [2]
-[3] [4] [5] (./chapter_6.aux)
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./pictu
+res/336.png>] [2]
+<./pictures/346.png, id=105, 112.16907pt x 99.22069pt>
+File: ./pictures/346.png Graphic file (type png)
+<use ./pictures/346.png>
+Package pdftex.def Info: ./pictures/346.png  used on input line 209.
+(pdftex.def)             Requested size: 134.60219pt x 119.06421pt.
+<./pictures/gegenbauer.png, id=106, 500.69559pt x 222.53137pt>
+File: ./pictures/gegenbauer.png Graphic file (type png)
+<use ./pictures/gegenbauer.png>
+Package pdftex.def Info: ./pictures/gegenbauer.png  used on input line 262.
+(pdftex.def)             Requested size: 400.557pt x 178.02531pt.
+ [3 <./pictures/346.png>]
+<./pictures/3491.png, id=116, 294.12384pt x 80.09924pt>
+File: ./pictures/3491.png Graphic file (type png)
+<use ./pictures/3491.png>
+Package pdftex.def Info: ./pictures/3491.png  used on input line 290.
+(pdftex.def)             Requested size: 294.12311pt x 80.09903pt.
+<./pictures/3492.png, id=117, 162.2311pt x 79.94868pt>
+File: ./pictures/3492.png Graphic file (type png)
+<use ./pictures/3492.png>
+Package pdftex.def Info: ./pictures/3492.png  used on input line 296.
+(pdftex.def)             Requested size: 162.23068pt x 79.94847pt.
+ [4 <./pictures/gegenbauer.png>]
+<./pictures/362.png, id=126, 61.0531pt x 107.95331pt>
+File: ./pictures/362.png Graphic file (type png)
+<use ./pictures/362.png>
+Package pdftex.def Info: ./pictures/362.png  used on input line 352.
+(pdftex.def)             Requested size: 61.05293pt x 107.95303pt.
+ [5 <./pictures/3491.png> <./pictures/3492.png>]
+<./pictures/3671.png, id=140, 103.06003pt x 70.38797pt>
+File: ./pictures/3671.png Graphic file (type png)
+<use ./pictures/3671.png>
+Package pdftex.def Info: ./pictures/3671.png  used on input line 372.
+(pdftex.def)             Requested size: 103.05977pt x 70.38777pt.
+<./pictures/3672.png, id=141, 41.93166pt x 72.27pt>
+File: ./pictures/3672.png Graphic file (type png)
+<use ./pictures/3672.png>
+Package pdftex.def Info: ./pictures/3672.png  used on input line 378.
+(pdftex.def)             Requested size: 41.93153pt x 72.2698pt.
+ [6 <./pictures/362.png> <./pictures/3671.png> <./pictures/3672.png>] [7] (./ch
+apter_6.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -883,10 +927,10 @@ Package rerunfilecheck Info: File `chapter_6.out' has not changed.
 (rerunfilecheck)             Checksum: 893949CB71E92B83CE408EB3708F7C96;4382.
  ) 
 Here is how much of TeX's memory you used:
- 28119 strings out of 474116
- 565984 string characters out of 5743688
- 1975187 words of memory out of 5000000
- 50006 multiletter control sequences out of 15000+600000
+ 28199 strings out of 474116
+ 567935 string characters out of 5743688
+ 1962187 words of memory out of 5000000
+ 50081 multiletter control sequences out of 15000+600000
  569633 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,11n,94p,552b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -903,10 +947,10 @@ al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
 texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on chapter_6.pdf (5 pages, 169887 bytes).
+Output written on chapter_6.pdf (7 pages, 748548 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 164 compressed objects within 2 object streams
- 48 named destinations out of 1000 (max. 500000)
- 141 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 230 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

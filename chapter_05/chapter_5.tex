@@ -68,10 +68,13 @@
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
 \newcommand{\HF}{{\rm HF}}
+\newcommand{\corr}{{\rm corr}}
+\newcommand{\DCI}{{\rm DCI}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
 \newcommand{\C}{{\bf C}}
+\newcommand{\HH}{{\bf H}}
 \newcommand{\I}{{\bf 1}}
 \newcommand{\U}{{\bf U}}
 \newcommand{\Op}{{\bf O}}
@@ -94,7 +97,23 @@
 	\section{The Independent Electron Pair Approximation (IEPA)}
 	
 	\begin{exercise}
-	111
+	The application of pair theory  to minimal basis $\ce{H2}$ is trivial since we are dealing with a two-electron system for which the IEPA is exact, i.e., it gives the full CI result obtained in the last chapter, viz.
+	\[
+		{}^{1}E_{\corr} = \Delta - ( \Delta^2 + K^2_{12} )^{1/2}
+	\]
+	where (see Eq.(4.20))
+	\[
+		\Delta = (\varepsilon_2 - \varepsilon_1) + \frac{1}{2}( J_{11} + J_{22} - 4J_{12} + 2K_{12} ).
+	\]
+	\begin{enumerate}
+	
+	\item[a.] Calculate the correlation energy using first-order pairs. Remember that the summations in Eq.(5.19) go over spin orbitals (i.e., $a=1$, $\bar{1}$, and $r=2$, $\bar{2}$). Show that
+	\[
+		{}^{1} E_{\corr}({\rm FO}) = \frac{K^2_{12}}{ 2 ( \varepsilon_1 - \varepsilon_2) }.
+	\]
+	
+	\item[b.] Approximate $\Delta$ in the exact correlation energy by $\varepsilon_2 - \varepsilon_1$ and recover the first-order pair correlation energy by expanding the exact answer to first order using the relation $(1+x)^{1/2} \approx 1 + x/2$.
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -102,7 +121,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Derive Eqs.(5.22a) and (5.22b).
 	\end{exercise}
 	
 	\begin{solution}
@@ -110,7 +129,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Calculate the total first-order pair correlation energy for the dinner using Eq.(5.19) and show that it is twice the result obtained  in Exercise 5.1.
 	\end{exercise}
 	
 	\begin{solution}
@@ -120,7 +139,10 @@
 	\subsection{Invariance under Unitary Transformations: An Example}
 	
 	\begin{exercise}
-	111
+	Show that $| a \bar{a} b \bar{b} \rangle = | 1_1 \bar{1}_1 \bar{1}_2 \bar{1}_2 \rangle$. {\it Hint}: use Eq.(1.40) repeatedly. Eq.(1.40) for Slater determinants is
+	\[
+		| \chi_1 \chi_2 \cdots \left( \sum_{k} c_k \chi^\prime_k \right) \cdots \chi_N \rangle = \sum_k c_k | \chi_1 \chi_2 \cdots \chi^\prime_k \cdots \chi_N \rangle.
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -128,7 +150,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Derive Eqs.(5.31a) and (5.31b).
 	\end{exercise}
 	
 	\begin{solution}
@@ -136,7 +158,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Show that $e_{a\bar{b}} = e_{\bar{a}b} = e_{a\bar{a}}$.
 	\end{exercise}
 	
 	\begin{solution}
@@ -144,7 +166,34 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Show that DCI is invariant to unitary transformations for the above model.
+	\begin{enumerate}
+	
+	\item[a.] The DCI wave function is
+	\[
+		| \Psi_{\DCI} \rangle = | \Phi_0 \rangle + c_1 | \Phi^{**}_{a\bar{a}} \rangle + c_2 | \Phi^{**}_{b \bar{b}} \rangle + c_3 | \Phi^{**}_{a\bar{b}} \rangle + c_4 | \Phi^{**}_{\bar{a}b}\rangle.
+	\]
+	Show that the corresponding eigenvalue problem which determines the DCI correlation energy of the dimer (${}^{2}E_{\corr}(\DCI)$) is
+	\[
+	\begin{pmatrix}
+		0 & \frac{1}{\sqrt{2}} K_{12} & \frac{1}{\sqrt{2}}K_{12} & \frac{1}{\sqrt{2}} K_{12} & \frac{1}{\sqrt{2}}K_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime
+	\end{pmatrix} \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3 \\ c_4
+	\end{pmatrix} = {}^2 E_\corr (\DCI) \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3 \\ c_4
+	\end{pmatrix}.
+	\]
+	
+	\item[b.] Show that $c_1 = c_2 = c_3 = c_4 = c$ and then solve the equations to show
+	\[
+		{}^{2}E_\corr(\DCI) = \Delta - ( \Delta^2 + 2 K^2_{12} )^{1/2}
+	\]
+	which is the same result as found in the last chapter (see Eq.(4.60)).
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -152,7 +201,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Show directly from Eq.(5.19) using delocalized orbitals and the two-electron integrals in Eq.(5.26) that the total first-order pair correlation energy (which is the same as the many-body second-order perturbation energy) of the dimer is given by Eq.(5.46).
 	\end{exercise}
 	
 	\begin{solution}
@@ -160,7 +209,26 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Show that the total correlation energy obtained using Epstein-Nesbet pairs is not invariant to unitary transformations.
+	\begin{enumerate}
+	
+	\item[a.] Show, using localized orbitals, that
+	\[
+		{}^{2} E_\corr({\rm EN}(L)) = - \frac{K^2_{12}}{\Delta}.
+	\]
+	
+	\item[b.] Show, using delocalized spin-orbital pairs, that
+	\[
+		{}^{2} E_\corr({\rm EN}(D)) = - \frac{K^2_{12}}{\Delta^\prime}.
+	\]
+	
+	\item[c.] Show, using delocalized spin-adapted pairs, that
+	\[
+		{}^{2} E^{\rm singlet}_\corr({\rm EN}(D)) = - \frac{ K^2_{12} }{ 2 \Delta^\prime } - \frac{ K^2_{12} }{ 2 \Delta^{\prime\prime} }.
+	\]
+	
+	\item[d.] Using the STO-3G integrals for $\ce{H2}$ in Appendix D compare the numerical values of the above expressions at $R=1.4$ a.u.
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -168,7 +236,27 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	The DCI wave function for the $\ce{H2}$ dimer using spin-adapted configurations is
+	\[
+		| \Psi_{\DCI} \rangle = | \Phi_0 \rangle + c_1 | \Phi^{**}_{a\bar{a}} \rangle + c_2 | \Phi^{**}_{b \bar{b}} \rangle + c_3 | {}^{B}\Phi^{rs}_{ab} \rangle .
+	\]
+	Show that the corresponding DCI eigenvalue problem is
+	\[
+	\begin{pmatrix}
+		0 & \frac{1}{\sqrt{2}}K_{12} & \frac{1}{\sqrt{2}} K_{12} & K_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{\sqrt{2}}(K_{12} - 2 J_{12}) \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{\sqrt{2}}(K_{12} - 2 J_{12}) \\
+		K_{12} & \frac{1}{\sqrt{2}}(K_{12} - 2J_{12}) & \frac{1}{\sqrt{2}}(K_{12} - 2J_{12}) & 2\Delta^{\prime\prime}
+	\end{pmatrix} \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3
+	\end{pmatrix} = {}^2 E_\corr (\DCI) \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3
+	\end{pmatrix}.
+	\]
+	and then solve the resulting equations to show that
+	\[
+		{}^2 E_\corr (\DCI) = \Delta - ( \Delta^2 + 2 K^2_{12} )^{1/2}.
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -184,7 +272,10 @@
 	\subsection{The Cluster Expansion of the Wave Function}
 	
 	\begin{exercise}
-	111
+	Show that the wave function two independent $\ce{H2}$ molecules in Eqs.(5.49) and (5.50) can be written as
+	\[
+		| \Phi \rangle = \exp{( c^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} a^\dagger_{2_1} a^\dagger_{\bar{2}_1} a_{\bar{1}_1} a_{1_1} + c^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} a^\dagger_{2_2} a^\dagger_{\bar{2}_2} a_{\bar{1}_2} a_{1_2} )} | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle.
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -194,7 +285,14 @@
 	\subsection{Linear CCA and the Coupled Electron Pair Approximation (CEPA)}
 	
 	\begin{exercise}
-	111
+	\begin{enumerate}
+	
+	\item[a.] Show that if the matrix ${\rm D}$ is approximated by its diagonal elements, the L-CCA correlation energy is identical to the result obtained using Epstein-Nesbet pairs (i.e., Eqs.(5.15) and (5.16)).
+	
+	\item[b.] Show that linear CCA is invariant under unitary transformations for the problem of two independent $\ce{H2}$ molecules. First show that for this model the correlation energy of the dimer using localized orbitals is the same as that obtained in Exercise 5.9a. Then show using delocalized spin orbitals that, in contrast to the results of Exercise 5.9, one gets the same correlation energy. You will find the DCI matrix given in Exercise 5.7 useful.
+	
+	\end{enumerate}
+	
 	\end{exercise}
 	
 	\begin{solution}
@@ -206,7 +304,23 @@
 	\section{Many-Electron Theories with Single Particle Hamiltonians}
 	
 	\begin{exercise}
-	111
+	For the $2 \times 2$ matrix
+	\[
+		\begin{pmatrix}
+			\HH_{AA} & \HH_{AB} \\ \HH_{BA} & \HH_{BB} 
+		\end{pmatrix} \equiv \begin{pmatrix}
+		H_{11} & H_{12} \\ H_{21} & H_{22}
+		\end{pmatrix}
+	\]
+	where $H_{11} < H_{22}$ and $H_{12} > 0$. Equation (5.96) simplifies to
+	\[
+		E_R = \varepsilon_1 - H_{11} = H_{12} C
+	\]
+	and
+	\[
+		H_{21} + H_{22} C - C H_{11} - C^2 H_{12} = 0.
+	\]
+	Solve this quadratic equation for the lowest $C$ and then show that $\varepsilon_1$ thus obtained is the lowest eigenvalue of the matrix.
 	\end{exercise}
 	
 	\begin{solution}
@@ -216,7 +330,34 @@
 	\subsection{The Relaxation Energy via CI, IEPA, CEPA, and CCA}
 	
 	\begin{exercise}
-	111
+	Show that
+	\begin{enumerate}
+	
+	\item[a.]
+	\[
+		\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = v_{bs}.
+	\]
+	
+	\item[b.] 
+	\[
+		\langle \Psi^r_a | \mathscr{H} | \Psi_0 \rangle = v_{ra}.
+	\]
+	
+	\item[c.]
+	\begin{align*}
+	\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^s_b \rangle &= 0 , &\,\text{if} \, a\neq b, \, r \neq s, \\
+	&= v_{rs} , &\,\text{if} \, a = b , \, r \neq s. \\
+	&= -v_{ba} , &\,\text{if} \, a \neq b , \, r = s. \\
+	&= \varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa} &\, \text{if} \, a = b , \, r = s.
+	\end{align*}		
+	
+	\item[d.] 
+	\begin{align*}
+	\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle &= v_{bs} , &\,\text{if} \, a \neq b, \, r \neq s, \\
+	&=0, &\,\text{otherwise}.
+	\end{align*}	
+	
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -224,7 +365,31 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Repeat the above analysis using
+	\begin{align*}
+		| \chi_1 \rangle &= a_1 | \chi^{(0)}_1 \rangle + a_2 | \chi^{(0)}_2 \rangle + a_3 | \chi^{(0)}_3 \rangle + a_4 | \chi^{(0)}_4 \rangle, \\
+		| \chi_2 \rangle &= b_1 | \chi^{(0)}_1 \rangle + b_2 | \chi^{(0)}_2 \rangle + b_3 | \chi^{(0)}_3 \rangle + b_4 | \chi^{(0)}_4 \rangle
+	\end{align*}
+	instead of Eqs.(5.121a,b).
+	\begin{enumerate}
+	
+	\item[a.] By repeated use of Eq.(1.40) show that
+	\begin{align*}
+		| \Phi_0 \rangle &= ( a_1 b_2 - b_1 a_2 ) | \chi^{(0)}_1 \chi^{(0)}_2 \rangle + ( a_1 b_3 - b_1 a_3 ) | \chi^{(0)}_1 \chi^{(0)}_3 \rangle + ( a_1 b_4 - b_1 a_4 ) | \chi^{(0)}_1 \chi^{(0)}_4 \rangle \\
+		&\hspace{2em} + ( a_3 b_2 - b_3 a_2 ) | \chi^{(0)}_3 \chi^{(0)}_2 \rangle + ( a_4 b_2 - b_4 a_2 ) | \chi^{(0)}_4 \chi^{(0)}_2 \rangle + ( a_3 b_4 - b_3 a_4 ) | \chi^{(0)}_3 \chi^{(0)}_4 \rangle .
+	\end{align*}
+	Intermediate normalize this wave function by dividing the right-hand side by $a_1 b_2 - b_1 a_2$ and then explicitly verify that Eq.(5.123) is satisfied.
+	
+	\item[b.] To make contact with the general formalism, note that
+	\[
+		\U_{AA} = \begin{pmatrix} a_1 & b_2 \\ a_2 & b_2 \end{pmatrix}, \, \U_{BA} = \begin{pmatrix} a_3 & b_3 \\ a_4 & b_4 \end{pmatrix}.
+	\]
+	Note that $|\U_{AA}| = a_1 b_2 - b_1 a_2$ as required to make Eq.(5.120a) consistent with the result obtained in part (a). Use the result of Exercise 1.4(f) to evaluate $\U^{-1}_{AA}$ and then verify the general result given in Eq.(5.120b) by calculating
+	\[
+		(\U_{BA}\U^{-1}_{AA})_{11} = c^3_1	
+	\]
+	and showing that it is identical to the coefficient of $| \chi^{(0)}_3 \chi^{(0)}_2 \rangle$ obtained in part (a).
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -234,7 +399,7 @@
 	\subsection{The Resonance Energy of Polyenes in H{\"u}ckel Theory}
 	
 	\begin{exercise}
-	111
+	Set up the H{\"u}ckel matrix for benzene and find its eigenvalues. Remember that if the carbon atoms are labeled clockwise from 1 to 6, then atoms 1 and 6 are nearest neighbors. Show that the six eigenvalues are identical to those given by Eq.(5.131). Find the total energy and compare it with the result given by Eq.(5.132).
 	\end{exercise}
 	
 	\begin{solution}
@@ -242,14 +407,15 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Verify Eqs.(5.139) and (5.140).
 	\end{exercise}
 	
 	\begin{solution}
 		5-17 so
 	\end{solution}
+	
 	\begin{exercise}
-	111
+	Evaluate the matrix elements given in Eq.(5.149) and fill in the remaining steps leading to Eq.(5.150).
 	\end{exercise}
 	
 	\begin{solution}
@@ -257,7 +423,52 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	\begin{enumerate}
+	
+	\item[a)] Extend the above analysis to calculate the IEPA resonance energy for a cyclic polyene with $N=2n$ ($N>6$) carbon atoms. As before, argue that all ``particle" energies are the same so that
+	\[
+		E_R = N e_1.
+	\]
+	Consider only single excitations that mix with $| \Psi_0 \rangle$. Show that the ``particle" function $| \Psi_1 \rangle$ is
+	\[
+		| \Psi_1 \rangle = | \Psi_0 \rangle + c | {}^*_1 \rangle
+	\]
+	where $| {}^{*}_1 \rangle$ is obtained from Eq.(5.146),
+	\[
+		| {}^*_1 \rangle = \frac{1}{\sqrt{2}} \left( | \Psi^{2*}_1 \rangle - | \Psi^{n*}_1 \rangle \right).
+	\]
+	Now show that
+	\[
+		\langle \Psi_0 | \mathscr{H} | {}^*_1 \rangle = \frac{1}{\sqrt{2}} \beta
+	\]
+	as before, but that here
+	\[
+		\langle {}^*_1 | \mathscr{H} - E_0 | {}^*_1 \rangle = -2 \beta,
+	\]
+	instead of the result in Eq.(5.149b). Why the difference? Finally, solve the resulting ``particle" equations to show that
+	\[
+		E_R({\rm IEPA}) = N\left( \sqrt{ \frac{3}{2} } -1 \right) \beta = 0.2247 N \beta.
+	\]
+	Note that the IPEA is indeed size consistent and that in the limit of large $N$ it gives 82\% of the exact resonance energy.
+	
+	\item[b)] The above result is not really exact within the IEPA. The reason for this is that there exist single excitations involving orbital $|1\rangle$ that do not mix with $|\Psi_0\rangle$ but do mix with $|{}^{*}_1 \rangle$ and thus have some effect on the ``particle" energy $e_1$. These excitations are analogous to single excitations in CI for a real many-particle system in the sense that although single excitations do not mix with the HF wave function because of Brillouin's theorem, they do mix indirectly through the double excitations. Investigate the effect of such excitations for the case $N=10$. Show that the exact ``particle" function $| \Psi_1 \rangle$ is
+	\[
+		| \Psi_1 \rangle = | \Psi_0 \rangle + c_1 |{}^{*}_1 \rangle + c_3 | \Psi^{3*}_1 \rangle + c_4 | \Psi^{4*}_1 \rangle.
+	\]
+	Now show that
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{3*}_1 \rangle &= \langle \Psi_0 | \mathscr{H} | \Psi^{3*}_1 \rangle = 0, \\
+		\langle \Psi^{3*}_1 | \mathscr{H} - E_0 | \Psi^{3*}_1 \rangle &= \langle \Psi^{4*}_1 | \mathscr{H} - E_0 | \Psi^{4*}_1 \rangle = -2 \beta , \\
+		\langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle &= -\frac{1}{2} \beta , \\
+		\langle {}^{*}_1 | \mathscr{H} | \Psi^{3*}_1 \rangle &= -\frac{1}{2\sqrt{2}} \beta , \\
+		\langle {}^{*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle &= \frac{1}{2\sqrt{2}} \beta.
+	\end{align*}
+	Finally, show from  the resulting ``particle" equations that $e_1$ is the solution of 
+	\[
+		4e^3_1 + 14 \beta e^2_1 + 9 \beta^2 e_1 - 3\beta^3 = 0.
+	\]
+	The cubic equation can be solved to yield $e_1 = 0.2387 \beta$ so that the exact IEPA resonance energy for $N=10$ is 2.387$\beta$, which is to be compared with the approximate result of 2.247 $\beta$ obtained in part (a), so that there is a 6\% difference. The exact resonance energy found from Eq.(5.135) is 2.944$\beta$ for this case.
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -265,7 +476,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Verify Eq.(5.152c), derive Eq.(5.153a,b), and solve them to obtain the result shown in Eq.(5.154).
 	\end{exercise}
 	
 	\begin{solution}
@@ -273,7 +484,25 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Extend the above analysis to calculate the SCI resonance energy for a cyclic polyene with $N=2n$ ($N>6$) carbon atoms. If we restrict ourselves to only those configurations which interact with $| \Psi_0 \rangle$, then the appropriate generalization of Eq.(5.151) is
+	\[
+		| \Psi_{\rm SCI} \rangle = | \Psi_0 \rangle + \sum_{i=1}^n c_i | {}^*_i \rangle + \sum_{i=1}^n \bar{c}_i | {}^{\bar{*}}_{\bar{i}}\rangle.
+	\]
+	As discussed in Exercise 5.19b, this is not the complete SCI wave function because there exist additional singly excited configurations which, although they do not mix with $|\Psi_0\rangle$, they do mix with $| {}^*_i \rangle$. The omission of these does not affect our qualitative conclusions. Show that the required matrix elements are
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | {}^*_i \rangle &= \frac{1}{\sqrt{2}} \beta, \\
+		\langle {}^*_i | \mathscr{H} - E_0 | {}^*_j \rangle &= (-2\beta) \delta_{ij}.
+	\end{align*}
+	Why are Eqs.(5.152b) and Eqs.(5.152c) different? Using these matrix elements, show that the SCI equations are
+	\begin{align*}
+		E_R ({\rm SCI}) &= \frac{1}{\sqrt{2}} Nc \beta , \\
+		\frac{1}{\sqrt{2}} \beta - 2c \beta &= E_R( {\rm SCI} )c.
+	\end{align*}
+	Finally, solve them to obtain
+	\[
+		E_R ({\rm SCI}) = \left( \sqrt{ 1 + \frac{N}{2} } - 1 \right) \beta
+	\]
+	which is proportional to $N^{1/2}$ as $N$ becomes large.
 	\end{exercise}
 	
 	\begin{solution}

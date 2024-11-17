@@ -11,6 +11,7 @@
 	top=2cm,
 	bottom=2cm,
 }
+\usepackage{graphics}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,            %链接颜色
@@ -114,7 +115,10 @@
 	\begin{exercise}
 	Use diagrammatic techniques to obtain the fourth-order perturbation energy of a particular state (say, $i$) of an $N$-state system. That is, evaluate the diagrams
 	
-	% diagrams needed!
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/336.png}
+	\captionof{figure}{1111}
+	\end{center}
 	
 	where the indices $m$, $n$, $k$, ... exclude $i$. Using the approach of Section 6.1, obtain an algebraic expression for the fourth-order energy and compare it to the diagrammatic result.
 	
@@ -122,6 +126,8 @@
 	
 	\begin{solution}
 		6-2 so
+		
+		fffff
 	\end{solution}
 	
 	\subsection{Summation of Diagrams}
@@ -199,7 +205,10 @@
 	\begin{exercise}
 	Consider a cyclic polyene with $N = 4\nu+2$, $\nu=1$, $2$, ... carbons. Instead of assuming that all the bonds are identical, suppose they alternate in length. In the context of H{\"u}ckel theory this means that the resonance integrals between adjacent carbons are not all equal to $\beta$ but alternate between $\beta_11$ and $\beta_2$. For example, for benzene we have
 	
-	% A diagram needed!	
+	\begin{center}
+	\includegraphics[scale=1.2]{./pictures/346.png}
+	\captionof{figure}{1111}
+	\end{center}
 	
 	Now it can be shown that the exact energy for a cyclic polyene of this type is
 	\[
@@ -249,7 +258,10 @@
 		(n+1)E^{(n+1)}_0 = (n-1) E^{(n)}_0 - (n-2) E^{(n-1)}_0.
 	\]
 	
-	% A diagram needed!	
+	\begin{center}
+	\includegraphics[scale=0.8]{./pictures/gegenbauer.png}
+	\captionof{figure}{1111}\label{fig:octahedral}	
+	\end{center}
 	
 	\end{enumerate}
 	
@@ -257,12 +269,44 @@
 	
 	\begin{solution}
 		6-6 so
+		
+		ffff
+		
+		ffff
+		
+		fffff
+		
 	\end{solution}
 	
 	\section{Diagrammatic Representation of Orbital Perturbation Theory}
 	
 	\begin{exercise}
-	111
+	Find the fourth-order energy for a closed-shell cyclic polyene.
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/3491.png}
+	\end{center}
+	
+	and
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/3492.png}
+	\end{center}
+	
+	so that
+	\[
+		E^{(4)}_0 = \frac{N\beta}{64}
+	\]
+	Thus the resonance energy calculated for a cyclic polyene with $N>6$ up to fourth order is (1/4 + 1/64)$N\beta = 0.2656N\beta$, which compares very favorably with the asymptotically exact value of 0.2732$\beta$ (i.e., 97\%).
+	
+	\item[b.] For benzene, show that the diagrammatic result for the fourth-order energy agrees with the independently calculated result found in Exercise 6.6.
+	
+	\end{enumerate}		
+	
+	
 	\end{exercise}
 	
 	\begin{solution}
@@ -302,7 +346,17 @@
 	\subsection{Hugenholtz Diagrams}
 	
 	\begin{exercise}
-	111
+	Show that the fourth-order diagram
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/362.png}
+	\end{center}
+	
+	is equal to
+	\[
+		-\frac{1}{2} \sum_{abcderst} \frac{ \lr{rs}{ac} \lr{at}{de} \lr{dc}{tb} \lr{eb}{rs} }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d + \varepsilon_e - \varepsilon_r - \varepsilon_t - \varepsilon_s ) ( \varepsilon_b + \varepsilon_e - \varepsilon_r - \varepsilon_s ) }.
+	\]	
+	
 	\end{exercise}
 	
 	\begin{solution}
@@ -312,7 +366,20 @@
 	\subsection{Goldstone Diagrams}
 	
 	\begin{exercise}
-	111
+	We stated that the Goldstone diagrams in Table 6.2 can be obtained by ``pulling apart" the second- and third-order Hugenholtz diagrams. This is quite tricky to see but the converse is much easier. For example, if we push
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/3671.png}
+	\end{center}
+	
+	together, it is clear that we obtain
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/3672.png}
+	\end{center}
+	
+	Push all third-order diagrams in Table 6.2 together in a similar way and, thus, find which Goldstone diagram comes from which Hugenholtz diagram. For the above Hugenholtz diagram, verify that its mathematical value is indeed the sum of the values of the corresponding Goldstone diagrams.
+	
 	\end{exercise}
 	
 	\begin{solution}
@@ -324,7 +391,9 @@
 	\subsection{What Is the Linked Cluster Theorem?}
 	
 	\begin{exercise}
-	111
+	Calculate $E^{(3)}_0$ for a supermolecule consisting of $N$ non-interacting minimal basis $\ce{H2}$ molecules by evaluating the Goldstone diagrams in Table 6.2. Compare your result with that of Eq.(6.92), which was obtained algebraically by explicitly cancelling terms proportional to $N^2$.
+	
+	{\it Hint}: Simply show that the value of each Goldstone diagram for the supermolecule in $N$ times the result for a single molecule.
 	\end{exercise}
 	
 	\begin{solution}
