@@ -68,6 +68,7 @@
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
 \newcommand{\HF}{{\rm HF}}
+\newcommand{\corr}{{\rm corr}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
@@ -96,7 +97,7 @@
 	\subsection{Intermediate Normalization and an Expression for the Correlation Energy}
 	
 	\begin{exercise}
-	111
+	Obtain Eq.(4.12) from Eq.(4.11). It will prove convenient to use unrestricted summations.
 	\end{exercise}
 	
 	\begin{solution}
@@ -104,7 +105,13 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Using the secular determinant approach show that the lowest eigenvalue of the matrix
+	\[
+		\begin{pmatrix}
+			0 & K_{12} \\ K_{12} & 2\Delta
+		\end{pmatrix}
+	\]
+	is given by Eq.(4.23).
 	\end{exercise}
 	
 	\begin{solution}
@@ -112,7 +119,11 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Calculate the coefficient of the double excitation (c) in the intermediate normalized CI wave function at $R$ = 1.4 a.u., using the STO-3G integrals given in Appendix D. Show analytically that $R \rightarrow \infty$, $c \rightarrow -1$, and hence that at large distances the Hartree-Fock ground state and the doubly excited configuration have equal weight in the CI ground state. Finally, show that the CI wave function, when normalized to unity, becomes (at $R=\infty$)
+	\[
+		\frac{1}{\sqrt{2}} \left( | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle \right)
+	\]
+	where $\phi_1$ and $\phi_2$ are atomic orbitals on centers one and two, respectively.
 	\end{exercise}
 	
 	\begin{solution}
@@ -126,7 +137,7 @@
 	\section{Natural Orbitals and the One-Particle Reduced Density Matrix}
 	
 	\begin{exercise}
-	111
+	Show that $\gamma$ is a Hermitian matrix.
 	\end{exercise}
 	
 	\begin{solution}
@@ -134,7 +145,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Show that $\tr{\gamma}=N$.
 	\end{exercise}
 	
 	\begin{solution}
@@ -142,7 +153,30 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Consider the one-electron operator
+	\[
+		\mathscr{O}_1 = \sum_{i=1}^N h(i).
+	\]
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	\[
+		\langle \Phi | \mathscr{O}_1 | \Phi \rangle = \int \dif \boldsymbol{x}_1 \left[ h( \boldsymbol{x}_1  ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \right]_{ \boldsymbol{x}^\prime_1 = \boldsymbol{x}_1}
+	\]
+	where the notation $[ \quad ]_{ \boldsymbol{x}^\prime_1 = \boldsymbol{x}_1}$ means that $\boldsymbol{x}^\prime_1$ is set equal to $\boldsymbol{x}_1$ after $h(\boldsymbol{x}_1)$ has operated on $\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 )$.
+	
+	\item[b.] Show that
+	\[
+		\langle \Phi | \mathscr{O}_1 | \Phi \rangle = \tr{{\bf h}\gamma}
+	\]
+	where
+	\[
+		h_{ij} = \langle i | h | j \rangle = \int \dif \boldsymbol{x}_1 \chi^*_i( \boldsymbol{x}_1 ) h( \boldsymbol{x}_1 ) \chi_j( \boldsymbol{x}_1 ).
+	\]
+	Thus the expectation value of any one-electron operator can be expressed in terms of the one-matrix.
+	\end{enumerate}
+	
+	
 	\end{exercise}
 	
 	\begin{solution}
@@ -150,7 +184,20 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Recall that in second quantization a one-electron operator is
+	\[
+		\mathscr{O}_1 = \sum_{ij} \langle i | h | j \rangle a^\dagger_i a_j.
+	\]
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	\[
+		\gamma_{ij} = \langle \Phi | a^\dagger_j a_i | \Phi \rangle.
+	\]
+	
+	\item[b.] Show that the matrix elements of $\gamma^{\HF}$ are given by Eq.(4.40).
+	
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -158,7 +205,50 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	For the special case of a two-electron system, the use of natural orbitals dramatically reduces the size of the full CI expansion. If $\psi_1$ is the occupied Hartree-Fock spatial orbital and $\psi_r$, $r=2,3,...,K$ are virtual spatial orbitals, the normalized full CI singlet wave function has the form
+	\[
+		|{}^{1}\Phi_0 \rangle = c_0 |1\bar{1}\rangle + \sum_{r=2}^K c^r_1 | {}^{1} \Psi^r_1 \rangle + \frac{1}{2} \sum_{r=2}^K \sum_{s=2}^K c^{rs}_{11} | {}^{1} \Psi^{rs}_{11} \rangle
+	\]
+	where the singly and doubly excited spin-adapted configurations are defined in Subsection 2.5.2.
+	
+	\begin{enumerate}
+	
+	\item[a.] Show that $|{}^{1}\Phi_0 \rangle$	can be cast into the form
+	\[
+		|{}^{1}\Phi_0 \rangle = \sum_{i=1}^K \sum_{j=1}^K C^{ij}_{11} | \psi_i \bar{\psi}_j \rangle
+	\]
+	where $\C$ is a symmetric $K \times K$ matrix.
+	
+	\item[b.] Show that
+	\[
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1^\prime ) = \sum_{ij} \left( \psi_1(1) \psi^*_j(1^\prime) + \bar{\psi}_i (1) \bar{\psi}_j^* (1^\prime) \right).
+	\]
+	
+	\item[c.] Let $\U$ be the unitary transformation which diagonalizes $\C$
+	\[
+		\U^\dagger \C \U = {\bf d}
+	\]
+	where $({\bf d})_{ij} = d_i \delta_{ij}$. Show that
+	\[
+		\U^\dagger \C \C^\dagger \U = {\bf d}^2.
+	\]
+	
+	\item[d.] Show that
+	\[
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1^\prime ) = \sum_i d^2_i \left( \zeta_i(1)\zeta^*_i(1^\prime) + \bar{\zeta}_i(1) \bar{\zeta}^*_i (1^\prime) \right)
+	\]
+	where
+	\[
+		\zeta_i = \sum_k \psi_k U_{ki}.
+	\]
+	Thus $\U$ diagonalizes the one-matrix, and hence $\zeta_i$ are natural spatial orbitals for the two-electron system.
+	
+	\item[e.] Finally, since $\C$ is symmetric, $\U$ can be chosen as real. Show that in terms of the natural spatial orbitals, $| {}^{1} \Phi_0 \rangle$ given in part (a) can be rewritten as
+	\[
+		| {}^{1} \Phi_0 \rangle = \sum_{i=1}^K d_i | \zeta_i \bar{\zeta}_i \rangle
+	\]
+	and note that this expansion contains only $K$ terms.
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
@@ -168,7 +258,32 @@
 	\section{The Multiconfiguration Self-Consistent Field (MCSCF) and \texorpdfstring{\\}- Generalized Valence Bond (GVB) Methods}
 	
 	\begin{exercise}
-	111
+	Consider the transformation
+	\begin{align*}
+		u &= \frac{1}{\sqrt{ a^2 + b^2 }} \left( a \psi_A + b \psi_B \right), \\
+		v &= \frac{1}{\sqrt{ a^2 + b^2 }} \left( a \psi_A - b \psi_B \right).
+	\end{align*}
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	\[
+		\langle u | u \rangle = \langle v | v \rangle = 1
+	\]
+	and
+	\[
+		\langle u | v \rangle \equiv S = \frac{ a^2 - b^2 }{ a^2 + b^2 }.
+	\]
+	
+	\item[b.] Show that $|\Psi_{\rm GVB}\rangle$ in Eq.(4.52) can be rewritten as
+	\[
+		|\Psi_{\rm GVB}\rangle = \frac{1}{\sqrt{ a^4 + b^4 }} \left[ a^2 \psi_A(1) \psi_A(2) - b^2 \psi_B(1) \psi_B(2) \right] \frac{1}{\sqrt{2}} \left( \alpha(1)\beta(2) - \alpha(2)\beta(1) \right)
+	\]
+	and conclude that this is identical to $|\Psi_{\rm MCSCF}\rangle$ in Eq.(4.48) if
+	\begin{align*}
+		c_A &= \frac{ a^2 }{ \sqrt{ a^4 + b^4 } }, \\
+		c_B &= -\frac{ b^2 }{ \sqrt{ a^4 + b^4 } }.
+	\end{align*}
+	\end{enumerate}		
 	\end{exercise}
 	
 	\begin{solution}
@@ -178,7 +293,7 @@
 	\section{Truncated CI and the Size-Consistency Problem}	
 	
 	\begin{exercise}
-	111
+	Show that $|1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle$ has a zero matrix element with any of the configurations in Eq.(4.55).
 	\end{exercise}
 	
 	\begin{solution}
@@ -186,7 +301,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use the integrals for STO-3G $\ce{H2}$ at $R$= 1.4 a.u., given in Appendix D, to calculate ${}^{N}E_\corr({\rm DCI})/N$ for $N$ = 1, 10, and 100.
 	\end{exercise}
 	
 	\begin{solution}
@@ -194,7 +309,51 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Show that full CI is size consistent for a dimer of non-interacting minimal basis $\ce{H_2}$ molecules. A full CI calculation includes, in addition to the excitations in Eq.(4.55), the quadruply excited state $| 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle = | \Psi^{2_1 \bar{2}_1 2_2 \bar{2}_2}_{1_1 \bar{1}_1 1_2 \bar{1}_2} \rangle$,
+	\[
+		| \Phi_0 \rangle = | \Psi_0 \rangle + c_1 | 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle + c_2 | 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle + c_3 | 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle.
+	\]
+	\begin{enumerate}
+	
+	\item[a.] Show that the full CI matrix equation is
+	\[
+		\begin{pmatrix}
+			0 & K_{12} & K_{12} & 0 \\
+			K_{12} & 2\Delta & 0 & K_{12} \\
+			K_{12} & 0 & 2\Delta & K_{12} \\
+			0 & K_{12} & K_{12} & 4\Delta
+		\end{pmatrix} \begin{pmatrix}
+			1 \\ c_1 \\ c_2 \\c_3
+		\end{pmatrix} = {}^{2} E_{\rm corr} \begin{pmatrix}
+			1 \\ c_1 \\ c_2 \\ c_3
+		\end{pmatrix}.
+	\]	
+	Go directly to part (e). If you need help return to part (b).
+	
+	\item[b.] Show that $c_1 = c_2$ and hence ${}^{2} E_{\rm corr} = 2 K_{12} c_1$.
+	
+	\item[c.] Show that
+	\[
+		c_3 = \frac{ {}^{2} E_\corr }{ {}^{2} E_\corr - 4\Delta}.
+	\]
+	
+	\item[d.] Show that
+	\[
+		c_1 = \frac{ 2 K_{12} }{ {}^{2} E_\corr - 4\Delta }.
+	\]
+	
+	\item[e.] Finally, show that
+	\[
+		{}^{2} E_\corr = 2\left( \Delta - \sqrt{ \Delta^2 + K^2_{12} } \right)
+	\]
+	which is indeed exact for the model.
+	\end{enumerate}
+	
+	It is interesting to note that we can express the coefficient of the quadruple excitation ($c_3$) as the product of the coefficients of the double excitations:
+	\[
+		c_3 = \frac{ {}^{2} E_\corr }{ {}^{2} E_\corr - 4\Delta } = \frac{ 2 K_{12} c_1 }{ {}^{2} E_\corr - 4\Delta } = (c_1)^2
+	\]
+	where we have used results in parts (b), (c), and (d). This result is not true in general but is a consequence of the fact that the two monomers are independent. However, it suggests that it might be reasonable to {\it approximate} the coefficient of a quadruply excited configuration as a product of the coefficient of the double excitations that combine to give the quadruply excited configuration. This idea plays a centeral role in the next chapter.
 	\end{exercise}
 	
 	\begin{solution}
@@ -218,7 +377,22 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	The normalized full CI wave function for a minimal basis $\ce{H2}$ molecule is
+	\[
+		| \Phi_0 \rangle = \frac{1}{ \sqrt{1+c^2} } | 1 \bar{1} \rangle + \frac{c}{ \sqrt{1+c^2} } | 2 \bar{2} \rangle
+	\]
+	where $c = {}^{1}E_{\rm corr}/K_{12}$. Show that for $N$ independent minimal $\ce{H2}$ molecules, the overlap between the Hartree-Fock wave functions, $| \Psi_0 \rangle$, and the exact {\it normalized} ground state wave function is
+	\[
+		\langle \Psi_0 | \Phi_0 \rangle = \frac{1}{ (1+c^2)^{\frac{N}{2}} }.
+	\]
+	Using the values of the two-electron integrals for $R$= 1.4 a.u., given in Appendix D, calculate $\langle \Psi_0 | \Phi_0 \rangle$ for $N=$1, 10, and 100. Note that this overlap decreases quickly (in fact, exponentially) as $N$ increases. Thus the overlap between the Hartree-Fock and the exact wave functions of the system exponentially approaches zero as the size of the system increases, even though the Hartree-Fock energy is size consistent. {\it Hint}: Because the $N$ independent $\ce{H2}$ molecules are infinitely separated we can, for all intents and purposes, ignore the requirement that the wave function of this system be antisymmetric with respect to the interchange of electrons which belong to different $\ce{H2}$ molecules. Thus we can write
+	\[
+		| \Phi_0 \rangle \sim \prod_{i=1}^N \left( \frac{1}{ \sqrt{ 1 + c^2 } } | 1_i \bar{1}_i \rangle + \frac{c}{ \sqrt{ 1 + c^2 } } | 2_i \bar{2}_i \rangle \right)
+	\]
+	and
+	\[
+		| \Psi_0 \rangle \sim \prod_{i=1}^N | 1_i \bar{1}_i \rangle.
+	\]
 	\end{exercise}
 	
 	\begin{solution}
