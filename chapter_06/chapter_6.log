@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  16 NOV 2024 15:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  18 NOV 2024 11:03
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -134,6 +134,19 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@inbox=\box53
 \enit@count@id=\count277
 \enitdp@description=\count278
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip54
+\f@nch@O@elh=\skip55
+\f@nch@O@erh=\skip56
+\f@nch@O@olh=\skip57
+\f@nch@O@orh=\skip58
+\f@nch@O@elf=\skip59
+\f@nch@O@erf=\skip60
+\f@nch@O@olf=\skip61
+\f@nch@O@orf=\skip62
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -304,9 +317,9 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip54
+\Hy@SectionHShift=\skip63
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 21.
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/hyphenat/hyphenat.sty
 Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
 \langwohyphens=\language89
@@ -335,12 +348,12 @@ Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count296
 \calc@Adimen=\dimen171
 \calc@Bdimen=\dimen172
-\calc@Askip=\skip55
-\calc@Bskip=\skip56
+\calc@Askip=\skip64
+\calc@Bskip=\skip65
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count297
-\calc@Cskip=\skip57
+\calc@Cskip=\skip66
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/chemgreek/chemgreek.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -352,16 +365,16 @@ Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use
 \g__chemgreek_tmpa_int=\count299
 )
 \l__mhchem_ce_distanceFromLastComma_int=\count300
-\__mhchem_arrow_extPgfLength_skip=\skip58
-\mhchem@minispace@tmp=\skip59
-\mhchem@minibackspace@tmp=\skip60
-\mhchem@bondwidth=\skip61
-\mhchem@bondheight=\skip62
-\mhchem@smallbondwidth@tmpA=\skip63
-\mhchem@smallbondwidth@tmpB=\skip64
-\mhchem@smallbondwidth=\skip65
-\mhchem@bondtmp@minussidebearingleft=\skip66
-\mhchem@bondtmp@minussidebearingright=\skip67
+\__mhchem_arrow_extPgfLength_skip=\skip67
+\mhchem@minispace@tmp=\skip68
+\mhchem@minibackspace@tmp=\skip69
+\mhchem@bondwidth=\skip70
+\mhchem@bondheight=\skip71
+\mhchem@smallbondwidth@tmpA=\skip72
+\mhchem@smallbondwidth@tmpB=\skip73
+\mhchem@smallbondwidth=\skip74
+\mhchem@bondtmp@minussidebearingleft=\skip75
+\mhchem@bondtmp@minussidebearingright=\skip76
 \l__mhchem_option_version_int=\count301
 \mhchem@option@minusmathsidebearingleft=\dimen173
 \mhchem@option@minusmathsidebearingright=\dimen174
@@ -378,8 +391,8 @@ Package caption Info: New subtype `subtable' on input line 238.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \ttl@box=\box55
-\beforetitleunit=\skip68
-\aftertitleunit=\skip69
+\beforetitleunit=\skip77
+\aftertitleunit=\skip78
 \ttl@plus=\dimen177
 \ttl@minus=\dimen178
 \ttl@toksa=\toks25
@@ -763,24 +776,24 @@ Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
  (./chapter_6.aux)
 \openout1 = `chapter_6.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -841,30 +854,30 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 89.
+Package hyperref Info: Link coloring ON on input line 91.
 
 (./chapter_6.out) (./chapter_6.out)
 \@outlinefile=\write4
 \openout4 = `chapter_6.out'.
 
 
-Package chemgreek Info: Activating mapping `default' on line 89.
+Package chemgreek Info: Activating mapping `default' on line 91.
 
 
 Chapter 6.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 103
+LaTeX Font Info:    Trying to load font information for U+msa on input line 105
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 103
+LaTeX Font Info:    Trying to load font information for U+msb on input line 105
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
-3.
+5.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -872,50 +885,50 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 <./pictures/336.png, id=71, 388.6018pt x 80.24982pt>
 File: ./pictures/336.png Graphic file (type png)
 <use ./pictures/336.png>
-Package pdftex.def Info: ./pictures/336.png  used on input line 119.
+Package pdftex.def Info: ./pictures/336.png  used on input line 121.
 (pdftex.def)             Requested size: 388.60085pt x 80.2496pt.
  [1
 
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./pictu
 res/336.png>] [2]
-<./pictures/346.png, id=105, 112.16907pt x 99.22069pt>
+<./pictures/346.png, id=104, 112.16907pt x 99.22069pt>
 File: ./pictures/346.png Graphic file (type png)
 <use ./pictures/346.png>
-Package pdftex.def Info: ./pictures/346.png  used on input line 209.
+Package pdftex.def Info: ./pictures/346.png  used on input line 211.
 (pdftex.def)             Requested size: 134.60219pt x 119.06421pt.
-<./pictures/gegenbauer.png, id=106, 500.69559pt x 222.53137pt>
+<./pictures/gegenbauer.png, id=105, 500.69559pt x 222.53137pt>
 File: ./pictures/gegenbauer.png Graphic file (type png)
 <use ./pictures/gegenbauer.png>
-Package pdftex.def Info: ./pictures/gegenbauer.png  used on input line 262.
+Package pdftex.def Info: ./pictures/gegenbauer.png  used on input line 264.
 (pdftex.def)             Requested size: 400.557pt x 178.02531pt.
  [3 <./pictures/346.png>]
-<./pictures/3491.png, id=116, 294.12384pt x 80.09924pt>
+<./pictures/3491.png, id=115, 294.12384pt x 80.09924pt>
 File: ./pictures/3491.png Graphic file (type png)
 <use ./pictures/3491.png>
-Package pdftex.def Info: ./pictures/3491.png  used on input line 290.
+Package pdftex.def Info: ./pictures/3491.png  used on input line 292.
 (pdftex.def)             Requested size: 294.12311pt x 80.09903pt.
-<./pictures/3492.png, id=117, 162.2311pt x 79.94868pt>
+<./pictures/3492.png, id=116, 162.2311pt x 79.94868pt>
 File: ./pictures/3492.png Graphic file (type png)
 <use ./pictures/3492.png>
-Package pdftex.def Info: ./pictures/3492.png  used on input line 296.
+Package pdftex.def Info: ./pictures/3492.png  used on input line 298.
 (pdftex.def)             Requested size: 162.23068pt x 79.94847pt.
  [4 <./pictures/gegenbauer.png>]
-<./pictures/362.png, id=126, 61.0531pt x 107.95331pt>
+<./pictures/362.png, id=125, 61.0531pt x 107.95331pt>
 File: ./pictures/362.png Graphic file (type png)
 <use ./pictures/362.png>
-Package pdftex.def Info: ./pictures/362.png  used on input line 352.
+Package pdftex.def Info: ./pictures/362.png  used on input line 354.
 (pdftex.def)             Requested size: 61.05293pt x 107.95303pt.
  [5 <./pictures/3491.png> <./pictures/3492.png>]
-<./pictures/3671.png, id=140, 103.06003pt x 70.38797pt>
+<./pictures/3671.png, id=139, 103.06003pt x 70.38797pt>
 File: ./pictures/3671.png Graphic file (type png)
 <use ./pictures/3671.png>
-Package pdftex.def Info: ./pictures/3671.png  used on input line 372.
+Package pdftex.def Info: ./pictures/3671.png  used on input line 374.
 (pdftex.def)             Requested size: 103.05977pt x 70.38777pt.
-<./pictures/3672.png, id=141, 41.93166pt x 72.27pt>
+<./pictures/3672.png, id=140, 41.93166pt x 72.27pt>
 File: ./pictures/3672.png Graphic file (type png)
 <use ./pictures/3672.png>
-Package pdftex.def Info: ./pictures/3672.png  used on input line 378.
+Package pdftex.def Info: ./pictures/3672.png  used on input line 380.
 (pdftex.def)             Requested size: 41.93153pt x 72.2698pt.
  [6 <./pictures/362.png> <./pictures/3671.png> <./pictures/3672.png>] [7] (./ch
 apter_6.aux)
@@ -927,11 +940,11 @@ Package rerunfilecheck Info: File `chapter_6.out' has not changed.
 (rerunfilecheck)             Checksum: 893949CB71E92B83CE408EB3708F7C96;4382.
  ) 
 Here is how much of TeX's memory you used:
- 28199 strings out of 474116
- 567935 string characters out of 5743688
+ 28377 strings out of 474116
+ 570441 string characters out of 5743688
  1962187 words of memory out of 5000000
- 50081 multiletter control sequences out of 15000+600000
- 569633 words of font info for 83 fonts, out of 8000000 for 9000
+ 50256 multiletter control sequences out of 15000+600000
+ 569280 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,11n,94p,552b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
@@ -941,16 +954,15 @@ Here is how much of TeX's memory you used:
 usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
 local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on chapter_6.pdf (7 pages, 748548 bytes).
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on chapter_6.pdf (7 pages, 734111 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 177 compressed objects within 2 object streams
+ 225 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
  53 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

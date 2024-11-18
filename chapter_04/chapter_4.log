@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  17 NOV 2024 23:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  18 NOV 2024 11:43
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -134,6 +134,19 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@inbox=\box53
 \enit@count@id=\count277
 \enitdp@description=\count278
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip54
+\f@nch@O@elh=\skip55
+\f@nch@O@erh=\skip56
+\f@nch@O@olh=\skip57
+\f@nch@O@orh=\skip58
+\f@nch@O@elf=\skip59
+\f@nch@O@erf=\skip60
+\f@nch@O@olf=\skip61
+\f@nch@O@orf=\skip62
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -290,9 +303,9 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip54
+\Hy@SectionHShift=\skip63
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 20.
+Package hyperref Info: Option `colorlinks' set `true' on input line 22.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/hyphenat/hyphenat.sty
 Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
 \langwohyphens=\language89
@@ -321,12 +334,12 @@ Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count296
 \calc@Adimen=\dimen171
 \calc@Bdimen=\dimen172
-\calc@Askip=\skip55
-\calc@Bskip=\skip56
+\calc@Askip=\skip64
+\calc@Bskip=\skip65
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count297
-\calc@Cskip=\skip57
+\calc@Cskip=\skip66
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/chemgreek/chemgreek.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -352,16 +365,16 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \l__mhchem_ce_distanceFromLastComma_int=\count300
-\__mhchem_arrow_extPgfLength_skip=\skip58
-\mhchem@minispace@tmp=\skip59
-\mhchem@minibackspace@tmp=\skip60
-\mhchem@bondwidth=\skip61
-\mhchem@bondheight=\skip62
-\mhchem@smallbondwidth@tmpA=\skip63
-\mhchem@smallbondwidth@tmpB=\skip64
-\mhchem@smallbondwidth=\skip65
-\mhchem@bondtmp@minussidebearingleft=\skip66
-\mhchem@bondtmp@minussidebearingright=\skip67
+\__mhchem_arrow_extPgfLength_skip=\skip67
+\mhchem@minispace@tmp=\skip68
+\mhchem@minibackspace@tmp=\skip69
+\mhchem@bondwidth=\skip70
+\mhchem@bondheight=\skip71
+\mhchem@smallbondwidth@tmpA=\skip72
+\mhchem@smallbondwidth@tmpB=\skip73
+\mhchem@smallbondwidth=\skip74
+\mhchem@bondtmp@minussidebearingleft=\skip75
+\mhchem@bondtmp@minussidebearingright=\skip76
 \l__mhchem_option_version_int=\count301
 \mhchem@option@minusmathsidebearingleft=\dimen173
 \mhchem@option@minusmathsidebearingright=\dimen174
@@ -378,8 +391,8 @@ Package caption Info: New subtype `subtable' on input line 238.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \ttl@box=\box55
-\beforetitleunit=\skip68
-\aftertitleunit=\skip69
+\beforetitleunit=\skip77
+\aftertitleunit=\skip78
 \ttl@plus=\dimen177
 \ttl@minus=\dimen178
 \ttl@toksa=\toks25
@@ -763,24 +776,24 @@ Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
  (./chapter_4.aux)
 \openout1 = `chapter_4.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -819,13 +832,13 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 89.
+Package hyperref Info: Link coloring ON on input line 91.
 (./chapter_4.out) (./chapter_4.out)
 \@outlinefile=\write4
 \openout4 = `chapter_4.out'.
 
 
-Package chemgreek Info: Activating mapping `default' on line 89.
+Package chemgreek Info: Activating mapping `default' on line 91.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -851,19 +864,19 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Chapter 4.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 109
+LaTeX Font Info:    Trying to load font information for U+msa on input line 111
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 109
+LaTeX Font Info:    Trying to load font information for U+msb on input line 111
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10
-9.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 11
+1.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -873,13 +886,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [1
 
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (131.68787pt too wide) has occurred while \output is active
-\OT1/cmr/m/sl/10 4.5.  THE MULTICONFIGURATION SELF-CONSISTENT FIELD (MCSCF) AND
- GENERALIZED VALENCE BOND (GVB) METHODS \OT1/cmr/m/n/10 3
- []
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
 
-[3] [4] [5] [6] (./chapter_4.aux)
+[4] [5] [6] [7] (./chapter_4.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -888,13 +897,13 @@ Package rerunfilecheck Info: File `chapter_4.out' has not changed.
 (rerunfilecheck)             Checksum: 6DF0C4AA0004C9EF8E41100CF39A291E;2678.
  ) 
 Here is how much of TeX's memory you used:
- 28110 strings out of 474116
- 566039 string characters out of 5743688
+ 28290 strings out of 474116
+ 568567 string characters out of 5743688
  1971187 words of memory out of 5000000
- 50000 multiletter control sequences out of 15000+600000
- 565829 words of font info for 65 fonts, out of 8000000 for 9000
+ 50176 multiletter control sequences out of 15000+600000
+ 565476 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,10n,94p,805b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,10n,94p,821b,1229s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -906,17 +915,16 @@ local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></
 usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on chapter_4.pdf (6 pages, 218774 bytes).
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on chapter_4.pdf (7 pages, 217308 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 154 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
+ 201 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

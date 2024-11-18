@@ -4,6 +4,8 @@
 \usepackage{amssymb}
 \usepackage[hypcap=false]{caption}
 \usepackage{enumitem}	% 定制enumerate标号
+\usepackage{fancyhdr}
+\pagestyle{plain} 				% 此处为fancy时有页眉
 \usepackage{geometry}
 \geometry{
 	left=2cm,
@@ -361,7 +363,11 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Consider the exact basis set correlation energy of minimal basis $\ce{H2}$ given in Eq.(4.23). Assuming that $K^2_{12}/\Delta^2 \ll 1$ show that
+	\[
+		{}^{1} E_\corr ({\rm exact}) \approx -\frac{K^2_{12}}{2\Delta}.
+	\]
+	{\it Hint}: $(1+x)^{1/2} = 1 + \frac{1}{2}x$ when $x \ll 1$. This approximate result is the same as the simplest expression for the correlation energy obtained via a form of perturbation theory. Show that by expanding ${}^{N} E_\corr ({\rm DCI})$ in the same way, assuming that $N K^2_{12} / \Delta^2 \ll 1$, one obtains simply $N$ times the above result. This approximation is equivalent to a perturbation result for the correlation energy of a supermolecule, and then form of the result is a reflection of the fact that, in contrast to truncated CI, perturbation theory is size consistent (see Chapter 6).
 	\end{exercise}
 	
 	\begin{solution}
@@ -369,7 +375,47 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	DCI calculations have become relatively routine; therefore, it is of interest to ask whether one can correct the DCI correlation energy so that it becomes approximately size consistent. A simple prescription for doing this, which is approximately valid {\it only} for relatively small systems, is to write
+	\[
+		E_\corr = E_\corr( {\rm DCI} ) + \Delta E_{\rm Davidson}
+	\]
+	where the Davidson correction is given by
+	\[
+		\Delta E_{\rm Davidson} = ( 1 - c^2_0 ) E_\corr( {\rm DCI} )
+	\]
+	where $c_0$ is the coefficient of the Hartree-Fock wave function in the {\it normalized} DCI wave function. The Davidson correction can be computed without additional labor since $c_0$ is available in a DCI calculation. Moreover, there is numerical evidence that it leads to an improvement over DCI for relatively small molecules. For example, for $\ce{H2O}$, using the 39-STO basis and the Davidson correction, $\theta_e$ = 104.6$^\circ$, $R_e$ = 1.809 a.u., $f_{RR}$ = 8.54, and $f_{\theta\theta}$ = 0.80 (see Table 4.7). Also, the ionization potentials of $\ce{N2}$, using the same basis as in Table 4.9 and the Davidson correction, are 0.575 a.u. ($3\sigma_g$) and 0.617 a.u. ($1\pi_u$). The purpose of this exercise is to explore the nature of the Davidson correction.
+	\begin{enumerate}
+	
+	\item[a.] For the model of $N$ independent minimal basis $\ce{H2}$ molecules, assume that $N$ is large, yet small enough that $NK^2_{12}/\Delta^2$ is still less than unity. In addition, remember that $\Delta \ll K_{12}$. Using the identity $( 1 + x )^{1/2} \approx 1 + \frac{1}{2} x - \frac{1}{8} x^2 + \cdots$ show that
+	\[
+		{}^N E_\corr( {\rm DCI} ) = - \frac{ N K^2_{12} }{ 2\Delta } + \frac{ N^2 K^4_{12} }{ 8\Delta^3 } + \cdots.
+	\]	
+	The term proportional to $N^2$ is spurious and is not present in the similar expansion of ${}^N E_\corr( {\rm exact} )$.
+	
+	\item[b.] Show that
+	\[
+		1 - c^2_0 = \frac{ N c^2_1 }{ 1 + N c^2_1 }.
+	\]
+	
+	\item[c.] Show that
+	\[
+		c_1 = - \frac{ K_{12} }{ 2\Delta } + \cdots.
+	\]	
+	
+	\item[d.] Show that
+	\[
+		\Delta E_{\rm Davidson} = - \frac{ N^2 K^4_{12} }{ 8 \Delta^3 } + \cdots .
+	\]
+
+	Finally, note that the Davidson correction exactly cancels the term proportional to $N^2$ in the expansion of ${}^N E_\corr( {\rm DCI} )$. However, spurious terms containing higher powers of $N$ still remain. For large $N$, the whole analysis breaks down since $N K^2_{12} / \Delta^2$ eventually becomes greater than unity. For $N$ = 1, $E_\corr( {\rm DCI} )$ is exact within the model, yet $\Delta E_{\rm Davidson}$ is not zero.
+	
+	\item[e.] Numerically investigate the range of validity of the Davidson correction for $N$ independent $\ce{H2}$ molecules. Calculate ${}^N E_\corr( {\rm DCI} )/ {}^N E_\corr( {\rm exact} )$ and $({}^N E_\corr( {\rm DCI} ) + \Delta E_{\rm Davidson} )/ {}^N E_\corr( {\rm exact} )$ for $N$ = 1, $\ldots$, 20 using the values of the two-electron integrals for $R$ = 1.4 a.u. given in Appendix D. You will find that the correlation energy calculated using the Davidson correction is within 1\% of the exact value for $3<N<11$. The DCI correlation energy, on the other hand, errs by 2.5\% for $N$ = 3 and by 10\% for $N$ = 11. For $N$ = 100, the correlation energy with and without the Davidson correction errs by 25\% and 42\%, respectively. {\it Hint}: show that
+	\[
+		\Delta E_{\rm Davidson} = \frac{ ({}^N E_\corr( {\rm DCI} ))^3 }{ NK^2_{12} + ( {}^N E_\corr( {\rm DCI} ) )^2 }.
+	\]
+	
+	\item[f.] Calculate the Davidson-corrected correlation energy of $\ce{H2O}$ using $E_\corr( {\rm DCI} )$ and $c_0$ given by Saxe et al. (see Further Reading). Compare your result with $E_\corr( {\rm DQCI} )$ and the exact basis set correlation energy.
+	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
