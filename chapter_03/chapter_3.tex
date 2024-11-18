@@ -463,7 +463,34 @@
 	\section{Some Illustrative Closed-Shell Calculations}
 	
 	\begin{exercise}
-	111
+	Use the results of Tables 3.11 to 3.13 to calculate, for each basis set and at the Hartree-Fock limit, the energy difference for the following two reactions,
+	\begin{align*}
+		\ce{N2} + 3 \ce{H2} &\rightarrow 2 \ce{NH3} & & \Delta E = ? \\
+		\ce{CO} + 3 \ce{H2} &\rightarrow \ce{CH4} + \ce{H2O} &  & \Delta E = ?
+	\end{align*}
+	Are the results consistent for different basis sets? Does Hartree-Fock theory predict these reactions to be exoergic or endoergic? The experimental hydrogenation energies (heats of reaction $\Delta H^\circ$) at zero degrees Kelvin are -18.604 kcal $\cdot$ mol${}^{-1}$ ($\ce{N2}$) and -45.894 kcal $\cdot$ mol${}^{-1}$ ($\ce{CO}$), with 1 a.u. of energy equivalent to 627.51 kcal $\cdot$ mol${}^{-1}$.
+	
+	Differences in the zero-point vibrational energies of reactants and products also contribute to reaction energies. From the experimental vibrational spectra, the $3N-6$ (or $3N-5$) zero-point energies ($h\nu_0/2$) for the relevant molecules (with degeneracies in parenthesis) are:
+	\begin{center}
+	\begin{tabular}{cc} \hline
+	Molecule & $h\nu_0/2$ (kcal $\cdot$ mol${}^{-1}$) \\ \hline
+	$\ce{H2}$ & 6.18 \\
+	$\ce{N2}$ & 3.35 \\
+	$\ce{CO}$ & 3.08 \\
+	$\ce{H2O}$ & 2.28 \\
+			& 5.13 \\
+			& 5.33 \\
+	$\ce{NH3}$ & 1.35 \\
+			& 2.32(2) \\
+			& 4.77 \\
+			& 4.85(2) \\
+	$\ce{CH4}$ & 1.86(3) \\
+			& 2.17(2) \\
+			& 4.14 \\
+			& 4.2(3) \\ \hline
+	\end{tabular}
+	\end{center}
+	Calculate the contribution of zero-point vibrations to the energy of the above two reactions. Is it a reasonable approximation to neglect the effect of zero-point vibrations?
 	\end{exercise}
 	
 	\begin{solution}
@@ -483,7 +510,10 @@
 	\subsection{Open-Shell Hartree Fock: Unrestricted Spin Orbitals}
 	
 	\begin{exercise}
-	111
+	Rather than use the simple technique of writing down $f^\alpha(1)$ by inspection of the possible interactions, as we have done above, use expression (3.314) for $f^\alpha(1)$  and explicitly integrate over spin and carry through the algebra, as was done in Subsection 3.4.1 for the restricted closed-shell case, to derive
+	\[
+		f^\alpha(1) = h(1) + \sum_a^{N^\alpha} \left[ J^\alpha_a(1) - K^\alpha_a(1) \right] + \sum_a^{N^\beta} J^\beta_a(1).
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -491,7 +521,10 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	The unrestricted doublet ground state of the Li atom is $|\Psi_0 \rangle = | \psi^\alpha_1(1) \bar{\psi}^\beta_1(2) \psi_2^\alpha(3) \rangle$. Show that the energy of this state is
+	\[
+		E_0 = h^\alpha_{11} + h^\beta_{11} + h^\alpha_{22} + h^\beta_{22} + J^{\alpha\alpha}_{12} - K^{\alpha\alpha}_{12} + J^{\alpha\beta}_{11} + J^{\alpha\beta}_{21}.
+	\] 
 	\end{exercise}
 	
 	\begin{solution}
@@ -499,7 +532,12 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	The unrestricted orbital energies are $\varepsilon^\alpha_i = ( \psi^\alpha_i | f^\alpha | \psi^\alpha_i )$ and $\varepsilon^\beta_i = ( \psi^\beta_i | f^\beta | \psi^\beta_i )$. Show that these are given by
+	\begin{align*}
+		\varepsilon^\alpha_i &= h^\alpha_{ii} + \sum^{N^\alpha}_a \left( J^{\alpha\alpha}_{ia} - K^{\alpha\alpha}_{ia} \right) + \sum^{N^\beta}_a J^{\alpha\beta}_{ia} , \\
+		 \varepsilon^\beta_i &= h^\beta_{ii} + \sum^{N^\beta}_a \left( J^{\beta\beta}_{ia} - K^{\beta\beta}_{ia} \right) + \sum^{N^\alpha}_a J^{\beta\alpha}_{ia} .
+	\end{align*}
+	Derive an expression for $E_0$ in terms of the orbital energies and the coulomb and exchange energies.
 	\end{exercise}
 	
 	\begin{solution}
