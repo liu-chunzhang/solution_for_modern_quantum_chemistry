@@ -3,7 +3,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[hypcap=false]{caption}
-\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{enumitem}			% 定制enumerate标号
+\usepackage{fancyhdr}
+\pagestyle{plain} 				% 此处为fancy时有页眉
+
 \usepackage{geometry}
 \geometry{
 	left=2cm,
@@ -68,11 +71,16 @@
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
 \newcommand{\HF}{{\rm HF}}
+\newcommand{\core}{{\rm core}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
 \newcommand{\C}{{\bf C}}
+\newcommand{\F}{{\bf F}}
 \newcommand{\I}{{\bf 1}}
+\newcommand{\PP}{{\bf P}}
+\newcommand{\R}{{\bf R}}
+\newcommand{\SSS}{{\bf S}}
 \newcommand{\U}{{\bf U}}
 \newcommand{\Op}{{\bf O}}
 
@@ -120,6 +128,11 @@
 	
 	\begin{solution}
 		3-2 so
+		
+		
+		fff
+		
+		fff
 	\end{solution}
 	
 	\begin{exercise}
@@ -191,7 +204,14 @@
 	\subsection{Closed-Shell Hartree-Fock: Restricted Spin Orbitals}
 	
 	\begin{exercise}
-	111
+	Convert the spin orbital expression for orbital energies
+	\[
+		\varepsilon_i = \langle \chi_i | h | \chi_i \rangle + \sum_{b}^N \lr{\chi_i \chi_b}{\chi_i \chi_b}
+	\]
+	to the closed-shell expression
+	\[
+		\varepsilon_i = ( \psi_i | h | \psi_i ) + \sum_{b}^{N/2} 2(ii|bb) - (ib|bi) = h_{ii} + \sum_b^{N/2} 2J_{ib} - K_{ib}.
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -201,7 +221,7 @@
 	\subsection{Introduction of a Basis: The Roothaan Equations}
 	
 	\begin{exercise}
-	111
+	Show that $\C^\dagger \SSS \C = \I$. {\it Hint}: Use the fact that the molecular orbitals $\{ \psi_i \}$ are orthonormal.
 	\end{exercise}
 	
 	\begin{solution}
@@ -211,7 +231,7 @@
 	\subsection{The Charge Density}
 	
 	\begin{exercise}
-	111
+	Use the density operator $\hat{\rho}({\rm r}) = \sum_{i=1}^N \delta( {\rm r}_i - {\rm r} )$, the rules for evaluating matrix elements in Chapter 2, and the rules for converting from spin orbitals to spatial orbitals, to derive (3.142) from $\rho({\bf r}) = \langle \Psi_0 | \hat{\rho}({\bf r}) | \Psi_0 \rangle$.
 	\end{exercise}
 	
 	\begin{solution}
@@ -219,7 +239,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	A matrix $\A$ is said to be idempotent if $\A^2 = \A$. Use the result of Exercise 3.10 to show that $\PP \SSS \PP = 2\PP$, i.e., show that $\frac{1}{2}\PP$ would be idempotent in an orthonormal basis.
 	\end{exercise}
 	
 	\begin{solution}
@@ -227,7 +247,10 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use the expression (3.122) for the closed-shell Fock operator to show that
+	\[
+		f({\bf r}_1) = h({\bf r}_1) + v^\HF( {\bf r}_1 ) = h({\bf r}_1) + \frac{1}{2} \sum_{\lambda\sigma} P_{\lambda\sigma} \left[ \int \dif {\rm r}_2 \, \phi^*_\sigma( {\bf r}_2 ) ( 2 - \mathscr{P}_{12} ) r^{-1}_{12} \phi_\lambda( {\bf r}_2 ) \right].
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -237,7 +260,7 @@
 	\subsection{Expression for the Fock Matrix}
 	
 	\begin{exercise}
-	111
+	Assume that the basis functions are real and use the symmetry of two-electron integrals [$(\mu\nu|\lambda\sigma)$ = $(\nu\mu|\lambda\sigma)$ = $(\lambda\sigma|\mu\nu)$, etc.] to show that for a basis set of size $K$ = 100 there are 12,753,775 = $O(K^4/8)$ unique two-electron integrals.
 	\end{exercise}
 	
 	\begin{solution}
@@ -247,7 +270,7 @@
 	\subsection{Orthogonalization of the Basis}
 	
 	\begin{exercise}
-	111
+	Use the definition of $S_{\mu\nu} = \int \dif {\bf r} \, \phi^*_\mu \phi_\nu$ to show that the eigenvalues of ${\rm S}$ are all positive. {\it Hint}: consider $\sum_\nu S_{\mu\nu} c^i_\nu = s_i c^i_\mu$, multiply by $c^{i*}_\mu$ and sum, where ${\bf c}^i$ is the $i$th column of $\U$.
 	\end{exercise}
 	
 	\begin{solution}
@@ -255,7 +278,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use (3.179), (3.180), and (3.162) to derive (3.174) and (3.177).
 	\end{exercise}
 	
 	\begin{solution}
@@ -267,7 +290,7 @@
 	\subsection{Expectation Values and Population Analysis}
 	
 	\begin{exercise}
-	111
+	Derive Equation (3.184) from (3.183).
 	\end{exercise}
 	
 	\begin{solution}
@@ -275,7 +298,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Derive the right-hand side of Eq.(3.198), i.e., show that $\alpha$ = 1/2 is equivalent to a population analysis based on the diagonal elements of ${\bf P}^\prime$.
 	\end{exercise}
 	
 	\begin{solution}
@@ -287,7 +310,7 @@
 	\subsection{The \texorpdfstring{$1s$}- Minimal STO-3G Basis set}
 	
 	\begin{exercise}
-	111
+	Derive Eq.(3.207).
 	\end{exercise}
 	
 	\begin{solution}
@@ -295,7 +318,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Calculate the values of $\phi({\bf r})$ at the origin for the three STO-LG contracted functions and compare with the value of $\frac{1}{\sqrt{ \pi }}$ for a Slater function ($\zeta$ = 1.0).
 	\end{exercise}
 	
 	\begin{solution}
@@ -305,7 +328,7 @@
 	\subsection{STO-3G \texorpdfstring{$\ce{H2}$}-}
 	
 	\begin{exercise}
-	111
+	Use definition (3.219) for the STO-1G function and the scaling relation (3.224) to show that the STO-1G overlap for an orbital exponent $\zeta$ = 1.24 at $R$ = 1.4 a.u., corresponding to result (3.229), is $S_{12}$ = 0.6648. Use the formula in Appendix A for overlap integrals. Do not forget normalization.
 	\end{exercise}
 	
 	\begin{solution}
@@ -321,7 +344,11 @@
 	\end{solution}
 
 	\begin{exercise}
-	111
+	The coefficients of minimal basis ${\rm H}^+_2$ are also determined by symmetry and are identical to those of minimal basis $\ce{H2}$. Use the above result for the coefficients to solve Eq.(3.234) for the orbital energies of minimal basis ${\rm H}^+_2$ at $R$ = 1.4 a.u. and show they are
+	\begin{align*}
+		\varepsilon_1 &= \frac{ H^\core_{11} + H^\core_{12} }{ 1 + S_{12} } = -1.2528  \, \text{a.u.} , \\
+		\varepsilon_1 &= \frac{ H^\core_{11} - H^\core_{12} }{ 1 - S_{12} } = -0.4756 \, \text{a.u.}
+	\end{align*}
 	\end{exercise}
 	
 	\begin{solution}
@@ -329,7 +356,7 @@
 	\end{solution}
 
 	\begin{exercise}
-	111
+	Use the general definition (3.145) of the density matrix to derive (3.239). What is the corresponding density matrix for ${\rm H}^+_2$?
 	\end{exercise}
 	
 	\begin{solution}
@@ -337,7 +364,11 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use the general definition (3.154) of the Fock matrix to show that the converged values of its elements for minimal basis $\ce{H2}$ are
+	\begin{align*}
+		F_{11} &= F_{22} = H^\core_{11} + \frac{ \frac{1}{2} ( \phi_1 \phi_1 | \phi_1 \phi_1 ) + ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) - \frac{1}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} }  = -0.3655 \, \text{a.u.} , \\
+		F_{12} &= F_{21} = H^\core_{12} + \frac{ -\frac{1}{2} ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) + \frac{3}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} }  = -0.5939 \, \text{a.u.}
+	\end{align*}
 	\end{exercise}
 	
 	\begin{solution}
@@ -345,7 +376,11 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use the result of Exercise 3.23 to show that the orbital energies of minimal basis $\ce{H2}$, that are a solution to the Roothaan equations $\F\C=\SSS\C{\bf \varepsilon}$, are
+	\begin{align*}
+		\varepsilon_1 &= \frac{ F_{11} + F_{12} }{ 1 + S_{12} } = -0.5782 \, \text{a.u.} , \\
+		\varepsilon_2 &= \frac{ F_{11} - F_{12} }{ 1 - S_{12} } = +0.6703 \, \text{a.u.} ,
+	\end{align*}
 	\end{exercise}
 	
 	\begin{solution}
@@ -353,7 +388,14 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use the general result (3.184) for the total electronic energy to show that the electronic energy of minimal basis $\ce{H2}$ is
+	\[
+		E_0 = \frac{ F_{11} + H^\core_{11} + F_{12} + H^\core_{12} }{ 1 + S_{12} } = -1.8310 \, \text{a.u.}
+	\]
+	and that the total energy including nuclear repulsion is
+	\[
+		E_{\rm tot} = -1.1167 \, \text{a.u.}
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -363,7 +405,7 @@
 	\subsection{An SCF Calculation on STO-3G \texorpdfstring{$\ce{HeH+}$}-}
 	
 	\begin{exercise}
-	111
+	Show that the above transformation produces orthonormal basis functions.
 	\end{exercise}
 	
 	\begin{solution}
@@ -371,7 +413,11 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use expression (3.184) for the electronic energy, expression (3.154) for the Fock matrix, and the asymptotic density matrix (3.281) to show that
+	\[
+		E_0( R \rightarrow \infty ) = 2 T_{11} + 2 V^1_{11} + ( \phi_1 \phi_1 | \phi_1 \phi_1 ).
+	\]
+	This is just the proper energy of the $\ce{He}$ atom, for the minimal basis, as discussed previously in the text.
 	\end{exercise}
 	
 	\begin{solution}
@@ -387,7 +433,17 @@
 	\subsection{Double Zeta Basis Sets: 4-31G}
 	
 	\begin{exercise}
-	111
+	A 4-31G basis for $\ce{He}$ has not been officially defined. Huzinaga,${}^8$ however, in an SCF calculation on the $\ce{He}$ atom using four uncontracted $1s$ Gaussians, found the coefficients and optimum exponents of the normalized $1s$ orbital of $\ce{He}$ to be
+	\begin{center}
+	\begin{tabular}{cc} \hline
+		$\alpha_\mu$ 	& $C_{\mu i}$ 	\\ \hline
+		0.298073		& 0.51380		\\
+		1.242567		& 0.46954 		\\
+		5.782948		& 0.15457		\\
+		38.47497		& 0.02373		\\ \hline
+	\end{tabular}
+	\end{center}
+	Use the expression for overlaps given in Appendix A to derive the contraction parameters for a 4-31G $\ce{He}$ basis set.
 	\end{exercise}
 	
 	\begin{solution}
@@ -397,7 +453,7 @@
 	\subsection{Polarized Basis Sets: 6-31G* and 6-31G**}
 	
 	\begin{exercise}
-	111
+	Determine the total number of basis functions for STO-3G, 4-31G, 6-31G*, and 6-31G** calculations on benzene.
 	\end{exercise}
 	
 	\begin{solution}
@@ -422,7 +478,7 @@
 	
 	\subsection{Population Analysis and Dipole Moments}
 	
-	\section{Unrestricted Open-Shell Hartree-Fock: The Pople-Nesbet Equations}
+	\section{Unrestricted Open-Shell Hartree-Fock: The Pople-Nesbet \texorpdfstring{\\}- Equations}
 	
 	\subsection{Open-Shell Hartree Fock: Unrestricted Spin Orbitals}
 	
@@ -454,7 +510,7 @@
 	
 	\subsection{Unrestricted Density Matrices}
 	\begin{exercise}
-	111
+	Use definitions (3.335) and (3.336) and Eq.(2.254) to show that the integral over all space of the spin density is 2$\langle \mathscr{S}_z \rangle$.
 	\end{exercise}
 	
 	\begin{solution}
@@ -462,7 +518,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Carry through the missing steps that led to Eqs.(3.340) to (3.343).
 	\end{exercise}
 	
 	\begin{solution}
@@ -470,7 +526,11 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Show that expectation values of spin-independent sums of one-electron operators $\sum_{i=1}^N h(i)$ are given by
+	\[
+		\langle \mathscr{O}_1 \rangle = \sum_\mu \sum_\nu P^T_{\mu\nu} ( \nu | h | \mu )
+	\]
+	for any unrestricted single determinant.
 	\end{exercise}
 	
 	\begin{solution}
@@ -478,7 +538,19 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Consider the following spin-dependent operator which is a sum of one-electron operators,
+	\[
+		\hat{\rho}^S = 2 \sum_{i=1}^N \delta( {\bf r}_i - {\bf R} )s_z(i).
+	\]
+	Use the rules for evaluating matrix elements, given in Chapter 2, to show that the expectation value of $\hat{\rho}^S$ for any unrestricted single determinant is
+	\[
+		\langle \hat{\rho}^S \rangle = \hat{\rho}^S ({\bf R}) = \tr{  {\bf P}^S {\bf A}} 
+	\]
+	where
+	\[
+		A_{\mu\nu} = \phi^*_\mu (\R) \phi_\nu (\R).
+	\]
+	This matrix element is important in the theory of the Fermi contact contribution to ESR and NMR coupling constants.
 	\end{exercise}
 	
 	\begin{solution}
@@ -490,7 +562,10 @@
 	\subsection{Solution of the Unrestricted SCF Equations}
 	
 	\begin{exercise}
-	111
+	Substitute the basis set expansion of the restricted molecular orbitals into Eq.(3.327) for the electronic energy $E_0$ to show that
+	\[
+		E_0 = \frac{1}{2} \sum_\mu \sum_\nu \left[ P^T_{\nu\mu} H^{\core}_{\mu\nu} + P^\alpha_{\nu\mu} F^\alpha_{\mu\nu} + P^\beta_{\nu\mu} F^\beta_{\mu\nu} \right].
+	\]
 	\end{exercise}
 	
 	\begin{solution}
@@ -500,7 +575,11 @@
 	\subsection{Illustrative Unrestricted Calculations}
 	
 	\begin{exercise}
-	111
+	Assume the unrestricted Hartree-Fock (UHF) calculations of Table 3.26 contain only the leading quartet contaminant. That is,
+	\[
+	 	\Psi_{\rm UHF} = c_1 {}^{2} \Psi + c_2 {}^{4} \Psi 
+	\]
+	If the percent contamination is defined as $\dfrac{ 100 c^2_2 }{ c^2_1 + c^2_2 }$, calculate the percent contamination of each of the four calculations from the quoted value of $\langle \mathscr{S}^2 \rangle$.
 	\end{exercise}
 	
 	\begin{solution}
@@ -510,7 +589,7 @@
 	\subsection{The Dissociation Problem and its Unrestricted Solution}
 	
 	\begin{exercise}
-	111
+	Show that the set of $\alpha$ orbitals $\{ \psi^\alpha_1 , \psi^\alpha_2 \}$ and the set of $\beta$ orbitals $\{ \psi^\beta_1 , \psi^\beta_2 \}$ form separate orthonormal sets.
 	\end{exercise}
 	
 	\begin{solution}
@@ -518,7 +597,7 @@
 	\end{solution}
 	
 	\begin{exercise}
-	111
+	Use the molecular integrals given in Appendix D to show that no unrestricted solution exists for minimal basis STO-3G $\ce{H2}$ at $R$ = 1.4 a.u. Repeat the calculation for $R$ = 4.0 a.u. and show that an unrestricted solution exists with $\theta$ = 39.5${}^\circ$. Remember that $\varepsilon_1 = h_{11} + J_{11}$ and $\varepsilon_2 = h_{22} + 2 J_{12} - K_{12}$.
 	\end{exercise}
 	
 	\begin{solution}
