@@ -61,22 +61,13 @@
 }
 
 % special new commands for common symbols used in the article
-\newcommand\la{\langle}
-\newcommand\ra{\rangle}
 \newcommand\lr[2]{\langle#1\|#2\rangle}
 \newcommand\tr[1]{\mathrm{tr(#1)}}
-\newcommand\Tr[3]{#1\mathrm\#2#3}
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
-\newcommand{\HF}{{\rm HF}}
 \newcommand{\bfr}{{\bf r}}
-
-\newcommand{\A}{{\bf A}}
-\newcommand{\B}{{\bf B}}
-\newcommand{\C}{{\bf C}}
-\newcommand{\I}{{\bf 1}}
-\newcommand{\U}{{\bf U}}
-\newcommand{\Op}{{\bf O}}
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\HP}{{\rm HP}}
 
 \titleformat{\chapter}[display]
   {\bfseries\Large}
@@ -108,30 +99,44 @@
 	\begin{exercise}
 	Given a set of $K$ orthonormal spatial functions, $\{\psi^\alpha_i(\bfr)\}$, and another set of $K$ orthonomal functions, $\{\psi^\beta_i(\bfr)\}$, such that the first set is not orthogonal to the second set, i.e, 
 	\[
-		\int \dif \bfr \psi^{\alpha*}_i( \bfr ) \psi^\beta_j( \bfr ) = S_{ij}
+		\int \dif \bfr \, \psi^{\alpha*}_i( \bfr ) \psi^\beta_j( \bfr ) = S_{ij}
 	\]
 	where ${\bf S}$ is an overlap matrix, show that the set $\{ \chi_i \}$ of $2K$ spin orbitals, formed by multiplying $\psi^\alpha_i( \bfr )$ by the $\alpha$ spin function and $\psi^\beta_i( \bfr )$ by the $\beta$ spin function, i.e.,
-	\[
-	\begin{dcases}
-		\chi_{2i-1} &= \psi^\alpha_i( \bfr ) \alpha( \omega ) \\
-		\chi_{2i} &= \psi^\beta_i( \bfr ) \beta( \omega )
-	\end{dcases} i = 1, 2, \ldots, K
+	\[ \left.
+	\begin{rgathered}
+		\chi_{2i-1}(\bfx) = \psi^\alpha_i( \bfr ) \alpha( \omega ) \quad \\
+		\chi_{2i}(\bfx) = \psi^\beta_i( \bfr ) \beta( \omega ) \quad
+	\end{rgathered} \right\} i = 1, 2, \ldots, K
 	\]
 	is an orthonormal set.
 	\end{exercise}
 	
 	\begin{solution}
-		2-1 so
+	It is easy to verify the normalization of any $\chi_{2i-1}$ or $\chi_{2j}$, 
+	\begin{align*}
+		\langle \chi_{2i-1} | \chi_{2j-1} \rangle &= \int \dif \bfx \, \chi^*_{2i-1}( \bfx ) \chi_{2j-1}( \bfx ) = \int \dif \bfr \, \psi^{\alpha*}_i( \bfr ) \psi^\alpha_j( \bfr ) \int \dif \omega \, \alpha^*( \omega ) \alpha( \omega) = \delta_{ij} \times 1 = \delta_{ij} , \\
+		\langle \chi_{2i} | \chi_{2j} \rangle &= \int \dif \bfx \, \chi^*_{2i}( \bfx ) \chi_{2j}( \bfx ) = \int \dif \bfr \, \psi^{\beta*}_i( \bfr ) \psi^\beta_j( \bfr ) \int \dif \omega \, \beta^*( \omega ) \beta( \omega) = \delta_{ij} \times 1 = \delta_{ij}.
+	\end{align*}
+	and the orthogonalization between $\chi_{2i-1}$ and $\chi_{2j}$,
+	\begin{align*}
+		\langle \chi_{2i-1} | \chi_{2j} \rangle &= \int \dif \bfx \, \chi^*_{2i-1}( \bfx ) \chi_{2j}( \bfx ) = \int \dif \bfr \, \psi^{\alpha*}_i( \bfr ) \psi^\beta_j( \bfr ) \int \dif \omega \, \alpha^*( \omega ) \beta( \omega) = S_{ij} \times 0 = 0 , \\
+		\langle \chi_{2i} | \chi_{2j-1} \rangle &= \int \dif \bfx \, \chi^*_{2i}( \bfx ) \chi_{2j-1}( \bfx ) = \int \dif \bfr \, \psi^{\beta*}_i( \bfr ) \psi^\alpha_j( \bfr ) \int \dif \omega \, \beta^*( \omega ) \alpha( \omega) = S^*_{ij} \times 0 = 0 .
+	\end{align*}	
+	
+	Thus, we can conclude that the set $\{ \chi_i \}$ is an orthonormal set.	
 	\end{solution}
 	
 	\subsection{Hartree Products}
 	
 	\begin{exercise}
-	Show that the Hartree product of (2.30) is an eigenfunction of $\mathscr{H} = \sum_{i=1}^N h(i)$ with an eigenvalue given by (2.32).
+	Show that the Hartree product of (2.30) is an eigenfunction of $\mathscr{H} = \displaystyle\sum_{i=1}^N h(i)$ with an eigenvalue given by (2.32).
 	\end{exercise}
 	
 	\begin{solution}
-		2-2 so
+	Verification is easy.
+	\[
+		\mathscr{H} \Psi^\HP = \left( \sum_{i=1}^N h(i) \right) \Psi^\HP = \sum_{i=1}^N \left( h(i) \Psi^\HP \right) = \sum_{i=1}^N \varepsilon_i \Psi^\HP = \left( \sum_{i=1}^N \varepsilon_i \right) \Psi^\HP.
+	\]
 	\end{solution}
 	
 	\subsection{Slater Determinants}
@@ -141,7 +146,13 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-3 so
+	Verification is easy, too.
+	\begin{align*}
+		\langle \Psi | \Psi \rangle &= \int \dif \vec{\bfx} \, \langle \Psi | \vec{\bfx} \rangle \langle \vec{\bfx} | \Psi \rangle \\
+		&= \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right]^* \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right] \\
+		&= \frac{1}{2} ( 1 + 0 + 0 + 1 ) = 1.
+	\end{align*}
+	
 	\end{solution}
 
 	\begin{exercise}
@@ -149,7 +160,26 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-4 so
+	Firstly, we check the Hartree product of $\chi_i$ and $\chi_j$.
+	\begin{align*}
+		\mathscr{H} | \Psi^\HP_{12} \rangle &= \left( h(1) + h(2) \right) \chi_i(\bfx_1) \chi_j(\bfx_2) = h(1) \chi_i(\bfx_1) \chi_j(\bfx_2) + h(2) \chi_i(\bfx_1) \chi_j(\bfx_2) \\
+		&= [ h(1) \chi_i(\bfx_1) ] \chi_j(\bfx_2) + \chi_i(\bfx_1) [ h(2) \chi_j(\bfx_2) ] = \varepsilon_i \chi_i(\bfx_1)\chi_j(\bfx_2) + \varepsilon_j \chi_i(\bfx_1) \chi_j(\bfx_2) \\
+		&= ( \varepsilon_i + \varepsilon_j ) \chi_i(\bfx_1) \chi_j(\bfx_2) = ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{12} \rangle
+	\end{align*}
+	Similarly, we can find
+	\[
+		\mathscr{H} | \Psi^\HP_{21} \rangle = ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{21} \rangle.
+	\]
+	Thus, the eigenvalue of a Hartree product of $\chi_i$ and $\chi_j$ is irrelevant to the order of electrons, which does not violate the indistinguishability of electrons and physically meaningful. Note that
+	\[
+		\Psi = \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right] = \frac{1}{\sqrt{2}} \left( \Psi^\HP_{12} - \Psi^\HP_{21} \right)
+	\]
+	We find that
+	\begin{align*}
+		\mathscr{H} | \Psi \rangle &= \mathscr{H} \frac{1}{\sqrt{2}} \left( | \Psi^\HP_{12} \rangle - | \Psi^\HP_{21} \rangle \right) = \frac{1}{\sqrt{2}} \left( \mathscr{H} | \Psi^\HP_{12} \rangle - \mathscr{H} | \Psi^\HP_{21} \rangle \right) \\
+		&= \frac{1}{\sqrt{2}} \left[ ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{12} \rangle - ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{21} \rangle \right] = ( \varepsilon_i + \varepsilon_j ) \frac{1}{\sqrt{2}} \left( | \Psi^\HP_{12} \rangle - | \Psi^\HP_{21} \rangle \right) = ( \varepsilon_i + \varepsilon_j ) | \Psi \rangle.
+	\end{align*}
+	Thus, we have proved that the Hartree products in Eqs.(2.33a, b) and the antisymmetrized wave function in Eq.(2.34) are eigenfunctions of the independent-particle Hamiltonian $\mathscr{H} = h(1) + h(2)$ (c.f. Eq.(2.28)) and have the same eigenvalue namely, $\varepsilon_i + \varepsilon_j$. 
 	\end{solution}
 	
 	\begin{exercise}
@@ -165,7 +195,24 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-5 so
+	We calculte the inner product firstly,
+	\begin{align*}
+		\langle K | L \rangle &= \int \dif \vec{\bfx} \, \langle K | \vec{\bfx} \rangle \langle \vec{\bfx} | L \rangle \\
+		&= \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}}\left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right]^* \frac{1}{\sqrt{2}}\left[ \chi_k(\bfx_1) \chi_l(\bfx_2) - \chi_l(\bfx_1) \chi_k(\bfx_2) \right] \\
+		&= \frac{1}{2} \left[ \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i(\bfx_1) \chi^*_j(\bfx_2) \chi_k(\bfx_1) \chi_l(\bfx_2) - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i(\bfx_1) \chi^*_j(\bfx_2) \chi_l(\bfx_1) \chi_k(\bfx_2)\right. \\
+		&\hspace{4em} \left. - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_j(\bfx_1) \chi^*_i(\bfx_2) \chi_k(\bfx_1) \chi_l(\bfx_2) + \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_j(\bfx_1) \chi^*_i(\bfx_2) \chi_l(\bfx_1) \chi_k(\bfx_2) \right] \\
+		&= \frac{1}{2} \left( \delta_{ik} \delta_{jl} - \delta_{il}\delta_{jk} - \delta_{jk} \delta_{il} + \delta_{jl}\delta_{ik}\right) = \delta_{ik}\delta_{jl} - \delta_{jk} \delta_{il} \equiv \delta^{kl}_{ij}.
+	\end{align*}
+	The conclusion is obvious. 
+	\begin{itemize}
+	
+	\item When $k=i$ and $l=j$, in which case $|L\rangle$ = $|K\rangle$ and the overlap is $1$.
+	
+	\item When $k=j$ and $l=i$ in which case $|L\rangle= |\chi_j \chi_i \rangle = -|K\rangle$ and the overlap is $-1$.
+	
+	\item Otherwise, the overlap is $0$.
+	
+	\end{itemize}
 	\end{solution}
 	
 	\subsection{The Hartree-Fock Approximation}
@@ -177,7 +224,20 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-6 so
+	Similar to Solution 2.1, we have to verify the normalization of any $\psi_1$ or $\psi_2$, with $S_{ij} = S^*_{ij} = S_{ji}$,
+	\begin{align*}
+		\langle \psi_1 | \psi_1 \rangle &= \int \dif \bfr \, \psi^*_1( \bfr ) \psi_1( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right) , \\
+		&= \frac{1}{ 2 ( 1 + S_{12} ) } ( 1 + S_{12} + S_{21} + 1 ) = 1, \\
+		\langle \psi_2 | \psi_2 \rangle &= \int \dif \bfr \, \psi^*_2( \bfr ) \psi_2( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right) , \\
+		&= \frac{1}{ 2 ( 1 - S_{12} ) } ( 1 - S_{12} - S_{21} + 1 ) = 1,
+	\end{align*}
+	and the orthogonalization between $\psi_1$ and $\psi_2$,
+	\begin{align*}
+		\langle \psi_1 | \psi_2 \rangle &= \int \dif \bfr \, \psi^*_1( \bfr ) \psi_2( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right) \\
+		&= \frac{1}{ 2 \sqrt{  ( 1 - (S_{12})^2 ) } } ( 1 - S_{12} + S_{12} - 1 ) = 0 = \langle \psi_2 | \psi_1 \rangle^*.
+	\end{align*}	
+	
+	Thus, we can conclude that $\psi_1$ and $\psi_2$ form an orthonormal set.
 	\end{solution}
 	
 	\subsection{Excited Determinants}
@@ -189,7 +249,17 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-7 so
+	Firstly, there are in total 42 electrons in a benzene molecule. Here, each carbon atom delivers 6 electrons while each hydrogen atom delivers only 1 electron. 
+	
+	Secondly, the minimal basis set of benzene includes 36 spatial orbitals. Here, each carbon atom delivers its $1s$, $2s$ and three $2p$ orbitals (i.e., $2p_x$, $2p_y$ and $2p_z$) while each hydrogen atom delivers its $1s$ orbital. 36 spatial orbitals can be used to construct 72 spin orbitals, as shown in Exercise 2.1.
+	
+	Thirdly, consider that a spin orbital can contain only one electron, there are 42 occupied spin orbitals and 30 unoccupied spin orbitals.
+	
+	Thus, there are $\binom{72}{42}$ = 164307576757973059488 determinants in full CI calculation.
+	
+	Besides, there are $\binom{42}{1} \binom{30}{1}$ = 1260 singly excited determinants.
+	
+	Moreover, there are $\binom{42}{2} \binom{30}{2}$ = 374535 doubly excited determinants.
 	\end{solution}
 	
 	\section{Operators and Matrix Elements}
@@ -402,6 +472,8 @@
 	
 	\begin{solution}
 		2-22 so
+		
+		fff
 	\end{solution}
 	
 	\subsection{Pseudo-Classical Interpretation of Determinantal Energies}
@@ -452,6 +524,8 @@
 	
 	\begin{solution}
 		2-24 so
+		
+		ffff
 	\end{solution}
 	
 	\begin{exercise}
