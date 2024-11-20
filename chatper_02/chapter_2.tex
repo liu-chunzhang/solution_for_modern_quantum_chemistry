@@ -113,15 +113,15 @@
 	
 	\begin{solution}
 	It is easy to verify the normalization of any $\chi_{2i-1}$ or $\chi_{2j}$, 
-	\begin{align*}
+	\begin{align}
 		\langle \chi_{2i-1} | \chi_{2j-1} \rangle &= \int \dif \bfx \, \chi^*_{2i-1}( \bfx ) \chi_{2j-1}( \bfx ) = \int \dif \bfr \, \psi^{\alpha*}_i( \bfr ) \psi^\alpha_j( \bfr ) \int \dif \omega \, \alpha^*( \omega ) \alpha( \omega) = \delta_{ij} \times 1 = \delta_{ij} , \\
 		\langle \chi_{2i} | \chi_{2j} \rangle &= \int \dif \bfx \, \chi^*_{2i}( \bfx ) \chi_{2j}( \bfx ) = \int \dif \bfr \, \psi^{\beta*}_i( \bfr ) \psi^\beta_j( \bfr ) \int \dif \omega \, \beta^*( \omega ) \beta( \omega) = \delta_{ij} \times 1 = \delta_{ij}.
-	\end{align*}
+	\end{align}
 	and the orthogonalization between $\chi_{2i-1}$ and $\chi_{2j}$,
-	\begin{align*}
+	\begin{align}
 		\langle \chi_{2i-1} | \chi_{2j} \rangle &= \int \dif \bfx \, \chi^*_{2i-1}( \bfx ) \chi_{2j}( \bfx ) = \int \dif \bfr \, \psi^{\alpha*}_i( \bfr ) \psi^\beta_j( \bfr ) \int \dif \omega \, \alpha^*( \omega ) \beta( \omega) = S_{ij} \times 0 = 0 , \\
 		\langle \chi_{2i} | \chi_{2j-1} \rangle &= \int \dif \bfx \, \chi^*_{2i}( \bfx ) \chi_{2j-1}( \bfx ) = \int \dif \bfr \, \psi^{\beta*}_i( \bfr ) \psi^\alpha_j( \bfr ) \int \dif \omega \, \beta^*( \omega ) \alpha( \omega) = S^*_{ij} \times 0 = 0 .
-	\end{align*}	
+	\end{align}	
 	
 	Thus, we can conclude that the set $\{ \chi_i \}$ is an orthonormal set.	
 	\end{solution}
@@ -134,9 +134,9 @@
 	
 	\begin{solution}
 	Verification is easy.
-	\[
+	\begin{equation}
 		\mathscr{H} \Psi^\HP = \left( \sum_{i=1}^N h(i) \right) \Psi^\HP = \sum_{i=1}^N \left( h(i) \Psi^\HP \right) = \sum_{i=1}^N \varepsilon_i \Psi^\HP = \left( \sum_{i=1}^N \varepsilon_i \right) \Psi^\HP.
-	\]
+	\end{equation}
 	\end{solution}
 	
 	\subsection{Slater Determinants}
@@ -147,11 +147,11 @@
 	
 	\begin{solution}
 	Verification is easy, too.
-	\begin{align*}
-		\langle \Psi | \Psi \rangle &= \int \dif \vec{\bfx} \, \langle \Psi | \vec{\bfx} \rangle \langle \vec{\bfx} | \Psi \rangle \\
-		&= \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right]^* \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right] \\
+	\begin{align}
+		\langle \Psi | \Psi \rangle &= \int \dif \vec{\bfx} \, \langle \Psi | \vec{\bfx} \rangle \langle \vec{\bfx} | \Psi \rangle \notag \\
+		&= \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right]^* \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right] \notag \\
 		&= \frac{1}{2} ( 1 + 0 + 0 + 1 ) = 1.
-	\end{align*}
+	\end{align}
 	
 	\end{solution}
 
@@ -161,24 +161,24 @@
 	
 	\begin{solution}
 	Firstly, we check the Hartree product of $\chi_i$ and $\chi_j$.
-	\begin{align*}
-		\mathscr{H} | \Psi^\HP_{12} \rangle &= \left( h(1) + h(2) \right) \chi_i(\bfx_1) \chi_j(\bfx_2) = h(1) \chi_i(\bfx_1) \chi_j(\bfx_2) + h(2) \chi_i(\bfx_1) \chi_j(\bfx_2) \\
-		&= [ h(1) \chi_i(\bfx_1) ] \chi_j(\bfx_2) + \chi_i(\bfx_1) [ h(2) \chi_j(\bfx_2) ] = \varepsilon_i \chi_i(\bfx_1)\chi_j(\bfx_2) + \varepsilon_j \chi_i(\bfx_1) \chi_j(\bfx_2) \\
-		&= ( \varepsilon_i + \varepsilon_j ) \chi_i(\bfx_1) \chi_j(\bfx_2) = ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{12} \rangle
-	\end{align*}
+	\begin{align}
+		\mathscr{H} | \Psi^\HP_{12} \rangle &= \left( h(1) + h(2) \right) \chi_i(\bfx_1) \chi_j(\bfx_2) = h(1) \chi_i(\bfx_1) \chi_j(\bfx_2) + h(2) \chi_i(\bfx_1) \chi_j(\bfx_2) \notag \\
+		&= [ h(1) \chi_i(\bfx_1) ] \chi_j(\bfx_2) + \chi_i(\bfx_1) [ h(2) \chi_j(\bfx_2) ] = \varepsilon_i \chi_i(\bfx_1)\chi_j(\bfx_2) + \varepsilon_j \chi_i(\bfx_1) \chi_j(\bfx_2) \notag \\
+		&= ( \varepsilon_i + \varepsilon_j ) \chi_i(\bfx_1) \chi_j(\bfx_2) = ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{12} \rangle.
+	\end{align}
 	Similarly, we can find
-	\[
+	\begin{equation}
 		\mathscr{H} | \Psi^\HP_{21} \rangle = ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{21} \rangle.
-	\]
+	\end{equation}
 	Thus, the eigenvalue of a Hartree product of $\chi_i$ and $\chi_j$ is irrelevant to the order of electrons, which does not violate the indistinguishability of electrons and physically meaningful. Note that
 	\[
 		\Psi = \frac{1}{\sqrt{2}} \left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right] = \frac{1}{\sqrt{2}} \left( \Psi^\HP_{12} - \Psi^\HP_{21} \right)
 	\]
 	We find that
-	\begin{align*}
-		\mathscr{H} | \Psi \rangle &= \mathscr{H} \frac{1}{\sqrt{2}} \left( | \Psi^\HP_{12} \rangle - | \Psi^\HP_{21} \rangle \right) = \frac{1}{\sqrt{2}} \left( \mathscr{H} | \Psi^\HP_{12} \rangle - \mathscr{H} | \Psi^\HP_{21} \rangle \right) \\
+	\begin{align}
+		\mathscr{H} | \Psi \rangle &= \mathscr{H} \frac{1}{\sqrt{2}} \left( | \Psi^\HP_{12} \rangle - | \Psi^\HP_{21} \rangle \right) = \frac{1}{\sqrt{2}} \left( \mathscr{H} | \Psi^\HP_{12} \rangle - \mathscr{H} | \Psi^\HP_{21} \rangle \right) \notag \\
 		&= \frac{1}{\sqrt{2}} \left[ ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{12} \rangle - ( \varepsilon_i + \varepsilon_j ) | \Psi^\HP_{21} \rangle \right] = ( \varepsilon_i + \varepsilon_j ) \frac{1}{\sqrt{2}} \left( | \Psi^\HP_{12} \rangle - | \Psi^\HP_{21} \rangle \right) = ( \varepsilon_i + \varepsilon_j ) | \Psi \rangle.
-	\end{align*}
+	\end{align}
 	Thus, we have proved that the Hartree products in Eqs.(2.33a, b) and the antisymmetrized wave function in Eq.(2.34) are eigenfunctions of the independent-particle Hamiltonian $\mathscr{H} = h(1) + h(2)$ (c.f. Eq.(2.28)) and have the same eigenvalue namely, $\varepsilon_i + \varepsilon_j$. 
 	\end{solution}
 	
@@ -196,13 +196,13 @@
 	
 	\begin{solution}
 	We calculte the inner product firstly,
-	\begin{align*}
-		\langle K | L \rangle &= \int \dif \vec{\bfx} \, \langle K | \vec{\bfx} \rangle \langle \vec{\bfx} | L \rangle \\
-		&= \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}}\left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right]^* \frac{1}{\sqrt{2}}\left[ \chi_k(\bfx_1) \chi_l(\bfx_2) - \chi_l(\bfx_1) \chi_k(\bfx_2) \right] \\
-		&= \frac{1}{2} \left[ \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i(\bfx_1) \chi^*_j(\bfx_2) \chi_k(\bfx_1) \chi_l(\bfx_2) - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i(\bfx_1) \chi^*_j(\bfx_2) \chi_l(\bfx_1) \chi_k(\bfx_2)\right. \\
-		&\hspace{4em} \left. - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_j(\bfx_1) \chi^*_i(\bfx_2) \chi_k(\bfx_1) \chi_l(\bfx_2) + \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_j(\bfx_1) \chi^*_i(\bfx_2) \chi_l(\bfx_1) \chi_k(\bfx_2) \right] \\
+	\begin{align}
+		\langle K | L \rangle &= \int \dif \vec{\bfx} \, \langle K | \vec{\bfx} \rangle \langle \vec{\bfx} | L \rangle \notag \\
+		&= \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}}\left[ \chi_i(\bfx_1) \chi_j(\bfx_2) - \chi_j(\bfx_1) \chi_i(\bfx_2) \right]^* \frac{1}{\sqrt{2}}\left[ \chi_k(\bfx_1) \chi_l(\bfx_2) - \chi_l(\bfx_1) \chi_k(\bfx_2) \right] \notag \\
+		&= \frac{1}{2} \left[ \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i(\bfx_1) \chi^*_j(\bfx_2) \chi_k(\bfx_1) \chi_l(\bfx_2) - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i(\bfx_1) \chi^*_j(\bfx_2) \chi_l(\bfx_1) \chi_k(\bfx_2)\right. \notag \\
+		&\hspace{4em} \left. - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_j(\bfx_1) \chi^*_i(\bfx_2) \chi_k(\bfx_1) \chi_l(\bfx_2) + \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_j(\bfx_1) \chi^*_i(\bfx_2) \chi_l(\bfx_1) \chi_k(\bfx_2) \right] \notag \\
 		&= \frac{1}{2} \left( \delta_{ik} \delta_{jl} - \delta_{il}\delta_{jk} - \delta_{jk} \delta_{il} + \delta_{jl}\delta_{ik}\right) = \delta_{ik}\delta_{jl} - \delta_{jk} \delta_{il} \equiv \delta^{kl}_{ij}.
-	\end{align*}
+	\end{align}
 	The conclusion is obvious. 
 	\begin{itemize}
 	
@@ -225,17 +225,17 @@
 	
 	\begin{solution}
 	Similar to Solution 2.1, we have to verify the normalization of any $\psi_1$ or $\psi_2$, with $S_{ij} = S^*_{ij} = S_{ji}$,
-	\begin{align*}
-		\langle \psi_1 | \psi_1 \rangle &= \int \dif \bfr \, \psi^*_1( \bfr ) \psi_1( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right) , \\
+	\begin{align}
+		\langle \psi_1 | \psi_1 \rangle &= \int \dif \bfr \, \psi^*_1( \bfr ) \psi_1( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right) \notag \\
 		&= \frac{1}{ 2 ( 1 + S_{12} ) } ( 1 + S_{12} + S_{21} + 1 ) = 1, \\
-		\langle \psi_2 | \psi_2 \rangle &= \int \dif \bfr \, \psi^*_2( \bfr ) \psi_2( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right) , \\
+		\langle \psi_2 | \psi_2 \rangle &= \int \dif \bfr \, \psi^*_2( \bfr ) \psi_2( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right) \notag \\
 		&= \frac{1}{ 2 ( 1 - S_{12} ) } ( 1 - S_{12} - S_{21} + 1 ) = 1,
-	\end{align*}
+	\end{align}
 	and the orthogonalization between $\psi_1$ and $\psi_2$,
-	\begin{align*}
-		\langle \psi_1 | \psi_2 \rangle &= \int \dif \bfr \, \psi^*_1( \bfr ) \psi_2( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right) \\
+	\begin{align}
+		\langle \psi_1 | \psi_2 \rangle &= \int \dif \bfr \, \psi^*_1( \bfr ) \psi_2( \bfr ) = \int \dif \bfr \,  \frac{1}{ \sqrt{ 2 ( 1 + S_{12} ) } } \left( \phi_1(\bfr) + \phi_2(\bfr) \right)^* \frac{1}{ \sqrt{ 2 ( 1 - S_{12} ) } } \left( \phi_1(\bfr) - \phi_2(\bfr) \right) \notag \\
 		&= \frac{1}{ 2 \sqrt{  ( 1 - (S_{12})^2 ) } } ( 1 - S_{12} + S_{12} - 1 ) = 0 = \langle \psi_2 | \psi_1 \rangle^*.
-	\end{align*}	
+	\end{align}	
 	
 	Thus, we can conclude that $\psi_1$ and $\psi_2$ form an orthonormal set.
 	\end{solution}
@@ -278,7 +278,46 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-8 so
+	For $\langle \Psi_{12}^{34} | \mathscr{O}_1 | \Psi_{12}^{34} \rangle$, it can be divided into two parts, viz.,
+	\[
+		\langle \Psi_{12}^{34} | \mathscr{O}_1 | \Psi_{12}^{34} \rangle = \langle \Psi_{12}^{34} | h(1) | \Psi_{12}^{34} \rangle + \langle \Psi_{12}^{34} | h(2) | \Psi_{12}^{34} \rangle.
+	\]
+	Its first part is
+	\begin{align*}
+		&\hspace{1.4em}\langle \Psi_{12}^{34} | h(1) | \Psi_{12}^{34} \rangle \\
+		&=  \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}}[ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ]^* h(1) \frac{1}{\sqrt{2}}[ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ] \\
+		&= \frac{1}{2} \left[ \int \dif \bfx_1 \, \chi_3^*(1) h(1) \chi_3(1) \int \dif \bfx_2 \, \chi^*_4(2) \chi_4(2) - \int \dif \bfx_1 \, \chi_3^*(1) h(1) \chi_4(1) \int \dif \bfx_2 \, \chi^*_4(2) \chi_3(2) \right. \\
+		&\hspace{2em} \left. - \int \dif \bfx_1 \, \chi_4^*(1) h(1) \chi_3(1) \int \dif \bfx_2 \, \chi^*_3(2) \chi_4(2) + \int \dif \bfx_1 \, \chi_4^*(1) h(1) \chi_4(1) \int \dif \bfx_2 \, \chi^*_3(2) \chi_3(2) \right] \\
+		&= \frac{1}{2} \left[ \int \dif \bfx_1 \, \chi_3^*(1) h(1) \chi_3(1) + 0 + 0 + \int \dif \bfx_1 \, \chi_4^*(1) h(1) \chi_4(1) \right] = \frac{1}{2} \left( \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle \right).
+	\end{align*}
+	Similarly, we can obtain
+	\[
+		\langle \Psi_{12}^{34} | h(2) | \psi_{12}^{34} \rangle = \frac{1}{2} \left( \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle \right).
+	\]
+	Thus,
+	\begin{equation}
+		\langle \Psi_{12}^{34} | \mathscr{O}_1 | \Psi_{12}^{34} \rangle = \frac{1}{2} \left( \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle \right) + \frac{1}{2} \left( \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle \right) = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle .
+	\end{equation}
+	Besides, in the same way,
+	\begin{align*}
+		&\hspace{1.4em}\langle \Psi_{12}^{34} | h(1) | \Psi_0 \rangle \\
+		&=  \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}}[ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ]^* h(1) \frac{1}{\sqrt{2}}[ \chi_1(1) \chi_2(2) - \chi_2(1) \chi_1(2) ] \\
+		&= \frac{1}{2} \left[ \int \dif \bfx_1 \, \chi_3^*(1) h(1) \chi_1(1) \int \dif \bfx_2 \, \chi^*_4(2) \chi_2(2) - \int \dif \bfx_1 \, \chi_3^*(1) h(1) \chi_2(1) \int \dif \bfx_2 \, \chi^*_4(2) \chi_1(2) \right. \\
+		&\hspace{2em} \left. - \int \dif \bfx_1 \, \chi_4^*(1) h(1) \chi_1(1) \int \dif \bfx_2 \, \chi^*_3(2) \chi_2(2) + \int \dif \bfx_1 \, \chi_4^*(1) h(1) \chi_2(1) \int \dif \bfx_2 \, \chi^*_3(2) \chi_1(2) \right] \\
+		&= \frac{1}{2} \left[ 0 + 0 + 0 + 0 \right] = 0.
+	\end{align*}
+	and
+	\[
+		\langle \Psi_{12}^{34} | h(2) | \Psi_0 \rangle = 0,
+	\]
+	Therefore,
+	\begin{equation}
+		\langle \Psi_{12}^{34} | h(1) | \Psi_{12}^{34} \rangle = \langle \Psi_{12}^{34} | h(1) | \Psi_0 \rangle + \langle \Psi_{12}^{34} | h(2) | \Psi_0 \rangle = 0 + 0 = 0,
+	\end{equation}
+	and
+	\begin{equation}
+		\langle \Psi_0 | \mathscr{O}_1 | \Psi^{34}_{12} \rangle = \langle \Psi^{34}_{12} | \mathscr{O}_1 | \Psi_0 \rangle^* = 0^* = 0.
+	\end{equation}
 	\end{solution}
 	
 	\begin{exercise}
@@ -293,7 +332,52 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-9 so
+	From Eq.(2.92), we know
+	\begin{equation}
+		\langle \Psi_0 | \mathscr{H} | \Psi_0 \rangle = \langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 12 | 12 \rangle - \langle 12 | 21 \rangle.
+	\end{equation}
+	For $\langle \Psi_0 | \mathscr{H} | \Psi_{12}^{34} \rangle$, from Exercise 2.8, we know
+	\[
+		\langle \Psi_0 | \mathscr{O}_1 | \Psi^{34}_{12} \rangle = 0.
+	\]
+	Besides,
+	\begin{align*}
+		&\hspace{1.4em}\langle \Psi_0 | \mathscr{O}_2 | \Psi_{12}^{34} \rangle \\
+		&=  \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}}[ \chi_1(1) \chi_2(2) - \chi_2(1) \chi_1(2) ]^* r^{-1}_{12} \frac{1}{\sqrt{2}}[ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ] \\
+		&= \frac{1}{2} \left[ \int \dif \bfx_1 \int \dif \bfx_2 \,\chi_1^*(1) \chi^*_2(2) r^{-1}_{12} \chi_3(1) \chi_4(2) - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi_1^*(1) \chi^*_2(2) r^{-1}_{12} \chi_4(1) \chi_3(2) \right. \\
+		&\hspace{2em} \left. -\int \dif \bfx_1 \int \dif \bfx_2 \,\chi_2^*(1) \chi^*_1(2) r^{-1}_{12} \chi_3(1) \chi_4(2) + \int \dif \bfx_1 \int \dif \bfx_2 \, \chi_2^*(1) \chi^*_1(2) r^{-1}_{12} \chi_4(1) \chi_3(2) \right] \\
+		&= \frac{1}{2} \left( \langle 12 | 34 \rangle - \langle 12 |  43 \rangle - \langle 21 | 34 \rangle + \langle 21 | 43 \rangle \right) = \frac{1}{2} \left( \langle 12 | 34 \rangle - \langle 12 |  43 \rangle - \langle 12 | 43 \rangle + \langle 12 | 34 \rangle \right) \\
+		&= \langle 12 | 34 \rangle - \langle 12 | 43 \rangle = \lr{12}{34}.
+	\end{align*}
+	Thus,
+	\begin{equation}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{34}_{12} \rangle = \langle \Psi_0 | \mathscr{O}_1 | \Psi^{34}_{12} \rangle + \langle \Psi_0 | \mathscr{O}_2 | \Psi^{34}_{12} \rangle = 0 + \langle 12 | 34 \rangle - \langle 12 |  43 \rangle = \langle 12 | 34 \rangle - \langle 12 | 43 \rangle.
+	\end{equation}
+	At last, for $\langle \Psi^{34}_{12} | \mathscr{H} | \Psi^{34}_{12} \rangle$, from Exercise 2.8,
+	\[
+		\langle \Psi^{34}_{12} | \mathscr{O}_1 | \Psi^{34}_{12} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle.
+	\]
+	Moreover,
+	\begin{align*}
+		&\hspace{1.4em}\langle \Psi^{12}_{34} | \mathscr{O}_2 | \Psi_{12}^{34} \rangle \\
+		&=  \int \dif \bfx_1 \int \dif \bfx_2 \, \frac{1}{\sqrt{2}}[ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ]^* r^{-1}_{12} \frac{1}{\sqrt{2}}[ \chi_3(1) \chi_4(2) - \chi_4(1) \chi_3(2) ] \\
+		&= \frac{1}{2} \left[ \int \dif \bfx_1 \int \dif \bfx_2 \,\chi_3^*(1) \chi^*_4(2) r^{-1}_{12} \chi_3(1) \chi_4(2) - \int \dif \bfx_1 \int \dif \bfx_2 \, \chi_3^*(1) \chi^*_4(2) r^{-1}_{12} \chi_4(1) \chi_3(2) \right. \\
+		&\hspace{2em} \left. -\int \dif \bfx_1 \int \dif \bfx_2 \,\chi_4^*(1) \chi^*_3(2) r^{-1}_{12} \chi_3(1) \chi_4(2) + \int \dif \bfx_1 \int \dif \bfx_2 \, \chi_4^*(1) \chi^*_3(2) r^{-1}_{12} \chi_4(1) \chi_3(2) \right] \\
+		&= \frac{1}{2} \left( \langle 34 | 34 \rangle - \langle 34 |  43 \rangle - \langle 43 | 34 \rangle + \langle 43 | 43 \rangle \right) = \frac{1}{2} \left( \langle 34 | 34 \rangle - \langle 34 |  43 \rangle - \langle 34 | 43 \rangle + \langle 34 | 34 \rangle \right) \\
+		&= \langle 34 | 34 \rangle - \langle 34 | 43 \rangle = \lr{34}{34}.
+	\end{align*}
+	Hence,
+	\begin{equation}
+		\langle \Psi^{34}_{12} | \mathscr{H} | \Psi^{34}_{12} \rangle = \langle \Psi^{34}_{12} | \mathscr{O}_1 | \Psi^{34}_{12} \rangle + \langle \Psi^{34}_{12} | \mathscr{O}_2 | \Psi^{34}_{12} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle + \langle 34 | 34 \rangle - \langle 34 |  43 \rangle.
+	\end{equation}
+	In conclusion, we have proved that
+	\begin{equation}
+		\mathscr{H} = \begin{pmatrix}
+			\langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 12 | 12 \rangle - \langle 12 | 21 \rangle & \langle 12 | 34 \rangle - \langle 12 | 43 \rangle \\
+			\langle 34 | 12 \rangle - \langle 34 | 21 \rangle & \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle + \langle 34| 34 \rangle - \langle 34 | 43 \rangle
+		\end{pmatrix}.
+	\end{equation}
+	Obviously, it is Hermitian.
 	\end{solution}
 	
 	\subsection{Notations for One- and Two-Electron Integrals}
@@ -430,6 +514,13 @@
 	
 	\begin{solution}
 		2-19 so
+		
+		fff
+		
+		fff
+		
+		
+		fff
 	\end{solution}
 	
 	\begin{exercise}
