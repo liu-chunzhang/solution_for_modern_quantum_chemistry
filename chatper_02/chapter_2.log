@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  20 NOV 2024 23:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.16)  21 NOV 2024 09:33
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -892,12 +892,16 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] 
 [4] [5]
 [6] [7] [8]
-<89.png, id=229, 323.40825pt x 85.44421pt>
+Underfull \vbox (badness 1577) has occurred while \output is active []
+
+ [9]
+<89.png, id=241, 323.40825pt x 85.44421pt>
 File: 89.png Graphic file (type png)
 <use 89.png>
-Package pdftex.def Info: 89.png  used on input line 576.
+Package pdftex.def Info: 89.png  used on input line 645.
 (pdftex.def)             Requested size: 323.40744pt x 85.444pt.
- [9 <./89.png>] [10] [11] [12] [13] (./chapter_2.aux)
+
+[10] [11 <./89.png>] [12] [13] [14] (./chapter_2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -906,10 +910,10 @@ Package rerunfilecheck Info: File `chapter_2.out' has not changed.
 (rerunfilecheck)             Checksum: F8E0D144DB85637CCC76DB1846BB32E0;6902.
  ) 
 Here is how much of TeX's memory you used:
- 28927 strings out of 474116
- 580970 string characters out of 5743688
- 1988187 words of memory out of 5000000
- 50705 multiletter control sequences out of 15000+600000
+ 28941 strings out of 474116
+ 581176 string characters out of 5743688
+ 1981187 words of memory out of 5000000
+ 50707 multiletter control sequences out of 15000+600000
  569796 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,11n,94p,744b,1216s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -929,10 +933,10 @@ live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texli
 ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2024/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on chapter_2.pdf (13 pages, 299466 bytes).
+Output written on chapter_2.pdf (14 pages, 306767 bytes).
 PDF statistics:
- 397 PDF objects out of 1000 (max. 8388607)
- 344 compressed objects within 4 object streams
- 144 named destinations out of 1000 (max. 500000)
+ 415 PDF objects out of 1000 (max. 8388607)
+ 361 compressed objects within 4 object streams
+ 156 named destinations out of 1000 (max. 500000)
  242 words of extra memory for PDF output out of 10000 (max. 10000000)
 

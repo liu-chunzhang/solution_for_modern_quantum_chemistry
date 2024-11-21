@@ -389,7 +389,27 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-10 so
+	We derive Eqs.(2.109a, b) firstly, then derive other equations. Note that
+	\begin{equation}
+		\lr{mm}{mm} = \langle mm | mm \rangle - \langle mm | mm \rangle = 0.
+	\end{equation}
+	Thus, in the same way, $\lr{nn}{nn} = 0$. We have proved Eq.(2.109a).
+	
+	Besides, note that
+	\begin{equation}
+		\lr{mn}{mn} = \langle mn | mn \rangle - \langle mn | nm \rangle = \langle nm | nm \rangle - \langle nm | mn \rangle = \lr{nm}{nm}.
+	\end{equation}
+	Eq.(2.109b) is proved.
+	Thus, from Eq.(2.107),
+	\begin{align}
+		\langle K | \mathscr{H} | K \rangle &= \sum_m^N \langle m | h | m \rangle + \frac{1}{2} \sum_m^N \sum_n^N \lr{mn}{mn} \notag \\
+		&= \sum_m^N \langle m | h | m \rangle + \frac{1}{2}\sum_m^N \sum_{n>m}^N \lr{mn}{mn} + \frac{1}{2}\sum_m^N \lr{mm}{mm} + \frac{1}{2}\sum_m^N \sum_{n<m}^N \lr{mn}{mn} \notag \\
+		&= \sum_m^N \langle m | h | m \rangle + \frac{1}{2}\sum_m^N \sum_{n>m}^N \lr{mn}{mn} + \frac{1}{2}\sum_n^N \sum_{m>n}^N \lr{mn}{mn} \notag \\
+		&= \sum_m^N \langle m | h | m \rangle + \frac{1}{2}\sum_m^N \sum_{n>m}^N \lr{mn}{mn} + \frac{1}{2}\sum_m^N \sum_{n>m}^N \lr{nm}{nm} \notag \\
+		&= \sum_m^N \langle m | h | m \rangle + \sum_m^N \sum_{n>m}^N \lr{mn}{mn} \\
+		&= \sum_m^N \langle m | h | m \rangle + \sum_m^N \sum_{n>m}^N \langle mn | mn \rangle - \langle mn | nm \rangle \notag \\
+		&= \sum_m^N [ m | h | m ] + \sum_m^N \sum_{n>m}^N [ mm | nn ] - [ mn | nm ] .
+	\end{align}
 	\end{solution}
 	
 	\begin{exercise}
@@ -400,7 +420,10 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-11 so
+	From Exercise 2.10, we immediately obtain
+	\begin{equation}
+		\langle K | \mathscr{H} | K \rangle = \langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 3 | h | 3 \rangle + \lr{12}{12} + \lr{13}{13} + \lr{23}{23}.
+	\end{equation}
 	\end{solution}
 	
 	\begin{exercise}
@@ -408,7 +431,27 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-12 so
+	Applying the rules directly is enough. Eqs.(2.111) to (2.114) has solved $\langle \Psi_0 | \mathscr{H} | \Psi_0 \rangle$. Then, with
+	\[
+		\langle \Psi_0 | \mathscr{O}_1 | \Psi^{34}_{12} \rangle = 0 , \quad \langle \Psi_0 | \mathscr{O}_2 | \Psi^{34}_{12} \rangle = \lr{12}{34},
+	\]
+	we know that
+	\begin{equation}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{34}_{12} \rangle = \langle \Psi_0 | \mathscr{O}_1 | \Psi^{34}_{12} \rangle + \langle \Psi_0 | \mathscr{O}_2 | \Psi^{34}_{12} \rangle = \lr{12}{34}.
+	\end{equation}
+	In the same way,
+	\begin{equation}
+		\langle \Psi^{34}_{12} | \mathscr{H} | \Psi_0 \rangle = \lr{34}{12}.
+	\end{equation}
+	At last, with
+	\[
+		\langle \Psi^{34}_{12} | \mathscr{O}_1 | \Psi^{34}_{12} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle, \quad \langle \Psi^{34}_{12} | \mathscr{O}_2 | \Psi^{34}_{12} \rangle = \lr{34}{34},
+	\]
+	we get
+	\begin{equation}
+		\langle \Psi^{34}_{12} | \mathscr{H} | \Psi^{34}_{12} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle + \lr{34}{34}.
+	\end{equation}
+	This result equals that of Exercise 2.9.
 	\end{solution}
 	
 	\begin{exercise}
@@ -424,7 +467,26 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-13 so
+	Note that $a$ and $b$ should be close to each other, and so do $r$ and $s$! Then we can talk about the final result according to the different occupation of the bra and the ket (namely, electron difference).
+	\begin{itemize}
+	
+	\item When $a \neq b$ and $r \neq s$, there are two electron differences, thus $\langle \Psi^r_a| \mathscr{O}_1 | \Psi^s_b \rangle = 0$.
+	
+	\item When $a = b$ and $r \neq s$, there is one electron difference, thus $\langle \Psi^r_a| \mathscr{O}_1 | \Psi^s_b \rangle = \langle \Psi^r_a | \mathscr{O}_1 | \Psi^s_a \rangle = \langle r | h | s \rangle$.
+	
+	\item When $a \neq b$ and $r = s$, there is one electron difference, thus $\langle \Psi^r_a | \mathscr{O}_1 | \Psi^s_b \rangle = \langle \Psi^r_a | \mathscr{O}_1 | \Psi^r_b \rangle$. Note that
+	\begin{equation}
+		\langle \Psi^r_a | \mathscr{O}_1 | \Psi^r_b \rangle = \langle \cdots \chi_r \chi_b \cdots | \mathscr{O}_1 | \cdots \chi_a \chi_r \cdots \rangle = -\langle \cdots \chi_r \chi_b \cdots | \mathscr{O}_1 | \cdots \chi_r\chi_a  \cdots \rangle = -\langle r | h | a \rangle.
+	\end{equation}
+
+	\item When $a = b$ and $r = s$, there is zero electron difference, thus
+	\begin{align}
+		\langle \Psi^r_a | \mathscr{O}_1 | \Psi^s_b \rangle = \langle \Psi^r_a | \mathscr{O}_1 | \Psi^r_a \rangle &= \langle \cdots \chi_{a \rightarrow r} \cdots | \mathscr{O}_1 | \cdots \chi_{a \rightarrow r}  \cdots \rangle = \sum_{c\neq a} \langle c | h | c \rangle + \langle r | h | r \rangle \notag \\
+		&= \sum_{c} \langle c | h | c \rangle - \langle a | h | a \rangle + \langle r | h | r \rangle.
+	\end{align}
+
+	\end{itemize}
+	In conclusion, this formula has been proved.
 	\end{solution}
 	
 	\begin{exercise}
@@ -440,7 +502,14 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-14 so
+	Verification with these definitions is enough. Assume that the summation with a prime means that it runs over all spin orbitals except $a$.
+	\begin{align}
+		^N E_0 - ^{N-1} E_0 &= \left[ \sum^N_b \langle b | h | b \rangle + \frac{1}{2} \sum^N_c \sum^N_d \lr{cd}{cd} \right] - \left[ \sum^N_b {}^\prime \langle b | h | b \rangle + \frac{1}{2} \sum^N_c {}^\prime \sum^N_d {}^\prime \lr{cd}{cd} \right] \notag \\
+		&= \left[ \sum^N_b \langle b | h | b \rangle - \sum^N_b {}^\prime \langle b | h | b \rangle \right] + \frac{1}{2} \left[  \sum^N_c \sum^N_d \lr{cd}{cd} - \sum^N_c {}^\prime \sum^N_d {}^\prime \lr{cd}{cd} \right] \notag \\
+		&= \langle a | h | a \rangle + \frac{1}{2} \left[ \sum^N_d \lr{ad}{ad} + \sum^N_c \lr{ca}{ca} - \lr{aa}{aa} \right] \notag \\
+		&= \langle a | h | a \rangle + \frac{1}{2} \left[ \sum^N_b \lr{ab}{ab} + \sum^N_b \lr{ab}{ab} \right] \notag \\
+		&= \langle a | h | a \rangle + \sum^N_b \lr{ab}{ab}.
+	\end{align}
 	\end{solution}
 	
 	\subsection{Derivation of the Rules for Matrix Elements}
