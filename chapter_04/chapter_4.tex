@@ -71,6 +71,7 @@
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
 \newcommand{\HF}{{\rm HF}}
 \newcommand{\corr}{{\rm corr}}
+\newcommand{\au}{{\rm a.u.}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
@@ -103,7 +104,24 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-1 so
+	
+	Due to
+	\[
+		\langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle \neq 0 \Leftrightarrow t = r , a = c \cap r = u , a = d \cap r = v , a = e,
+	\]	
+	therefore,
+	% \[
+	%	\langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle = \langle \Psi^r_a | \mathscr{H} | \Psi^{ruv}_{ade} \rangle \delta_{rt} \delta_{ac} + \sum_{ \substack{c<a<e \\ t<r<v} } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{cae} \rangle + \sum_{ \substack{c<d<a \\ t<u<r} } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle
+	%\]
+	%	
+	\begin{align}
+		&\hspace{1.4em}\sum_{ \substack{ c<d<e \\ t<u<v} } \langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle c^{tuv}_{cde} = \frac{1}{\left(3!\right)^2} \sum_{ \substack{ cde \\ tuv} } \langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle c^{tuv}_{cde} \notag \\
+		&= \frac{1}{\left(3!\right)^2}  \left[ \sum_{ \substack{ de \\ uv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{ruv}_{ade} \rangle c^{ruv}_{ade} + \sum_{ \substack{ ce \\ tv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{cae} \rangle c^{trv}_{cae} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle c^{tur}_{cda} \right. \notag \\
+		&\hspace{2em} + \sum_{ \substack{ de \\ tv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{ade} \rangle c^{trv}_{ade}  \\
+		&= \frac{1}{\left(3!\right)^2} \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tru}_{cad} \rangle c^{tru}_{cad} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle c^{tur}_{cda} \notag \\		
+	\end{align}
+	
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -117,7 +135,19 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-2 so
+	
+	\[
+		| H - EI | = E^2 - 2 \Delta E -K^2_{12} = 0 , \quad \Delta_E = 4 \Delta^2 - 4 \times ( -K^2_{12} ) = 4( \Delta^2 + K^2_{12} )
+	\]	
+	
+	\[
+		E_{1,2} = \Delta \pm \sqrt{ \Delta^2 + K^2_{12} }
+	\]	
+	
+	\begin{equation}
+		E = \Delta - \sqrt{ \Delta^2 + K^2_{12} }.
+	\end{equation}
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -289,7 +319,36 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-9 so
+	
+	\begin{enumerate}
+	
+	\item[a.]
+	\begin{align}
+		\langle u | u \rangle &= \frac{1}{ a^2+b^2 } \left[ a^2 \langle \psi_A | \psi_A \rangle + ab \langle \psi_A | \psi_B \rangle + ab \langle \psi_B | \psi_A \rangle + b^2 \langle \psi_B | \psi_B \rangle \right] \notag \\ 
+		&= \frac{1}{ a^2+b^2 } \left[ a^2 \times 1 + ab \times 0 + ab \times 0 + b^2 \times 1 \right] = 1 .
+	\end{align}
+		
+	\begin{align}
+		S \equiv \langle u | v \rangle &= \frac{1}{ a^2+b^2 } \left[ a^2 \langle \psi_A | \psi_A \rangle - ab \langle \psi_A | \psi_B \rangle + ab \langle \psi_B | \psi_A \rangle - b^2 \langle \psi_B | \psi_B \rangle \right] \notag \\ 
+		&= \frac{1}{ a^2+b^2 } \left[ a^2 \times 1 - ab \times 0 + ab \times 0 - b^2 \times 1 \right] = \frac{ a^2 - b^2 }{ a^2 + b^2 }.
+	\end{align}
+	
+	\item[b.]
+	
+	\begin{align}
+		| \Psi_{\rm GVB} \rangle &= \frac{1}{ \sqrt{ 2 \left[ 1 + ( \frac{ a^2 - b^2 }{ a^2 + b^2 } )^2 \right] } } \left[ \frac{1}{ a^2 + b^2 } ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) \right. \notag \\
+		&\hspace{2em} \left. + \frac{1}{ a^2 + b^2 } ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \frac{1}{ \sqrt{2} } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&=\frac{ a^2 + b^2 }{ \sqrt{ 2 \left[ ( a^2 + b^2 )^2 + ( a^2 - b^2 )^2 \right] } } \times \frac{1}{ \sqrt{2} \left( a^2 + b^2 \right) } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&\hspace{2em}\left[ ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) + ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \notag \\ 
+		&= \frac{ 1 }{ 2 \sqrt{ 2a^4 + 2b^4 } } \left[ 2 a^2 \psi_A(1) \psi_A(2) - 2 b^2 \psi_B(1) \psi_B(2) \right] \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&= \frac{ 1 }{ \sqrt{ a^4 + b^4 } }  \left[ a^2 \psi_A(1) \psi_A(2) - b^2 \psi_B(1) \psi_B(2) \right] \frac{1}{ \sqrt{2} } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] 
+	\end{align}
+	Thus,
+	\[
+		c_A = \frac{ a^2 }{ \sqrt{ a^4 + b^4 } } , \quad c_B = -\frac{ b^2 }{ \sqrt{ a^4 + b^4 } }.
+	\]
+	\end{enumerate}		
+		
 	\end{solution}
 	
 	\section{Truncated CI and the Size-Consistency Problem}	
@@ -299,7 +358,19 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-10 so
+	
+	\[
+		\langle \Psi_0 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = \langle 1_1 \bar{1}_1 1_2 \bar{1}_2 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = \langle 1_2 \bar{1}_2 || 2_1 \bar{2}_1 \rangle = ( 1_2 2_1 | 1_2 2_1 )
+	\]
+	
+	\[
+		\langle \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = \langle 2_1 \bar{2}_1 1_2 \bar{1}_2 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = 0
+	\]
+	
+	\[
+		\langle \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = \langle 1_1 \bar{1}_1 2_2 \bar{2}_2 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = \langle 2_2 \bar{2}_2 || 2_1 \bar{2}_1 \rangle = ( 2_2 2_1 | 2_2 2_1 ) = 0
+	\]
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -307,7 +378,24 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-11 so
+	
+	When $R$ = 1.4. $\au$, 
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.5782\,\au$, & $\varepsilon_2 = 0.6703\, \au$, & $J_{11} = 0.6746\,\au$, \\
+		$J_{12} = 0.6636\,\au$, & $J_{22} = 0.6975\,\au$, & $K_{12} = 0.1813\,\au$.
+	\end{tabular}	
+	\end{center}
+	\[
+		\Delta = \varepsilon_2 - \varepsilon_1 + \frac{1}{2} \left( J_{11} + J_{22} - 4 J_{12} \right) + K_{12} = 0.7886 a.u.
+	\]
+
+	\begin{align}
+		\left. \left[ \frac{^N E_\corr({\rm DCI})}{N} \right] \right|_{ N=1 } &= -0.4849, \\
+		\left. \left[ \frac{^N E_\corr({\rm DCI})}{N} \right] \right|_{ N=10 } &= -0.9242, \\
+		\left. \left[ \frac{^N E_\corr({\rm DCI})}{N} \right] \right|_{ N=100 } &= -0.9921.
+	\end{align}
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -359,7 +447,97 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-12 so
+	
+	\begin{itemize}
+		
+	\item[a.] 
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} - E_0 | \Psi_0 \rangle &= 0 , \\
+		 \langle \Psi_0 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle &= \langle 2_1 \bar{2}_1 1_2 \bar{1}_2 | \mathscr{H} - E_0 | \Psi_0 \rangle = \langle 1_1 \bar{1}_1 || 2_1 \bar{2}_1 \rangle = ( 1_1 2_1 | 1_1 2_1 ) = K_{12} , \\
+		 \langle \Psi_0 | \mathscr{H} - E_0 | 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle &= \langle 1_1 \bar{1}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | \Psi_0 \rangle = \langle 2_2 \bar{2}_2 || 1_2 \bar{1}_2 \rangle = ( 2_2 1_2 | 2_2 1_2 ) = K_{12} , \\
+		 \langle \Psi_0 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle &= \langle 2_1 \bar{2}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | \Psi_0 \rangle = \langle 1_1 \bar{1}_1 1_2 \bar{1}_2 | \mathscr{H} | 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle = 0.
+	\end{align*}
+	
+	\[
+		\mathscr{H} - E_0 | \Phi_0 \rangle = ^2 E_\corr | \Phi_0 \rangle
+	\]	
+	
+	\[
+		\langle 2_1 \bar{2}_1 1_2 \bar{1}_2 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle = 2 \Delta
+	\]
+	
+	\begin{align*}
+		\langle 2_1 \bar{2}_1 1_2 \bar{1}_2 | \mathscr{H} - E_0 | 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle &= \langle 1_1 \bar{1}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle = 0, \\
+		\langle 2_1 \bar{2}_1 1_2 \bar{1}_2 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle &= \langle 2_1 \bar{2}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle = K_{12}	
+	\end{align*}
+	
+	\[
+		\langle 1_1 \bar{1}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle = 2 \Delta
+	\]
+		
+	\[
+		\langle 1_1 \bar{1}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle = \langle 2_1 \bar{2}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle = \langle 2_1 \bar{2}_1 || 1_1 \bar{1}_1 \rangle = K_{12}
+	\]
+	
+	\[
+		\langle 2_1 \bar{2}_1 2_2 \bar{2}_2 | \mathscr{H} - E_0 | 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle = 4 \Delta
+	\]
+	
+	\[
+		\begin{pmatrix}
+			0 		& K_{12} 	& K_{12} 	& 0 		\\
+			K_{12} 	& 2\Delta 	& 0 		& K_{12} 	\\
+			K_{12} 	& 0			& 2\Delta 	& K_{12}	 \\
+			0 		& K_{12} 	& K_{12} 	& 4\Delta
+		\end{pmatrix}
+		\begin{pmatrix}
+			1 \\ c_1 \\ c_2 \\ c_3
+		\end{pmatrix} = ^2 E_\corr \begin{pmatrix}
+			1 \\ c_1 \\ c_2 \\ c_3
+		\end{pmatrix}.
+	\]
+	
+	\item[b.]
+	
+	\[
+		c_1 = - \frac{ K_{12} + K_{12} c_3 }{ 2\Delta - ^2 E_\corr }
+	\]	
+	
+	\[
+		c_2 = - \frac{ K_{12} + K_{12} c_3 }{ 2\Delta - ^2 E_\corr }
+	\]	
+	
+	\[
+		^2 E_\corr = K_{12} c_1 + K_{12} c_2 = 2 K_{12} c_1. 
+	\]
+	
+	\item[c.]
+	
+	\[
+		K_{12} c_1 + K_{12} c_2 + 4 \Delta c_3 = 2 K_{12} c_1 + 4 \Delta c_3 = ^2 E_\corr + 4 \Delta c_3 = ^2 E_\corr c_3
+	\]
+	
+	\[
+		c_3 = \frac{ ^2 E_\corr }{ ^2 E_\corr - 4 \Delta }.
+	\]
+	
+	\item[d.]
+	\begin{align*}
+		c_1 &= \frac{ K_{12} + K_{12} c_3 }{  ^2 E_\corr - 2\Delta } =  \frac{ K_{12} }{ ^2 E_\corr - 2\Delta } \left( 1 + \frac{ ^2 E_\corr }{ ^2 E_\corr - 4 \Delta } \right) \notag \\
+		&= \frac{ K_{12}  \left( 2 ^2 E_\corr - 4 \Delta \right) }{ ( ^2 E_\corr - 2\Delta )( ^2 E_\corr - 4 \Delta ) } = \frac{ 2K_{12} }{ ^2 E_\corr - 4 \Delta }
+	\end{align*}
+	
+	\item[e.]
+	\[
+		^2 E_\corr = 2 K_{12} c_1 = \frac{ 4K^2_{12} }{ ^2 E_\corr - 4 \Delta } \Leftrightarrow ( ^2 E_\corr )^2 - 4 \Delta ( ^2 E_\corr ) - 4 K^2_{12} = 0.
+	\]
+	
+	\[
+		^2 E_\corr = \frac{1}{2} \left[ 4 \Delta - \sqrt{ ( 4 \Delta )^2 - 4 \times 1 \times ( -4 K^2_{12} ) } \right] = 2 \Delta - 2 \sqrt{ \Delta^2 + K^2_{12} } = 2 \left( \Delta - \sqrt{ \Delta^2 + K^2_{12} } \right).
+	\]
+	
+	\end{itemize}		
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -371,7 +549,15 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-13 so
+	
+	\[
+		(1+x)^{\frac{1}{2}} \approx 1+\frac{1}{2} x
+	\]
+	
+	\[
+		^1 E_\corr ({\rm exact}) = \Delta \left( 1 - \sqrt{ 1 + \frac{ K^2_{12} }{ \Delta^2 } } \right) \approx \Delta \left( 1 - \left( 1 + \frac{ K^2_{12} }{ 2\Delta^2 } \right) \right) = -\frac{ K^2_{12} }{ 2\Delta }.
+	\]
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -419,7 +605,18 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-14 so
+	
+	\begin{itemize}
+	
+	\item[a.]
+	\begin{align}
+		^N E_\corr ({\rm DCI}) &= \Delta \left[ 1 - \sqrt{ 1 + \frac{ N K^2_{12} }{ \Delta^2 } } \right] = \Delta \left[ 1 - \left( 1 + \frac{ N K^2_{12} }{ 2\Delta^2 } - \frac{ N^2 K^4_{12} }{ 8\Delta^4 } + \cdots \right) \right] \notag \\
+		&= - \frac{ N K^2_{12} }{ 2\Delta } + \frac{ N^2 K^4_{12} }{ 8\Delta^3 } + \cdots
+	\end{align}
+	
+	\end{itemize}		
+	
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -442,7 +639,27 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-15 so
+	
+	\begin{equation}
+		\langle \Psi_0 | \Phi_0 \rangle = \frac{1}{(1+c^2)^{N/2}} \prod_{ i=1 }^N \prod_{ j=1 }^N \left[ \langle 1_i \bar{1}_i | 1_j \bar{1}_j \rangle + \langle 1_i \bar{1}_i | 2_j \bar{2}_j \rangle \right] = \frac{1}{(1+c^2)^{N/2}} \prod_{ i=1 }^N \prod_{ j=1 }^N \delta_{ij} = \frac{1}{(1+c^2)^{N/2}}
+	\end{equation}
+	
+	\[
+		c = \frac{ ^N E_\corr }{ K_{12} } = \frac{ N }{ K_{12} } \left[ \Delta - \sqrt{ \Delta^2 + K^2_{12} } \right]
+	\]
+
+	\begin{minipage}{\textwidth}
+    \centering
+    \captionsetup{type=table}
+    \captionof{table}{A caption for the table.}
+    \begin{tabular}{c|c} \hline
+		N & $\langle \Psi_0 | \Phi_0 \rangle$ \\ \hline
+		1 & 0.9936 \\
+		10 & 0.0160 \\
+		100 & $2.22\times10^{-106}$ \\ \hline
+	\end{tabular}
+	\end{minipage}
+
 	\end{solution}
 	
 \end{document}
