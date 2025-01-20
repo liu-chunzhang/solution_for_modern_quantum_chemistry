@@ -1,0 +1,39 @@
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lol
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.ps
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.upa
+*.upb
+*.vrb
+
+# LaTeX Editors
+*~ 
+.tim~
+.mswpback
+
+# LaTeX - specific to TeXShop
+/auto/
+*.pdfsync
+
+# LaTeX - specific to Kile
+*.backup
