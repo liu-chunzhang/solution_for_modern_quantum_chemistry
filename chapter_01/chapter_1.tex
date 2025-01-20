@@ -254,7 +254,34 @@
 	\end{exercise}
 	
 	\begin{solution}
-		1-5 so
+	
+	Note that for a general determinant $\det{\A}$,
+	\[
+		\det{\A} = | \A | = \sum_{i=1}^{N!} (-1)^{p_i} \mathscr{P}_i A_{11} A_{22} \cdots A_{NN} = \sum_{i=1}^{N!} (-1)^{p_i} A_{1 i_1} A_{2 i_2} \cdots A_{N i_N}. 
+	\]
+	
+	\begin{enumerate}
+	
+	\item[a.] With the definition of the determinants, for a general determinant $\det{\A}$,
+	\[
+		\det{\A} = | \A | = \sum_{i=1}^{N!} (-1)^{p_i} \mathscr{P}_i A_{11} A_{22} \cdots A_{NN},
+	\]
+	it is clear that if each element in a row or in a column is zero, viz., $A_{ij} = 0, \forall j \in \{1,2,\cdots,N\}$ for a given $i$ or $A_{ij} = 0, \forall i \in \{1,2,\cdots,N\}$ for a given $j$, the value of the determinant is zero.
+	
+	\item[b.] Similarly, from the definition, it is obvious that only one of $N!$ terms contribute and it is $A_{11} A_{22} \cdots A_{NN}$, thus at this time,
+	\[
+		| \A | = A_{11} A_{22} \cdots A_{NN} = \prod_i A_{ii}.
+	\]
+	
+	\item[c.] From the definition, we know that the sign of a term in a determinant is determined by the parity of its permutation operator $\mathscr{P}_i$. If we swap any two rows (or columns), the parity of all terms will be changed to the other side. Thus, a single intercharge of any two rows (or columns) of a determinant changes its sign.
+	
+	\item[d.] From the definition,
+	\[
+		| \A^\dagger |^* = \left( \sum_{i=1}^{N!} (-1)^{p_i} \mathscr{P}_i A_{11} A_{22} \cdots A_{NN} \right)^* = \left( \sum_{i=1}^{N!} (-1)^{p_i} A^\dagger_{1 i_1} A^\dagger_{2 i_2} \cdots A^\dagger_{N i_N} \right)^* = 
+	\]	
+	
+	\end{enumerate}		
+	
 	\end{solution}
 	
 	\begin{exercise}
