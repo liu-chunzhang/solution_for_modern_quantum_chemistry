@@ -66,10 +66,11 @@
 \newcommand\tr[1]{\mathrm{tr(#1)}}
 \newcommand\Tr[3]{#1\mathrm\#2#3}
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
-\renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+\renewcommand\det[1]{{\rm det}\left(#1\right)}
 \newcommand{\HF}{{\rm HF}}
 \newcommand{\corr}{{\rm corr}}
 \newcommand{\DCI}{{\rm DCI}}
+\newcommand{\heff}{h_{\rm eff}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
@@ -117,7 +118,27 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-1 so
+	
+	\begin{enumerate}
+	
+	\item[a.] 
+	\begin{equation}
+		E_\corr ({\rm FO}) = \sum_{ \substack{ a<b \\ r<s } } \frac{ | \langle ab || rs \rangle |^2 }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{ | \langle 1 \bar{1} || 2 \bar{2} \rangle |^2 }{ \varepsilon_1 + \varepsilon_{\bar{1}} - \varepsilon_2 - \varepsilon_{\bar{2}} } = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) }
+	\end{equation}
+		
+	\item[b.]
+	\[
+		{}^1 E_\corr = \Delta \left[ 1 - \sqrt{ 1 + \frac{ K^2_{12} }{ \Delta^2 } } \right] = \Delta \left[ 1 - \left( 1 + \frac{ K^2_{12} }{ 2\Delta^2 } + \cdots \right) \right] = - \frac{ K^2_{12} }{ 2\Delta } + \cdots
+	\]
+	
+	$\Delta = \varepsilon_2 - \varepsilon_1$,
+	
+	\begin{equation}
+		{}^1 E_\corr ({\rm FO}) = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) }.
+	\end{equation}
+	
+	\end{enumerate}		
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -125,7 +146,23 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-2 so
+	
+	\[
+		K_{12} c^{2_i \bar{2}_i}_{1_i \bar{1}_i} = e_{1_i \bar{1}_i }
+	\]
+	
+	\[
+		K_{12} + \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} - E_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle = e_{ 1_i \bar{1}_i } c^{2_i \bar{2}_i}_{1_i \bar{1}_i}
+	\]
+	
+	\[
+		h_{11} = \varepsilon_1 - J_{11} , \quad h_{22} = \varepsilon_2 - 2 J_{12} + K_{12}
+	\]
+	
+	\[
+		\langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} - E_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle = 2 \Delta
+	\]
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -133,7 +170,15 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-3 so
+	
+	\[
+		| \langle 1_1 \bar{1}_1 || 1_2 \bar{1}_2 \rangle |^2 = K^2_{12}, \quad | \langle 1_1 \bar{1}_1 || 2_2 \bar{2}_2 \rangle |^2 = 0, \quad | \langle 1_2 \bar{1}_2 || 2_2 \bar{2}_2 \rangle |^2 = K^2_{12}, \quad | \langle 1_2 \bar{1}_2 || 2_1 \bar{2}_1 \rangle |^2 = 0.
+	\]
+	
+	\begin{equation}
+		E_\corr( {\rm FO}, 2\ce{H2} ) = \frac{ K^2_{12} }{ \varepsilon_1 + \varepsilon_1 - \varepsilon_2 - \varepsilon_2 } + \frac{ K^2_{12} }{ \varepsilon_1 + \varepsilon_1 - \varepsilon_2 - \varepsilon_2 } = - \frac{ K^2_{12} }{ \varepsilon_2 - \varepsilon_1 } = 2 E_\corr( {\rm FO},\ce{H2} )
+	\end{equation}
+	
 	\end{solution}
 	
 	\subsection{Invariance under Unitary Transformations: An Example}
@@ -146,7 +191,13 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-4 so
+	
+	\begin{align*}
+		| a \bar{a} b \bar{b} \rangle &= \frac{1}{ \sqrt{2} } \left( | 1_1 \bar{a} b \bar{b} \rangle + | 1_2 \bar{a} b \bar{b} \rangle \right) = \frac{1}{2} \left( | 1_1 \bar{a} 1_1 \bar{b} \rangle - | 1_1 \bar{a} 1_2 \bar{b} \rangle \right) + \frac{1}{2} \left( | 1_2 \bar{a} 1_1 \bar{b} \rangle - | 1_2 \bar{a} 1_2 \bar{b} \rangle  \right) \\
+		&= \frac{1}{2} \left( | 1_2 \bar{a} 1_1 b \rangle - | 1_1 \bar{a} 1_2 \bar{b} \rangle \right) = -\frac{1}{4} | 1_2 \bar{1}_1 1_1 \bar{1}_2 \rangle + \frac{1}{4} | 1_2 \bar{1}_2 1_1 \bar{1}_1 \rangle + \frac{1}{4} | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle - \frac{1}{4} | 1_1 \bar{1}_2 1_2 \bar{1}_1 \rangle \\
+		&= | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle
+	\end{align*}
+			
 	\end{solution}
 	
 	\begin{exercise}
@@ -154,7 +205,53 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-5 so
+	
+	\[
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle = \langle \Psi_0 | \mathscr{H} | \left( \frac{1}{ \sqrt{2} } | \Psi^{ r \bar{r} }_{ a \bar{a} } \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ s \bar{s} }_{ a \bar{a} } \rangle \right) = \frac{1}{ \sqrt{2} } \langle a \bar{a} || r \bar{r} \rangle + \frac{1}{ \sqrt{2} } \langle a \bar{a} || s \bar{s} \rangle = \frac{1}{ \sqrt{2} } K_{ar} + \frac{1}{ \sqrt{2} } K_{as} = \frac{ K_{12} }{ \sqrt{2} }
+	\]
+	
+	\[
+		E_0 = \langle \Psi_0 | \mathscr{H} | \Psi_0 \rangle = \langle \Psi_0 | \mathscr{O}_1 | \Psi_0 \rangle + \langle \Psi_0 | \mathscr{O}_2 | \Psi_0 \rangle
+	\]
+	
+	\[
+		\langle \Psi_0 | \mathscr{O}_1 | \Psi_0 \rangle = \langle a | h | a \rangle + \langle \bar{a} | h | \bar{a} \rangle + \langle b | h | b \rangle + \langle \bar{b} | h | \bar{b} \rangle = 4 h_{11}
+	\]
+	
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{O}_2 | \Psi_0 \rangle &= \langle a \bar{a} || a \bar{a} \rangle + \langle ab || ab \rangle + \langle a \bar{b} || a \bar{b} \rangle + \langle \bar{a} b || \bar{a} b \rangle + \langle \bar{a} \bar{b} || \bar{a} \bar{b} \rangle + \langle b \bar{b} || b \bar{b} \rangle \\
+		&= J_{aa} + \left( J_{ab} - K_{ab} \right) + J_{ab} + J_{ab} + \left( J_{ab} - K_{ab} \right) + J_{bb} = 2 J_{11}
+	\end{align*}
+	
+	\[
+		\langle \Psi^{**}_{a \bar{a}} | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle = \frac{1}{2} \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{a \bar{a}} \rangle + \frac{1}{2} \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle + \frac{1}{2} \langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{a \bar{a}} \rangle + \frac{1}{2} \langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle 
+	\]
+	
+	\[
+		\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{a \bar{a}} \rangle = \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{O}_1 | \Psi^{r \bar{r}}_{a \bar{a}} \rangle + \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{O}_2 | \Psi^{r \bar{r}}_{a \bar{a}} \rangle
+	\]
+	
+	\[
+		\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{O}_1 | \Psi^{r \bar{r}}_{a \bar{a}} \rangle = \langle r | h | r \rangle + \langle \bar{r} | h | \bar{r} \rangle + \langle b | h | b \rangle + \langle \bar{b} | h | \bar{b} \rangle = 2 h_{11} + 2h_{22}
+	\]
+	
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{O}_2 | \Psi_0 \rangle &= \langle r \bar{r} || r \bar{r} \rangle + \langle rb || rb \rangle + \langle r \bar{b} || r \bar{b} \rangle + \langle \bar{r} b || \bar{r} b \rangle + \langle \bar{r} \bar{b} || \bar{r} \bar{b} \rangle + \langle b \bar{b} || b \bar{b} \rangle \\
+		&= J_{rr} + \left( J_{rb} - K_{rb} \right) + J_{rb} + J_{rb} + \left( J_{rb} - K_{rb} \right) + J_{bb} = \frac{1}{2} J_{11} + \frac{1}{2} J_{12} + 2 J_{12} - K_{12}
+	\end{align*}
+	
+	\[
+		\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle = \frac{1}{2} J_{22}
+	\]	
+	
+	\[
+		\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} - E_0 | \Psi^{r \bar{r}}_{a \bar{a}} \rangle = 2 h_{22} - 2 h_{11} + \frac{1}{2} J_{22} - \frac{3}{2} J_{22} + 2 J_{12} - K_{12} = 2( \varepsilon_2 - \varepsilon_1 ) + \frac{1}{2} J_{22} + \frac{1}{2} \left( J_{11} - 4J_{12} + 2K_{12} \right)
+	\]
+	
+	\begin{equation}
+		\langle \Psi^{**}_{a \bar{a}} | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{a}} \rangle = 2( \varepsilon_2 - \varepsilon_1 ) + J_{22} + \frac{1}{2} \left( J_{11} - 4J_{12} + 2K_{12} \right) \equiv 2 \Delta^\prime.
+	\end{equation}
+		
 	\end{solution}
 	
 	\begin{exercise}
@@ -162,7 +259,20 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-6 so
+	
+	\begin{align*}
+		e_{a \bar{b}} &= \langle \Psi_0 | \mathscr{H} | \Psi^{**}_{ab} \rangle = \langle \Psi_0 | \mathscr{H} | \frac{1}{ \sqrt{2} } \left( |\Psi^{r\bar{s}}_{ab} \rangle + |\Psi^{s\bar{r}}_{ab} \rangle \right) \\
+		&= \frac{1}{ \sqrt{2} } \left( \langle a \bar{b} || r \bar{s} \rangle + \langle a \bar{b} || s \bar{r} \rangle \right) = \frac{ K_{12} }{ \sqrt{2} }
+	\end{align*}
+	
+	\[
+		\langle \Psi^{**}_{a \bar{b}} | \mathscr{H} | \Psi^{**}_{a \bar{b}} \rangle = 2 h_{11} + 2 h_{22} + \frac{1}{2} J_{11} + 2 J_{12} + J_{22} - K_{12} 
+	\]
+	
+	\[
+		\langle \Psi^{**}_{a \bar{b}} | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{b}} \rangle = 2 h_{22} - 2 h_{11} + J_{22} - \frac{3}{2} J_{11} + 2 J_{12} - K_{12} = 2 \Delta^\prime
+	\]
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -205,7 +315,17 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-8 so
+	
+	\begin{align*}
+	^2 E_\corr( {\rm FO}(D) ) &= \frac{ | \langle a \bar{a} || r \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle a \bar{a} || s \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{a} || r \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{a} || s \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{r}} } \\
+	&\hspace{2em} + \frac{ | \langle b \bar{b} || r \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle b \bar{b} || s \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{b} || r \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{b} || s \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{r}} } \\
+	&\hspace{2em} + \frac{ | \langle a \bar{b} || r \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle a \bar{b} || s \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{b} || r \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{b} || s \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{r}} } \\
+	&\hspace{2em} + \frac{ | \langle b \bar{a} || r \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle b \bar{a} || s \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{a} || r \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{a} || s \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{r}} } \\
+	&= \frac{1}{2(\varepsilon_1 - \varepsilon_2)} \left[ \frac{1}{4} K^2_{12} + \frac{1}{4} K^2_{12} + 0 + 0 + \frac{1}{4} K^2_{12} + \frac{1}{4} K^2_{12} + 0 + 0 \right. \\
+	&\hspace{2em} \left. + 0 + 0 + \frac{1}{4} K^2_{12} + \frac{1}{4} K^2_{12} + 0 + 0 + \frac{1}{4} K^2_{12} + \frac{1}{4} K^2_{12} \right] \\
+	&= \frac{ K^2_{12} }{ \varepsilon_1 - \varepsilon_2 } = 2 \left( \frac{ K^2_{12} }{ 2 ( \varepsilon_1 - \varepsilon_2 ) } \right)
+	\end{align*}		
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -403,7 +523,30 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-16 so
+	
+	\[
+		H = \begin{pmatrix}
+		\alpha	& \beta	&	0	&	0	&	0	& \beta \\
+		\beta	& \alpha& \beta & 	0	& 	0 	& 0   	\\
+		0		& \beta	& \alpha& \beta	& 	0 	& 0   	\\
+		0		&	0	& \beta	& \alpha& \beta	& 0   	\\
+		0		&	0	& 	0	& \beta	& \alpha& \beta	\\
+		\beta	&	0	& 	0	&	0	& \beta	& \alpha
+		\end{pmatrix}
+	\]	
+	
+	\[
+		\det{H - \varepsilon I} = ( \alpha - \varepsilon - 2\beta ) ( \alpha - \varepsilon - \beta )^2 ( \alpha - \varepsilon + \beta )^2 ( \alpha - \varepsilon + 2\beta ) = 0
+	\]	
+	
+	\[
+		\varepsilon_1 = \alpha + 2 \beta , \quad \varepsilon_2 = \varepsilon_3 = \alpha + \beta , \quad \varepsilon_4 = \varepsilon_5 = \alpha - \beta , \quad \varepsilon_6 = \alpha - 2 \beta .
+	\]
+	
+	\begin{equation}
+		E = \sum_{i=1}^3 \varepsilon_i = 6 \alpha + 8 \beta
+	\end{equation}
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -411,7 +554,23 @@
 	\end{exercise}
 	
 	\begin{solution}
-		5-17 so
+	
+	\begin{align*}
+		\langle i | j \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \phi_{2j-1} \rangle + \langle \phi_{2i-1} | \phi_{2j} \rangle + \langle \phi_{2i} | \phi_{2j-1} \rangle + \langle \phi_{2i} | \phi_{2j} \rangle \right] = \delta_{ij}, \\
+		\langle i^* | j^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \phi_{2j-1} \rangle - \langle \phi_{2i-1} | \phi_{2j} \rangle - \langle \phi_{2i} | \phi_{2j-1} \rangle + \langle \phi_{2i} | \phi_{2j} \rangle \right] = \delta_{ij}, \\
+		\langle i | j^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \phi_{2j-1} \rangle - \langle \phi_{2i-1} | \phi_{2j} \rangle + \langle \phi_{2i} | \phi_{2j-1} \rangle - \langle \phi_{2i} | \phi_{2j} \rangle \right] = 0, \\
+		\langle i^* | j \rangle &= ( \langle i | j^* \rangle )^* = 0^* = 0 , \\
+		\langle i | \heff | i-1 \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-3} \rangle + \langle \phi_{2i-1} | \heff | \phi_{2i-2} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-3} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-2} \rangle \right] = \frac{1}{2} \beta , \\
+		\langle i | \heff | i \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-1} \rangle + \langle \phi_{2i-1} | \heff | \phi_{2i} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i} \rangle \right] = \alpha + \beta , \\
+		\langle i | \heff | i+1 \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i+1} \rangle + \langle \phi_{2i-1} | \heff | \phi_{2i+2} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+2} \rangle \right] = \frac{1}{2} \beta , \\
+		\langle i^* | \heff | (i-1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-3} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i-2} \rangle - \langle \phi_{2i} | \heff | \phi_{2i-3} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-2} \rangle \right] = -\frac{1}{2} \beta , \\
+		\langle i^* | \heff | i^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-1} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i} \rangle - \langle \phi_{2i} | \heff | \phi_{2i-1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i} \rangle \right] = \alpha - \beta , \\
+		\langle i^* | \heff | (i+1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i+1} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i+2} \rangle - \langle \phi_{2i} | \heff | \phi_{2i+1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+2} \rangle \right] = -\frac{1}{2} \beta , \\
+		\langle i | \heff | (i-1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-3} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i-2} \rangle - \langle \phi_{2i} | \heff | \phi_{2i-3} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-2} \rangle \right] = - \frac{1}{2} \beta , \\
+		\langle i | \heff | i^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-1} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i} \rangle - \langle \phi_{2i} | \heff | \phi_{2i-1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i} \rangle \right] = \alpha - \beta , \\
+		\langle i | \heff | (i+1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i+1} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i+2} \rangle - \langle \phi_{2i} | \heff | \phi_{2i+1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+2} \rangle \right] = \frac{1}{2} \beta , \\
+	\end{align*}		
+	
 	\end{solution}
 	
 	\begin{exercise}
