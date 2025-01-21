@@ -79,6 +79,7 @@
 \newcommand{\I}{{\bf 1}}
 \newcommand{\U}{{\bf U}}
 \newcommand{\Op}{{\bf O}}
+\newcommand{\h}{{\bf h}}
 
 \titleformat{\chapter}[display]
   {\bfseries\Large}
@@ -105,22 +106,25 @@
 	
 	\begin{solution}
 	
-	Due to
-	\[
-		\langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle \neq 0 \Leftrightarrow t = r , a = c \cap r = u , a = d \cap r = v , a = e,
-	\]	
-	therefore,
+%	Due to
+%	\[
+%		\langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle \neq 0 \Leftrightarrow t = r , a = c \cap r = u , a = d \cap r = v , a = e,
+%	\]	
+%	therefore,
 	% \[
 	%	\langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle = \langle \Psi^r_a | \mathscr{H} | \Psi^{ruv}_{ade} \rangle \delta_{rt} \delta_{ac} + \sum_{ \substack{c<a<e \\ t<r<v} } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{cae} \rangle + \sum_{ \substack{c<d<a \\ t<u<r} } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle
 	%\]
 	%	
 	\begin{align}
 		&\hspace{1.4em}\sum_{ \substack{ c<d<e \\ t<u<v} } \langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle c^{tuv}_{cde} = \frac{1}{\left(3!\right)^2} \sum_{ \substack{ cde \\ tuv} } \langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle c^{tuv}_{cde} \notag \\
-		&= \frac{1}{\left(3!\right)^2}  \left[ \sum_{ \substack{ de \\ uv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{ruv}_{ade} \rangle c^{ruv}_{ade} + \sum_{ \substack{ ce \\ tv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{cae} \rangle c^{trv}_{cae} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle c^{tur}_{cda} \right. \notag \\
-		&\hspace{2em} + \sum_{ \substack{ de \\ tv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{ade} \rangle c^{trv}_{ade}  \\
-		&= \frac{1}{\left(3!\right)^2} \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tru}_{cad} \rangle c^{tru}_{cad} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle c^{tur}_{cda} \notag \\		
+		&= \frac{1}{\left(3!\right)^2}  \left[ \sum_{ \substack{ de \\ uv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{ruv}_{ade} \rangle c^{ruv}_{ade} + \sum_{ \substack{ de \\ tv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{ade} \rangle c^{trv}_{ade} + \sum_{ \substack{ de \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{ade} \rangle c^{tur}_{ade} \right. \notag \\
+		&\hspace{ 6em } \left. + \sum_{ \substack{ ce \\ uv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{ruv}_{cae} \rangle c^{ruv}_{cae} + \sum_{ \substack{ ce \\ tv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{cae} \rangle c^{trv}_{cae} + \sum_{ \substack{ ce \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cae} \rangle c^{tur}_{cae} \right. \notag \\
+		&\hspace{ 6em } \left. + \sum_{ \substack{ cd \\ uv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{ruv}_{cda} \rangle c^{ruv}_{cda} + \sum_{ \substack{ cd \\ tv } } \langle \Psi^r_a | \mathscr{H} | \Psi^{trv}_{cda} \rangle c^{trv}_{cda} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle c^{tur}_{cda} \right] \notag \\
+		&= \frac{1}{\left(3!\right)^2}  \left[ \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tru}_{acd} \rangle c^{tru}_{acd} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{acd} \rangle c^{tur}_{acd} \right. \notag \\
+		&\hspace{ 6em } + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{cad} \rangle c^{rtu}_{cad} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tru}_{cad} \rangle c^{tru}_{cad} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cad} \rangle c^{tur}_{cad} \notag \\
+		&\hspace{ 6em } \left. + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{cda} \rangle c^{rtu}_{cda} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tru}_{cda} \rangle c^{tru}_{cda} + \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tur}_{cda} \rangle c^{tur}_{cda} \right] \notag \\
+		&= \frac{1}{\left(3!\right)^2} \times 9 \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd} = \frac{1}{\left(2!\right)^2} \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd} = \sum_{ \substack{ c<d \\ t<u } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd}
 	\end{align}
-	
 	
 	\end{solution}
 	
@@ -159,7 +163,83 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-3 so
+	
+	When $R$ = 1.4. $\au$, 
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.5782\,\au$, & $\varepsilon_2 = 0.6703\, \au$, & $J_{11} = 0.6746\,\au$, \\
+		$J_{12} = 0.6636\,\au$, & $J_{22} = 0.6975\,\au$, & $K_{12} = 0.1813\,\au$
+	\end{tabular}
+	\end{center}
+	
+	\[
+		\Delta = \frac{1}{2} \left[ 2( \varepsilon_2 - \varepsilon_1 ) + J_{11} + J_{22} - 4J_{12} + 2K_{12} \right] = 0.7886 \, \au
+	\]
+	
+	\[
+		E_{1,2} = \Delta \pm \sqrt{ \Delta^2 + K^2_{12} }
+	\]
+	
+	\[
+		E_\corr = \Delta - \sqrt{ \Delta^2 + K^2_{12} } = -0.0206 \, \au.
+	\]
+	
+	\[
+		c = \frac{ E_\corr }{ K_{12} } = -0.1135
+	\]		
+	
+	\[
+		\lim_{ R \rightarrow \infty} \Delta = \frac{1}{2} \lim_{ R \rightarrow \infty} \left[ h_{22} - h_{11} + J_{22} - J_{11} \right] = 0.
+	\]
+	
+	\[
+		\lim_{ R \rightarrow \infty } c = \lim_{ R \rightarrow \infty } \frac{ E_\corr }{ K_{12} } = \lim_{ R \rightarrow \infty } \frac{ \Delta - \sqrt{ \Delta^2 + K^2_{12} } }{ K_{12} } = \lim_{ R \rightarrow \infty } \left[ \frac{ \Delta }{ K_{12} } - \sqrt{ \left( \frac{ \Delta }{ K_{12} } \right)^2 + 1 } \right] = -1
+	\]
+	
+	When $R \rightarrow \infty$, 
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.0793 \,\au$, & $\varepsilon_2 = -0.0793 \,\au$, & $J_{11} = 0.3873 \,\au$, \\
+		$J_{12} = 0.3873 \,\au$, & $J_{22} = 0.3873 \,\au$, & $K_{12} = 0.3873\,\au$
+	\end{tabular}
+	\end{center}
+	
+	\[
+		\lim_{ R \rightarrow \infty} \Delta = 0, \quad \lim_{ R \rightarrow \infty } c = -1.
+	\]
+	
+	\[
+		\lim_{ R \rightarrow \infty} | \Phi_0 \rangle = | \Psi_0 \rangle - | \Psi^{2 \bar{2}}_{1 \bar{1}} \rangle
+	\]
+	
+	\[
+		| \Psi_0 \rangle = | \psi_1 \bar{\psi}_1 \rangle, \quad | \Psi^{2 \bar{2}}_{1 \bar{1}} \rangle = | \psi_2 \bar{\psi}_2 \rangle
+	\]
+	
+	\[
+		\psi_1 = c_1 ( \phi_1 + \phi_2 ), \quad \psi_2 = c_2 ( \phi_1 - \phi_2 )
+	\]
+	
+	\[
+		c_1 = \frac{1}{ \sqrt{ 2( 1+S_{12} ) } }, \quad c_2 = \frac{1}{ \sqrt{ 2( 1-S_{12} ) } },
+	\]
+	
+	\[
+		| \Phi_0 \rangle = c^2_1 \left[ | \phi_1 \bar{\phi}_1 \rangle + | \phi_1 \bar{\phi}_2 \rangle + | \bar{\phi}_2 \phi_1 \rangle + | \bar{\phi}_2 \phi_2 \rangle \right] - c^2_2 \left[ | \phi_1 \bar{\phi}_1 \rangle - | \phi_1 \bar{\phi}_2 \rangle + | \bar{\phi}_2 \phi_1 \rangle - | \bar{\phi}_2 \phi_2 \rangle \right]
+	\]
+	
+	\[
+		\lim_{R \rightarrow \infty} S_{12} = 0 \Rightarrow \lim_{R \rightarrow \infty} c_1 = \lim_{R \rightarrow \infty} \frac{1}{ \sqrt{ 2( 1+S_{12} ) } } = \frac{1}{ \sqrt{2} }, \quad \lim_{R \rightarrow \infty} c_2 = \lim_{R \rightarrow \infty} \frac{1}{ \sqrt{ 2( 1-S_{12} ) } } = \frac{1}{ \sqrt{2} },
+	\]
+	
+	\[
+		\lim_{R \rightarrow \infty} | \Phi_0 \rangle = \lim_{R \rightarrow \infty} | \Psi_0 \rangle - | \Psi^{2 \bar{2}}_{1 \bar{1}} \rangle = \lim_{R \rightarrow \infty} | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle
+	\]
+	
+	\[
+		\lim_{R \rightarrow \infty} | \Phi \rangle = \lim_{R \rightarrow \infty} \frac{1}{ \langle \Phi_0 | \Phi_0 \rangle } | \Phi_0 \rangle = \frac{1}{ \sqrt{2} } \left[ | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle \right] 
+	\]
+	
 	\end{solution}
 	
 	\section{Doubly Excited CI}
@@ -173,7 +253,18 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-4 so
+
+	\begin{align*}
+		\gamma^*( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) &= \left( N \int_{\mathbb{R}^3} \dif \boldsymbol{x}_2 \cdots \int_{\mathbb{R}^3} \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) \right)^* \\
+		&= N \int_{\mathbb{R}^3} \dif \boldsymbol{x}_2 \cdots \int_{\mathbb{R}^3} \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) = \gamma( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_1 )
+	\end{align*}
+	
+	\begin{align*}
+		\gamma^*_{ji} &= \left( \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}^\prime_1 \chi^*_j( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_i( \boldsymbol{x}^\prime_1 ) \right)^* = \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}^\prime_1 \chi^*_i( \boldsymbol{x}^\prime_1 ) \gamma^*( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_j( \boldsymbol{x}_1 ) \\
+		&= \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}^\prime_1 \chi^*_i( \boldsymbol{x}^\prime_1 ) \gamma( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_1 ) \chi_j( \boldsymbol{x}_1 ) = \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \chi^*_i( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_j( \boldsymbol{x}^\prime_1 ) = \gamma_{ij}
+	\end{align*}
+	Thus, we have proved that $\gamma$ is a Hermitian matrix.
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -181,7 +272,12 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-5 so
+	
+	\begin{align*}
+		N &= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \rho( \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1  ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \sum_{ i=1 }^N \sum_{ j=1 }^N \chi_i( \boldsymbol{x}_1 ) \gamma_{ij} \chi^*_j( \boldsymbol{x}_1 ) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \chi_i( \boldsymbol{x}_1 )  \chi^*_j( \boldsymbol{x}_1 ) = \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \delta_{ij} = \sum_{ i=1 }^N \gamma_{ii} = \tr\gamma.
+	\end{align*}
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -212,7 +308,33 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-6 so
+	
+	\begin{itemize}
+	
+	\item[a.]
+	
+	\begin{align*}
+		\langle \Phi | \vartheta_1 | \Phi \rangle &= \langle \Phi | \sum_{ i=1 }^N h(i) | \Phi \rangle = \sum_{ i=1 }^N \langle \chi_i | h | \chi_i \rangle = \sum_{ i=1 }^N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \chi^*_i( \boldsymbol{x}_1 ) h( \boldsymbol{x}_1 ) \chi_i( \boldsymbol{x}_1 )  \\
+		&=\int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1  h( \boldsymbol{x}_1 ) \sum_{ i=1 }^N \chi^*_i( \boldsymbol{x}_1 ) \chi_i( \boldsymbol{x}_1 )
+	\end{align*}
+	
+	\begin{align*}
+		\langle \Phi | \vartheta_1 | \Phi \rangle &= \langle \Phi | \sum_{ i=1 }^N h(i) | \Phi \rangle \\
+		&= \sum_{ i=1 }^N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) h( \boldsymbol{x}_i ) \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) h( \boldsymbol{x}_1 ) \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \times N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \rho( \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \left[ h( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \right]_{ \boldsymbol{x}^\prime_1 = \boldsymbol{x}_1 }
+	\end{align*}
+	
+	\item[b.] 
+	
+	\begin{align*}
+		\langle \Phi | \vartheta_1 | \Phi \rangle &= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \sum_{ i=1 }^N \sum_{ j=1 }^N \chi_i( \boldsymbol{x}_1 ) \gamma_{ij} \chi^*_j( \boldsymbol{x}_1 ) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \chi_i( \boldsymbol{x}_1 ) h( \boldsymbol{x}_1 ) \chi^*_j( \boldsymbol{x}_1 ) = \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} h_{ji} = \tr{\gamma \h} = \tr{\h \gamma} 
+	\end{align*}
+		
+	\end{itemize}		
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -233,7 +355,40 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-7 so
+	
+	\begin{itemize}
+	
+	\item[a.]
+	
+	\begin{align*}
+		\gamma_{ij} &= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}^\prime_1 \chi^*_i( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_j( \boldsymbol{x}^\prime_1 ) \\
+		&= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}^\prime_1 \chi^*_i( \boldsymbol{x}_1 ) \chi_j( \boldsymbol{x}^\prime_1 ) \times N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}^\prime_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \chi^*_i( \boldsymbol{x}_1 ) \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}^\prime_1 \chi_j( \boldsymbol{x}^\prime_1 ) \Phi^*( \boldsymbol{x}^\prime_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+	\end{align*}
+	
+	\begin{align*}
+		&\hspace{1.4em} \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \chi^*_i( \boldsymbol{x}_1 ) \\
+		&= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \frac{1}{ \sqrt{N!} } \sum_{n=1}^{N!} (-1)^{p_n} \mathscr{P}_n \chi_k( \boldsymbol{x}_1 ) \chi_l( \boldsymbol{x}_2 ) \cdots \chi_m( \boldsymbol{x}_N ) \chi^*_i( \boldsymbol{x}_1 ) \\
+		&= \frac{1}{ \sqrt{N!} } \sum_{n=1}^{N!} (-1)^{p_n} \mathscr{P}_n \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1  \chi_k( \boldsymbol{x}_1 ) \chi_l( \boldsymbol{x}_2 ) \cdots \chi_m( \boldsymbol{x}_N ) \chi^*_i( \boldsymbol{x}_1 ) \\
+		&= \frac{1}{ \sqrt{N!} } \sum_{n=1}^{N!} (-1)^{p_n} \mathscr{P}_n \chi_l( \boldsymbol{x}_2 ) \cdots \chi_m( \boldsymbol{x}_N ) \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \chi_k( \boldsymbol{x}_1 ) \chi^*_i( \boldsymbol{x}_1 ) \\
+		&= \frac{1}{ \sqrt{N!} } \sum_{n_1=1}^{N!} (-1)^{p_{n_1}} \mathscr{P}_{n_1} \chi_l( \boldsymbol{x}_2 ) \cdots \chi_m( \boldsymbol{x}_N ) \delta_{ki}  \\
+		&= \frac{1}{ \sqrt{N} } \delta_{ki} \frac{1}{ \sqrt{(N-1)!} } \sum_{n_1=1}^{(N-1)!} (-1)^{p_{n_1}} \mathscr{P}_{n_1} \chi_l( \boldsymbol{x}_2 ) \cdots \chi_m( \boldsymbol{x}_N ) \\
+		&= \frac{1}{ \sqrt{N} } a_i \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N )
+	\end{align*}
+	
+	\begin{align*}
+		\int_{ \mathbb{R}^3 } \dif \boldsymbol{x}^\prime_1 \chi_j( \boldsymbol{x}^\prime_1 ) \Phi^*( \boldsymbol{x}^\prime_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) &= \frac{1}{ \sqrt{N} } a_j \Phi^*( \boldsymbol{x}^\prime_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) 
+	\end{align*}
+		
+	\begin{align*}
+		\gamma_{ij} &= N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \frac{1}{ \sqrt{N} } a_j \Phi^*( \boldsymbol{x}^\prime_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \frac{1}{ \sqrt{N} } a_i \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N  \Phi^*( \boldsymbol{x}^\prime_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) a^\dagger_j a_i \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= \langle \Phi | a^\dagger_j a_i | \Phi \rangle
+	\end{align*}
+	
+	
+	\end{itemize}		
+	
 	\end{solution}
 	
 	\begin{exercise}
@@ -284,7 +439,40 @@
 	\end{exercise}
 	
 	\begin{solution}
-		4-8 so
+	
+	\[
+		| ^1 \Phi_0 \rangle = c_0 | 1 \bar{1} \rangle + \sum_{r=2}^K c^r_1 | ^1 \Phi^r_s \rangle + \frac{1}{2} \sum_{r=2}^K \sum_{s=2}^K c^{rs}_{11} | ^1 \Phi^{rs}_{11} \rangle 
+	\]	
+	
+	\begin{enumerate}
+	
+	\item[a.] 
+	
+	\begin{align*}
+		| ^1 \Phi^r_s \rangle &= \frac{ 1 }{ \sqrt{2} } \left( | \Psi^{ \bar{r} }_{ \bar{1} } \rangle + | \Psi^r_1 \rangle \right) = \frac{ 1 }{ \sqrt{2} } \left( | 1 \bar{r} \rangle + | r \bar{1} \rangle \right) \\
+		| ^1 \Phi^{rr}_{11} \rangle &= | r \bar{r} \rangle \\
+		| ^1 \Phi^{rs}_{11} \rangle &= \frac{ 1 }{ \sqrt{2} } \left( | r \bar{s} \rangle - | \bar{r} s \rangle \right) = \frac{ 1 }{ \sqrt{2} } \left( | r \bar{s} \rangle + | s \bar{r} \rangle \right) \\
+	\end{align*}
+	
+	\begin{align*}
+		| ^1 \Phi_0 \rangle = c_0 | 1 \bar{1} \rangle + \sum_{r=2}^K c^r_1 \frac{1}{ \sqrt{2} } \left( | 1 \bar{r} \rangle + | r \bar{1} \rangle \right) + \frac{1}{2} \sum_{r=2}^K c^{rr}_{11} | r \bar{r} \rangle + \frac{1}{2} \sum_{r=2}^K \sum_{ \substack{ s=2 \\ s \neq r } }^K c^{rs}_{11} \frac{ 1 }{ \sqrt{2} } \left( | r \bar{s} \rangle + | s \bar{r} \rangle \right)
+	\end{align*}
+	
+	\begin{equation}
+		c_{11} = c_0 , \quad c_{r1} = c_{1r} = \frac{ c^r_1 }{ \sqrt{2} }, \quad c_{rr} = \frac{ c^{rr}_{11} }{ 2 }, \quad c_{ij} = \frac{ c^{ij}_{11} + c^{ji} }{ 2 },
+	\end{equation}
+	
+	\[
+		c_{ij} = c_{ji} \, \forall i, j = 1,2,\cdots, K.
+	\]
+	
+	\item[b.] dsg
+		
+	\end{enumerate}
+	
+	
+	
+	
 	\end{solution}
 	
 	\section{The Multiconfiguration Self-Consistent Field (MCSCF) and \texorpdfstring{\\}- Generalized Valence Bond (GVB) Methods}
