@@ -101,6 +101,7 @@
 	
 	\subsection{Intermediate Normalization and an Expression for the Correlation Energy}
 	
+	% 4.1
 	\begin{exercise}
 	Obtain Eq.(4.12) from Eq.(4.11). It will prove convenient to use unrestricted summations.
 	\end{exercise}
@@ -132,6 +133,7 @@
 	
 	\end{solution}
 	
+	% 4.2
 	\begin{exercise}
 	Using the secular determinant approach show that the lowest eigenvalue of the matrix
 	\[
@@ -166,6 +168,7 @@
 	
 	\end{solution}
 	
+	% 4.3
 	\begin{exercise}
 	Calculate the coefficient of the double excitation ($c$) in the intermediate normalized CI wave function at $R$ = 1.4 $\au$, using the STO-3G integrals given in Appendix D. Show analytically that as $R \rightarrow \infty$, $c \rightarrow -1$, and hence that at large distances the Hartree-Fock ground state and the doubly excited configuration have equal weight in the CI ground state. Finally, show that the CI wave function, when normalized to unity, becomes (at $R=\infty$)
 	\[
@@ -242,24 +245,351 @@
 	
 	\section{Natural Orbitals and the One-Particle Reduced Density Matrix}
 	
+	% 4.4
 	\begin{exercise}
 	Show that $\gamma$ is a Hermitian matrix.
 	\end{exercise}
 	
 	\begin{solution}
-
+	Firstly, we find that $\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 )$ is Hermite, viz.,
 	\begin{align*}
 		\gamma^*( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) &= \left( N \int_{\mathbb{R}^3} \dif \boldsymbol{x}_2 \cdots \int_{\mathbb{R}^3} \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) \right)^* \\
-		&= N \int_{\mathbb{R}^3} \dif \boldsymbol{x}_2 \cdots \int_{\mathbb{R}^3} \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) = \gamma( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_1 )
+		&= N \int_{\mathbb{R}^3} \dif \boldsymbol{x}_2 \cdots \int_{\mathbb{R}^3} \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}_1 , \boldsymbol{x}_2 , \cdots , \boldsymbol{x}_N ) = \gamma( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_1 ).
 	\end{align*}
-	
+	Thus,
 	\begin{align*}
 		\gamma^*_{ji} &= \left( \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}^\prime_1 \chi^*_j( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_i( \boldsymbol{x}^\prime_1 ) \right)^* = \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}^\prime_1 \chi^*_i( \boldsymbol{x}^\prime_1 ) \gamma^*( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_j( \boldsymbol{x}_1 ) \\
-		&= \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}^\prime_1 \chi^*_i( \boldsymbol{x}^\prime_1 ) \gamma( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_1 ) \chi_j( \boldsymbol{x}_1 ) = \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \chi^*_i( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_j( \boldsymbol{x}^\prime_1 ) = \gamma_{ij}
+		&= \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}^\prime_1 \chi^*_i( \boldsymbol{x}^\prime_1 ) \gamma( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_1 ) \chi_j( \boldsymbol{x}_1 ) = \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \int_{\mathbb{R}^3} \dif \boldsymbol{x}_1 \chi^*_i( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \chi_j( \boldsymbol{x}^\prime_1 ) = \gamma_{ij}.
 	\end{align*}
-	Thus, we have proved that $\gamma$ is a Hermitian matrix.
+	Hence we have proved that $\gamma$ is a Hermitian matrix.
 	
 	\end{solution}	
+	
+	% 4.5
+	\begin{exercise}
+	Show that $\tr{\gamma}=N$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{align*}
+		N &= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \rho( \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1  ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \sum_{ i=1 }^N \sum_{ j=1 }^N \chi_i( \boldsymbol{x}_1 ) \gamma_{ij} \chi^*_j( \boldsymbol{x}_1 ) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \chi_i( \boldsymbol{x}_1 )  \chi^*_j( \boldsymbol{x}_1 ) = \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \delta_{ij} = \sum_{ i=1 }^N \gamma_{ii} = \tr\gamma.
+	\end{align*}
+	
+	\end{solution}
+	
+	% 4.6
+	\begin{exercise}
+	Consider the one-electron operator
+	\[
+		\mathscr{O}_1 = \sum_{i=1}^N h(i).
+	\]
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	\[
+		\langle \Phi | \mathscr{O}_1 | \Phi \rangle = \int \dif \boldsymbol{x}_1 \left[ h( \boldsymbol{x}_1  ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \right]_{ \boldsymbol{x}^\prime_1 = \boldsymbol{x}_1}
+	\]
+	where the notation $[ \quad ]_{ \boldsymbol{x}^\prime_1 = \boldsymbol{x}_1}$ means that $\boldsymbol{x}^\prime_1$ is set equal to $\boldsymbol{x}_1$ after $h(\boldsymbol{x}_1)$ has operated on $\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 )$.
+	
+	\item[b.] Show that
+	\[
+		\langle \Phi | \mathscr{O}_1 | \Phi \rangle = \tr{{\bf h}\gamma}
+	\]
+	where
+	\[
+		h_{ij} = \langle i | h | j \rangle = \int \dif \boldsymbol{x}_1 \chi^*_i( \boldsymbol{x}_1 ) h( \boldsymbol{x}_1 ) \chi_j( \boldsymbol{x}_1 ).
+	\]
+	Thus the expectation value of any one-electron operator can be expressed in terms of the one-matrix.
+	\end{enumerate}
+	
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] From the definition of $\mathscr{O}_1$, we find that	
+	\begin{align*}
+		\langle \Phi | \mathscr{O}_1 | \Phi \rangle &= \langle \Phi | \sum_{ i=1 }^N h(i) | \Phi \rangle \\
+		&= \sum_{ i=1 }^N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) h( \boldsymbol{x}_i ) \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N )
+	\end{align*}
+	Considering that the different integral variables $\dif \boldsymbol{x}_1$ and $\dif \boldsymbol{x}_i$ ($i \neq 1$) have the same integral range, it is clear that	
+	\begin{align*}
+		\langle \Phi | \mathscr{O}_1 | \Phi \rangle &= \langle \Phi | \sum_{ i=1 }^N h(i) | \Phi \rangle \\
+		&= N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) h( \boldsymbol{x}_1 ) \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \times N \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \cdots \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_N \Phi^*( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \Phi( \boldsymbol{x}_1, \boldsymbol{x}_2, \cdots , \boldsymbol{x}_N ) \\
+		&= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \rho( \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \left[ h( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) \right]_{ \boldsymbol{x}^\prime_1 = \boldsymbol{x}_1 }.
+	\end{align*}
+		
+	\item[b.] From the former issue, we know that 	
+	\begin{align*}
+		\langle \Phi | \mathscr{O}_1 | \Phi \rangle &= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 h( \boldsymbol{x}_1 ) \sum_{ i=1 }^N \sum_{ j=1 }^N \chi_i( \boldsymbol{x}_1 ) \gamma_{ij} \chi^*_j( \boldsymbol{x}_1 ) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \chi_i( \boldsymbol{x}_1 ) h( \boldsymbol{x}_1 ) \chi^*_j( \boldsymbol{x}_1 ) = \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} h_{ji} = \tr{\gamma \h} = \tr{\h \gamma}.
+	\end{align*}
+	The last step uses the conclusion of exercise 1.4(a).
+	\end{itemize}		
+	
+	\end{solution}
+	
+	% 4.7
+	\begin{exercise}
+	Recall that in second quantization a one-electron operator is
+	\[
+		\mathscr{O}_1 = \sum_{ij} \langle i | h | j \rangle a^\dagger_i a_j.
+	\]
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	\[
+		\gamma_{ij} = \langle \Phi | a^\dagger_j a_i | \Phi \rangle.
+	\]
+	
+	\item[b.] Show that the matrix elements of $\gamma^{\HF}$ are given by Eq.(4.40).
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] We can use the conclusion in exercise 4.6(b), viz.,
+	\begin{align*}
+		\tr{\h\gamma} = \sum_{ij} h_{ij} \gamma_{ji} = \langle \Phi | \mathscr{O}_1 | \Phi \rangle .
+	\end{align*}
+	With the second quantization form, we find that
+	\[
+		\sum_{ij} h_{ij} \gamma_{ji} = \langle \Phi | \mathscr{O}_1 | \Phi \rangle = \sum_{ij} \langle \Phi | a^\dagger_i a_j | \Phi_1 \rangle h_{ij} \Leftrightarrow \sum_{ij} \left[ \langle \Phi | a^\dagger_i a_j | \Phi \rangle - \gamma_{ji} \right] h_{ij} = 0.
+	\]
+	For any system, this equation holds true, which means that terms $h_{ij}$ are linearly independent. Thus,
+	\begin{equation}
+		\gamma_{ji} = \langle \Phi | a^\dagger_i a_j | \Phi \rangle,
+	\end{equation}
+	which equals $\gamma_{ij} = \langle \Phi | a^\dagger_j a_i | \Phi \rangle$.
+	
+	\item[b.] If $i$ belongs to unoccupied, $a_i | \Phi \rangle$ vanishes, and so does $ \langle \Phi | a^\dagger_j$ if $j$ belongs to unoccupied. If the indices $i$ and $j$ are occupied, viz., $i=a$ and $j=b$, with $a^\dagger_a | \Phi \rangle = 0$,
+	\[
+		\gamma^\HF_{ab} = \langle \Phi | a^\dagger_a a_b | \Phi \rangle = \langle \Phi | ( \delta_{ab} - a_b a^\dagger_a) | \Phi \rangle = \delta_{ab} - \langle \Phi | a_b a^\dagger_a | \Phi \rangle = \delta_{ab} - 0 = \delta_{ab}.
+	\]
+	Thus, we have proved
+	\[
+		\gamma^\HF_{ij} = \begin{cases}
+   			\delta_{ij}, & \text{iff } i, j \in \text{occupied}, \\
+   			0, & \text{otherwise}.
+		\end{cases}
+	\]
+	\end{itemize}		
+	
+	\end{solution}
+	
+	% 4.8
+	\begin{exercise}
+	For the special case of a two-electron system, the use of natural orbitals dramatically reduces the size of the full CI expansion. If $\psi_1$ is the occupied Hartree-Fock spatial orbital and $\psi_r$, $r=2,3,...,K$ are virtual spatial orbitals, the normalized full CI singlet wave function has the form
+	\[
+		|{}^{1}\Phi_0 \rangle = c_0 |1\bar{1}\rangle + \sum_{r=2}^K c^r_1 | {}^{1} \Psi^r_1 \rangle + \frac{1}{2} \sum_{r=2}^K \sum_{s=2}^K c^{rs}_{11} | {}^{1} \Psi^{rs}_{11} \rangle
+	\]
+	where the singly and doubly excited spin adapted configurations are defined in Subsection 2.5.2.
+	
+	\begin{enumerate}
+	
+	\item[a.] Show that $|{}^{1}\Phi_0 \rangle$	can be cast into the form
+	\[
+		|{}^{1}\Phi_0 \rangle = \sum_{i=1}^K \sum_{j=1}^K C_{ij} | \psi_i \bar{\psi}_j \rangle
+	\]
+	where $\C$ is a symmetric $K \times K$ matrix.
+	
+	\item[b.] Show that
+	\[
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1^\prime ) = \sum_{ij} (\C \C^\dagger)_{ij} \left( \psi_i(1) \psi^*_j(1^\prime) + \bar{\psi}_i (1) \bar{\psi}_j^* (1^\prime) \right).
+	\]
+	
+	\item[c.] Let $\U$ be the unitary transformation which diagonalizes $\C$
+	\[
+		\U^\dagger \C \U = {\bf d}
+	\]
+	where $({\bf d})_{ij} = d_i \delta_{ij}$. Show that
+	\[
+		\U^\dagger \C \C^\dagger \U = {\bf d}^2.
+	\]
+	
+	\item[d.] Show that
+	\[
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1^\prime ) = \sum_i d^2_i \left( \zeta_i(1)\zeta^*_i(1^\prime) + \bar{\zeta}_i(1) \bar{\zeta}^*_i (1^\prime) \right)
+	\]
+	where
+	\[
+		\zeta_i = \sum_k \psi_k U_{ki}.
+	\]
+	Thus $\U$ diagonalizes the one-matrix, and hence $\zeta_i$ are natural spatial orbitals for the two-electron system.
+	
+	\item[e.] Finally, since $\C$ is symmetric, $\U$ can be chosen as real. Show that in terms of the natural spatial orbitals, $| {}^{1} \Phi_0 \rangle$ given in part (a) can be rewritten as
+	\[
+		| {}^{1} \Phi_0 \rangle = \sum_{i=1}^K d_i | \zeta_i \bar{\zeta}_i \rangle
+	\]
+	and note that this expansion contains only $K$ terms.
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{enumerate}
+	
+	\item[a.] From (2.263) at the page 103 and Table 2.7 at the page 104, we know that	
+	\begin{align*}
+		| ^1 \Psi^r_1 \rangle &= \frac{ 1 }{ \sqrt{2} } \left( | \Psi^{ \bar{r} }_{ \bar{1} } \rangle + | \Psi^r_1 \rangle \right) = \frac{ 1 }{ \sqrt{2} } \left( | 1 \bar{r} \rangle + | r \bar{1} \rangle \right) , \\
+		| ^1 \Psi^{rr}_{11} \rangle &= | \Psi^{r \bar{r}}_{1 \bar{1}} \rangle = | r \bar{r} \rangle , \\
+		| ^1 \Psi^{rs}_{11} \rangle &= \frac{ 1 }{ \sqrt{2} } \left( | \Psi^{ r \bar{s} }_{ 1 \bar{1} } \rangle + | \Psi^{s \bar{r} }_{ 1 \bar{1} } \rangle \right) = \frac{ 1 }{ \sqrt{2} } \left( | r \bar{s} \rangle + | s \bar{r} \rangle \right) , \, \forall r \neq s.
+	\end{align*}
+	
+	Thus, 
+	\begin{align*}
+		| ^1 \Phi_0 \rangle = c_0 | 1 \bar{1} \rangle + \sum_{r=2}^K  \frac{ c^r_1 }{ \sqrt{2} } \left( | 1 \bar{r} \rangle + | r \bar{1} \rangle \right) + \frac{1}{2} \sum_{r=2}^K c^{rr}_{11} | r \bar{r} \rangle + \sum_{r=2}^K \sum_{ \substack{ s=2 \\ r > s } }^K c^{rs}_{11} \frac{ 1 }{ \sqrt{2} } \left( | r \bar{s} \rangle + | s \bar{r} \rangle \right).
+	\end{align*}
+	From this equation, we find that the coefficients are
+	\begin{align*}
+		C_{11} &= c_0 , \\
+		C_{r1} &= C_{1r} = \frac{ c^r_1 }{ \sqrt{2} }, \\
+		C_{rr} &= \frac{ c^{rr}_{11} }{ 2 }, \\
+		C_{rs} &= C_{sr} = \frac{ c^{rs}_{11} + c^{sr}_{11} }{ 2 } , \, \forall r \neq s ,
+	\end{align*}
+	which equals
+	\begin{equation}
+		|{}^{1}\Phi_0 \rangle = \sum_{i=1}^K \sum_{j=1}^K C_{ij} | \psi_i \bar{\psi}_j \rangle,
+	\end{equation}		
+	where
+	\begin{equation}
+		C_{ij} = C_{ji}, \, \forall i, j \in \{ 1,2,\cdots, K \}.
+	\end{equation}
+	In other words, $\C$ is a symmetric $K \times K$ matrix.
+	
+	\item[b.] Note that there are two electrons in this system,
+	\begin{align*}
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) &= 2 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \Phi( \boldsymbol{x}_1 , \boldsymbol{x}_2 ) \Phi^*( \boldsymbol{x}^\prime_1 , \boldsymbol{x}_2 )  \\
+		&= 2 \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \frac{1}{ \sqrt{2} } \sum_{ i=1 }^K \sum_{ j=1 }^K C_{ij} \left[ \psi_i( \boldsymbol{x}_1 ) \bar{\psi}_j( \boldsymbol{x}_2 ) - \psi_i( \boldsymbol{x}_2 ) \bar{\psi}_j( \boldsymbol{x}_1 ) \right] \\
+		&\hspace{10em} \times \frac{1}{ \sqrt{2} } \sum_{ k=1 }^K \sum_{ l=1 }^K C^*_{kl} \left[ \psi^*_k( \boldsymbol{x}^\prime_1 ) \bar{\psi}^*_l( \boldsymbol{x}_2 ) - \psi^*_k( \boldsymbol{x}_2 ) \bar{\psi}^*_l( \boldsymbol{x}^\prime_1 ) \right] \\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K \sum_{ k=1 }^K \sum_{ l=1 }^K C_{ij} C^*_{kl} \\ 
+		&\hspace{2em}\left[ \psi_i( \boldsymbol{x}_1 ) \psi^*_k( \boldsymbol{x}^\prime_1 ) \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \bar{\psi}_j( \boldsymbol{x}_2 ) \bar{\psi}^*_l( \boldsymbol{x}_2 ) - \psi_i( \boldsymbol{x}_1 ) \bar{\psi}^*_l( \boldsymbol{x}^\prime_1 ) \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \bar{\psi}_j( \boldsymbol{x}_2 ) \psi^*_k( \boldsymbol{x}_2 ) \right. \\
+		&\hspace{2em} \left. - \bar{\psi}_j( \boldsymbol{x}_1 ) \psi^*_k( \boldsymbol{x}^\prime_1 ) \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \psi_i( \boldsymbol{x}_2 ) \bar{\psi}^*_l( \boldsymbol{x}_2 ) + \bar{\psi}_j( \boldsymbol{x}_1 ) \bar{\psi}^*_l( \boldsymbol{x}^\prime_1 ) \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_2 \psi_i( \boldsymbol{x}_2 ) \psi^*_k( \boldsymbol{x}_2 ) \right] \\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K \sum_{ k=1 }^K \sum_{ l=1 }^K C_{ij} C^*_{kl} \left[ \psi_i( \boldsymbol{x}_1 ) \psi^*_k( \boldsymbol{x}^\prime_1 ) \delta_{jl} + \bar{\psi}_j( \boldsymbol{x}_1 ) \bar{\psi}^*_l( \boldsymbol{x}^\prime_1 ) \delta_{ik} \right] \\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K \sum_{ k=1 }^K C_{ij} C^*_{kj} \psi_i( \boldsymbol{x}_1 ) \psi^*_k( \boldsymbol{x}^\prime_1 ) + \sum_{ i=1 }^K \sum_{ j=1 }^K \sum_{ l=1 }^K C_{ij} C^*_{il} \bar{\psi}_j( \boldsymbol{x}_1 ) \bar{\psi}^*_l( \boldsymbol{x}^\prime_1 ) \\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K \sum_{ k=1 }^K C_{ij} C^\dagger_{jk} \psi_i( \boldsymbol{x}_1 ) \psi^*_k( \boldsymbol{x}^\prime_1 ) + \sum_{ i=1 }^K \sum_{ j=1 }^K \sum_{ k=1 }^K C_{ji} C^\dagger_{ik} \bar{\psi}_j( \boldsymbol{x}_1 ) \bar{\psi}^*_k( \boldsymbol{x}^\prime_1 ) \\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) \left( \sum_{ k=1 }^K C_{ik} C^\dagger_{kj} \right)  + \sum_{ i=1 }^K \sum_{ j=1 }^K  \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \left( \sum_{ k=1 }^K C_{ik} C^\dagger_{kj} \right)\\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K (\C \C^\dagger)_{ij} \left( \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) + \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \right).
+	\end{align*}
+	Thus, we have proved that
+	\begin{equation}
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) = \sum_{ i=1 }^K \sum_{ j=1 }^K (\C \C^\dagger)_{ij} \left( \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) + \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \right).
+	\end{equation}
+	
+	\item[c.] In fact, all $d_i$ are real as all eigenvalues of a real symmetric matrix are real, thus ${\bf d}^\dagger = {\bf d}$, and
+	\begin{equation}
+		{\bf d}^2 = {\bf d}{\bf d}^\dagger = \U^\dagger \C \U (\U^\dagger \C \U)^\dagger = \U^\dagger \C \U \U^\dagger \C^\dagger \U = \U^\dagger \C \C^\dagger \U.
+	\end{equation}
+	
+	\item[d.] From the former issue, we know
+	\[
+		\C \C^\dagger = \U {\bf d}^2 \U^\dagger.
+	\]
+	Thus, we find that
+	\begin{align*}
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) &= \sum_{ i=1 }^K \sum_{ j=1 }^K (\C \C^\dagger)_{ij} \left( \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) + \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \right) \\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K ( \U {\bf d}^2 \U^\dagger )_{ij} \left( \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) + \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \right) \\
+		&= \sum_{ i=1 }^K \sum_{ j=1 }^K \sum_{ k=1 }^K \U_{ik} d^2_k \U^\dagger_{kj} \left( \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) + \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \right) \\
+		&= \sum_{ k=1 }^K d^2_k \left( \sum_{ i=1 }^K \psi_i( \boldsymbol{x}_1 ) \U_{ik} \sum_{ j=1 }^K \psi^*_j( \boldsymbol{x}^\prime_1 ) \U^*_{jk} + \sum_{ i=1 }^K \bar{\psi}_i( \boldsymbol{x}_1 ) \U_{ik} \sum_{ j=1 }^K \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \U^*_{jk} \right).
+	\end{align*}
+	Therefore, we define
+	\[
+		\zeta_i = \sum_{k=1}^K \psi_k U_{ki},
+	\]
+	and we obtain
+	\begin{equation}
+		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) = \sum_{ k=1 }^K d^2_k \left( \zeta_k(\boldsymbol{x}_1) \zeta^*_k( \boldsymbol{x}^\prime_1 ) + \bar{\zeta}_k( \boldsymbol{x}_1 ) \bar{\zeta}^*_k( \boldsymbol{x}^\prime_1 ) \right) = \sum_{ i=1 }^K d^2_i \left( \zeta_i(\boldsymbol{x}_1) \zeta^*_i( \boldsymbol{x}^\prime_1 ) + \bar{\zeta}_i( \boldsymbol{x}_1 ) \bar{\zeta}^*_i( \boldsymbol{x}^\prime_1 ) \right).
+	\end{equation}
+	We conclude thay $U$ diagonalizes the one-matrix, and hence $\zeta_i$ are natural spatial orbitals for the two-electron system.
+	
+	\item[e.] Now we convert $\C$ firstly,	
+	\[
+		\C = \U {\bf d} \U^\dagger \Leftrightarrow C_{ij} = \sum_{k=1}^K \U_{ik} d_{k} \U^\dagger_{kj} = \sum_{k=1}^K \U_{ik} d_{k} \U^*_{jk} 
+	\]
+	Thus we arrive at
+	\begin{equation}
+		|{}^{1} \Phi_0 \rangle = \sum_{i=1}^K \sum_{j=1}^K C_{ij} | \psi_i \bar{\psi}_j \rangle = \sum_{i=1}^K \sum_{j=1}^K \sum_{k=1}^K \U_{ik} d_{k} \U^*_{jk} | \psi_i \bar{\psi}_j \rangle = \sum_{k=1}^K d_{k} | \zeta_k \bar{\zeta}_k \rangle = \sum_{i=1}^K d_{i} | \zeta_i \bar{\zeta}_i \rangle.
+	\end{equation}
+	We find that this expansion contains only $K$ terms.
+	
+	\end{enumerate}
+	
+	\end{solution}
+	
+	\section{The Multiconfiguration Self-Consistent Field (MCSCF) and \texorpdfstring{\\}- Generalized Valence Bond (GVB) Methods}	
+	
+	\begin{exercise}
+	Consider the transformation
+	\begin{align*}
+		u &= \frac{1}{\sqrt{ a^2 + b^2 }} \left( a \psi_A + b \psi_B \right), \\
+		v &= \frac{1}{\sqrt{ a^2 + b^2 }} \left( a \psi_A - b \psi_B \right).
+	\end{align*}
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	\[
+		\langle u | u \rangle = \langle v | v \rangle = 1
+	\]
+	and
+	\[
+		\langle u | v \rangle \equiv S = \frac{ a^2 - b^2 }{ a^2 + b^2 }.
+	\]
+	
+	\item[b.] Show that $|\Psi_{\rm GVB}\rangle$ in Eq.(4.52) can be rewritten as
+	\[
+		|\Psi_{\rm GVB}\rangle = \frac{1}{\sqrt{ a^4 + b^4 }} \left[ a^2 \psi_A(1) \psi_A(2) - b^2 \psi_B(1) \psi_B(2) \right] \frac{1}{\sqrt{2}} \left( \alpha(1)\beta(2) - \alpha(2)\beta(1) \right)
+	\]
+	and conclude that this is identical to $|\Psi_{\rm MCSCF}\rangle$ in Eq.(4.48) if
+	\begin{align*}
+		c_A &= \frac{ a^2 }{ \sqrt{ a^4 + b^4 } }, \\
+		c_B &= -\frac{ b^2 }{ \sqrt{ a^4 + b^4 } }.
+	\end{align*}
+	\end{enumerate}		
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{enumerate}
+	
+	\item[a.]
+	\begin{align}
+		\langle u | u \rangle &= \frac{1}{ a^2+b^2 } \left[ a^2 \langle \psi_A | \psi_A \rangle + ab \langle \psi_A | \psi_B \rangle + ab \langle \psi_B | \psi_A \rangle + b^2 \langle \psi_B | \psi_B \rangle \right] \notag \\ 
+		&= \frac{1}{ a^2+b^2 } \left[ a^2 \times 1 + ab \times 0 + ab \times 0 + b^2 \times 1 \right] = 1 .
+	\end{align}
+		
+	\begin{align}
+		S \equiv \langle u | v \rangle &= \frac{1}{ a^2+b^2 } \left[ a^2 \langle \psi_A | \psi_A \rangle - ab \langle \psi_A | \psi_B \rangle + ab \langle \psi_B | \psi_A \rangle - b^2 \langle \psi_B | \psi_B \rangle \right] \notag \\ 
+		&= \frac{1}{ a^2+b^2 } \left[ a^2 \times 1 - ab \times 0 + ab \times 0 - b^2 \times 1 \right] = \frac{ a^2 - b^2 }{ a^2 + b^2 }.
+	\end{align}
+	
+	\item[b.]
+	
+	\begin{align}
+		| \Psi_{\rm GVB} \rangle &= \frac{1}{ \sqrt{ 2 \left[ 1 + ( \frac{ a^2 - b^2 }{ a^2 + b^2 } )^2 \right] } } \left[ \frac{1}{ a^2 + b^2 } ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) \right. \notag \\
+		&\hspace{2em} \left. + \frac{1}{ a^2 + b^2 } ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \frac{1}{ \sqrt{2} } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&=\frac{ a^2 + b^2 }{ \sqrt{ 2 \left[ ( a^2 + b^2 )^2 + ( a^2 - b^2 )^2 \right] } } \times \frac{1}{ \sqrt{2} \left( a^2 + b^2 \right) } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&\hspace{2em}\left[ ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) + ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \notag \\ 
+		&= \frac{ 1 }{ 2 \sqrt{ 2a^4 + 2b^4 } } \left[ 2 a^2 \psi_A(1) \psi_A(2) - 2 b^2 \psi_B(1) \psi_B(2) \right] \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&= \frac{ 1 }{ \sqrt{ a^4 + b^4 } }  \left[ a^2 \psi_A(1) \psi_A(2) - b^2 \psi_B(1) \psi_B(2) \right] \frac{1}{ \sqrt{2} } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] 
+	\end{align}
+	Thus,
+	\[
+		c_A = \frac{ a^2 }{ \sqrt{ a^4 + b^4 } } , \quad c_B = -\frac{ b^2 }{ \sqrt{ a^4 + b^4 } }.
+	\]
+	\end{enumerate}		
+		
+	\end{solution}
+	
+	\section{Truncated CI and the Size-Consistency Problem}	
+	
+	
 	
 	
 \end{document}
