@@ -38,7 +38,15 @@
 
 \definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
 
-\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
+\newcounter{exercise}[chapter]
+\newcounter{solution}[chapter]
+\newcounter{eqs}[solution]
+
+\newenvironment{sequation}
+  {\begin{equation}\stepcounter{eqs}\tag{\thesolution-\theeqs}}
+  {\end{equation}}
+
+\newtcolorbox[use counter=exercise, number within=chapter, number format=\arabic]{exercise}[1][]{
     title={Exercise~\thetcbcounter},
     colframe=skyblue,
     colback=skyblue!12!white,
@@ -49,7 +57,7 @@
     }
 }
 
-\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
+\newtcolorbox[use counter=solution, number within=chapter, number format=\arabic]{solution}[1][]{
     title={Solution~\thetcbcounter},
     colframe=teal!60!green,
     colback=green!12!white,
@@ -124,20 +132,54 @@
 	\begin{enumerate}
 	
 	\item[a.] At this time, there is only one pair of electrons and one pair of virtual spin orbitals. Thus,
-	\begin{equation}
+	\begin{sequation}
 		E_\corr ({\rm FO}) = \sum_{ \substack{ a<b \\ r<s } } \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle |^2 }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{ | \langle 1 \bar{1} || 2 \bar{2} \rangle |^2 }{ \varepsilon_1 + \varepsilon_{\bar{1}} - \varepsilon_2 - \varepsilon_{\bar{2}} } = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) }.
-	\end{equation}
+	\end{sequation}
 		
 	\item[b.] As $K_{12} \ll \Delta$, we find that
 	\[
 		{}^1 E_\corr = \Delta \left[ 1 - \sqrt{ 1 + \frac{ K^2_{12} }{ \Delta^2 } } \right] = \Delta \left[ 1 - \left( 1 + \frac{ K^2_{12} }{ 2\Delta^2 } + \cdots \right) \right] = - \frac{ K^2_{12} }{ 2\Delta } + \cdots.
 	\]
+	Here, the truth that when $|x| \ll 1$,
+	\[
+		(1+x)^{\frac{1}{2}} \approx 1 + \frac{x}{2},
+	\]
+	has been used.
+	
 	After substitute $\Delta = \varepsilon_2 - \varepsilon_1$, we obtain	
 	\begin{equation}
-		{}^1 E_\corr ({\rm FO}) = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) }.
+		{}^1 E_\corr ({\rm FO}) = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) } = \frac{ K^2_{12} }{ 2( \varepsilon_1 - \varepsilon_2 ) }.
 	\end{equation}
 	
+	
 	\end{enumerate}		
+	
+	\end{solution}
+
+	% 5.2
+	\begin{exercise}
+	Derive Eqs.(5.22a) and (5.22b).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (5.9a)
+	
+	\begin{sequation}
+		K_{12} c^{2_i \bar{2}_i}_{1_i \bar{1}_i} = e_{1_i \bar{1}_i }
+	\end{sequation}
+	
+	\begin{sequation}
+		K_{12} + \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} - E_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle = e_{ 1_i \bar{1}_i } c^{2_i \bar{2}_i}_{1_i \bar{1}_i}
+	\end{sequation}
+
+	\[
+		h_{11} = \varepsilon_1 - J_{11} , \quad h_{22} = \varepsilon_2 - 2 J_{12} + K_{12}
+	\]
+	
+	\[
+		\langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} - E_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle = 2 \Delta
+	\]
 	
 	\end{solution}
 
