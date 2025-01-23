@@ -1,7 +1,12 @@
 \documentclass[a4paper]{book}
-\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+%\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
+\usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{fancyhdr}
+\pagestyle{plain} 				% 此处为fancy时有页眉
 \usepackage{geometry}
 \geometry{
 	left=2cm,
@@ -35,14 +40,7 @@
 
 \definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
 
-\newcounter{exercise}[chapter]
-\newcounter{solution}[chapter]
-\newcounter{eqs}[solution]
-\newenvironment{sequation}
-  {\begin{equation}\stepcounter{eqs}\tag{\thesolution-\theeqs}}
-  {\end{equation}}
-
-\newtcolorbox[use counter=exercise, number within=chapter, number format=\arabic]{exercise}[1][]{
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
     title={Exercise~\thetcbcounter},
     colframe=skyblue,
     colback=skyblue!12!white,
@@ -53,7 +51,7 @@
     }
 }
 
-\newtcolorbox[use counter=solution, number within=chapter, number format=\arabic]{solution}[1][]{
+\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
     title={Solution~\thetcbcounter},
     colframe=teal!60!green,
     colback=green!12!white,
@@ -65,24 +63,28 @@
 }
 
 % special new commands for common symbols used in the article
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+\newcommand\lr[2]{\langle#1\|#2\rangle}
 \newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand\Tr[3]{#1\mathrm\#2#3}
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{{\rm det}\left(#1\right)}
 \newcommand{\HF}{{\rm HF}}
 \newcommand{\corr}{{\rm corr}}
 \newcommand{\au}{{\rm a.u.}}
 
-% special new commands for operators
+\newcommand{\A}{{\bf A}}
+\newcommand{\B}{{\bf B}}
 \newcommand{\C}{{\bf C}}
 \newcommand{\I}{{\bf 1}}
 \newcommand{\U}{{\bf U}}
+\newcommand{\Op}{{\bf O}}
 \newcommand{\h}{{\bf h}}
 
-% special new commands for references
 \newcommand\Figref[1]{Fig \ref{#1}}
 \newcommand\Tableref[1]{Table \ref{#1}}
 
-% title format
 \titleformat{\chapter}[display]
   {\bfseries\Large}
   {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
@@ -94,7 +96,7 @@
 
 \begin{document}
 
-	\setcounter{chapter}{3}
+	\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}
 
 	\chapter{Configuration Interaction}
 	
@@ -126,9 +128,9 @@
 		&= \frac{1}{\left(3!\right)^2} \times 9 \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd} = \frac{1}{\left(2!\right)^2} \sum_{ \substack{ cd \\ tu } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd} = \sum_{ \substack{ c<d \\ t<u } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd}.
 	\end{align*}
 	Thus, we have proved that
-	\begin{sequation}
+	\begin{equation}
 		\sum_{ \substack{ c<d<e \\ t<u<v } } \langle \Psi^r_a | \mathscr{H} | \Psi^{tuv}_{cde} \rangle c^{tuv}_{cde} = \sum_{ \substack{ c<d \\ t<u } } \langle \Psi^r_a | \mathscr{H} | \Psi^{rtu}_{acd} \rangle c^{rtu}_{acd}.
-	\end{sequation}
+	\end{equation}
 	
 	With this equation, it is clear that (4.12) can be obtained from (4.11).
 	
@@ -149,7 +151,7 @@
 	
 	The introduction of the secular determinant approach is demonstrated in the page 18. The matrix in the exercise 4.2 is denoted as $H$, then
 	\[
-		\det{H - \varepsilon \I} = \begin{vmatrix}
+		\det{H - \varepsilon I} = \begin{vmatrix}
 		- \varepsilon & K_{12} \\ K_{12} & 2\Delta - \varepsilon
 		\end{vmatrix} = \varepsilon^2 - 2 \Delta \varepsilon -K^2_{12} = 0 ,
 	\]	
@@ -163,9 +165,9 @@
 	\]	
 	
 	Therefore, the lowest root is the correlation energy, viz.,
-	\begin{sequation}
+	\begin{equation}
 		E_\corr = \Delta - \sqrt{ \Delta^2 + K^2_{12} }.
-	\end{sequation}
+	\end{equation}
 	
 	\end{solution}
 	
@@ -197,9 +199,9 @@
 		E_\corr = \Delta - \sqrt{ \Delta^2 + K^2_{12} } = -0.02057 \, \au.
 	\]
 	Therefore,
-	\begin{sequation}
+	\begin{equation}
 		c = \frac{ K_{12} }{ E_\corr - 2\Delta } =  \frac{ 0.1813 \, \au }{ -0.02057 \, \au. - 1.5773 \, \au. }  \approx - 0.1135.
-	\end{sequation}
+	\end{equation}
 	
 	Indeed, we can find that
 	\[
@@ -232,9 +234,9 @@
 		\lim_{ R \rightarrow \infty } | \Phi \rangle = \lim_{ R \rightarrow \infty } | \psi_1 \bar{\psi}_1 \rangle - \lim_{ R \rightarrow \infty } | \psi_2 \bar{\psi}_2 \rangle = | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle
 	\]
 	Thus, at $R = \infty$, the normalized CI wave function is
-	\begin{sequation}
+	\begin{equation}
 		\lim_{R \rightarrow \infty} | \Phi \rangle = \lim_{R \rightarrow \infty} \frac{1}{ \langle \Phi_0 | \Phi_0 \rangle } | \Phi_0 \rangle = \frac{1}{ \sqrt{2} } \left( | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle \right) .
-	\end{sequation}
+	\end{equation}
 	
 	We have proved two conclusions at $R = \infty$, the equal weight of the Hartree-Fock ground state $\Psi_0$ and the doubly excited configuration $\Psi^{2 \bar{2}}_{1 \bar{1}}$, and the form of normalized CI wave function.
 		
@@ -272,7 +274,7 @@
 	\end{exercise}
 	
 	\begin{solution}
-	With (4.34), (4.36) and (4.37), we find that
+	
 	\begin{align*}
 		N &= \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \rho( \boldsymbol{x}_1 ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \gamma( \boldsymbol{x}_1 , \boldsymbol{x}_1  ) = \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \sum_{ i=1 }^N \sum_{ j=1 }^N \chi_i( \boldsymbol{x}_1 ) \gamma_{ij} \chi^*_j( \boldsymbol{x}_1 ) \\
 		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \int_{ \mathbb{R}^3 } \dif \boldsymbol{x}_1 \chi_i( \boldsymbol{x}_1 )  \chi^*_j( \boldsymbol{x}_1 ) = \sum_{ i=1 }^N \sum_{ j=1 }^N \gamma_{ij} \delta_{ij} = \sum_{ i=1 }^N \gamma_{ii} = \tr\gamma.
@@ -365,9 +367,9 @@
 		\sum_{ij} h_{ij} \gamma_{ji} = \langle \Phi | \mathscr{O}_1 | \Phi \rangle = \sum_{ij} \langle \Phi | a^\dagger_i a_j | \Phi_1 \rangle h_{ij} \Leftrightarrow \sum_{ij} \left[ \langle \Phi | a^\dagger_i a_j | \Phi \rangle - \gamma_{ji} \right] h_{ij} = 0.
 	\]
 	For any system, this equation holds true, which means that terms $h_{ij}$ are linearly independent. Thus,
-	\begin{sequation}
+	\begin{equation}
 		\gamma_{ji} = \langle \Phi | a^\dagger_i a_j | \Phi \rangle,
-	\end{sequation}
+	\end{equation}
 	which equals $\gamma_{ij} = \langle \Phi | a^\dagger_j a_i | \Phi \rangle$.
 	
 	\item[b.] If $i$ belongs to unoccupied, $a_i | \Phi \rangle$ vanishes, and so does $ \langle \Phi | a^\dagger_j$ if $j$ belongs to unoccupied. If the indices $i$ and $j$ are occupied, viz., $i=a$ and $j=b$, with $a^\dagger_a | \Phi \rangle = 0$,
@@ -456,13 +458,13 @@
 		C_{rs} &= C_{sr} = \frac{ c^{rs}_{11} + c^{sr}_{11} }{ 2 } , \, \forall r \neq s ,
 	\end{align*}
 	which equals
-	\begin{sequation}
+	\begin{equation}
 		|{}^{1}\Phi_0 \rangle = \sum_{i=1}^K \sum_{j=1}^K C_{ij} | \psi_i \bar{\psi}_j \rangle,
-	\end{sequation}		
+	\end{equation}		
 	where
-	\begin{sequation}
+	\begin{equation}
 		C_{ij} = C_{ji}, \, \forall i, j \in \{ 1,2,\cdots, K \}.
-	\end{sequation}
+	\end{equation}
 	In other words, $\C$ is a symmetric $K \times K$ matrix.
 	
 	\item[b.] Note that there are two electrons in this system,
@@ -480,14 +482,14 @@
 		&= \sum_{ i=1 }^K \sum_{ j=1 }^K (\C \C^\dagger)_{ij} \left( \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) + \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \right).
 	\end{align*}
 	Thus, we have proved that
-	\begin{sequation}
+	\begin{equation}
 		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) = \sum_{ i=1 }^K \sum_{ j=1 }^K (\C \C^\dagger)_{ij} \left( \psi_i( \boldsymbol{x}_1 ) \psi^*_j( \boldsymbol{x}^\prime_1 ) + \bar{\psi}_i( \boldsymbol{x}_1 ) \bar{\psi}^*_j( \boldsymbol{x}^\prime_1 ) \right).
-	\end{sequation}
+	\end{equation}
 	
 	\item[c.] In fact, all $d_i$ are real as all eigenvalues of a real symmetric matrix are real, thus ${\bf d}^\dagger = {\bf d}$, and
-	\begin{sequation}
+	\begin{equation}
 		{\bf d}^2 = {\bf d}{\bf d}^\dagger = \U^\dagger \C \U (\U^\dagger \C \U)^\dagger = \U^\dagger \C \U \U^\dagger \C^\dagger \U = \U^\dagger \C \C^\dagger \U.
-	\end{sequation}
+	\end{equation}
 	
 	\item[d.] From the former issue, we know
 	\[
@@ -505,9 +507,9 @@
 		\zeta_i = \sum_{k=1}^K \psi_k U_{ki},
 	\]
 	and we obtain
-	\begin{sequation}
+	\begin{equation}
 		\gamma( \boldsymbol{x}_1 , \boldsymbol{x}^\prime_1 ) = \sum_{ k=1 }^K d^2_k \left( \zeta_k(\boldsymbol{x}_1) \zeta^*_k( \boldsymbol{x}^\prime_1 ) + \bar{\zeta}_k( \boldsymbol{x}_1 ) \bar{\zeta}^*_k( \boldsymbol{x}^\prime_1 ) \right) = \sum_{ i=1 }^K d^2_i \left( \zeta_i(\boldsymbol{x}_1) \zeta^*_i( \boldsymbol{x}^\prime_1 ) + \bar{\zeta}_i( \boldsymbol{x}_1 ) \bar{\zeta}^*_i( \boldsymbol{x}^\prime_1 ) \right).
-	\end{sequation}
+	\end{equation}
 	We conclude thay $U$ diagonalizes the one-matrix, and hence $\zeta_i$ are natural spatial orbitals for the two-electron system.
 	
 	\item[e.] Now we convert $\C$ firstly,	
@@ -515,9 +517,9 @@
 		\C = \U {\bf d} \U^\dagger \Leftrightarrow C_{ij} = \sum_{k=1}^K \U_{ik} d_{k} \U^\dagger_{kj} = \sum_{k=1}^K \U_{ik} d_{k} \U^*_{jk} 
 	\]
 	Thus we arrive at
-	\begin{sequation}
+	\begin{equation}
 		|{}^{1} \Phi_0 \rangle = \sum_{i=1}^K \sum_{j=1}^K C_{ij} | \psi_i \bar{\psi}_j \rangle = \sum_{i=1}^K \sum_{j=1}^K \sum_{k=1}^K \U_{ik} d_{k} \U^*_{jk} | \psi_i \bar{\psi}_j \rangle = \sum_{k=1}^K d_{k} | \zeta_k \bar{\zeta}_k \rangle = \sum_{i=1}^K d_{i} | \zeta_i \bar{\zeta}_i \rangle.
-	\end{sequation}
+	\end{equation}
 	We find that this expansion contains only $K$ terms.
 	
 	\end{enumerate}
@@ -565,26 +567,25 @@
 		\langle \psi_A | \psi_A \rangle = \langle \psi_B | \psi_B \rangle = 1, \quad \langle \psi_A | \psi_B \rangle = \langle \psi_B | \psi_A \rangle = 0.
 	\]
 	My results are as follows.
-	\begin{align*}
+	\begin{align}
 		\langle u | u \rangle &= \frac{1}{ a^2+b^2 } \left[ a^2 \langle \psi_A | \psi_A \rangle + ab \langle \psi_A | \psi_B \rangle + ab \langle \psi_B | \psi_A \rangle + b^2 \langle \psi_B | \psi_B \rangle \right] = 1 , \\
 		\langle v | v \rangle &= \frac{1}{ a^2+b^2 } \left[ a^2 \langle \psi_A | \psi_A \rangle - ab \langle \psi_A | \psi_B \rangle - ab \langle \psi_B | \psi_A \rangle + b^2 \langle \psi_B | \psi_B \rangle \right] = 1 , \\
 		S \equiv \langle u | v \rangle &= \frac{1}{ a^2+b^2 } \left[ a^2 \langle \psi_A | \psi_A \rangle - ab \langle \psi_A | \psi_B \rangle + ab \langle \psi_B | \psi_A \rangle - b^2 \langle \psi_B | \psi_B \rangle \right] = \frac{ a^2 - b^2 }{ a^2 + b^2 }.
-	\end{align*}
+	\end{align}
 		
 	\item[b.] Substitute these results into (4.52), we find that	
-	\begin{align*}
-		| \Psi_{\rm GVB} \rangle &= \frac{1}{ \sqrt{ 2 \left[ 1 + ( \frac{ a^2 - b^2 }{ a^2 + b^2 } )^2 \right] } } \left[ \frac{1}{ a^2 + b^2 } ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) \right. \\
-		&\hspace{2em} \left. + \frac{1}{ a^2 + b^2 } ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \frac{1}{ \sqrt{2} } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \\
-		&=\frac{ a^2 + b^2 }{ \sqrt{ 2 \left[ ( a^2 + b^2 )^2 + ( a^2 - b^2 )^2 \right] } } \times \frac{1}{ \sqrt{2} \left( a^2 + b^2 \right) } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \\
-		&\hspace{2em}\left[ ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) + ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \\ 
-		&= \frac{ 1 }{ 2 \sqrt{ 2a^4 + 2b^4 } } \left[ 2 a^2 \psi_A(1) \psi_A(2) - 2 b^2 \psi_B(1) \psi_B(2) \right] \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \\
+	\begin{align}
+		| \Psi_{\rm GVB} \rangle &= \frac{1}{ \sqrt{ 2 \left[ 1 + ( \frac{ a^2 - b^2 }{ a^2 + b^2 } )^2 \right] } } \left[ \frac{1}{ a^2 + b^2 } ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) \right. \notag \\
+		&\hspace{2em} \left. + \frac{1}{ a^2 + b^2 } ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \frac{1}{ \sqrt{2} } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&=\frac{ a^2 + b^2 }{ \sqrt{ 2 \left[ ( a^2 + b^2 )^2 + ( a^2 - b^2 )^2 \right] } } \times \frac{1}{ \sqrt{2} \left( a^2 + b^2 \right) } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
+		&\hspace{2em}\left[ ( a \psi_A(1) + b \psi_B(1) )( a \psi_A(2) - b \psi_B(2) ) + ( a \psi_A(2) + b \psi_B(2) )( a \psi_A(1) - b \psi_B(1) ) \right] \notag \\ 
+		&= \frac{ 1 }{ 2 \sqrt{ 2a^4 + 2b^4 } } \left[ 2 a^2 \psi_A(1) \psi_A(2) - 2 b^2 \psi_B(1) \psi_B(2) \right] \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right] \notag \\
 		&= \frac{ 1 }{ \sqrt{ a^4 + b^4 } }  \left[ a^2 \psi_A(1) \psi_A(2) - b^2 \psi_B(1) \psi_B(2) \right] \frac{1}{ \sqrt{2} } \left[ \alpha(1) \beta(2) - \alpha(2) \beta(1) \right].
-	\end{align*}
+	\end{align}
 	Thus, we conclude that this is identical to $|\Psi_{\rm MCSCF}\rangle$ in Eq.(4.48) if
-	\begin{sequation}
+	\[
 		c_A = \frac{ a^2 }{ \sqrt{ a^4 + b^4 } } , \quad c_B = -\frac{ b^2 }{ \sqrt{ a^4 + b^4 } }.
-	\end{sequation}
-	
+	\]
 	\end{enumerate}		
 		
 	\end{solution}
@@ -599,11 +600,11 @@
 	\begin{solution}
 	
 	We only check whether $\langle \Psi_0 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle$, $\langle \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle$ and $\langle \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle$ vanish. That is enough.	
-	\begin{align*}
+	\begin{align}
 		\langle \Psi_0 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle &= \langle 1_1 \bar{1}_1 1_2 \bar{1}_2 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = \langle 1_2 \bar{1}_2 || 2_1 \bar{2}_1 \rangle = ( 1_2 2_1 | 1_2 2_1 ) = 0, \\
 		\langle \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle &= \langle 2_1 \bar{2}_1 1_2 \bar{1}_2 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = 0 , \\
 		\langle \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle &= \langle 1_1 \bar{1}_1 2_2 \bar{2}_2 | \mathscr{H} | 1_1 \bar{1}_1 2_1 \bar{2}_1 \rangle = \langle 2_2 \bar{2}_2 || 2_1 \bar{2}_1 \rangle = ( 2_2 2_1 | 2_2 2_1 ) = 0.
-	\end{align*}		
+	\end{align}		
 	
 	\end{solution}
 	
@@ -712,7 +713,7 @@
 		 &= 4( \varepsilon_2 - \varepsilon_1 ) + 2J_{11} + 2J_{12} + 4K_{12} - 8J_{12} = 4\Delta.
 	\end{align*}
 	Here, note that the definition of $\Delta$ is located on page 240. Thus, we obtain the full CI matrix equation
-	\begin{sequation}
+	\begin{equation}
 		\begin{pmatrix}
 			0 		& K_{12} 	& K_{12} 	& 0 		\\
 			K_{12} 	& 2\Delta 	& 0 		& K_{12} 	\\
@@ -724,7 +725,7 @@
 		\end{pmatrix} = ^2 E_\corr \begin{pmatrix}
 			1 \\ c_1 \\ c_2 \\ c_3
 		\end{pmatrix}.
-	\end{sequation}
+	\end{equation}
 	It also equals
 	\begin{align*}
 		K_{12} c_1 + K_{12} c_2 &= ^2 E_\corr , \\
@@ -734,18 +735,18 @@
 	\end{align*}
 	
 	\item[b.] From the second and the third equations, it is evident that $c_1 = c_2$. From the first equation,
-	\begin{sequation}
+	\begin{equation}
 		^2 E_\corr = K_{12} c_1 + K_{12} c_2 = 2 K_{12} c_1.
-	\end{sequation}
+	\end{equation}
 		
 	\item[c.] The fourth equation can be substracted by the first one, viz.,
 	\[
 		4\Delta c_3 = ^2 E_\corr c_3 - ^2 E_\corr,
 	\]
 	which is equal to
-	\begin{sequation}
+	\begin{equation}
 		c_3 = \frac{ ^2 E_\corr }{ ^2 E_\corr - 4 \Delta }.
-	\end{sequation}
+	\end{equation}
 	
 	\item[d.] By substituting $c_3$ into the second equation, we find that
 	\begin{align*}
@@ -766,9 +767,9 @@
 		E_1 = 2\left( \Delta + \sqrt{ \Delta^2 + K^2_{12} } \right), \quad E_2 = 2 \left( \Delta - \sqrt{ \Delta^2 + K^2_{12} } \right).
 	\]
 	In current problem, the correlation energy is the lowest root,
-	\begin{sequation}
+	\begin{equation}
 		^2 E_\corr = 2 \left( \Delta - \sqrt{ \Delta^2 + K^2_{12} } \right),
-	\end{sequation}
+	\end{equation}
 	which is indeed exact for the model.
 	\end{itemize}		
 	
@@ -786,9 +787,9 @@
 	\begin{solution}
 	
 	With $(1+x)^{\frac{1}{2}} \approx 1+\frac{1}{2} x$ as $x \ll 1$, when $K^2_{12}/\Delta^2 \ll 1$, we find that
-	\begin{sequation}
+	\[
 		^1 E_\corr ({\rm exact}) = \Delta \left( 1 - \sqrt{ 1 + \frac{ K^2_{12} }{ \Delta^2 } } \right) \approx \Delta \left( 1 - \left( 1 + \frac{ K^2_{12} }{ 2\Delta^2 } \right) \right) = -\frac{ K^2_{12} }{ 2\Delta }.
-	\end{sequation}
+	\]
 	The conclusion has been proved.
 		
 	\end{solution}
@@ -849,9 +850,9 @@
 	
 	It equals
 	
-	\begin{sequation}
+	\begin{equation}
 		^N E_\corr ({\rm DCI}) = - \frac{ N K^2_{12} }{ 2\Delta } + \frac{ N^2 K^4_{12} }{ 8\Delta^3 } + \cdots.
-	\end{sequation}
+	\end{equation}
 	
 	\item[b.] From (4.55), we know the norm of $| \Phi_0 \rangle$ of the two independent minimal basis, viz.,
 	\[
@@ -866,14 +867,14 @@
 		c_0 = \frac{1}{ \sqrt{ \langle \Phi_0 | \Phi_0 \rangle } } = \frac{1}{ \sqrt{ 1 + Nc^2_1 } }
 	\]	
 	and
-	\begin{sequation}
+	\begin{equation}
 		1 - c^2_0 = 1 - \left( \frac{1}{ \sqrt{ 1 + Nc^2_1 } } \right)^2 = \frac{ N c^2_1 }{ 1 + Nc^2_1 }.
-	\end{sequation}
+	\end{equation}
 	
 	\item[c.] From (4.64) and (4.67), we obtain
-	\begin{sequation}
+	\begin{equation}
 		c_1 = \frac{ K_{12} }{ ^N E_\corr( {\rm DCI}  ) - 2\Delta } = \frac{ K_{12} }{ \Delta - \sqrt{ \Delta^2 + N K^2_{12} } - 2 \Delta } = - \frac{ \frac{ K_{12} }{ \Delta } }{ 1 + \sqrt{ 1 + N \left( \frac{ K_{12} }{ \Delta } \right)^2 } } \approx - \frac{ K_{12} }{ 2 \Delta },
-	\end{sequation}
+	\end{equation}
 	where $N \left( \frac{ K_{12} }{ \Delta } \right)^2 \approx 0$. Note that as $N \left( \frac{ K_{12} }{ \Delta } \right)^2 \approx 0$,
 	\[
 		1 + Nc^2_1 \approx 1 + N \left( - \frac{ K_{12} }{ 2 \Delta } \right)^2 \approx 1.
@@ -884,15 +885,15 @@
 		\Delta E_{\rm Davidson} = \frac{ N c^2_1 }{ 1 + Nc^2_1 } N K_{12} c_1 \approx N^2 K_{12} c^3_1 \approx N^2 K_{12} \left( - \frac{ K_{12} }{ 2 \Delta } \right)^3 = - \frac{ N^2 K^4_{12} }{ 8\Delta^3 }.
 	\]
 	Higher terms are omitted. In other words,
-	\begin{sequation}
+	\begin{equation}
 		\Delta E_{\rm Davidson} = - \frac{ N^2 K^4_{12} }{ 8\Delta^3 } + \cdots.
-	\end{sequation}
+	\end{equation}
 	
 	\item[e.] Substitute (4.64) into the equation of $\Delta E_{\rm Davidson}$, we find that
-	\begin{align*}
-		\Delta E_{\rm Davidson} &= \frac{ N c^2_1 }{ 1 + Nc^2_1 }    {}^N E_\corr( {\rm DCI} ) \\
+	\begin{align}
+		\Delta E_{\rm Davidson} &= \frac{ N c^2_1 }{ 1 + Nc^2_1 }    {}^N E_\corr( {\rm DCI} ) \notag \\
 		&= \frac{ N \left( \frac{ {}^N E_\corr( {\rm DCI} ) }{ N K_{12} } \right)^2 }{ 1 + N \left( \frac{ {}^N E_\corr( {\rm DCI} ) }{ N K_{12} } \right)^2 } {}^N E_\corr( {\rm DCI} ) = \frac{ ( {}^N E_\corr( {\rm DCI} )^3 }{ N K^2_{12} + ( {}^N E_\corr( {\rm DCI} ) )^2 }.
-	\end{align*}
+	\end{align}
 	
 	A program named \verb!14.cc! in the directory ``scripts" can  be found. It is designed to calculate the correlation energy for $N=1,2,\cdots,19,20,100$. Relevant results are listed in \Tableref{tab:correlation_energy_error}.
 	
@@ -971,9 +972,9 @@
 	\begin{solution}
 	
 	With the wave functions supplied in hints, we find that	
-	\begin{sequation}
+	\begin{equation}
 		\langle \Psi_0 | \Phi_0 \rangle = \frac{1}{(1+c^2)^{N/2}} \prod_{ i=1 }^N \prod_{ j=1 }^N \left[ \langle 1_i \bar{1}_i | 1_j \bar{1}_j \rangle + \langle 1_i \bar{1}_i | 2_j \bar{2}_j \rangle \right] = \frac{1}{(1+c^2)^{N/2}} \prod_{ i=1 }^N \prod_{ j=1 }^N \delta_{ij} = \frac{1}{(1+c^2)^{N/2}}.
-	\end{sequation}
+	\end{equation}
 	As $R$ = 1.4 $\au$, $\Delta = 0.78865 \, \au$ and
 	\[
 		c = \frac{ ^1 E_\corr }{ K_{12} } = \frac{ \Delta - \sqrt{ \Delta^2 + K^2_{12} } }{ K_{12} } = -0.1135.
