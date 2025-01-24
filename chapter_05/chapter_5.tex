@@ -82,6 +82,7 @@
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
 \newcommand{\C}{{\bf C}}
+\newcommand{\D}{{\bf D}}
 \newcommand{\HH}{{\bf H}}
 \newcommand{\I}{{\bf 1}}
 \newcommand{\U}{{\bf U}}
@@ -703,6 +704,231 @@
 	\end{align*}
 	which equals (5.49) and (5.50). 
 			
-	\end{solution}	
+	\end{solution}
+	
+	\subsection{Linear CCA and the Coupled Electron Pair Approximation (CEPA)}
+	
+	% 5.12
+	\begin{exercise}
+	\begin{enumerate}
+	
+	\item[a.] Show that if the matrix $\D$ is approximated by its diagonal elements, the L-CCA correlation energy is identical to the result obtained using Epstein-Nesbet pairs (i.e., Eqs.(5.15) and (5.16)).
+	
+	\item[b.] Show that linear CCA is invariant under unitary transformations for the problem of two independent $\ce{H2}$ molecules. First show that for this model the correlation energy of the dimer using localized orbitals is the same as that obtained in Exercise 5.9a. Then show using delocalized spin orbitals that, in contrast to the results of Exercise 5.9, one gets the same correlation energy. You will find the DCI matrix given in Exercise 5.7 useful.
+	
+	\end{enumerate}
+	
+	\end{exercise}
+		
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] If the matrix $\D$ is approximated by its diagonal elements, their mathematical expression will be
+	\[
+		(\D)_{rasb,tcud} = \delta_{rs,tu} \delta_{ab,cd} \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle .
+	\]	
+	It is evident that the mathematical expression of matrix elements of $\D^{-1}$ is
+	\[
+		(\D^{-1})_{rasb,tcud} = \frac{ \delta_{rs,tu} \delta_{ab,cd} }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } .
+	\]
+	Thus, at this time, the L-CCA correlation energy is
+	\begin{align*}
+		E_\corr(\text{L-CCA(diagonal\,\D}) ) &= - \sum_{ \substack{ a<b \\ r<s } } \sum_{ \substack{ c<d \\ t<u } } \B^\dagger_{rasb} (\D^{-1})_{rasb,tcud} \B_{tcud} \\
+		&= - \sum_{ \substack{ a<b \\ r<s } } \sum_{ \substack{ c<d \\ t<u } } \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle \frac{ \delta_{rs,tu} \delta_{ab,cd} }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } \langle \Psi^{tu}_{cd} | \mathscr{H} | \Psi_0 \rangle \\
+		&= - \sum_{ \substack{ a<b \\ r<s } } \frac{ \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle \langle \Psi^{rs}_{ab} | \mathscr{H} | \Psi_0 \rangle }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } .
+	\end{align*}
+	However, the (5.15) and (5.16) gives
+	\[
+		E_\corr({\rm EN}) = \sum_{a<b} e^{\rm EN}_{ab} = \sum_{ a<b } \left( - \sum_{ r<s } \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle |^2 }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } \right) = - \sum_{ \substack{ a<b \\ r<s } } \frac{ \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle \langle \Psi^{rs}_{ab} | \mathscr{H} | \Psi_0 \rangle }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle }.
+	\]
+	In conclusion, if the matrix $\D$ is approximated by its diagonal elements, the L-CCA correlation energy is identical to the result obtained using Epstein-Nesbet pairs.
+	
+	\item[b.] When localized orbitals are used, based on $|2_1 \bar{2}_1 1_2 \bar{1}_2\rangle$ and $|1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle$, its $\B$ and $\D$ are
+	\[
+		\B = \begin{pmatrix}
+			K_{12} \\ K_{12}
+		\end{pmatrix}, \quad \D = \begin{pmatrix}
+			2\Delta & 0 \\ 0 & 2\Delta
+		\end{pmatrix} \Rightarrow \D^{-1} = \begin{pmatrix}
+			\frac{1}{2\Delta} & 0 \\ 0 & \frac{1}{2\Delta}
+		\end{pmatrix} .
+	\]
+	From (5.65), we obtain that
+	\begin{sequation}
+		E_\corr( {\rm L-CCA}(L) ) = -\begin{pmatrix}
+			K_{12} & K_{12} 
+		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{2\Delta} & 0 \\ 0 & \frac{1}{2\Delta}
+		\end{pmatrix} \begin{pmatrix}
+			K_{12} \\ K_{12} 
+		\end{pmatrix} = - \frac{ K^2_{12} }{ \Delta } .
+	\end{sequation}
+	
+	When delocalized orbitals are used, based on $| \Psi^{**}_{a \bar{a}} \rangle$, $| \Psi^{**}_{b \bar{b}} \rangle$, $| \Psi^{**}_{a \bar{b}} \rangle$, $| \Psi^{**}_{\bar{a} b} \rangle$, its $\B$ and $\D$ are
+	\[
+		\B = \begin{pmatrix}
+		\frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} }
+		\end{pmatrix}, \quad \D = \begin{pmatrix}
+		2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} \\
+		\frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime
+		\end{pmatrix}.
+	\]
+	
+	In fact, it is difficult to calculate the inverse of $\D$ directly. Here I will introduce how to calculate it. Notations are listed as follows.
+	\[
+		a = 2\Delta^\prime + \frac{1}{2} J_{11}, \quad c= \frac{1}{2} K_{12} - J_{12} , \quad  A \equiv \begin{pmatrix}
+			2 \Delta^\prime & \frac{1}{2} J_{11} \\ \frac{1}{2} J_{11} & 2 \Delta^\prime
+		\end{pmatrix}, \quad \delta \equiv \begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix}.
+	\]
+	Thus, the matrix $\D$ can be expressed as
+	\[
+		\D = \begin{pmatrix}
+			A & c \delta \delta^T \\
+			c \delta \delta^T & A 
+		\end{pmatrix}.
+	\]
+	Due to the symmetry of $\D$, its inverse $\D^{-1}$ can be set in the form of
+	\[
+		\begin{pmatrix}
+			M & N \\
+			N & M
+		\end{pmatrix},
+	\]
+	where $M$ and $N$ are $2\times2$ matrices and $M$ is symmetric. Then,
+	\[
+		\D \D^{-1} = \begin{pmatrix}
+			A & c \delta \delta^T \\
+			c \delta \delta^T & A 
+		\end{pmatrix} \begin{pmatrix}
+			M & N \\
+			N & M
+		\end{pmatrix} = \begin{pmatrix}
+			\I_2 & 0_2 \\
+			0_2 & \I_2
+		\end{pmatrix},
+	\]
+	where $\I_2$ is a 2-order identity matrix and $0_2$ is a $2 \times 2$ zero matrix. Thus, two matrix equations are obtained, viz.,
+	\begin{align*}
+		AM + c \delta \delta^T N &= \I_2 , \tag{a} \\
+		AN + c \delta \delta^T M &= 0_2 . \tag{b}
+	\end{align*}
+	Note that
+	\[
+		\delta^T A = (1,1) \begin{pmatrix}
+			2 \Delta^\prime & \frac{1}{2} J_{11} \\ \frac{1}{2} J_{11} & 2 \Delta^\prime
+		\end{pmatrix} = ( a , a ) = a \delta^T, \quad \delta^T \delta = (1,1) \begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix} = 2.
+	\]
+	The equation (a) can be left-multiplied by $\delta^T$,
+	\[
+		\delta^T = \delta^T \I_2 = \delta^T A M + c \delta^T \delta \delta^T N = a \delta^T M + 2c \delta^T N , 
+	\]	
+	so does the equation (b),	
+	\[
+		0_2 = \delta^T 0_2 = \delta^T A N + c \delta^T \delta \delta^T M = a \delta^T N + 2c \delta^T M .
+	\]
+	In other words, we obtain a new equation.
+	\[
+		\begin{pmatrix}
+			a & 2c \\ 2c & a 
+		\end{pmatrix} \begin{pmatrix}
+			\delta^T M \\ \delta^T N
+		\end{pmatrix} = \begin{pmatrix}
+			\delta^T \\ {\bf 0}
+		\end{pmatrix}
+	\]
+	The determinant of the coefficient matrix is 
+	\[
+		a^2 - 4c^2 = (a+2c)(a-2c) = 2\Delta ( a-2c ) = 2\Delta \left[ 2(\varepsilon_2 - \varepsilon_1) + \frac{1}{2} J_{11} + J_{22} \right] \neq 0,
+	\]
+	thus the coefficient matrix is reversible. With the truth that for a general $2 \times 2$ matrix $\C$, if its determinant $|\C| \neq 0$, its inverse
+	\[
+		\C^{-1} = \frac{1}{ | \C| } \begin{pmatrix}
+			c_{22} & -c_{12} \\ -c_{21} & c_{11}
+		\end{pmatrix},
+	\] 
+	we find that
+	\[
+		\begin{pmatrix}
+			\delta^T M \\ \delta^T N
+		\end{pmatrix} = \frac{1}{a^2 - 4c^2} \begin{pmatrix}
+			a & -2c \\ -2c & a 
+		\end{pmatrix} \begin{pmatrix}
+			\delta^T \\ {\bf 0}
+		\end{pmatrix} = \frac{1}{a^2 - 4c^2} \begin{pmatrix}
+			a \delta^T \\ -2c \delta^T
+		\end{pmatrix}.
+	\]
+	Now we know that 
+	\begin{align*}
+		\delta^T M &= \frac{ a }{ a^2 - 4c^2 } \delta^T , \\
+		\delta^T N &= - \frac{ 2c }{ a^2 - 4c^2 } \delta^T.
+	\end{align*}
+	Hence, we take it into the equation (a),
+	\begin{align*}
+		M &= A^{-1} ( \I_2 - c \delta \delta^T N) \\
+		  &= \frac{1}{ (2\Delta^\prime)^2 - \left( \frac{1}{2} J_{11} \right)^2 } \begin{pmatrix}
+		  	2\Delta^\prime & - \frac{1}{2} J_{11} \\ - \frac{1}{2} J_{11} & 2\Delta^\prime \end{pmatrix} \left[ \begin{pmatrix}
+		  	1 & 0 \\ 0 & 1 
+		 \end{pmatrix} - c \times \frac{ -2c }{ a^2 - 4c^2 } \begin{pmatrix} 1 & 1 \\ 1 & 1 	\end{pmatrix}  \right] \\
+		 &= \frac{1}{ a ( a - J_{11} ) } \begin{pmatrix}
+		  	2\Delta^\prime & - \frac{1}{2} J_{11} \\ - \frac{1}{2} J_{11} & 2\Delta^\prime \end{pmatrix} \times \frac{1}{ 2 \Delta ( a - 2c ) } \begin{pmatrix}
+		a^2 - 2c^2 & 2c^2 \\ 2c^2 & a^2 - 2c^2 				  	
+		  	\end{pmatrix} \\
+		  &= \frac{1}{ 2\Delta (a-2c) (a-J_{11}) } \begin{pmatrix}
+	2(\Delta^\prime a - c^2) & 2c^2 - \frac{1}{2} J_{11} a \\
+	2c^2 - \frac{1}{2} J_{11} a & 2(\Delta^\prime a - c^2)
+		  \end{pmatrix}
+	\end{align*}
+	and the equation (b),
+	\[
+		N = -A^{-1} c \delta \delta^T M = - c ( A^{-1} \delta ) (\delta^T M) = - c \frac{ a - J_{11} }{ a( a - J_{11} ) } \delta \times \frac{ a }{ a^2 - 4c^2 } \delta^T = - \frac{ c }{ a^2 - 4c^2 } \begin{pmatrix}
+		  	 1 & 1 \\ 1 & 1
+		  \end{pmatrix} .
+	\]
+	In conclusion, the inverse of $\D$ is
+	\[
+		\D^{-1} = \begin{pmatrix}
+			M & N \\ N & M 
+		\end{pmatrix} = \frac{ 1 }{ a^2 - 4c^2 } \begin{pmatrix}
+			\frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & -c & -c \\
+			\frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & -c & -c \\
+			-c & -c & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } \\
+			-c & -c & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} }
+		\end{pmatrix}.
+	\]
+	
+	Now, it is turn to calculate the correlation energy, note that $a+2c=\Delta$ and $2\Delta^\prime - \frac{1}{2} J_{11} = a - J_{11}$, we find that
+	\begin{align*}
+		&\hspace{1.4em} E_\corr( {\rm L-CCA}(D) ) = -\B^\dagger \D \B \\
+		&= - \frac{ 1 }{ a^2 - 4c^2 } \begin{pmatrix}
+		  	\frac{ K_{12} }{ \sqrt{2} } , \frac{ K_{12} }{ \sqrt{2} } , \frac{ K_{12} }{ \sqrt{2} } , \frac{ K_{12} }{ \sqrt{2} } 
+		  \end{pmatrix}  \begin{pmatrix}
+			\frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & -c & -c \\
+			\frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & -c & -c \\
+			-c & -c & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } \\
+			-c & -c & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} }
+		\end{pmatrix} \begin{pmatrix}
+		  	\frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \end{pmatrix} \\
+		&= - \frac{ 1 }{ a^2 - 4c^2 } \left( \frac{ K_{12} }{ \sqrt{2} } \right)^2 \left[ -8c + 4 \times \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } + 4 \times \frac{ 2c^2 - \frac{1}{2} J_{11} a }{  a - J_{11} } \right] \\
+		&= - \frac{ 1 }{ 2\Delta ( a - 2c ) } \times \frac{ K^2_{12} }{ 2 } \left[ -8c + 4 \times \frac{ 2 \Delta^\prime a - 2 c^2 + 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } \right] \\
+		&= - \frac{ K^2_{12} }{ 4\Delta ( a - 2c ) } \times 4 \left( -2c + \frac{ ( 2\Delta^\prime - J_{11} ) a }{ a - J_{11} } \right) \\
+		&= - \frac{ K^2_{12} }{ \Delta ( a - 2c ) } \times ( a - 2c ) = - \frac{ K^2_{12} }{ \Delta } .
+	\end{align*}
+	This states that one gets the same correlation energy using delocalized orbitals.
+
+	\end{itemize}
+	
+	\end{solution}
+	
+	\subsection{Some Illustrative Calculations}
+	
+	\section{Many-Electron Theories with Single Particle Hamiltonians}	
 
 \end{document}
