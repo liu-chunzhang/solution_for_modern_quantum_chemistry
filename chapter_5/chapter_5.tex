@@ -1009,29 +1009,21 @@
 	Show that
 	\begin{enumerate}
 	
-	\item[a.]
-	\[
-		\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = v_{bs}.
-	\]
+	\item[a.] $\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = v_{bs}$.
+
+	\item[b.] $\langle \Psi^r_a | \mathscr{H} | \Psi_0 \rangle = v_{ra}$.
+
+	\item[c.] $\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^s_b \rangle = \begin{cases}
+	0 , &\,\text{if} \, a\neq b, \, r \neq s, \\
+	v_{rs} , &\,\text{if} \, a = b , \, r \neq s. \\
+	-v_{ba} , &\,\text{if} \, a \neq b , \, r = s. \\
+	\varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa} &\, \text{if} \, a = b , \, r = s.
+\end{cases}
+	$	
 	
-	\item[b.] 
-	\[
-		\langle \Psi^r_a | \mathscr{H} | \Psi_0 \rangle = v_{ra}.
-	\]
-	
-	\item[c.]
-	\begin{align*}
-	\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^s_b \rangle &= 0 , &\,\text{if} \, a\neq b, \, r \neq s, \\
-	&= v_{rs} , &\,\text{if} \, a = b , \, r \neq s. \\
-	&= -v_{ba} , &\,\text{if} \, a \neq b , \, r = s. \\
-	&= \varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa} &\, \text{if} \, a = b , \, r = s.
-	\end{align*}		
-	
-	\item[d.] 
-	\begin{align*}
-	\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle &= v_{bs} , &\,\text{if} \, a \neq b, \, r \neq s, \\
-	&=0, &\,\text{otherwise}.
-	\end{align*}	
+	\item[d.] $\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle = \begin{cases} v_{bs} , &\,\text{if} \, a \neq b, \, r \neq s, \\
+	0, &\,\text{otherwise}. \end{cases}
+	$
 	
 	\end{enumerate}
 	\end{exercise}
@@ -1041,21 +1033,39 @@
 	
 	\begin{itemize}
 	
-	\item[a.]
+	\item[a.] With (5.72) and (5.75),
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle &= \langle \Psi_0 | \mathscr{H}_0 | \Psi^s_b \rangle + \langle \Psi_0 | \mathscr{V} | \Psi^s_b \rangle \\ 
+		&= \left( \sum_{a} \varepsilon^{(0)}_a \right) \langle \Psi_0 | \Psi^s_b \rangle + \langle \Psi_0 | \sum_{i=1}^N  v(i) | \Psi^s_b \rangle = 0 + \langle \chi^{(0)}_b | v | \chi^{(0)}_s \rangle = v_{bs} .
+	\end{align*}
+	Thus, we obtain that
 	\begin{sequation}
-		\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = \sum_{i=1}^N \langle \Psi_0 | h(i) | \Psi^s_b \rangle + \sum_{i=1}^N \langle \Psi_0 | v(i) | \Psi^s_b \rangle = \langle \chi^{(0)}_b | v | \chi^{(0)}_s \rangle = v_{bs} .
+		\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = v_{bs} .
 	\end{sequation}
-	
-	\item[b.]
+		
+	\item[b.] Similarly, we find that
 	\begin{sequation}
-		\langle \Psi^r_a | \mathscr{H} | \Psi_0 \rangle = \sum_{i=1}^N \langle \Psi^r_a | h(i) | \Psi_0 \rangle + \sum_{i=1}^N \langle \Psi^r_a | v(i) | \Psi_0 \rangle = \langle \chi^{(0)}_r | v | \chi^{(0)}_a \rangle = v_{ra} .
+		\langle \Psi^r_a | \mathscr{H} | \Psi_0 \rangle = \langle \Psi^r_a | \Psi_0 \rangle \sum_{a} \varepsilon^{(0)}_a + \langle \Psi^r_a | \sum_{i=1}^N v(i) | \Psi_0 \rangle = 0 +\langle \chi^{(0)}_r | v | \chi^{(0)}_a \rangle = v_{ra} .
 	\end{sequation}		
 	
-	\item[c.]
-	\begin{sequation}
-		\langle \Psi^r_a | \mathscr{H} | \Psi^r_a \rangle = \sum_{ i=1 }^N \langle \chi^{(0)}_i | h + v | \chi^{(0)}_i \rangle - \langle \chi^{(0)}_a | h + v | \chi^{(0)}_a \rangle + \langle \chi^{(0)}_r | h + v | \chi^{(0)}_r \rangle = E_0 + \varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa}.
-	\end{sequation}	
-	
+	\item[c.] Firstly, we inspect $\langle \Psi^r_a | \mathscr{H} | \Psi^r_a \rangle$. With (5.73), (5.74), we know that
+	\begin{align*}
+		\langle \Psi^r_a | \mathscr{H} | \Psi^r_a \rangle &= \langle \Psi^r_a | \mathscr{H}_0 | \Psi^r_a \rangle + \langle \Psi^r_a | \mathscr{V} | \Psi^r_a \rangle = \left( \sum_{ b \neq a } \varepsilon_b + \varepsilon_r \right) \langle \Psi^r_a | \Psi^r_a \rangle + \sum_{b \neq a} v_{bb} + v_{rr} \\
+		&= \sum_{ b } \varepsilon_b + \varepsilon_r - \varepsilon_a + \sum_{ b } v_{bb} - v_{aa} + v_{rr} = E_0 + \varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa}.
+	\end{align*}
+	Thus,
+	\[
+		\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^r_a \rangle = \langle \Psi^r_a | \mathscr{H} | \Psi^r_a \rangle - E_0 =  \varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa}.
+	\]
+	Then, we inspect $\langle \Psi^r_a | \mathscr{H} | \Psi^s_a \rangle$. When $r \neq s$, we get that
+	\[
+		\langle \Psi^r_a | \mathscr{H} | \Psi^s_a \rangle = \langle \Psi^r_a | \mathscr{H}_0 | \Psi^s_a \rangle + \langle \Psi^r_a | \mathscr{V} | \Psi^s_a \rangle = \left( \sum_{ b \neq a } \varepsilon_b + \varepsilon_r \right) \langle \Psi^r_a | \Psi^s_a \rangle + v_{rs} = v_{rs}. 
+	\]
+	Similarly, when $a\neq b$, we find that
+	\[
+		\langle \Psi^r_a | \mathscr{H} | \Psi^r_b \rangle = \langle \Psi^r_a | \mathscr{H}_0 | \Psi^r_b \rangle + \langle \Psi^r_a | \mathscr{V} | \Psi^r_b \rangle = \left( \sum_{ c \neq a } \varepsilon_c + \varepsilon_r \right) \langle \Psi^r_a | \Psi^r_b \rangle - v_{ba} = - v_{ba}. 
+	\]
+	Otherwise, the matrix element of a Hamiltonian between $\Psi^r_a$ and $\Psi^s_b$ vanishes as their different spin orbitals are more than one ($r \neq s$ and $a \neq b$).	In conclusion, we find that
 	\begin{sequation}
 		\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^s_b \rangle = \begin{cases}
 		0 , &\,\text{if} \, a\neq b, \, r \neq s, \\
@@ -1063,7 +1073,8 @@
 		-v_{ba} , &\,\text{if} \, a \neq b , \, r = s, \\
 		\varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa} &\, \text{if} \, a = b , \, r = s.
 	\end{cases}
-	\end{sequation}
+	\end{sequation}	
+	This conclusion can be reached using the results of Exercise 2.13, too.
 	
 	\item[d].
 	
