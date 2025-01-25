@@ -146,10 +146,9 @@
 	has been used.
 	
 	After substitute $\Delta = \varepsilon_2 - \varepsilon_1$, we obtain	
-	\begin{equation}
+	\begin{sequation}
 		{}^1 E_\corr ({\rm FO}) = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) } = \frac{ K^2_{12} }{ 2( \varepsilon_1 - \varepsilon_2 ) }.
-	\end{equation}
-	
+	\end{sequation}
 	
 	\end{enumerate}		
 	
@@ -1065,7 +1064,7 @@
 	\[
 		\langle \Psi^r_a | \mathscr{H} | \Psi^r_b \rangle = \langle \Psi^r_a | \mathscr{H}_0 | \Psi^r_b \rangle + \langle \Psi^r_a | \mathscr{V} | \Psi^r_b \rangle = \left( \sum_{ c \neq a } \varepsilon_c + \varepsilon_r \right) \langle \Psi^r_a | \Psi^r_b \rangle - v_{ba} = - v_{ba}. 
 	\]
-	Otherwise, the matrix element of a Hamiltonian between $\Psi^r_a$ and $\Psi^s_b$ vanishes as their different spin orbitals are more than one ($r \neq s$ and $a \neq b$).	In conclusion, we find that
+	Otherwise, the matrix element of a Hamiltonian between $\Psi^r_a$ and $\Psi^s_b$ vanishes as the number of their different spin orbitals is more than one ($r \neq s$ and $a \neq b$).	In conclusion, we find that
 	\begin{sequation}
 		\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^s_b \rangle = \begin{cases}
 		0 , &\,\text{if} \, a\neq b, \, r \neq s, \\
@@ -1076,15 +1075,14 @@
 	\end{sequation}	
 	This conclusion can be reached using the results of Exercise 2.13, too.
 	
-	\item[d].
-	
-	\end{itemize}
+	\item[d]. As $a = b$ or $r = s$, $\Psi^{rs}_{ab}$ vanishes and thus $\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle = 0$. Otherwise, namely, $a \neq b$ and $r \neq s$, the number of their different spin orbitals is one, at this time, $\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle = \langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = v_{bs}$. Finally, we get that
 	\begin{sequation}
 		\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle = \begin{cases} v_{bs} , &\,\text{if} \, a \neq b, \, r \neq s, \\
 	0, &\,\text{otherwise}. \end{cases}
 	\end{sequation}
-	
-	
+		
+	\end{itemize}
+
 	\end{solution}
 	
 	% 5.15
@@ -1106,7 +1104,7 @@
 	
 	\item[b.] To make contact with the general formalism, note that
 	\[
-		\U_{AA} = \begin{pmatrix} a_1 & b_2 \\ a_2 & b_2 \end{pmatrix}, \, \U_{BA} = \begin{pmatrix} a_3 & b_3 \\ a_4 & b_4 \end{pmatrix}.
+		\U_{AA} = \begin{pmatrix} a_1 & b_1 \\ a_2 & b_2 \end{pmatrix}, \, \U_{BA} = \begin{pmatrix} a_3 & b_3 \\ a_4 & b_4 \end{pmatrix}.
 	\]
 	Note that $|\U_{AA}| = a_1 b_2 - b_1 a_2$ as required to make Eq.(5.120a) consistent with the result obtained in part (a). Use the result of Exercise 1.4(f) to evaluate $\U^{-1}_{AA}$ and then verify the general result given in Eq.(5.120b) by calculating
 	\[
@@ -1116,42 +1114,488 @@
 	\end{enumerate}
 	\end{exercise}
 	
-		\begin{solution}
+	\begin{solution}
 	
+	\begin{itemize}
+	
+	\item[a.] Using (1.40) and $| \chi^{(0)}_i \chi^{(0)}_i \rangle = 0$ for $i=1,2,3,4$, we find that
 	\begin{align*}
 		| \Phi_0 \rangle &= | ( a_1 \chi^{(0)}_1 + a_2 \chi^{(0)}_2 + a_3 \chi^{(0)}_3 + a_4 \chi^{(0)}_4 ) ( b_1 \chi^{(0)}_1 + b_2 \chi^{(0)}_2 + b_3 \chi^{(0)}_3 + b_4 \chi^{(0)}_4 ) \rangle	\\
 		&= a_1 b_2 | \chi^{(0)}_1 \chi^{(0)}_2 \rangle + a_1 b_3 | \chi^{(0)}_1 \chi^{(0)}_3 \rangle + a_1 b_4 | \chi^{(0)}_1 \chi^{(0)}_4 \rangle + a_2 b_1 | \chi^{(0)}_2 \chi^{(0)}_1 \rangle \\
 		&\hspace{2em} + a_2 b_3 | \chi^{(0)}_2 \chi^{(0)}_3 \rangle + a_2 b_4 | \chi^{(0)}_2 \chi^{(0)}_4 \rangle + a_3 b_1 | \chi^{(0)}_3 \chi^{(0)}_1 \rangle + a_3 b_2 | \chi^{(0)}_3 \chi^{(0)}_2 \rangle \\
 		&\hspace{2em}  + a_3 b_4 | \chi^{(0)}_3 \chi^{(0)}_4 \rangle + a_4 b_1 | \chi^{(0)}_4 \chi^{(0)}_1 \rangle + a_4 b_2 | \chi^{(0)}_4 \chi^{(0)}_2 \rangle + a_4 b_3 | \chi^{(0)}_4 \chi^{(0)}_3 \rangle \\
 		&= ( a_1 b_2 - a_2 b_1 ) | \chi^{(0)}_1 \chi^{(0)}_2 \rangle + ( a_1 b_3 - a_3 b_1 ) | \chi^{(0)}_1 \chi^{(0)}_3 \rangle + ( a_1 b_4  - a_4 b_1 ) | \chi^{(0)}_1 \chi^{(0)}_4 \rangle \\
-		&\hspace{2em} + ( a_2 b_3 - a_3 b_2 ) | \chi^{(0)}_2 \chi^{(0)}_3 \rangle + ( a_2 b_4 - a_4 b_2 ) | \chi^{(0)}_2 \chi^{(0)}_4 \rangle + ( a_3 b_4  - a_4 b_3 ) | \chi^{(0)}_3 \chi^{(0)}_4 \rangle \\
+		&\hspace{2em} + ( a_2 b_3 - a_3 b_2 ) | \chi^{(0)}_2 \chi^{(0)}_3 \rangle + ( a_2 b_4 - a_4 b_2 ) | \chi^{(0)}_2 \chi^{(0)}_4 \rangle + ( a_3 b_4  - a_4 b_3 ) | \chi^{(0)}_3 \chi^{(0)}_4 \rangle  \\
 		&= ( a_1 b_2 - a_2 b_1 ) | \Psi_0 \rangle + ( a_1 b_3 - a_3 b_1 ) | \Phi^3_2 \rangle + ( a_1 b_4  - a_4 b_1 ) | \Phi^4_2 \rangle \\
 		&\hspace{2em} - ( a_2 b_3 - a_3 b_2 ) | \Psi^3_1 \rangle - ( a_2 b_4 - a_4 b_2 ) | \Psi^4_1 \rangle + ( a_3 b_4  - a_4 b_3 ) | \Psi^{34}_{12} \rangle.
-	\end{align*}		
-
+	\end{align*}
+	After the intermediate normalization (namely, $| \Phi_0 \rangle$ divided by $a_1 b_2 - a_2 b_1$), we get that
 	\begin{align*}
-		| \Phi^\prime_0 \rangle &= | \Psi_0 \rangle + \frac{1}{ a_1 b_2 - a_2 b_1 } \left[ ( a_1 b_3 - a_3 b_1 ) | \Phi^3_2 \rangle + ( a_1 b_4  - a_4 b_1 ) | \Phi^4_2 \rangle \right. \\
+		| \Phi^\prime_0 \rangle &= \frac{1}{ a_1 b_2 - a_2 b_1 } | \Phi_0 \rangle \\
+		&= | \Psi_0 \rangle + \frac{1}{ a_1 b_2 - a_2 b_1 } \left[ ( a_1 b_3 - a_3 b_1 ) | \Phi^3_2 \rangle + ( a_1 b_4  - a_4 b_1 ) | \Phi^4_2 \rangle \right. \\
 		&\hspace{6em} \left. - ( a_2 b_3 - a_3 b_2 ) | \Psi^3_1 \rangle - ( a_2 b_4 - a_4 b_2 ) | \Psi^4_1 \rangle + ( a_3 b_4  - a_4 b_3 ) | \Psi^{34}_{12} \rangle \right].
 	\end{align*}
-	
-	\begin{align*}
-		c^3_2 &= \frac{ a_1 b_3 - a_3 b_1 }{ a_1 b_2 - a_2 b_1 } , \\
-		c^4_2 &= \frac{ a_1 b_4 - a_4 b_1 }{ a_1 b_2 - a_2 b_1 } , \\
-		c^3_1 &= -\frac{ a_2 b_3 - a_3 b_2 }{ a_1 b_2 - a_2 b_1 } , \\
-		c^4_1 &= -\frac{ a_2 b_4 - a_4 b_2 }{ a_1 b_2 - a_2 b_1 } , \\
-		c^{34}_{12} &= \frac{ a_3 b_4 - a_4 b_3 }{ a_1 b_2 - a_2 b_1 }.
-	\end{align*}
-	
+	Thus,	
+	\begin{center}
+	\renewcommand{\arraystretch}{2.5}
+	\begin{tabular}{ccc}
+		${\displaystyle c^3_2 = \frac{ a_1 b_3 - a_3 b_1 }{ a_1 b_2 - a_2 b_1 } }$, & ${\displaystyle c^4_2 = \frac{ a_1 b_4 - a_4 b_1 }{ a_1 b_2 - a_2 b_1 } }$, & ${\displaystyle c^3_1 = -\frac{ a_2 b_3 - a_3 b_2 }{ a_1 b_2 - a_2 b_1 } }$ , \\
+		${\displaystyle c^4_1 = -\frac{ a_2 b_4 - a_4 b_2 }{ a_1 b_2 - a_2 b_1 } }$, & ${\displaystyle c^{34}_{12} = \frac{ a_3 b_4 - a_4 b_3 }{ a_1 b_2 - a_2 b_1 } }$.
+	\end{tabular}
+	\renewcommand{\arraystretch}{1.0}
+	\end{center}		
+	We can find that
 	\begin{align*}
 		c^3_1 c^4_2 - c^4_1 c^3_2 &= \left( -\frac{ a_2 b_3 - a_3 b_2 }{ a_1 b_2 - a_2 b_1 } \right) \left( \frac{ a_1 b_4 - a_4 b_1 }{ a_1 b_2 - a_2 b_1 } \right) - \left( -\frac{ a_2 b_4 - a_4 b_2 }{ a_1 b_2 - a_2 b_1 } \right) \left( \frac{ a_1 b_3 - a_3 b_1 }{ a_1 b_2 - a_2 b_1 } \right) \\
 		&= - \frac{ a_2 a_3 b_1 b_4 + a_1 a_4 b_2 b_3 - a_2 a_4 b_1 b_3 - a_1 a_3 b_2 b_4 }{ ( a_1 b_2 - a_2 b_1 )^2 } = - \frac{ ( a_1 b_2 - a_2 b_1 )( a_4 b_3 - a_3 b_4 ) }{ ( a_1 b_2 - a_2 b_1 )^2 } \\
 		&= - \frac{ a_4 b_3 - a_3 b_4 }{ a_1 b_2 - a_2 b_1  } = \frac{ a_3 b_4 - a_4 b_3 }{ a_1 b_2 - a_2 b_1 } = c^{34}_{12}.
 	\end{align*}
 	
+	\item[b.] The inverse of $\U_{AA}$ is
+	\[
+		\U^{-1}_{AA} = \frac{1}{|\U_{AA}|} \begin{pmatrix}
+			b_2 & -b_1 \\ -a_2 & a_1
+		\end{pmatrix} = \frac{1}{ a_1 b_2 - b_1 a_2 } \begin{pmatrix}
+			b_2 & -b_1 \\ -a_2 & a_1
+		\end{pmatrix},
+	\]
+	and thus
+	\[
+		\U_{BA} \U^{-1}_{AA} = \begin{pmatrix}
+		a_3 & b_3 \\ a_4 & b_4 
+\end{pmatrix} \times \frac{1}{ a_1 b_2 - b_1 a_2 } \begin{pmatrix}
+			b_2 & -b_1 \\ -a_2 & a_1
+		\end{pmatrix} = \frac{1}{ a_1 b_2 - b_1 a_2 } \begin{pmatrix}
+		a_3 b_2 - a_2 b_3 & a_1 b_3 - a_3 b_1 \\
+		a_4 b_2 - a_2 b_4 & a_1 b_4 - a_4 b_1
+		\end{pmatrix}.
+	\]
+	We know that 
+	\begin{sequation}
+		( \U_{BA} \U^{-1}_{AA} )_{11} = \frac{ a_3 b_2 - a_2 b_3 }{ a_1 b_2 - b_1 a_2 } = c^3_1.
+	\end{sequation}
+	It is identical to the coefficient of $| \chi^{(0)}_3 \chi^{(0)}_2 \rangle$ obtained in part (a).
+	\end{itemize}
+	
 	\end{solution}
 	
 	\subsection{The Resonance Energy of Polyenes in H{\"u}ckel Theory}
 	
 	% 5.16
+		\begin{exercise}
+	Set up the H{\"u}ckel matrix for benzene and find its eigenvalues. Remember that if the carbon atoms are labeled clockwise from 1 to 6, then atoms 1 and 6 are nearest neighbors. Show that the six eigenvalues are identical to those given by Eq.(5.131). Find the total energy and compare it with the result given by Eq.(5.132).
+	\end{exercise}
+	
+	\begin{solution}
+	The H{\"u}ckel matrix for benzene is
+	\[
+		\HH = \begin{pmatrix}
+		\alpha	& \beta	&	0	&	0	&	0	& \beta \\
+		\beta	& \alpha& \beta & 	0	& 	0 	& 0   	\\
+		0		& \beta	& \alpha& \beta	& 	0 	& 0   	\\
+		0		&	0	& \beta	& \alpha& \beta	& 0   	\\
+		0		&	0	& 	0	& \beta	& \alpha& \beta	\\
+		\beta	&	0	& 	0	&	0	& \beta	& \alpha
+		\end{pmatrix},
+	\]	
+	whose eigen polynomial is a sixth-degree equation in one variable $\varepsilon$, viz.,
+	\[
+		\det{\HH - \varepsilon \I} = ( \alpha - \varepsilon - 2\beta ) ( \alpha - \varepsilon - \beta )^2 ( \alpha - \varepsilon + \beta )^2 ( \alpha - \varepsilon + 2\beta ) = 0.
+	\]	
+	This equation has six roots,
+	\[
+		\varepsilon_1 = \alpha + 2 \beta , \quad \varepsilon_2 = \varepsilon_3 = \alpha + \beta , \quad \varepsilon_4 = \varepsilon_5 = \alpha - \beta , \quad \varepsilon_6 = \alpha - 2 \beta .
+	\]
+	And thus
+	\begin{sequation}
+		\mathscr{E}_0 = \sum_{i=1}^{6/2} \varepsilon_i = \varepsilon_1 + \varepsilon_2 + \varepsilon_3 = 6 \alpha + 8 \beta.
+	\end{sequation}
+	
+	Note that the cosine function is an even function. Using Eq.(5.131),  we obtain
+	\begin{align*}
+		\varepsilon_0 &= \alpha + 2 \beta \cos{ \frac{ 0 \times \pi }{ 3 } } = \alpha + 2 \beta \times 1 = \alpha + 2 \beta, \\
+		\varepsilon_{\pm 1} &= \alpha + 2 \beta \cos{ \frac{ \pm 1 \times \pi }{ 3 } } = \alpha + 2 \beta \times \frac{1}{2} = \alpha + \beta , \\
+		\varepsilon_{\pm 2} &= \alpha + 2 \beta \cos{ \frac{ \pm 2 \times \pi }{ 3 } } = \alpha + 2 \beta \times \left( - \frac{1}{2} \right) = \alpha - \beta , \\
+		\varepsilon_3 &= \alpha + 2 \beta \cos{ \frac{ 3 \times \pi }{ 3 } } = \alpha + 2 \beta \times \left( - 1 \right) = \alpha - 2\beta ,
+	\end{align*}
+	and
+	\[
+		\mathscr{E}_0 = 6 \alpha + \frac{ 4 \beta }{ \sin{ \frac{ \pi }{ 6 } } } = 6 \alpha + \frac{ 4 \beta }{ \frac{1}{2} } = 6 \alpha + 8 \beta.
+	\]	
+	It is evident that they are identical to my results before.
+	
+	\end{solution}
+	
+	% 5.17
+	\begin{exercise}
+	Verify Eqs.(5.139) and (5.140).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The verification of all equations is as follows.
+	\begin{itemize}
+	
+	\item For (5.139a):
+	\begin{align*}
+		\langle i | j \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \phi_{2j-1} \rangle + \langle \phi_{2i-1} | \phi_{2j} \rangle + \langle \phi_{2i} | \phi_{2j-1} \rangle + \langle \phi_{2i} | \phi_{2j} \rangle \right] = \frac{1}{2} \left[ \delta_{ij} + 0 + 0 + \delta_{ij} \right] = \delta_{ij}, \\
+		\langle i^* | j^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \phi_{2j-1} \rangle - \langle \phi_{2i-1} | \phi_{2j} \rangle - \langle \phi_{2i} | \phi_{2j-1} \rangle + \langle \phi_{2i} | \phi_{2j} \rangle \right] = \frac{1}{2} \left[ \delta_{ij} - 0 - 0 + \delta_{ij} \right] = \delta_{ij}.
+	\end{align*}
+	
+	\item For (5.139b):
+	\begin{align*}
+		\langle i | j^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \phi_{2j-1} \rangle - \langle \phi_{2i-1} | \phi_{2j} \rangle + \langle \phi_{2i} | \phi_{2j-1} \rangle - \langle \phi_{2i} | \phi_{2j} \rangle \right] = \frac{1}{2} \left[ \delta_{ij} - 0 + 0 - \delta_{ij} \right] = 0,  \\
+		\langle i^* | j \rangle &= ( \langle i | j^* \rangle )^* = 0^* = 0 .
+	\end{align*}
+	
+	\item For (5.140a):
+	\begin{align*}
+		\langle i | \heff | i \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-1} \rangle + \langle \phi_{2i-1} | \heff | \phi_{2i} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i} \rangle \right] \\
+		&= \frac{1}{2} \left[ \alpha + \beta + \beta + \alpha \right] = \alpha + \beta .
+	\end{align*}
+	
+	\item For (5.140b):
+	\begin{align*}
+		\langle i^* | \heff | i^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-1} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i} \rangle - \langle \phi_{2i} | \heff | \phi_{2i-1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i} \rangle \right] \\
+		&= \frac{1}{2} \left[ \alpha - \beta - \beta + \alpha \right] = \alpha - \beta .
+	\end{align*}			
+	
+	\item For (5.140c):
+	\begin{align*}
+		\langle i | \heff | i-1 \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-3} \rangle + \langle \phi_{2i-1} | \heff | \phi_{2i-2} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-3} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-2} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 + \beta + 0 + 0 \right] = \frac{1}{2} \beta , \\
+		\langle i | \heff | i+1 \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i+1} \rangle + \langle \phi_{2i-1} | \heff | \phi_{2i+2} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+2} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 + 0 + \beta + 0 \right] = \frac{1}{2} \beta .
+	\end{align*}
+	Thus,
+	\[
+		\langle i | \heff | i \pm 1 \rangle = \frac{\beta}{2}.
+	\]
+	
+	\item For (5.140d):
+	\begin{align*}
+		\langle i^* | \heff | (i-1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-3} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i-2} \rangle - \langle \phi_{2i} | \heff | \phi_{2i-3} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-2} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - 0 - \beta + 0 \right] = -\frac{1}{2} \beta , \\
+		\langle i^* | \heff | (i+1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i+1} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i+2} \rangle - \langle \phi_{2i} | \heff | \phi_{2i+1} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+2} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - 0 - \beta + 0 \right] = -\frac{1}{2} \beta .
+	\end{align*}
+	Thus,
+	\[
+		\langle i^* | \heff | (i \pm 1)^* \rangle = -\frac{\beta}{2}.
+	\]
+	
+	\item For (5.140e):
+	\begin{align*}
+		\langle i | \heff | (i-1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i-3} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i-2} \rangle + \langle \phi_{2i} | \heff | \phi_{2i-3} \rangle - \langle \phi_{2i} | \heff | \phi_{2i-2} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - \beta + 0 - 0 \right] = - \frac{1}{2} \beta , \\
+		\langle i | \heff | (i+1)^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-1} | \heff | \phi_{2i+1} \rangle - \langle \phi_{2i-1} | \heff | \phi_{2i+2} \rangle + \langle \phi_{2i} | \heff | \phi_{2i+1} \rangle - \langle \phi_{2i} | \heff | \phi_{2i+2} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - 0 + \beta - 0 \right] = \frac{1}{2} \beta , \\
+		\langle (i-1) | \heff | i^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i-3} | \heff | \phi_{2i-1} \rangle - \langle \phi_{2i-3} | \heff | \phi_{2i} \rangle + \langle \phi_{2i-2} | \heff | \phi_{2i-1} \rangle - \langle \phi_{2i-2} | \heff | \phi_{2i} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - 0 + \beta - 0 \right] =  \frac{1}{2} \beta , \\
+		\langle (i+1) | \heff | i^* \rangle &= \frac{1}{2} \left[ \langle \phi_{2i+1} | \heff | \phi_{2i-1} \rangle - \langle \phi_{2i+1} | \heff | \phi_{2i} \rangle + \langle \phi_{2i+2} | \heff | \phi_{2i-1} \rangle - \langle \phi_{2i+2} | \heff | \phi_{2i} \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - \beta + 0 - 0 \right] = - \frac{1}{2} \beta .
+	\end{align*}
+	Thus,
+	\[
+		\langle i | \heff | (i \pm 1)^* \rangle = \langle (i \mp 1) | \heff | i^* \rangle = \pm \frac{ \beta }{ 2 }.
+	\]
+	
+	Now we have proved all equations.
+	
+	\end{itemize}
+	
+	\end{solution}
+
+	% 5.18
+	\begin{exercise}
+	Evaluate the matrix elements given in Eq.(5.149) and fill in the remaining steps leading to Eq.(5.150).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The verification of (5.149) is easy, viz.,
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | {}^*_1 \rangle &= \langle \Psi_0 | \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{2*}_1 \rangle - \frac{1}{ \sqrt{2} } | \Psi^{3*}_1 \rangle \right) = \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{2*}_1 \rangle - \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{3*}_1 \rangle = \frac{ \beta }{ \sqrt{2} } .
+	\end{align*}
+	And now we pay attention to calculating $\langle {}^*_1 | \mathscr{H} | {}^*_1 \rangle$, which is
+	\begin{align*}
+		\langle {}^*_1 | \mathscr{H} | {}^*_1 \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{2*}_1 | - \frac{1}{ \sqrt{2} } \langle \Psi^{3*}_1 | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{2*}_1 \rangle - \frac{1}{ \sqrt{2} } | \Psi^{3*}_1 \rangle \right) \\
+		&= \frac{1}{2} \left( \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{2*}_1 \rangle - \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{3*}_1 \rangle - \langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{2*}_1 \rangle + \langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{3*}_1 \rangle \right) \\
+		&= \frac{1}{2} \left( E_0 + \varepsilon^{(0)}_{2^*} - \varepsilon^{(0)}_1 - \left( - \frac{ \beta }{2} \right) - \left( - \frac{ \beta }{2} \right) + E_0 + \varepsilon^{(0)}_{2^*} - \varepsilon^{(0)}_1 \right) \\
+		&= E_0 + \varepsilon^{(0)}_{2^*} - \varepsilon^{(0)}_1 + \frac{ \beta }{2} = E_0 + \left( \alpha - \beta \right) - \left( \alpha + \beta \right) + \frac{ \beta }{2} = E_0 - \frac{ 3 \beta }{2}.
+	\end{align*}
+	Thus, we find that
+	\[
+		\langle {}^*_1 | \mathscr{H} - E_0 | {}^*_1 \rangle = \langle {}^*_1 | \mathscr{H} | {}^*_1 \rangle - E_0 = E_0 - \frac{ 3 \beta }{2} - E_0 =  - \frac{ 3 \beta }{2}.
+	\]
+	
+	Finally, from (5.148), we obtain the corresponding ``particle" equations, viz.,
+	\begin{align*}
+		\frac{ \beta }{ \sqrt{2} } c &= e_1 , \tag{a} \\	
+		\frac{ \beta }{ \sqrt{2} } - \frac{ 3 \beta }{2} c &= e_1 c. \tag{b}
+	\end{align*}
+	The equation (b) can be substracted by the equation (a) multiplied by $c$, thus we obtain a quadratic equation of $c$, viz.,
+	\[
+		\frac{ \beta }{ \sqrt{2} } c^2 + \frac{ 3 \beta }{2} c - \frac{ \beta }{ \sqrt{2} } = 0.
+	\]
+	Its discriminant is
+	\[
+		\Delta_c = \left( \frac{ 3 \beta }{2} \right)^2 - 4 \times \frac{ \beta }{ \sqrt{2} } \times \left( - \frac{ \beta }{ \sqrt{2} } \right) = \frac{ 17 \beta^2 }{4},
+	\]
+	and the root of $c$ are
+	\[
+		c_\pm = \frac{ -\frac{ 3 \beta}{2} \mp \frac{ \sqrt{17} }{ 2 } \beta }{ 2 \times \frac{ \beta }{ \sqrt{2} } } = - \frac{ 3 \pm \sqrt{17} }{ 2\sqrt{2} }.
+	\]
+	Here, note that $\beta$ is negative, and thus $\sqrt{\beta^2} = - \beta$! Thus, from the equation (a), we know that
+	\[
+		e_\pm = \frac{ \beta }{ \sqrt{2} } c_\pm = -\frac{ 3 \pm \sqrt{17} }{4} \beta = \frac{ \mp \sqrt{17} - 3 }{4} \beta
+	\]
+	In fact, only the minus root makes physical sense as the relaxation energy is negative, hence,
+	\[
+		e_1 = e_- = \frac{ -3 + \sqrt{17} }{4} \beta \approx 0.2808 \beta,
+	\]
+	and
+	\begin{sequation}
+		E_R({\rm IEPA}) = 6 e_1 = 6 \times 0.2808 \beta = 1.6848 \beta \approx 1.685 \beta,
+	\end{sequation}
+	which is (5.150).	
+	
+	\end{solution}	
+
+	% 5.19
+	\begin{exercise}
+	\begin{enumerate}
+	
+	\item[a)] Extend the above analysis to calculate the IEPA resonance energy for a cyclic polyene with $N=2n$ ($N>6$) carbon atoms. As before, argue that all ``particle" energies are the same so that
+	\[
+		E_R = N e_1.
+	\]
+	Consider only single excitations that mix with $| \Psi_0 \rangle$. Show that the ``particle" function $| \Psi_1 \rangle$ is
+	\[
+		| \Psi_1 \rangle = | \Psi_0 \rangle + c | {}^*_1 \rangle ,
+	\]
+	where $| {}^{*}_1 \rangle$ is obtained from Eq.(5.146),
+	\[
+		| {}^*_1 \rangle = \frac{1}{\sqrt{2}} \left( | \Psi^{2*}_1 \rangle - | \Psi^{n*}_1 \rangle \right).
+	\]
+	Now show that
+	\[
+		\langle \Psi_0 | \mathscr{H} | {}^*_1 \rangle = \frac{1}{\sqrt{2}} \beta
+	\]
+	as before, but that here
+	\[
+		\langle {}^*_1 | \mathscr{H} - E_0 | {}^*_1 \rangle = -2 \beta,
+	\]
+	instead of the result in Eq.(5.149b). Why the difference? Finally, solve the resulting ``particle" equations to show that
+	\[
+		E_R({\rm IEPA}) = N\left( \sqrt{ \frac{3}{2} } -1 \right) \beta = 0.2247 N \beta.
+	\]
+	Note that the IPEA is indeed size consistent and that in the limit of large $N$ it gives 82\% of the exact resonance energy.
+	
+	\item[b)] The above result is not really exact within the IEPA. The reason for this is that there exist single excitations involving orbital $|1\rangle$ that do not mix with $|\Psi_0\rangle$ but do mix with $|{}^{*}_1 \rangle$ and thus have some effect on the ``particle" energy $e_1$. These excitations are analogous to single excitations in CI for a real many-particle system in the sense that although single excitations do not mix with the HF wave function because of Brillouin's theorem, they do mix indirectly through the double excitations. Investigate the effect of such excitations for the case $N=10$. Show that the exact ``particle" function $| \Psi_1 \rangle$ is
+	\[
+		| \Psi_1 \rangle = | \Psi_0 \rangle + c_1 |{}^{*}_1 \rangle + c_3 | \Psi^{3*}_1 \rangle + c_4 | \Psi^{4*}_1 \rangle.
+	\]
+	Now show that
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{3*}_1 \rangle &= \langle \Psi_0 | \mathscr{H} | \Psi^{4*}_1 \rangle = 0, \\
+		\langle \Psi^{3*}_1 | \mathscr{H} - E_0 | \Psi^{3*}_1 \rangle &= \langle \Psi^{4*}_1 | \mathscr{H} - E_0 | \Psi^{4*}_1 \rangle = -2 \beta , \\
+		\langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle &= -\frac{1}{2} \beta , \\
+		\langle {}^{*}_1 | \mathscr{H} | \Psi^{3*}_1 \rangle &= -\frac{1}{2\sqrt{2}} \beta , \\
+		\langle {}^{*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle &= \frac{1}{2\sqrt{2}} \beta.
+	\end{align*}
+	Finally, show from  the resulting ``particle" equations that $e_1$ is the solution of 
+	\[
+		4e^3_1 + 14 \beta e^2_1 + 9 \beta^2 e_1 - 3\beta^3 = 0.
+	\]
+	The cubic equation can be solved to yield $e_1 = 0.2387 \beta$ so that the exact IEPA resonance energy for $N=10$ is 2.387$\beta$, which is to be compared with the approximate result of 2.247 $\beta$ obtained in part (a), so that there is a 6\% difference. The exact resonance energy found from Eq.(5.135) is 2.944$\beta$ for this case.
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a)]
+	
+	Similar to Exercise 5.18, we get
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | {}^*_1 \rangle &= \langle \Psi_0 | \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{2*}_1 \rangle - \frac{1}{ \sqrt{2} } | \Psi^{n*}_1 \rangle \right) = \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{2*}_1 \rangle - \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{n*}_1 \rangle = \frac{ \beta }{ \sqrt{2} } . \\
+		\langle {}^*_1 | \mathscr{H} | {}^*_1 \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{2*}_1 | - \frac{1}{ \sqrt{2} } \langle \Psi^{n*}_1 | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{2*}_1 \rangle - \frac{1}{ \sqrt{2} } | \Psi^{n*}_1 \rangle \right) \\
+		&= \frac{1}{2} \left( \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{2*}_1 \rangle - \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{n*}_1 \rangle - \langle \Psi^{n*}_1 | \mathscr{H} | \Psi^{2*}_1 \rangle + \langle \Psi^{n*}_1 | \mathscr{H} | \Psi^{n*}_1 \rangle \right) \\
+		&= \frac{1}{2} \left( E_0 + \varepsilon^{(0)}_{2^*} - \varepsilon^{(0)}_1 - 0 - 0 + E_0 + \varepsilon^{(0)}_{2^*} - \varepsilon^{(0)}_1 \right) \\
+		&= E_0 + \varepsilon^{(0)}_{2^*} - \varepsilon^{(0)}_1 + \frac{ \beta }{2} = E_0 + \left( \alpha - \beta \right) - \left( \alpha + \beta \right) = E_0 - 2 \beta .
+	\end{align*}
+	Thus, we find that
+	\[
+		\langle {}^*_1 | \mathscr{H} - E_0 | {}^*_1 \rangle = \langle {}^*_1 | \mathscr{H} | {}^*_1 \rangle - E_0 = E_0 - 2 \beta - E_0 =  - 2 \beta .
+	\]
+	
+	Hence, we obtain the corresponding ``particle" equations, viz.,
+	\begin{align*}
+		\frac{ \beta }{ \sqrt{2} } c &= e_1 , \tag{a} \\	
+		\frac{ \beta }{ \sqrt{2} } - 2 \beta c &= e_1 c. \tag{b}
+	\end{align*}
+	The equation (b) can be substracted by the equation (a) multiplied by $c$, thus we obtain a quadratic equation of $c$, viz.,
+	\[
+		\frac{ \beta }{ \sqrt{2} } c^2 + 2 \beta c - \frac{ \beta }{ \sqrt{2} } = 0.
+	\]
+	Its discriminant is
+	\[
+		\Delta_c = \left( 2 \beta \right)^2 - 4 \times \frac{ \beta }{ \sqrt{2} } \times \left( - \frac{ \beta }{ \sqrt{2} } \right) = 6 \beta^2,
+	\]
+	and the root of $c$ are
+	\[
+		c_\pm = \frac{ -2 \beta \mp \sqrt{6} \beta }{ 2 \times \frac{ \beta }{ \sqrt{2} } } = - \sqrt{2} \mp \sqrt{3}.
+	\]
+	Thus, from the equation (a), we know that
+	\[
+		e_\pm = \frac{ \beta }{ \sqrt{2} } c_\pm = \frac{ - \sqrt{2} \mp \sqrt{3} }{ \sqrt{2} } \beta = \left( \mp \sqrt{ \frac{3}{2} } - 1 \right) \beta.
+	\]
+	In fact, only the minus root makes physical sense as the relaxation energy is negative, hence,
+	\[
+		e_1 = e_- = \left( \sqrt{ \frac{3}{2} } - 1 \right) \beta \approx 0.2247 \beta,
+	\]
+	and
+	\begin{sequation}
+		\lim_{N \rightarrow \infty} \frac{ E_R({\rm IEPA}) }{N} = e_1 = 0.2247 \beta.
+	\end{sequation}
+	In the limit of large $N$, the propotion of relaxation energy IEPA delivers is
+	\begin{sequation}
+		\lim_{N\rightarrow \infty} \frac{ E_R({\rm IEPA}) }{ E_R } = \lim_{N\rightarrow \infty} \frac{ E_R({\rm IEPA}) }{ N } \frac{ N }{ E_R({\rm IEPA}) } = \frac{ 0.2247 \beta }{ 0.2732 \beta } = 0.822.
+	\end{sequation}
+	
+	In other words, the IPEA is size consistent and that in the limit of large $N$ it gives 82\% of the exact resonance energy. In my opinion, the differences between Exercise 5.18 and Exercise 5.19(a) are that $\langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{n*}_1 \rangle$ vanishes when $N>6$. This corresponds the truth that in the H{\"u}ckel theory, when the larger the system is, the less the proportion of other electrons, which interact with electrons in a given occupied orbital, in all electrons is, as $|\Psi_1 \rangle = | \Psi_0 \rangle + c | \Psi^*_1 \rangle$ described.
+	
+	\item[b)] When $N=10$, $n=5$ and neither the orbital 3 nor the orbital 4 is the nearest-neighbor ones of the orbital 1. Hence,
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{3*}_1 \rangle = \langle \Psi_0 | \mathscr{H} | \Psi^{4*}_1 \rangle = 0.
+	\end{align*}
+	Moreover, other matrix elements are
+	\begin{align*}
+		\langle \Psi^{3*}_1 | \mathscr{H} - E_0 | \Psi^{3*}_1 \rangle &= \langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{3*}_1 \rangle - E_0 = E_0 + \varepsilon_{3*} - \varepsilon_1 - E_0 = \alpha - \beta - ( \alpha + \beta ) = - 2 \beta , \\
+		\langle \Psi^{4*}_1 | \mathscr{H} - E_0 | \Psi^{4*}_1 \rangle &= \langle \Psi^{4*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle - E_0 = E_0 + \varepsilon_{4*} - \varepsilon_1 - E_0 = \alpha - \beta - ( \alpha + \beta ) = - 2 \beta , \\
+		\langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle &= \langle 3^* | v(1) | 4^* \rangle = - \frac{ \beta }{2} , \\
+		\langle {}^*_1 | \mathscr{H} | \Psi^{3*}_1 \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{2*}_1 | - \frac{1}{ \sqrt{2} } \langle \Psi^{5*}_1 | \right) \mathscr{H} | \Psi^{3*}_1 \rangle = \frac{1}{ \sqrt{2} } \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{3*}_1 \rangle - \frac{1}{ \sqrt{2} } \langle \Psi^{5*}_1 | \mathscr{H} | \Psi^{3*}_1 \rangle \\
+		&= \frac{1}{ \sqrt{2} } \times ( -\frac{ \beta }{2} ) - \frac{1}{ \sqrt{2} } \times 0 = - \frac{ \beta }{ 2\sqrt{2} } ,\\
+		\langle {}^*_1 | \mathscr{H} | \Psi^{4*}_1 \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{2*}_1 | - \frac{1}{ \sqrt{2} } \langle \Psi^{5*}_1 | \right) \mathscr{H} | \Psi^{4*}_1 \rangle = \frac{1}{ \sqrt{2} } \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle - \frac{1}{ \sqrt{2} } \langle \Psi^{5*}_1 | \mathscr{H} | \Psi^{4*}_1 \rangle \\
+		&= \frac{1}{ \sqrt{2} } \times 0  - \frac{1}{ \sqrt{2} } \times ( -\frac{ \beta }{2} ) = \frac{ \beta }{ 2\sqrt{2} } .
+	\end{align*}
+	Thus, the corresponding matrix is
+	\[
+		\begin{pmatrix}
+			0 & \frac{1}{\sqrt{2}} \beta & 0 & 0 \\
+		\frac{1}{\sqrt{2}} \beta & -2\beta & -\frac{1}{2\sqrt{2}} \beta & \frac{1}{2\sqrt{2}} \beta \\
+			0 & -\frac{1}{2\sqrt{2}} \beta & -2\beta & -\frac{1}{2} \beta \\
+			0 & \frac{1}{2\sqrt{2}} \beta & -\frac{1}{2} \beta & -2\beta 
+		\end{pmatrix} \begin{pmatrix}
+			1 \\ c_1 \\ c_2 \\ c_3
+		\end{pmatrix} = e_1 \begin{pmatrix}
+			1 \\ c_1 \\ c_2 \\ c_3
+		\end{pmatrix} .
+	\]
+	The eigen equation is
+	\[
+		\det{\HH - e \I} = \frac{1}{8} \left( 2e + 5 \beta \right) ( 4 e^3 + 14 \beta e^2 + 9 \beta^2 e - 3 \beta^3 ) = 0,
+	\]
+	whose four roots are
+	\[
+		e_1 = -2.5 \beta , \quad e_2 \approx -2.46271 \beta , e_3 \approx -1.27596 \beta , \quad e_4 \approx 0.238676 \beta.
+	\]
+	Thus, $e = e_4 \approx 0.2387 \beta.$
+	\[
+		E^\prime_R({\rm IEPA}) = 10 e = 2.387 \beta.
+	\]
+	Compared with the approximate result of 2.247 $\beta$ obtained in part (a), so that there is a
+	\[
+		\frac{ 2.387 \beta - 2.247 \beta }{ 2.247 \beta } = 6.2 \%
+	\]
+	 difference.
+	 
+	\end{itemize}		
+	
+	\end{solution}
+	
+	% 5.20
+	\begin{exercise}
+	Verify Eq.(5.152c), derive Eq.(5.153a,b), and solve them to obtain the result shown in Eq.(5.154).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The verification of (5.152c) is listed as following:
+	\begin{align*}
+		\langle {}^*_1 | \mathscr{H} | {}^*_2 \rangle &= \frac{1}{2} \left[ \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{3*}_2 \rangle - \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{1*}_2 \rangle - \langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{3*}_2 \rangle + \langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{1*}_2 \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - 0 - (- v_{21} ) + 0 \right] = \frac{1}{2} v_{21} = \frac{1}{2} \frac{ \beta }{2} = \frac{ \beta }{4} , \\
+		\langle {}^*_1 | \mathscr{H} | {}^*_3 \rangle &= \frac{1}{2} \left[ \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{1*}_3 \rangle - \langle \Psi^{2*}_1 | \mathscr{H} | \Psi^{2*}_3 \rangle - \langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{1*}_3 \rangle + \langle \Psi^{3*}_1 | \mathscr{H} | \Psi^{2*}_3 \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - ( - v_{31} ) - 0 + 0 \right] = \frac{1}{2} v_{31} = \frac{1}{2} \frac{ \beta }{2} = \frac{ \beta }{4} , \\
+		\langle {}^*_2 | \mathscr{H} | {}^*_3 \rangle &= \frac{1}{2} \left[ \langle \Psi^{3*}_2 | \mathscr{H} | \Psi^{1*}_3 \rangle - \langle \Psi^{3*}_2 | \mathscr{H} | \Psi^{2*}_3 \rangle - \langle \Psi^{1*}_2 | \mathscr{H} | \Psi^{1*}_3 \rangle + \langle \Psi^{1*}_2 | \mathscr{H} | \Psi^{2*}_3 \rangle \right] \\
+		&= \frac{1}{2} \left[ 0 - 0 - ( - v_{32} ) + 0 \right] = \frac{1}{2} v_{32} = \frac{1}{2} \frac{ \beta }{2} = \frac{ \beta }{4} .
+	\end{align*}
+	Thus the first two equations of the corresponding DCI eigenvalue problem are
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} - E_0 | \Psi_0 \rangle + \sum_{ i=1 }^3 \langle \Psi_0 | \mathscr{H} | \Psi^*_i \rangle c_i + \sum_{ i=1 }^3 \langle \Psi_0 | \mathscr{H} | \Psi^{\bar{*}}_{\bar{i}} \rangle \bar{c}_i &= E_R ( {\rm SCI} ) , \\
+		\langle \Psi^*_1 | \mathscr{H} | \Psi_0 \rangle + \langle \Psi^*_1 | \mathscr{H} - E_0 | \Psi^*_1 \rangle c_1 +  \sum_{ i=2 }^3 \langle \Psi^*_1 | \mathscr{H} | \Psi^*_i \rangle c_i + \sum_{ i=1 }^3 \langle \Psi^*_1  | \mathscr{H} | \Psi^{\bar{*}}_{\bar{i}} \rangle \bar{c}_i &= E_R ( {\rm SCI} ) c_1 .
+	\end{align*}
+	As $c_1 = c_2 = c_3 = c_{\bar{1}} = c_{\bar{2}}= c_{\bar{3}} = c$, we get	
+	\begin{align*}
+		0 + \sqrt{2} \beta c + \sqrt{2} \beta c + \sqrt{2} \beta c +  \sqrt{2} \beta c + \sqrt{2} \beta c + \sqrt{2} \beta c &= E_R ( {\rm SCI} ) , \\
+		\frac{1}{ \sqrt{2} } \beta - \frac{3}{2} \beta c + \frac{ \beta }{ 4 } c + \frac{ \beta }{ 4 } c + 0 + 0 + 0 = E_R ( {\rm SCI} ) c.
+	\end{align*}
+	These two equations are (5.153a) and (5.153b), which equals
+	\[
+		\begin{pmatrix}
+			0 & 3\sqrt{2}\beta \\ \frac{1}{\sqrt{2}} \beta & -\beta 
+		\end{pmatrix} \begin{pmatrix}
+			1 \\ c
+		\end{pmatrix} = E_{\rm R}( {\rm SCI} ) \begin{pmatrix}
+			1 \\ c
+		\end{pmatrix}.
+	\]
+	The eigen equation is a quadratic equation of $\varepsilon$, viz.,
+	\[
+		\det{\HH-\varepsilon\I} = -\varepsilon ( -\beta - \varepsilon ) - 3 \beta^2 = \varepsilon^2 + \beta \varepsilon - 3\beta^2 = 0.
+	\]
+	The discriminant $\Delta_\varepsilon$ is
+	\[
+		\beta^2 - 4 \times 1 \times ( -3 \beta^2 ) = 13 \beta^2,
+	\]
+	and the lowest root is
+	\begin{sequation}
+		E_{\rm R}( {\rm SCI} ) = \frac{1}{2} \left( - \beta + \sqrt{13} \beta \right) = \frac{ \sqrt{13} - 1 }{2} \beta \approx 1.3028 \beta.
+	\end{sequation}
+	
+	\end{solution}
+	
+	% 5.21
+	\begin{exercise}
+	Extend the above analysis to calculate the SCI resonance energy for a cyclic polyene with $N=2n$ ($N>6$) carbon atoms. If we restrict ourselves to only those configurations which interact with $| \Psi_0 \rangle$, then the appropriate generalization of Eq.(5.151) is
+	\[
+		| \Psi_{\rm SCI} \rangle = | \Psi_0 \rangle + \sum_{i=1}^n c_i | {}^*_i \rangle + \sum_{i=1}^n \bar{c}_i | {}^{\bar{*}}_{\bar{i}}\rangle.
+	\]
+	As discussed in Exercise 5.19b, this is not the complete SCI wave function because there exist additional singly excited configurations which, although they do not mix with $|\Psi_0\rangle$, they do mix with $| {}^*_i \rangle$. The omission of these does not affect our qualitative conclusions. Show that the required matrix elements are
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | {}^*_i \rangle &= \frac{1}{\sqrt{2}} \beta, \\
+		\langle {}^*_i | \mathscr{H} - E_0 | {}^*_j \rangle &= (-2\beta) \delta_{ij}.
+	\end{align*}
+	Why are Eqs.(5.152b) and Eqs.(5.152c) different? Using these matrix elements, show that the SCI equations are
+	\begin{align*}
+		E_R ({\rm SCI}) &= \frac{1}{\sqrt{2}} Nc \beta , \\
+		\frac{1}{\sqrt{2}} \beta - 2c \beta &= E_R( {\rm SCI} )c.
+	\end{align*}
+	Finally, solve them to obtain
+	\[
+		E_R ({\rm SCI}) = \left( \sqrt{ 1 + \frac{N}{2} } - 1 \right) \beta
+	\]
+	which is proportional to $N^{1/2}$ as $N$ becomes large.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\[
+		\langle \Psi_0 | \mathscr{H} | {}^*_i \rangle = \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{(i+1)*}_i \rangle - \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{(i-1)*}_i \rangle = \frac{1}{ \sqrt{2} } \left( \frac{ \beta }{2} \right) - \frac{1}{ \sqrt{2} } \left( - \frac{ \beta }{2} \right) = \frac{ \beta }{ \sqrt{2} }.
+	\]	
+	
+	\end{solution}
 
 \end{document}
