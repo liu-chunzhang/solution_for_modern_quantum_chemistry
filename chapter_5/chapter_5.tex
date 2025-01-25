@@ -1,0 +1,1146 @@
+\documentclass[a4paper]{book}
+%\usepackage{amsmath}\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{geometry}
+\geometry{
+	left=2cm,
+	right=2cm,
+	top=2cm,
+	bottom=2cm,
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,            %链接颜色
+    linkcolor=blue,             %内部链接
+    filecolor=magenta,          %本地文档
+    urlcolor=cyan,              %网址链接
+}
+\usepackage[none]{hyphenat}		% 阻止长单词分在两行
+\usepackage{mathrsfs}
+\usepackage[version=4]{mhchem}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+    boxed title style={colback=magenta},
+	breakable,
+	enhanced,
+	sharp corners,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight,  yshifttext=-.75\baselineskip},
+	boxed title style={boxsep=1pt,sharp corners},
+    fonttitle=\bfseries\sffamily,
+}
+
+\definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
+
+\newcounter{exercise}[chapter]
+\newcounter{solution}[chapter]
+\newcounter{eqs}[solution]
+
+\newenvironment{sequation}
+  {\begin{equation}\stepcounter{eqs}\tag{\thesolution-\theeqs}}
+  {\end{equation}}
+
+\newtcolorbox[use counter=exercise, number within=chapter, number format=\arabic]{exercise}[1][]{
+    title={Exercise~\thetcbcounter},
+    colframe=skyblue,
+    colback=skyblue!12!white,
+    boxed title style={colback=skyblue},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=skyblue,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+\newtcolorbox[use counter=solution, number within=chapter, number format=\arabic]{solution}[1][]{
+    title={Solution~\thetcbcounter},
+    colframe=teal!60!green,
+    colback=green!12!white,
+    boxed title style={colback=teal!60!green},
+    overlay unbroken and first={
+        \node[below right,font=\small,color=red,text width=.8\linewidth]
+        at (title.north east) {#1};
+    }
+}
+
+% special new commands for common symbols used in the article
+\newcommand\tr[1]{\mathrm{tr(#1)}}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\renewcommand\det[1]{{\rm det}\left(#1\right)}
+\newcommand{\HF}{{\rm HF}}
+\newcommand{\corr}{{\rm corr}}
+\newcommand{\DCI}{{\rm DCI}}
+\newcommand{\FO}{{\rm FO}}
+\newcommand{\heff}{h_{\rm eff}}
+\newcommand{\au}{{\rm a.u.}}
+
+\newcommand{\A}{{\bf A}}
+\newcommand{\B}{{\bf B}}
+\newcommand{\C}{{\bf C}}
+\newcommand{\D}{{\bf D}}
+\newcommand{\HH}{{\bf H}}
+\newcommand{\I}{{\bf 1}}
+\newcommand{\U}{{\bf U}}
+\newcommand{\Op}{{\bf O}}
+
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+  {\filright\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}\filleft}
+  [\vspace{1ex}\titlerule]
+  
+\allowdisplaybreaks
+
+\begin{document}
+
+	\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}
+
+	\chapter{Pair and Coupled-Pair Theories}
+	
+	\section{The Independent Electron Pair Approximation (IEPA)}
+	
+	% 5.1
+	\begin{exercise}
+	The application of pair theory  to minimal basis $\ce{H2}$ is trivial since we are dealing with a two-electron system for which the IEPA is exact, i.e., it gives the full CI result obtained in the last chapter, viz.
+	\[
+		{}^{1}E_{\corr} = \Delta - ( \Delta^2 + K^2_{12} )^{1/2}
+	\]
+	where (see Eq.(4.20))
+	\[
+		\Delta = (\varepsilon_2 - \varepsilon_1) + \frac{1}{2}( J_{11} + J_{22} - 4J_{12} + 2K_{12} ).
+	\]
+	\begin{enumerate}
+	
+	\item[a.] Calculate the correlation energy using first-order pairs. Remember that the summations in Eq.(5.19) go over spin orbitals (i.e., $a=1$, $\bar{1}$, and $r=2$, $\bar{2}$). Show that
+	\[
+		{}^{1} E_{\corr}({\rm FO}) = \frac{K^2_{12}}{ 2 ( \varepsilon_1 - \varepsilon_2) }.
+	\]
+	
+	\item[b.] Approximate $\Delta$ in the exact correlation energy by $\varepsilon_2 - \varepsilon_1$ and recover the first-order pair correlation energy by expanding the exact answer to first order using the relation $(1+x)^{1/2} \approx 1 + x/2$.
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{enumerate}
+	
+	\item[a.] At this time, there is only one pair of electrons and one pair of virtual spin orbitals. Thus,
+	\begin{sequation}
+		E_\corr ({\rm FO}) = \sum_{ \substack{ a<b \\ r<s } } \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle |^2 }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{ | \langle 1 \bar{1} || 2 \bar{2} \rangle |^2 }{ \varepsilon_1 + \varepsilon_{\bar{1}} - \varepsilon_2 - \varepsilon_{\bar{2}} } = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) }.
+	\end{sequation}
+		
+	\item[b.] As $K_{12} \ll \Delta$, we find that
+	\[
+		{}^1 E_\corr = \Delta \left[ 1 - \sqrt{ 1 + \frac{ K^2_{12} }{ \Delta^2 } } \right] = \Delta \left[ 1 - \left( 1 + \frac{ K^2_{12} }{ 2\Delta^2 } + \cdots \right) \right] = - \frac{ K^2_{12} }{ 2\Delta } + \cdots.
+	\]
+	Here, the truth that when $|x| \ll 1$,
+	\[
+		(1+x)^{\frac{1}{2}} \approx 1 + \frac{x}{2},
+	\]
+	has been used.
+	
+	After substitute $\Delta = \varepsilon_2 - \varepsilon_1$, we obtain	
+	\begin{equation}
+		{}^1 E_\corr ({\rm FO}) = - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) } = \frac{ K^2_{12} }{ 2( \varepsilon_1 - \varepsilon_2 ) }.
+	\end{equation}
+	
+	
+	\end{enumerate}		
+	
+	\end{solution}
+
+	% 5.2
+	\begin{exercise}
+	Derive Eqs.(5.22a) and (5.22b).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (5.9a), with $\langle \Psi^{2_i \bar{2}_i }_{1_i \bar{1}_i} | \mathscr{H} | \Psi_0 \rangle = \langle \Psi_0 | \mathscr{H} | \Psi^{2_i \bar{2}_i }_{1_i \bar{1}_i} \rangle = \langle 1_i \bar{1}_i || 2_i \bar{2}_i \rangle = K_{12}$, we obtain
+	\begin{sequation}
+		K_{12} c^{2_i \bar{2}_i}_{1_i \bar{1}_i} = e_{1_i \bar{1}_i },
+	\end{sequation}
+	which is (5.22a). Similarly, with (4.20), we obtain
+	\begin{sequation}
+		K_{12} + \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} - E_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle = e_{ 1_i \bar{1}_i } c^{2_i \bar{2}_i}_{1_i \bar{1}_i}
+	\end{sequation}
+	which is (5.22b).
+	
+	\end{solution}
+	
+	% 5.3	
+	\begin{exercise}
+	Calculate the total first-order pair correlation energy for the dinner using Eq.(5.19) and show that it is twice the result obtained in Exercise 5.1.
+	\end{exercise}
+	
+	\begin{solution}
+	Note that only $| 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle$ and $| 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle$ can interact with $\langle \Phi_0 | $ via the Hamiltonian $\mathscr{H}$, thus
+	\begin{sequation}
+		E_\corr( {\rm FO}, 2\ce{H2} ) = \frac{ \langle \Psi_0 | \mathscr{H} | 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle }{ \varepsilon_1 + \varepsilon_{\bar{1}} - \varepsilon_2 - \varepsilon_{\bar{2}} } + \frac{ \langle \Psi_0 | \mathscr{H} | 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle }{ \varepsilon_1 + \varepsilon_{\bar{1}} - \varepsilon_2 - \varepsilon_{\bar{2}} } = - \frac{ K^2_{12} }{ 2(\varepsilon_1 - \varepsilon_2) } - \frac{ K^2_{12} }{ 2(\varepsilon_1 - \varepsilon_2) } = 2 E_\corr( {\rm FO},\ce{H2} ).
+	\end{sequation}		
+	It is twice the result obtained in Exercise 5.1.
+	
+	\end{solution}
+	
+	\subsection{Invariance under Unitary Transformations: An Example}
+	
+	% 5.4
+	\begin{exercise}
+	Show that $| a \bar{a} b \bar{b} \rangle = | 1_1 \bar{1}_1 \bar{1}_2 \bar{1}_2 \rangle$. {\it Hint}: use Eq.(1.40) repeatedly. Eq.(1.40) for Slater determinants is
+	\[
+		| \chi_1 \chi_2 \cdots \left( \sum_{k} c_k \chi^\prime_k \right) \cdots \chi_N \rangle = \sum_k c_k | \chi_1 \chi_2 \cdots \chi^\prime_k \cdots \chi_N \rangle.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	Note that if any two rows (or columns) of a determinant are equal, the value of the determinant is zero. Therefore, we find that	
+	\begin{align*}
+		| a \bar{a} b \bar{b} \rangle &= \frac{1}{ \sqrt{2} } \left( | 1_1 \bar{a} b \bar{b} \rangle + | 1_2 \bar{a} b \bar{b} \rangle \right) \\
+		&= \frac{1}{ \sqrt{2} } \left( \frac{1}{ \sqrt{2} } | 1_1 \bar{a} 1_1 \bar{b} \rangle - \frac{1}{ \sqrt{2} } | 1_1 \bar{a} 1_2 \bar{b} \rangle \right) + \frac{1}{ \sqrt{2} } \left( \frac{1}{ \sqrt{2} } | 1_2 \bar{a} 1_1 \bar{b} \rangle - \frac{1}{ \sqrt{2} } | 1_2 \bar{a} 1_2 \bar{b} \rangle  \right) \\
+		&= - \frac{1}{2} | 1_1 \bar{a} 1_2 \bar{b} \rangle + \frac{1}{2} | 1_2 \bar{a} 1_1 \bar{b} \rangle = - | 1_1 \bar{a} 1_2 \bar{b} \rangle \\
+		&= - \frac{1}{ \sqrt{2} } \left( | 1_1 \bar{1}_1 1_2 \bar{b} \rangle + | 1_1 \bar{1}_2 1_2 \bar{b} \rangle \right) \\
+		&= - \frac{1}{ \sqrt{2} } \left( \frac{1}{ \sqrt{2} } | 1_1 \bar{1}_1 1_2 \bar{1}_1 \rangle - \frac{1}{ \sqrt{2} } | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle \right) - \frac{1}{ \sqrt{2} } \left( \frac{1}{ \sqrt{2} } | 1_1 \bar{1}_2 1_2 \bar{1}_1 \rangle - \frac{1}{ \sqrt{2} } | 1_1 \bar{1}_2 1_2 \bar{1}_2 \rangle \right) \\
+		&= \frac{1}{2} | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle - \frac{1}{2} | 1_1 \bar{1}_2 1_2 \bar{1}_1 \rangle = | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle.
+	\end{align*}
+	Concisely, 
+	\begin{sequation}
+		| a \bar{a} b \bar{b} \rangle = | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle.
+	\end{sequation}
+			
+	\end{solution}
+	
+	% 5.5
+	\begin{exercise}
+	Derive Eqs.(5.31a) and (5.31b).
+	\end{exercise}
+	
+	\begin{solution}
+	With (5.28a), (5.28b), and (5.29), we find that
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle &= \langle \Psi_0 | \mathscr{H} | \left( \frac{1}{ \sqrt{2} } | \Psi^{ r \bar{r} }_{ a \bar{a} } \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ s \bar{s} }_{ a \bar{a} } \rangle \right) = \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H}  | \Psi^{ r \bar{r} }_{ a \bar{a} } \rangle + \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{ s \bar{s} }_{ a \bar{a} } \rangle \\
+		&= \frac{1}{ \sqrt{2} } \frac{ K_{12} }{2} + \frac{1}{ \sqrt{2} } \frac{ K_{12} }{2} = \frac{ K_{12} }{ \sqrt{2} }.
+	\end{align*}
+	This is (5.31a). From (4.17a) and (4.17d), we know that
+	\[
+		E_0 = \langle \Psi_0 | \mathscr{H} | \Psi_0 \rangle = \langle \Psi_0 | \mathscr{O}_1 | \Psi_0 \rangle + \langle \Psi_0 | \mathscr{O}_2 | \Psi_0 \rangle = 2 ( 2 h_{11} + J_{11} ) = 4\varepsilon_1 - 2 J_{11}.
+	\]
+	And	it is evident that
+	\begin{align*}
+		\langle \Psi^{**}_{a \bar{a}} | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle  \Psi^{ r \bar{r} }_{ a \bar{a} } | + \frac{1}{ \sqrt{2} } \langle \Psi^{s \bar{s}}_{a \bar{a}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{ r \bar{r} }_{ a \bar{a} } \rangle + \frac{1}{ \sqrt{2} } | \Psi^{s \bar{s}}_{a \bar{a}} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{a \bar{a}} \rangle + \frac{1}{2} \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle + \frac{1}{2} \langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{a \bar{a}} \rangle + \frac{1}{2} \langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle .
+	\end{align*}
+	We have to calculate $\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{a \bar{a}} \rangle$, $\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle$ and $\langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle$. 
+	
+	Before their formal derivation, note that
+	\[
+		h_{rr} = h_{ss} = h_{22} , \quad h_{aa} = h_{bb} = h_{11}.
+	\]
+	
+	With (5.26a)-(5.26d), we obtain
+	\begin{align*}
+		\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{a \bar{a}} \rangle &= \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{O}_1 | \Psi^{r \bar{r}}_{a \bar{a}} \rangle + \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{O}_2 | \Psi^{r \bar{r}}_{a \bar{a}} \rangle	\\
+		&= \langle r | h | r \rangle + \langle \bar{r} | h | \bar{r} \rangle + \langle b | h | b \rangle + \langle \bar{b} | h | \bar{b} \rangle \\
+		&\hspace{4em} + \langle r \bar{r} || r \bar{r} \rangle + \langle rb || rb \rangle + \langle r \bar{b} || r \bar{b} \rangle + \langle \bar{r} b || \bar{r} b \rangle + \langle \bar{r} \bar{b} || \bar{r} \bar{b} \rangle + \langle b \bar{b} || b \bar{b} \rangle \\
+		&= 2h_{rr} + 2h_{bb} + J_{rr} + \left( J_{rb} - K_{rb} \right) + J_{rb} + J_{rb} + \left( J_{rb} - K_{rb} \right) + J_{bb} \\
+		&= 2h_{11} + 2h_{22} + \frac{1}{2} J_{11} + \frac{1}{2} J_{22} + 2 J_{12} - K_{12} \\
+		&= 2\varepsilon_1 + 2\varepsilon_2 - \frac{3}{2} J_{11} + \frac{1}{2} J_{22} - 2J_{12} + K_{12}.
+	\end{align*}		
+	Similarly, we obtain that
+	\[
+		\langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle = \langle r \bar{r} || s \bar{s} \rangle = J_{rs} = \frac{1}{2} J_{22},
+	\]
+	and
+	\begin{align*}
+		\langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{a \bar{a}} \rangle &= 2h_{ss} + 2h_{aa} + J_{ss} + J_{sb} - K_{sb} + J_{sb} + J_{sb} + J_{sb} - K_{sb} + J_{bb} \\
+		&= 2h_{11} + 2h_{22} + \frac{1}{2} J_{11} + \frac{1}{2} J_{22} + 2J_{12} - K_{12}, \\
+		&= 2\varepsilon_1 + 2\varepsilon_2 - \frac{3}{2} J_{11} + \frac{1}{2} J_{22} - 2J_{12} + K_{12}.
+	\end{align*}
+	Hence,
+	\begin{align*}
+		\langle \Psi^{**}_{a \bar{a}} | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle &= 2\varepsilon_1 + 2\varepsilon_2 - \frac{3}{2} J_{11} + \frac{1}{2} J_{22} - 2J_{12} + K_{12} + \frac{1}{2} J_{22} \\
+		&= 2\varepsilon_1 + 2\varepsilon_2 - \frac{3}{2} J_{11} + J_{22} - 2J_{12} + K_{12}, \\
+		\langle \Psi^{**}_{a \bar{a}} | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{a}} \rangle &= 2\varepsilon_1 + 2\varepsilon_2 - \frac{3}{2} J_{11} + J_{22} - 2J_{12} + K_{12} - (4\varepsilon_1 - 2J_{11} ) \\
+		&= 2( \varepsilon_2 - \varepsilon_1 ) + \frac{1}{2} J_{11} + J_{22} - 2J_{12} + K_{12}.
+	\end{align*}
+	In conclusion, we obtain
+	\begin{sequation}
+		\langle \Psi^{**}_{a \bar{a}} | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{a}} \rangle = 2( \varepsilon_2 - \varepsilon_1 ) + J_{22} + \frac{1}{2} \left( J_{11} - 4 J_{12} + 2 K_{12} \right) \equiv 2 \Delta^\prime.
+	\end{sequation}
+	This is (5.31b).
+		
+	\end{solution}
+	
+	% 5.6
+	\begin{exercise}
+	Show that $e_{a\bar{b}} = e_{\bar{a}b} = e_{a\bar{a}}$.
+	\end{exercise}
+	
+	\begin{solution}
+	The key point is to prove that the equations which determine $e_{a \bar{b}}$ are identical to that of $e_{a \bar{a}}$. Note that similar to Exercise 5.5, we can obtain
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a \bar{b}} \rangle &= \frac{ K_{12} }{ \sqrt{2} }, \\
+		\langle \Psi^{**}_{a \bar{b}} | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{b}} \rangle &= 2\Delta^\prime.
+	\end{align*}
+	Thus the equations of $e_{a\bar{b}}$ are
+	\begin{align*}
+		\frac{ K_{12} }{ \sqrt{2} } c &= e_{a \bar{b}} , \\
+		\frac{ K_{12} }{ \sqrt{2} } + 2\Delta^\prime c &= e_{a \bar{b}} c.
+	\end{align*}
+	They are identical to that of $e_{a \bar{a}}$, thus $e_{a\bar{b}} = e_{a\bar{a}}$ and so does $e_{a\bar{b}}$.
+	\end{solution}
+	
+	% 5.7	
+	\begin{exercise}
+	Show that DCI is invariant to unitary transformations for the above model.
+	\begin{enumerate}
+	
+	\item[a.] The DCI wave function is
+	\[
+		| \Psi_{\DCI} \rangle = | \Psi_0 \rangle + c_1 | \Psi^{**}_{a\bar{a}} \rangle + c_2 | \Psi^{**}_{b \bar{b}} \rangle + c_3 | \Psi^{**}_{a\bar{b}} \rangle + c_4 | \Psi^{**}_{\bar{a}b}\rangle.
+	\]
+	Show that the corresponding eigenvalue problem which determines the DCI correlation energy of the dimer (${}^{2}E_{\corr}(\DCI)$) is
+	\[
+	\begin{pmatrix}
+		0 & \frac{1}{\sqrt{2}} K_{12} & \frac{1}{\sqrt{2}}K_{12} & \frac{1}{\sqrt{2}} K_{12} & \frac{1}{\sqrt{2}}K_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime
+	\end{pmatrix} \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3 \\ c_4
+	\end{pmatrix} = {}^2 E_\corr (\DCI) \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3 \\ c_4
+	\end{pmatrix}.
+	\]
+	
+	\item[b.] Show that $c_1 = c_2 = c_3 = c_4 = c$ and then solve the equations to show
+	\[
+		{}^{2}E_\corr(\DCI) = \Delta - ( \Delta^2 + 2 K^2_{12} )^{1/2},
+	\]
+	which is the same result as found in the last chapter (see Eq.(4.60)).
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] Some matrix elements have been solved in Exercise 5.5 and Exercise 5.6, and they are listed as follows. 
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} - E_0 | \Psi_0 \rangle &= 0 , \\
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a\bar{a}} \rangle = \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi_0 \rangle &= \frac{1}{ \sqrt{2} } K_{12} , \\
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{b \bar{b}} \rangle = \langle \Psi^{**}_{b \bar{b}} | \mathscr{H} | \Psi_0 \rangle &= \frac{1}{ \sqrt{2} } K_{12} , \\
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a\bar{b}} \rangle = \langle \Psi^{**}_{a\bar{b}} | \mathscr{H} | \Psi_0 \rangle &= \frac{1}{ \sqrt{2} } K_{12} , \\
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{\bar{a}b}\rangle = \langle \Psi^{**}_{\bar{a}b} | \mathscr{H} | \Psi_0 \rangle &= \frac{1}{ \sqrt{2} } K_{12} , \\
+		\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} - E_0 | \Psi^{**}_{a\bar{a}} \rangle &= 2 \Delta^\prime , \\
+		\langle \Psi^{**}_{b\bar{b}} | \mathscr{H} - E_0 | \Psi^{**}_{b\bar{b}} \rangle &= 2 \Delta^\prime , \\
+		\langle \Psi^{**}_{a\bar{b}} | \mathscr{H} - E_0 | \Psi^{**}_{a\bar{b}} \rangle &= 2 \Delta^\prime , \\
+		\langle \Psi^{**}_{\bar{a}b} | \mathscr{H} - E_0 | \Psi^{**}_{\bar{a}b} \rangle &= 2 \Delta^\prime .
+	\end{align*}
+	Now we pay attention to calculate other matrix elements.
+	\begin{align*}
+		\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{b\bar{b}} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{ r \bar{r} }_{a \bar{a}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{ r \bar{r} }_{b \bar{b}} \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ s \bar{s} }_{b \bar{b}} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{ r \bar{r} }_{a \bar{a}} | \mathscr{H} | \Psi^{ r \bar{r} }_{b \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ r \bar{r} }_{a \bar{a}} | \mathscr{H} | \Psi^{ s \bar{s} }_{b \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \mathscr{H} | \Psi^{ r \bar{r} }_{b \bar{b}} \rangle +  \frac{1}{2} \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \mathscr{H} | \Psi^{ s \bar{s} }_{b \bar{b}} \rangle \\
+		&= \frac{1}{2} \left( \langle b \bar{b} || a \bar{a} \rangle + 0 + 0 + \langle b \bar{b} || a \bar{a} \rangle \right) = \frac{1}{2} \left( K_{ab} + K_{ab} \right) = K_{ab} = \frac{1}{2} J_{11}, \\
+		\langle \Psi^{**}_{b\bar{b}}| \mathscr{H} | \Psi^{**}_{a\bar{a}} \rangle &= ( \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{b\bar{b}} \rangle )^* =  \frac{1}{2} J_{11}, \\
+		\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{a\bar{b}} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{ r \bar{r} }_{a \bar{a}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{ r \bar{s} }_{a \bar{b}} \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ s \bar{r} }_{a \bar{b}} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{ r \bar{r} }_{a \bar{a}} | \mathscr{H} | \Psi^{ r \bar{s} }_{a \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ r \bar{r} }_{a \bar{a}} | \mathscr{H} | \Psi^{ s \bar{r} }_{a \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \mathscr{H} | \Psi^{ r \bar{s} }_{a \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \mathscr{H} | \Psi^{ s \bar{r} }_{a \bar{b}} \rangle \\
+		&= \frac{1}{2} \left( \langle \bar{r} \bar{b} || \bar{a} \bar{s} \rangle - \langle r \bar{b} || s \bar{a} \rangle - \langle s \bar{b} || r \bar{a} \rangle + \langle \bar{s} \bar{b} || \bar{a} \bar{r} \rangle \right) \\
+		&= \frac{1}{2} \left( (ra|bs) - (rs|ba) - (rs|ba) - (sr|ba) + (sa|br) - (sr|ba) \right) \\
+		&= \frac{1}{2} \left( \frac{ K_{12} }{2} - \frac{ J_{12} }{2} - \frac{ J_{12} }{2} - \frac{ J_{12} }{2} + \frac{ K_{12} }{2} - \frac{ J_{12} }{2} \right) = \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{a\bar{b}} | \mathscr{H} | \Psi^{**}_{a\bar{a}} \rangle &= ( \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{a\bar{b}} \rangle )^* = \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{\bar{a} b} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{ r \bar{r} }_{a \bar{a}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ \bar{r} s }_{\bar{a} b} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{ r \bar{r} }_{a \bar{a}} | \mathscr{H} | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{2} \langle \Psi^{ r \bar{r} }_{a \bar{a}} | \mathscr{H} | \Psi^{ \bar{r} s }_{ \bar{a} b } \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \mathscr{H} | \Psi^{ \bar{s} r }_{ \bar{a} b } \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{a \bar{a}} | \mathscr{H} | \Psi^{ \bar{r} s }_{ \bar{a} b } \rangle \\
+		&= \frac{1}{2} \left( - \langle \bar{r} b || \bar{s} a \rangle + \langle r b || a s \rangle + \langle s b || a r \rangle - \langle \bar{s} b || \bar{r} a \rangle \right) \\
+		&= \frac{1}{2} \left( - (rs|ba) + (ra|bs) - (rs|ba) + (sa|br) - (sr|ba) - (sr|ba) \right) \\
+		&= \frac{1}{2} \left( - \frac{ J_{12} }{2} + \frac{ K_{12} }{2} - \frac{ J_{12} }{2} + \frac{ K_{12} }{2} - \frac{ J_{12} }{2} - \frac{ J_{12} }{2} \right) = \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{\bar{a} b} | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle &= ( \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{\bar{a} b} \rangle )^* = \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{b\bar{b}} | \mathscr{H} | \Psi^{**}_{a\bar{b}} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{ r \bar{r} }_{b \bar{b}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{ s \bar{s} }_{b \bar{b}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{ r \bar{s} }_{a \bar{b}} \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ s \bar{r} }_{a \bar{b}} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{ r \bar{r} }_{b \bar{b}} | \mathscr{H} | \Psi^{ r \bar{s} }_{a \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ r \bar{r} }_{b \bar{b}} | \mathscr{H} | \Psi^{ s \bar{r} }_{a \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{b \bar{b}} | \mathscr{H} | \Psi^{ r \bar{s} }_{a \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{b \bar{b}} | \mathscr{H} | \Psi^{ s \bar{r} }_{a \bar{b}} \rangle \\
+		&= \frac{1}{2} \left( - \langle a \bar{r} || b \bar{s} \rangle + \langle a r || s b \rangle + \langle a s || r b \rangle - \langle a \bar{s} || b \bar{r} \rangle \right) \\
+		&= \frac{1}{2} \left( -(ab|rs) + (as|rb) - (ab|rs) + (ar|sb) - (ab|sr) - (ab|sr) \right) \\
+		&= \frac{1}{2} \left( - \frac{ J_{12} }{2} + \frac{ K_{12} }{2} - \frac{ J_{12} }{2} + \frac{ K_{12} }{2} - \frac{ J_{12} }{2} - \frac{ J_{12} }{2} \right) = \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{a\bar{b}} | \mathscr{H} | \Psi^{**}_{b\bar{b}} \rangle &= ( \langle \Psi^{**}_{b\bar{b}} | \mathscr{H} | \Psi^{**}_{a\bar{b}} \rangle )^* =  \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{b\bar{b}} | \mathscr{H} | \Psi^{**}_{ \bar{a} b} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{ r \bar{r} }_{b \bar{b}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{ s \bar{s} }_{b \bar{b}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ \bar{r} s }_{\bar{a} b} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{ r \bar{r} }_{b \bar{b}} | \mathscr{H} | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{2} \langle \Psi^{ r \bar{r} }_{b \bar{b}} | \mathscr{H} | \Psi^{ \bar{r} s }_{\bar{a} b} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{b \bar{b}} | \mathscr{H} | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{s} }_{b \bar{b}} | \mathscr{H} | \Psi^{ \bar{r} s }_{\bar{a} b} \rangle \\
+		&= \frac{1}{2} \left( \langle \bar{a} \bar{r} || \bar{s} \bar{b} \rangle - \langle \bar{a} r || \bar{b} s \rangle - \langle \bar{a} s || \bar{b} r \rangle + \langle \bar{a} \bar{s} || \bar{r} \bar{b} \rangle \right) \\
+		&= \frac{1}{2} \left( (as|rb) - (ab|rs) - (ab|rs) - (ab|sr) + (ar|sb) - (ab|sr) \right) \\
+		&= \frac{1}{2} \left( \frac{ K_{12} }{2} - \frac{ J_{12} }{2} - \frac{ J_{12} }{2} - \frac{ J_{12} }{2} + \frac{ K_{12} }{2} - \frac{ J_{12} }{2} \right) = \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{\bar{a} b} | \mathscr{H} | \Psi^{**}_{b \bar{b}} \rangle &= ( \langle \Psi^{**}_{b\bar{b}} | \mathscr{H} | \Psi^{**}_{ \bar{a} b} \rangle )^* = \frac{1}{2} K_{12} - J_{12}, \\
+		\langle \Psi^{**}_{a\bar{b}} | \mathscr{H} | \Psi^{**}_{ \bar{a} b} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{ r \bar{s} }_{a \bar{b}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{ s \bar{r} }_{a \bar{b}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{ \sqrt{2} } | \Psi^{ \bar{r} s }_{\bar{a} b} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{ r \bar{s} }_{a \bar{b}} | \mathscr{H} | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{2} \langle \Psi^{ r \bar{s} }_{a \bar{b}} | \mathscr{H} | \Psi^{ \bar{r} s }_{\bar{a} b} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{r} }_{a \bar{b}} | \mathscr{H} | \Psi^{ \bar{s} r }_{\bar{a} b} \rangle + \frac{1}{2} \langle \Psi^{ s \bar{r} }_{a \bar{b}} | \mathscr{H} | \Psi^{ \bar{r} s }_{\bar{a} b} \rangle \\
+		&= \frac{1}{2} \left( \langle \bar{a} b || \bar{b} a \rangle + 0 + 0 + \langle \bar{a} b || \bar{b} a \rangle \right) = \frac{1}{2} \left( K_{ab} + K_{ab} \right) = \frac{ 1 }{2} J_{11}, \\
+		\langle \Psi^{**}_{\bar{a} b} | \mathscr{H} | \Psi^{**}_{a \bar{b}} \rangle &= ( \langle \Psi^{**}_{a\bar{b}} | \mathscr{H} | \Psi^{**}_{ \bar{a} b} \rangle )^* = \frac{ 1 }{2} J_{11} .
+	\end{align*}
+	Thus, the corresponding DCI eigenvalue problem is
+	\begin{sequation}\label{eq:DCI_matrix}
+	\begin{pmatrix}
+		0 & \frac{1}{\sqrt{2}} K_{12} & \frac{1}{\sqrt{2}}K_{12} & \frac{1}{\sqrt{2}} K_{12} & \frac{1}{\sqrt{2}}K_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime
+	\end{pmatrix} \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3 \\ c_4
+	\end{pmatrix} = {}^2 E_\corr (\DCI) \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3 \\ c_4
+	\end{pmatrix}.
+	\end{sequation}
+	
+	\item[b.] From \eqref{eq:DCI_matrix}, we know that
+	\begin{align*}
+		\frac{K_{12}}{\sqrt{2}} + 2\Delta^\prime c_1 + \frac{J_{11}}{2} c_2 + \frac{ K_{12} - J_{12} }{2} c_3 + \frac{ K_{12} - J_{12} }{2} c_4 &= {}^2 E_\corr (\DCI) c_1 , \\
+		\frac{K_{12}}{\sqrt{2}} + \frac{J_{11}}{2} c_1 + 2\Delta^\prime c_2  + \frac{ K_{12} - J_{12} }{2} c_3 + \frac{ K_{12} - J_{12} }{2} c_4 &= {}^2 E_\corr (\DCI) c_2.
+	\end{align*}
+	The first equation can be substracted by the second one, viz.,
+	\[
+		( 2\Delta^\prime - \frac{ J_{11} }{2} - {}^2 E_\corr (\DCI) )( c_1 - c_2 ) = 0.
+	\]
+	Assume that ${}^2 E_\corr (\DCI) \neq 2\Delta^\prime - \frac{ J_{11} }{2}$ (in fact, this holds true), we find that
+	\[
+		c_1 = c_2.
+	\]		
+	In this way, we can prove $c_1 = c_2 = c_3 = c_4$. In fact, we can permute 1 and 2 of the second equation of \eqref{eq:DCI_matrix}, then we will find that the third equation of \eqref{eq:DCI_matrix} is obtained, and vice versa. Thus $c_1 = c_2$. This method is suitable for not only $c_1$ and $c_2$, but also $c_1$ and $c_3$, $c_1$ and $c_4$. Hence we can also conclude that $c_1 = c_2 = c_3 = c_4$.
+	
+	Thus, we set $c_1 = c$, thus
+	\begin{align*}
+		{}^2 E_\corr (\DCI) &= 2\sqrt{2} K_{12} c , \\
+		{}^2 E_\corr (\DCI) c &= \frac{ K_{12} }{ \sqrt{2} } + ( 2\Delta^\prime + \frac{1}{2} J_{11} + \frac{1}{2} K_{12} - J_{12} + \frac{1}{2} K_{12} - J_{12} )c = \frac{ K_{12} }{ \sqrt{2} } + 2 \Delta c .
+	\end{align*}
+	In fact, they can be converted to a quadratic equation,
+	\[
+		( {}^2 E_\corr (\DCI) )^2 - 2 \Delta ( {}^2 E_\corr (\DCI) ) - 2 K^2_{12} = 0,
+	\]
+	The discriminant $\Delta_E$ of this quadratic equation is
+	\[
+		\Delta_E = (-2 \Delta)^2 - 4 \times 1 \times ( -2 K^2_{12} ) = 4( \Delta^2 + 2 K^2_{12} ) > 0,
+	\]
+	and the root are
+	\[
+		E_1 = \Delta + \sqrt{ \Delta^2 + 2 K^2_{12} }, \quad E_2 = \Delta - \sqrt{ \Delta^2 + 2 K^2_{12} }.
+	\]	
+	Therefore, the lowest root is the correlation energy, viz.,
+	\begin{sequation}
+		{}^2 E_\corr = \Delta - \sqrt{ \Delta^2 + 2 K^2_{12} }.
+	\end{sequation}
+	which is the same result as found in the last chapter (see Eq.(4.60)). 
+	
+	\end{itemize}		
+	
+	\end{solution}
+	
+	% 5.8
+	\begin{exercise}
+	Show directly from Eq.(5.19) using delocalized orbitals and the two-electron integrals in Eq.(5.26) that the total first-order pair correlation energy (which is the same as the many-body second-order perturbation energy) of the dimer is given by Eq.(5.46).
+	\end{exercise}
+	
+	\begin{solution}
+	In fact, from Eq.(5.18) using delocalized orbitals and the two-electron integrals in Eq.(5.26), it is also easy to derive the the total first-order pair correlation energy. However, I think this method is much better because it shows the absence of $e^\FO_{a\bar{a}}$ and $e^\FO_{b\bar{b}}$ as their corresponding configurations are {\it ungerade} while $\Psi_0$ is {\it gerade}. Thus I will firstly show $e^\FO_{ab}$, $e^\FO_{a\bar{b}}$, $e^\FO_{b\bar{a}}$, $e^\FO_{b\bar{b}}$ and then calculate $^2 E_\corr( {\rm FO}(D) )$. 
+	
+	Note that the integrals, which have three {\it gerade} orbitals and one {\it ungerade} orbital, or three {\it ungerade} orbitals and one {\it gerade} orbital, vanish. Thus,
+	\begin{align*}
+		e^\FO_{a\bar{a}} &= \frac{ | \langle a \bar{a} || r \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle a \bar{a} || s \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{a} || r \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{a} || s \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{r}} } \\
+		&= \frac{1}{2(\varepsilon_1 - \varepsilon_2)} \left( \frac{1}{4} K^2_{12} + \frac{1}{4} K^2_{12} + 0 + 0 \right) = \frac{ K^2_{12} }{ 4(\varepsilon_1 - \varepsilon_2) }. 
+	\end{align*}
+	Similarly, we obtain
+	\begin{align*}
+		e^\FO_{a\bar{b}} &= \frac{ | \langle a \bar{b} || r \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle a \bar{b} || s \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{b} || r \bar{s} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle a \bar{b} || s \bar{r} \rangle |^2 }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{r}} } = \frac{ K^2_{12} }{ 4(\varepsilon_1 - \varepsilon_2) } , \\
+		e^\FO_{\bar{b}a} &= \frac{ | \langle b \bar{a} || r \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle b \bar{a} || s \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{a} || r \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{a} || s \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{a}} - \varepsilon_s - \varepsilon_{\bar{r}} } = \frac{ K^2_{12} }{ 4(\varepsilon_1 - \varepsilon_2) } , \\
+		e^\FO_{\bar{b}b} &= \frac{ | \langle b \bar{b} || r \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{r}} }	+ \frac{ | \langle b \bar{b} || s \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{b} || r \bar{s} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \frac{ | \langle b \bar{b} || s \bar{r} \rangle |^2 }{ \varepsilon_b + \varepsilon_{\bar{b}} - \varepsilon_s - \varepsilon_{\bar{r}} } = \frac{ K^2_{12} }{ 4(\varepsilon_1 - \varepsilon_2) }. 
+	\end{align*}
+	Thus
+	\begin{sequation}
+		^2 E_\corr( {\rm FO}(D) ) = e^\FO_{a\bar{a}} + e^\FO_{a\bar{b}} + e^\FO_{\bar{b}a} + e^\FO_{\bar{b}b} = \frac{ K^2_{12} }{ \varepsilon_1 - \varepsilon_2 } = 2 \left( \frac{ K^2_{12} }{ 2 ( \varepsilon_1 - \varepsilon_2 ) } \right).
+	\end{sequation}
+
+	\end{solution}
+	
+	% 5.9
+	\begin{exercise}
+	Show that the total correlation energy obtained using Epstein-Nesbet pairs is not invariant to unitary transformations.
+	\begin{enumerate}
+	
+	\item[a.] Show, using localized orbitals, that
+	\[
+		{}^{2} E_\corr({\rm EN}(L)) = - \frac{K^2_{12}}{\Delta}.
+	\]
+	
+	\item[b.] Show, using delocalized spin-orbital pairs, that
+	\[
+		{}^{2} E_\corr({\rm EN}(D)) = - \frac{K^2_{12}}{\Delta^\prime}.
+	\]
+	
+	\item[c.] Show, using delocalized spin-adapted pairs, that
+	\[
+		{}^{2} E^{\rm singlet}_\corr({\rm EN}(D)) = - \frac{ K^2_{12} }{ 2 \Delta^\prime } - \frac{ K^2_{12} }{ 2 \Delta^{\prime\prime} }.
+	\]
+	
+	\item[d.] Using the STO-3G integrals for $\ce{H2}$ in Appendix D compare the numerical values of the above expressions at $R$ = 1.4 $\au$. 
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] From Exercise 5.2, we know
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} \rangle &= \langle \Psi_0 | \mathscr{H} | \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} \rangle = K_{12}, \\
+		\langle \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} | \mathscr{H} - E_0 | \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} \rangle &= \langle \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} | \mathscr{H} - E_0 | \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} \rangle = 2\Delta,
+	\end{align*}
+	thus we obtain that
+	\begin{align*}
+		e^{\rm EN}_{1_1 \bar{1}_1} &= - \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} \rangle |^2 }{ \langle \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} | \mathscr{H} - E_0 | \Psi^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} \rangle } = - \frac{ K^2_{12} }{ 2\Delta } , \\
+		e^{\rm EN}_{1_2 \bar{1}_2} &= - \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} \rangle |^2 }{ \langle \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} | \mathscr{H} - E_0 | \Psi^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} \rangle } = - \frac{ K^2_{12} }{ 2\Delta } .
+	\end{align*}
+	Therefore, with (5.16), we find that
+	\begin{sequation}
+		{}^{2} E_\corr({\rm EN}(L)) = e^{\rm EN}_{1_1 \bar{1}_1} + e^{\rm EN}_{1_2 \bar{1}_2} = - \frac{K^2_{12}}{\Delta}.
+	\end{sequation}
+	
+	\item[b.] From Exercise 5.5, we know
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle &= \langle \Psi^{**}_{a \bar{a}} | \mathscr{H} | \Psi_0 \rangle = \frac{ K_{12} }{ \sqrt{2} } , \\
+		\langle \Psi^{**}_{a \bar{a}} | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{a}} \rangle &= 2( \varepsilon_2 - \varepsilon_1 ) + J_{22} + \frac{1}{2} \left( J_{11} - 4 J_{12} + 2 K_{12} \right) \equiv 2 \Delta^\prime ,
+	\end{align*}
+	thus we obtain that
+	\[
+		e^{\rm EN}_{a \bar{a}} = - \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a \bar{a}} \rangle |^2 }{ \langle \Psi^{**}_{a \bar{a} } | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{a}} \rangle } = - \frac{ K^2_{12} }{ 4\Delta^\prime } .
+	\]
+	
+	As described in the textbook, $e^{\rm EN}_{b\bar{b}}$ equals $e^{\rm EN}_{a\bar{a}}$ due to the high symmetry of this problem. Besides, in Exercise 5.6, we know that
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a \bar{b}} \rangle &= \langle \Psi^{**}_{a \bar{b}} | \mathscr{H} | \Psi_0 \rangle = \frac{ K_{12} }{ \sqrt{2} }, \\
+		\langle \Psi^{**}_{a \bar{b}} | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{b}} \rangle &= 2\Delta^\prime,
+	\end{align*}
+	and thus
+	\[
+		e^{\rm EN}_{a \bar{b}} = - \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a \bar{b}} \rangle |^2 }{ \langle \Psi^{**}_{a \bar{b} } | \mathscr{H} - E_0 | \Psi^{**}_{a \bar{b}} \rangle } = - \frac{ K^2_{12} }{ 4\Delta^\prime } .
+	\]
+	Similarly, we know $e^{\rm EN}_{\bar{a}b} = e^{\rm EN}_{a \bar{b}}$. Hence, we find that
+	\begin{sequation}
+		{}^2 E_\corr( {\rm EN}(D) ) = e^{\rm EN}_{a \bar{a}} + e^{\rm EN}_{a \bar{b}} + e^{\rm EN}_{\bar{a} b} + e^{\rm EN}_{b \bar{b}} = - \frac{ K^2_{12} }{ \Delta^\prime } .
+	\end{sequation}
+	
+	\item[c.] From (5.42a) and (5.42b), we know that
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle &= \langle {}^B \Psi^{rs}_{ab} | \mathscr{H} | \Psi_0 \rangle = K_{12} , \\
+		\langle {}^B \Psi^{rs}_{ab} | \mathscr{H} - E_0 | {}^B \Psi^{rs}_{ab} \rangle &= 2( \varepsilon_2 - \varepsilon_1 ) + J_{11} + J_{22} - 2J_{12} + K_{12} \equiv 2 \Delta^{\prime\prime} ,
+	\end{align*}
+	and thus,
+	\[
+		e^{\rm singlet,EN}_{ab} = - \frac{ | \langle \Psi_0 | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle |^2 }{ \langle {}^B \Psi^{rs}_{ab} | \mathscr{H} - E_0 | {}^B \Psi^{rs}_{ab} \rangle } = - \frac{ K^2_{12} }{ 2\Delta^{\prime\prime} } .
+	\]
+	Therefore, we obtain that
+	\begin{sequation}
+		{}^2 E^{\rm singlet}_\corr( {\rm EN}(D) ) = e^{\rm EN}_{a\bar{a}} + e^{\rm EN}_{b\bar{b}} + e^{\rm singlet,EN}_{ab} = - \frac{ K^2_{12} }{ 2 \Delta^\prime } - \frac{ K^2_{12} }{ 2 \Delta^{\prime\prime} } .
+	\end{sequation}
+	
+	\item[d.] As $R$ = 1.4 $\au$, we know that
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.5782\,\au$, & $\varepsilon_2 = 0.6703\, \au$, & $J_{11} = 0.6746\,\au$, \\
+		$J_{12} = 0.6636\,\au$, & $J_{22} = 0.6975\,\au$, & $K_{12} = 0.1813\,\au$
+	\end{tabular}
+	\end{center}
+	Thus, we obtain that
+	\begin{align*}
+		\Delta &= \varepsilon_2 - \varepsilon_1 + \frac{1}{2} J_{11} + \frac{1}{2} J_{22} - 2 J_{12} + K_{12} = 0.78865 \, \au , \\
+		\Delta^\prime &= \varepsilon_2 - \varepsilon_1 + \frac{1}{4} J_{11} + \frac{1}{2} J_{22} - J_{12} + \frac{1}{2} K_{12} = 1.19295 \, \au , \\
+		\Delta^{\prime\prime} &= \varepsilon_2 - \varepsilon_1 + \frac{1}{2} J_{11} + \frac{1}{2} J_{22} - J_{12} + \frac{1}{2} K_{12} = 1.3616 \, \au ,
+	\end{align*}
+	Finally, we get that
+	\begin{align*}
+		{}^2 E_\corr( {\rm EN}(L) ) &= -0.04168 \, \au , \\
+		{}^2 E_\corr( {\rm EN}(D) ) &= -0.02755 \, \au , \\
+		{}^2 E^{\rm singlet}_\corr( {\rm EN}(D) ) &= -0.02585 \, \au 
+	\end{align*}
+	Now we conclude that the Epstein-Nesbet pair theory is not only variant to unitary transformations of degenerate HF orbitals, but also gives different answers depending on whether  one uses spin-orbital or spin-adapted pair functions.
+		
+	\end{itemize}
+	
+	\end{solution}
+	
+	% 5.10
+	\begin{exercise}
+	The DCI wave function for the $\ce{H2}$ dimer using spin-adapted configurations is
+	\[
+		| \Psi_{\DCI} \rangle = | \Psi_0 \rangle + c_1 | \Psi^{**}_{a\bar{a}} \rangle + c_2 | \Psi^{**}_{b \bar{b}} \rangle + c_3 | {}^{B}\Psi^{rs}_{ab} \rangle .
+	\]
+	Show that the corresponding DCI eigenvalue problem is
+	\[
+	\begin{pmatrix}
+		0 & \frac{1}{\sqrt{2}}K_{12} & \frac{1}{\sqrt{2}} K_{12} & K_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{\sqrt{2}}(K_{12} - 2 J_{12}) \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{\sqrt{2}}(K_{12} - 2 J_{12}) \\
+		K_{12} & \frac{1}{\sqrt{2}}(K_{12} - 2J_{12}) & \frac{1}{\sqrt{2}}(K_{12} - 2J_{12}) & 2\Delta^{\prime\prime}
+	\end{pmatrix} \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3
+	\end{pmatrix} = {}^2 E_\corr (\DCI) \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3
+	\end{pmatrix}.
+	\]
+	and then solve the resulting equations to show that
+	\[
+		{}^2 E_\corr (\DCI) = \Delta - ( \Delta^2 + 2 K^2_{12} )^{1/2}.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From Exercise 5.7 and Exercise 5.9, we know that
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} - E_0 | \Psi_0 \rangle &= 0 , \\
+		\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} - E_0 | \Psi^{**}_{a\bar{a}} \rangle &= 2 \Delta^\prime , \\
+		\langle \Psi^{**}_{b\bar{b}} | \mathscr{H} - E_0 | \Psi^{**}_{b\bar{b}} \rangle &= 2 \Delta^\prime , \\
+		\langle {}^B \Psi^{rs}_{ab} | \mathscr{H} - E_0 | {}^B \Psi^{rs}_{ab} \rangle &= 2( \varepsilon_2 - \varepsilon_1 ) + J_{11} + J_{22} - 2J_{12} + K_{12} = 2 \Delta^{\prime\prime} , \\
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{a\bar{a}} \rangle &= \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi_0 \rangle = \frac{1}{ \sqrt{2} } K_{12} , \\
+		\langle \Psi_0 | \mathscr{H} | \Psi^{**}_{b \bar{b}} \rangle &= \langle \Psi^{**}_{b \bar{b}} | \mathscr{H} | \Psi_0 \rangle = \frac{1}{ \sqrt{2} } K_{12} , \\
+		\langle \Psi_0 | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle &= \langle {}^B \Psi^{rs}_{ab} | \mathscr{H} | \Psi_0 \rangle = K_{12} .				
+	\end{align*}
+	Thus, we pay attention to calculating $\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{b\bar{b}} \rangle$, $\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle$.
+	\begin{align*}
+		\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{b\bar{b}} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{r \bar{r}}_{a \bar{a}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{s \bar{s}}_{a \bar{a}} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{r \bar{r}}_{ b \bar{b}} \rangle + \frac{1}{ \sqrt{2} } | \Psi^{s \bar{s}}_{ b \bar{b}} \rangle \right) \\
+		&= \frac{1}{2} \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{ b \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{r \bar{r}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{ b \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{r \bar{r}}_{ b \bar{b}} \rangle + \frac{1}{2} \langle \Psi^{s \bar{s}}_{a \bar{a}} | \mathscr{H} | \Psi^{s \bar{s}}_{ b \bar{b}} \rangle \\
+		&= \frac{1}{2} \left( \langle b \bar{b} || a \bar{a} \rangle + 0 + 0 + \langle b \bar{b} || a \bar{a} \rangle \right) = \frac{1}{2} \left( K_{ba} + K_{ba} \right) = K_{ab} = \frac{1}{2} J_{11}, \\
+		\langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{r \bar{r}}_{a \bar{a}} | + \frac{1}{ \sqrt{2} } \langle \Psi^{s \bar{s}}_{a \bar{a}} | \right) \mathscr{H} \left( \frac{1}{2} | \Psi^{\bar{s} r }_{\bar{a} b} \rangle + \frac{1}{2} | \Psi^{\bar{r} s }_{\bar{a} b} \rangle + \frac{1}{2} | \Psi^{ r \bar{s}}_{a \bar{b}} \rangle + \frac{1}{2} | \Psi^{s \bar{r}}_{a\bar{b}} \rangle \right) \\
+		&= \frac{1}{ 2\sqrt{2} } \left[ \langle \Psi^{r \bar{r}}_{a\bar{a}} | \mathscr{H} | \Psi^{\bar{s} r }_{\bar{a} b} \rangle + \langle \Psi^{r \bar{r}}_{a\bar{a}} | \mathscr{H} | \Psi^{\bar{r} s }_{\bar{a} b} \rangle + \langle \Psi^{r \bar{r}}_{a\bar{a}} | \mathscr{H} | \Psi^{ r \bar{s}}_{a \bar{b}} \rangle + \langle \Psi^{r \bar{r}}_{a\bar{a}} | \mathscr{H} | \Psi^{s \bar{r}}_{a\bar{b}} \rangle \right. \\
+		&\hspace{4em} + \left. \langle \Psi^{s \bar{s}}_{a\bar{a}} | \mathscr{H} | \Psi^{\bar{s} r }_{\bar{a} b} \rangle + \langle \Psi^{s \bar{s}}_{a\bar{a}} | \mathscr{H} | \Psi^{\bar{r} s }_{\bar{a} b} \rangle + \langle \Psi^{s \bar{s}}_{a\bar{a}} | \mathscr{H} | \Psi^{ r \bar{s}}_{a \bar{b}} \rangle + \langle \Psi^{s \bar{s}}_{a\bar{a}} | \mathscr{H} | \Psi^{s \bar{r}}_{a\bar{b}} \rangle \right] \\
+		&= \frac{1}{ 2\sqrt{2} } \left( - \langle \bar{r} b || \bar{s} a \rangle + \langle r b || a s \rangle + \langle \bar{r} \bar{b} || \bar{a} \bar{s} \rangle - \langle r \bar{b} || s \bar{a} \rangle \right. \\
+		&\hspace{4em} \left. + \langle s b || a r \rangle - \langle \bar{s} b || \bar{r} a \rangle - \langle s \bar{b} || r \bar{a} \rangle + \langle \bar{s} \bar{b} || \bar{a} \bar{r} \rangle \right) \\
+		&= \frac{1}{ 2\sqrt{2} } \left( - (rs|ba) + (ra|bs) - (rs|ba) + (ra|bs) - (rs|ba) - (rs|ba) \right. \\
+		&\hspace{4em} \left. + (sa|br) - (sr|ba) - (sr|ba) - (sr|ba) + (sa|br) - (sr|ba) \right) \\
+		&= \frac{1}{ 2\sqrt{2} } \left( - 8 \times \frac{ J_{12} }{2} + 4 \times \frac{ K_{12} }{2} \right) = -\sqrt{2} J_{12} + \frac{1}{ \sqrt{2} } K_{12} = \frac{1}{ \sqrt{2} } \left( K_{12} - 2 J_{12} \right).
+	\end{align*}
+	Due to the high symmetry of this problem, we find that
+	\[
+		\langle \Psi^{**}_{b\bar{b}} | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle = \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle = \frac{1}{ \sqrt{2} } \left( K_{12} - 2 J_{12} \right).
+	\]	
+	and
+	\begin{align*}
+		\langle \Psi^{**}_{b\bar{b}} | \mathscr{H} | \Psi^{**}_{a\bar{a}} \rangle &= ( \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | \Psi^{**}_{b\bar{b}} \rangle )^* = \frac{1}{2} J_{11} , \\
+		\langle {}^B \Psi^{rs}_{ab} | \mathscr{H} | \Psi^{**}_{a\bar{a}} \rangle &= ( \langle \Psi^{**}_{a\bar{a}} | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle )^* = \frac{1}{ \sqrt{2} } \left( K_{12} - 2 J_{12} \right). \\
+		\langle {}^B \Psi^{rs}_{ab} | \mathscr{H} | \Psi^{**}_{b\bar{b}} \rangle &= ( \langle \Psi^{**}_{b\bar{b}} | \mathscr{H} | {}^B \Psi^{rs}_{ab} \rangle )^* = \frac{1}{ \sqrt{2} } \left( K_{12} - 2 J_{12} \right).
+	\end{align*}
+	
+	Thus, we obtain the corresponding DCI eigenvalue problem is
+	\[
+	\begin{pmatrix}
+		0 & \frac{1}{\sqrt{2}}K_{12} & \frac{1}{\sqrt{2}} K_{12} & K_{12} \\
+		\frac{1}{\sqrt{2}}K_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{\sqrt{2}}(K_{12} - 2 J_{12}) \\
+		\frac{1}{\sqrt{2}}K_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{\sqrt{2}}(K_{12} - 2 J_{12}) \\
+		K_{12} & \frac{1}{\sqrt{2}}(K_{12} - 2J_{12}) & \frac{1}{\sqrt{2}}(K_{12} - 2J_{12}) & 2\Delta^{\prime\prime}
+	\end{pmatrix} \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3
+	\end{pmatrix} = {}^2 E_\corr (\DCI) \begin{pmatrix}
+	1 \\ c_1 \\ c_2 \\ c_3
+	\end{pmatrix}.
+	\]
+	
+	In the same way, it is evident that $c_1 = c_2$. Let $c_1 = c$ and then, the matrix can be converted into
+	\begin{align*}
+		\begin{pmatrix}
+			\sqrt{2}K_{12} & K_{12} \\
+			2\Delta - {}^2 E_\corr (\DCI) & \frac{1}{ \sqrt{2} }( 2\Delta - {}^2 E_\corr (\DCI) ) \\
+			\sqrt{2} (K_{12} - 2J_{12}) & 2 \Delta^{\prime\prime} - {}^2 E_\corr (\DCI)
+		\end{pmatrix} \begin{pmatrix}
+		 	c \\ c_3
+		\end{pmatrix} = \begin{pmatrix}
+			 {}^2 E_\corr (\DCI) \\ -\sqrt{2} K_{12} \\ -K_{12}
+		\end{pmatrix}.
+	\end{align*}
+	Note that a minor of the coefficient matrix is zero, viz.,
+	\[
+		\begin{vmatrix}
+			\sqrt{2}K_{12} & K_{12} \\
+			2\Delta -{}^2 E_\corr (\DCI) & \frac{1}{ \sqrt{2} }( 2\Delta - {}^2 E_\corr (\DCI) )
+		\end{vmatrix} = 0,
+	\]
+	and we conclude that the first two equations are linearly dependent if $c$ and $c_3$ exist. Thus,
+	\[
+		\frac{ {}^2 E_\corr (\DCI) }{ \sqrt{2} K_{12} } = - \frac{ \sqrt{2} K_{12} }{ 2\Delta - {}^2 E_\corr (\DCI) } \Leftrightarrow ( {}^2 E_\corr(\DCI) )^2 - 2\Delta ( {}^2 E_\corr(\DCI)) - 2 K^2_{12} = 0.
+	\]
+	The discriminant $\Delta_E$ of this quadratic equation is
+	\[
+		\Delta_E = ( - 2\Delta )^2 - 4 \times 1 \times (- 2 K^2_{12}) = 4( \Delta^2 + 2 K^2_{12} ) > 0
+	\]
+	and the lowest root is
+	\begin{sequation}
+		{}^2 E_\corr (\DCI) = \Delta - \sqrt{ \Delta^2 + 2 K^2_{12} }.
+	\end{sequation}
+	
+	As the textbook mentioned, the DCI gives the same answer regardless of using spin-orbital or spin-adapted pair functions.
+	
+	\end{solution}
+	
+	\subsection{Some Illustrative Calculations}
+	
+	\section{Coupled-Pair Theories}
+	
+	\subsection{The Coupled Cluster Approximation (CCA)}
+	
+	\subsection{The Cluster Expansion of the Wave Function}
+
+	% 5.11
+	\begin{exercise}
+	Show that the wave function two independent $\ce{H2}$ molecules in Eqs.(5.49) and (5.50) can be written as
+	\[
+		| \Phi \rangle = \exp{( c^{2_1 \bar{2}_1}_{1_1 \bar{1}_1} a^\dagger_{2_1} a^\dagger_{\bar{2}_1} a_{\bar{1}_1} a_{1_1} + c^{2_2 \bar{2}_2}_{1_2 \bar{1}_2} a^\dagger_{2_2} a^\dagger_{\bar{2}_2} a_{\bar{1}_2} a_{1_2} )} | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	It is evident that
+	\begin{align*}
+		| \Phi \rangle &= \exp( c^{ 2_1 \bar{2}_1}_{ 1_1 \bar{1}_1 } a^\dagger_{2_1} a^\dagger_{\bar{2}_1} a_{\bar{1}_1} a_{1_1} + c^{ 2_2 \bar{2}_2 }_{ 1_2 \bar{1}_2 } a^\dagger_{2_2} a^\dagger_{\bar{2}_2} a_{\bar{1}_2} a_{1_2} ) | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle \\
+		&= ( 1 + c^{ 2_1 \bar{2}_1}_{ 1_1 \bar{1}_1 } a^\dagger_{2_1} a^\dagger_{\bar{2}_1} a_{\bar{1}_1} a_{1_1} + c^{ 2_2 \bar{2}_2 }_{ 1_2 \bar{1}_2 } a^\dagger_{2_2} a^\dagger_{\bar{2}_2} a_{\bar{1}_2} a_{1_2} + c^{ 2_1 \bar{2}_1}_{ 1_1 \bar{1}_1 } c^{ 2_2 \bar{2}_2 }_{ 1_2 \bar{1}_2 } a^\dagger_{2_1} a^\dagger_{\bar{2}_1} a_{\bar{1}_1} a_{1_1}  a^\dagger_{2_2} a^\dagger_{\bar{2}_2} a_{\bar{1}_2} a_{1_2} ) | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle \\
+		&= | 1_1 \bar{1}_1 1_2 \bar{1}_2 \rangle + c^{ 2_1 \bar{2}_1}_{ 1_1 \bar{1}_1 } | 2_1 \bar{2}_1 1_2 \bar{1}_2 \rangle + c^{ 2_2 \bar{2}_2 }_{ 1_2 \bar{1}_2 } | 1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle +  c^{ 2_1 \bar{2}_1}_{ 1_1 \bar{1}_1 } c^{ 2_2 \bar{2}_2 }_{ 1_2 \bar{1}_2 } | 2_1 \bar{2}_1 2_2 \bar{2}_2 \rangle,
+	\end{align*}
+	which equals (5.49) and (5.50). 
+			
+	\end{solution}
+	
+	\subsection{Linear CCA and the Coupled Electron Pair Approximation (CEPA)}
+	
+	% 5.12
+	\begin{exercise}
+	\begin{enumerate}
+	
+	\item[a.] Show that if the matrix $\D$ is approximated by its diagonal elements, the L-CCA correlation energy is identical to the result obtained using Epstein-Nesbet pairs (i.e., Eqs.(5.15) and (5.16)).
+	
+	\item[b.] Show that linear CCA is invariant under unitary transformations for the problem of two independent $\ce{H2}$ molecules. First show that for this model the correlation energy of the dimer using localized orbitals is the same as that obtained in Exercise 5.9a. Then show using delocalized spin orbitals that, in contrast to the results of Exercise 5.9, one gets the same correlation energy. You will find the DCI matrix given in Exercise 5.7 useful.
+	
+	\end{enumerate}
+	
+	\end{exercise}
+		
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] If the matrix $\D$ is approximated by its diagonal elements, their mathematical expression will be
+	\[
+		(\D)_{rasb,tcud} = \delta_{rs,tu} \delta_{ab,cd} \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle .
+	\]	
+	It is evident that the mathematical expression of matrix elements of $\D^{-1}$ is
+	\[
+		(\D^{-1})_{rasb,tcud} = \frac{ \delta_{rs,tu} \delta_{ab,cd} }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } .
+	\]
+	Thus, at this time, the L-CCA correlation energy is
+	\begin{align*}
+		E_\corr(\text{L-CCA(diagonal\,\D}) ) &= - \sum_{ \substack{ a<b \\ r<s } } \sum_{ \substack{ c<d \\ t<u } } \B^\dagger_{rasb} (\D^{-1})_{rasb,tcud} \B_{tcud} \\
+		&= - \sum_{ \substack{ a<b \\ r<s } } \sum_{ \substack{ c<d \\ t<u } } \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle \frac{ \delta_{rs,tu} \delta_{ab,cd} }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } \langle \Psi^{tu}_{cd} | \mathscr{H} | \Psi_0 \rangle \\
+		&= - \sum_{ \substack{ a<b \\ r<s } } \frac{ \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle \langle \Psi^{rs}_{ab} | \mathscr{H} | \Psi_0 \rangle }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } .
+	\end{align*}
+	However, the (5.15) and (5.16) gives
+	\[
+		E_\corr({\rm EN}) = \sum_{a<b} e^{\rm EN}_{ab} = \sum_{ a<b } \left( - \sum_{ r<s } \frac{ | \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle |^2 }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle } \right) = - \sum_{ \substack{ a<b \\ r<s } } \frac{ \langle \Psi_0 | \mathscr{H} | \Psi^{rs}_{ab} \rangle \langle \Psi^{rs}_{ab} | \mathscr{H} | \Psi_0 \rangle }{ \langle \Psi^{rs}_{ab} | \mathscr{H} - E_0 | \Psi^{rs}_{ab} \rangle }.
+	\]
+	In conclusion, if the matrix $\D$ is approximated by its diagonal elements, the L-CCA correlation energy is identical to the result obtained using Epstein-Nesbet pairs.
+	
+	\item[b.] When localized orbitals are used, based on $|2_1 \bar{2}_1 1_2 \bar{1}_2\rangle$ and $|1_1 \bar{1}_1 2_2 \bar{2}_2 \rangle$, its $\B$ and $\D$ are
+	\[
+		\B = \begin{pmatrix}
+			K_{12} \\ K_{12}
+		\end{pmatrix}, \quad \D = \begin{pmatrix}
+			2\Delta & 0 \\ 0 & 2\Delta
+		\end{pmatrix} \Rightarrow \D^{-1} = \begin{pmatrix}
+			\frac{1}{2\Delta} & 0 \\ 0 & \frac{1}{2\Delta}
+		\end{pmatrix} .
+	\]
+	From (5.65), we obtain that
+	\begin{sequation}
+		E_\corr( {\rm L-CCA}(L) ) = -\begin{pmatrix}
+			K_{12} & K_{12} 
+		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{2\Delta} & 0 \\ 0 & \frac{1}{2\Delta}
+		\end{pmatrix} \begin{pmatrix}
+			K_{12} \\ K_{12} 
+		\end{pmatrix} = - \frac{ K^2_{12} }{ \Delta } .
+	\end{sequation}
+	
+	When delocalized orbitals are used, based on $| \Psi^{**}_{a \bar{a}} \rangle$, $| \Psi^{**}_{b \bar{b}} \rangle$, $| \Psi^{**}_{a \bar{b}} \rangle$, $| \Psi^{**}_{\bar{a} b} \rangle$, its $\B$ and $\D$ are
+	\[
+		\B = \begin{pmatrix}
+		\frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} }
+		\end{pmatrix}, \quad \D = \begin{pmatrix}
+		2\Delta^\prime & \frac{1}{2}J_{11} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{2}J_{11} & 2\Delta^\prime & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} \\
+		\frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & 2\Delta^\prime & \frac{1}{2}J_{11} \\
+		\frac{1}{2}K_{12} - J_{12} & \frac{1}{2}K_{12} - J_{12} & \frac{1}{2}J_{11} & 2\Delta^\prime
+		\end{pmatrix}.
+	\]
+	
+	In fact, it is difficult to calculate the inverse of $\D$ directly. Here I will introduce how to calculate it. Notations are listed as follows.
+	\[
+		a = 2\Delta^\prime + \frac{1}{2} J_{11}, \quad c= \frac{1}{2} K_{12} - J_{12} , \quad  A \equiv \begin{pmatrix}
+			2 \Delta^\prime & \frac{1}{2} J_{11} \\ \frac{1}{2} J_{11} & 2 \Delta^\prime
+		\end{pmatrix}, \quad \delta \equiv \begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix}.
+	\]
+	Thus, the matrix $\D$ can be expressed as
+	\[
+		\D = \begin{pmatrix}
+			A & c \delta \delta^T \\
+			c \delta \delta^T & A 
+		\end{pmatrix}.
+	\]
+	Due to the symmetry of $\D$, its inverse $\D^{-1}$ can be set in the form of
+	\[
+		\begin{pmatrix}
+			M & N \\
+			N & M
+		\end{pmatrix},
+	\]
+	where $M$ and $N$ are $2\times2$ matrices and $M$ is symmetric. Then,
+	\[
+		\D \D^{-1} = \begin{pmatrix}
+			A & c \delta \delta^T \\
+			c \delta \delta^T & A 
+		\end{pmatrix} \begin{pmatrix}
+			M & N \\
+			N & M
+		\end{pmatrix} = \begin{pmatrix}
+			\I_2 & 0_2 \\
+			0_2 & \I_2
+		\end{pmatrix},
+	\]
+	where $\I_2$ is a 2-order identity matrix and $0_2$ is a $2 \times 2$ zero matrix. Thus, two matrix equations are obtained, viz.,
+	\begin{align*}
+		AM + c \delta \delta^T N &= \I_2 , \tag{a} \\
+		AN + c \delta \delta^T M &= 0_2 . \tag{b}
+	\end{align*}
+	Note that
+	\[
+		\delta^T A = (1,1) \begin{pmatrix}
+			2 \Delta^\prime & \frac{1}{2} J_{11} \\ \frac{1}{2} J_{11} & 2 \Delta^\prime
+		\end{pmatrix} = ( a , a ) = a \delta^T, \quad \delta^T \delta = (1,1) \begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix} = 2.
+	\]
+	The equation (a) can be left-multiplied by $\delta^T$,
+	\[
+		\delta^T = \delta^T \I_2 = \delta^T A M + c \delta^T \delta \delta^T N = a \delta^T M + 2c \delta^T N , 
+	\]	
+	so does the equation (b),	
+	\[
+		0_2 = \delta^T 0_2 = \delta^T A N + c \delta^T \delta \delta^T M = a \delta^T N + 2c \delta^T M .
+	\]
+	In other words, we obtain a new equation.
+	\[
+		\begin{pmatrix}
+			a & 2c \\ 2c & a 
+		\end{pmatrix} \begin{pmatrix}
+			\delta^T M \\ \delta^T N
+		\end{pmatrix} = \begin{pmatrix}
+			\delta^T \\ {\bf 0}
+		\end{pmatrix}
+	\]
+	The determinant of the coefficient matrix is 
+	\[
+		a^2 - 4c^2 = (a+2c)(a-2c) = 2\Delta ( a-2c ) = 2\Delta \left[ 2(\varepsilon_2 - \varepsilon_1) + \frac{1}{2} J_{11} + J_{22} \right] \neq 0,
+	\]
+	thus the coefficient matrix is reversible. With the truth that for a general $2 \times 2$ matrix $\C$, if its determinant $|\C| \neq 0$, its inverse
+	\[
+		\C^{-1} = \frac{1}{ | \C| } \begin{pmatrix}
+			c_{22} & -c_{12} \\ -c_{21} & c_{11}
+		\end{pmatrix},
+	\] 
+	we find that
+	\[
+		\begin{pmatrix}
+			\delta^T M \\ \delta^T N
+		\end{pmatrix} = \frac{1}{a^2 - 4c^2} \begin{pmatrix}
+			a & -2c \\ -2c & a 
+		\end{pmatrix} \begin{pmatrix}
+			\delta^T \\ {\bf 0}
+		\end{pmatrix} = \frac{1}{a^2 - 4c^2} \begin{pmatrix}
+			a \delta^T \\ -2c \delta^T
+		\end{pmatrix}.
+	\]
+	Now we know that 
+	\begin{align*}
+		\delta^T M &= \frac{ a }{ a^2 - 4c^2 } \delta^T , \\
+		\delta^T N &= - \frac{ 2c }{ a^2 - 4c^2 } \delta^T.
+	\end{align*}
+	Hence, we take it into the equation (a),
+	\begin{align*}
+		M &= A^{-1} ( \I_2 - c \delta \delta^T N) \\
+		  &= \frac{1}{ (2\Delta^\prime)^2 - \left( \frac{1}{2} J_{11} \right)^2 } \begin{pmatrix}
+		  	2\Delta^\prime & - \frac{1}{2} J_{11} \\ - \frac{1}{2} J_{11} & 2\Delta^\prime \end{pmatrix} \left[ \begin{pmatrix}
+		  	1 & 0 \\ 0 & 1 
+		 \end{pmatrix} - c \times \frac{ -2c }{ a^2 - 4c^2 } \begin{pmatrix} 1 & 1 \\ 1 & 1 	\end{pmatrix}  \right] \\
+		 &= \frac{1}{ a ( a - J_{11} ) } \begin{pmatrix}
+		  	2\Delta^\prime & - \frac{1}{2} J_{11} \\ - \frac{1}{2} J_{11} & 2\Delta^\prime \end{pmatrix} \times \frac{1}{ 2 \Delta ( a - 2c ) } \begin{pmatrix}
+		a^2 - 2c^2 & 2c^2 \\ 2c^2 & a^2 - 2c^2 				  	
+		  	\end{pmatrix} \\
+		  &= \frac{1}{ 2\Delta (a-2c) (a-J_{11}) } \begin{pmatrix}
+	2(\Delta^\prime a - c^2) & 2c^2 - \frac{1}{2} J_{11} a \\
+	2c^2 - \frac{1}{2} J_{11} a & 2(\Delta^\prime a - c^2)
+		  \end{pmatrix}
+	\end{align*}
+	and the equation (b),
+	\[
+		N = -A^{-1} c \delta \delta^T M = - c ( A^{-1} \delta ) (\delta^T M) = - c \frac{ a - J_{11} }{ a( a - J_{11} ) } \delta \times \frac{ a }{ a^2 - 4c^2 } \delta^T = - \frac{ c }{ a^2 - 4c^2 } \begin{pmatrix}
+		  	 1 & 1 \\ 1 & 1
+		  \end{pmatrix} .
+	\]
+	In conclusion, the inverse of $\D$ is
+	\[
+		\D^{-1} = \begin{pmatrix}
+			M & N \\ N & M 
+		\end{pmatrix} = \frac{ 1 }{ a^2 - 4c^2 } \begin{pmatrix}
+			\frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & -c & -c \\
+			\frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & -c & -c \\
+			-c & -c & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } \\
+			-c & -c & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} }
+		\end{pmatrix}.
+	\]
+	
+	Now, it is turn to calculate the correlation energy, note that $a+2c=\Delta$ and $2\Delta^\prime - \frac{1}{2} J_{11} = a - J_{11}$, we find that
+	\begin{align*}
+		&\hspace{1.4em} E_\corr( {\rm L-CCA}(D) ) = -\B^\dagger \D \B \\
+		&= - \frac{ 1 }{ a^2 - 4c^2 } \begin{pmatrix}
+		  	\frac{ K_{12} }{ \sqrt{2} } , \frac{ K_{12} }{ \sqrt{2} } , \frac{ K_{12} }{ \sqrt{2} } , \frac{ K_{12} }{ \sqrt{2} } 
+		  \end{pmatrix}  \begin{pmatrix}
+			\frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & -c & -c \\
+			\frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & -c & -c \\
+			-c & -c & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } \\
+			-c & -c & \frac{ 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } & \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} }
+		\end{pmatrix} \begin{pmatrix}
+		  	\frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \\ \frac{ K_{12} }{ \sqrt{2} } \end{pmatrix} \\
+		&= - \frac{ 1 }{ a^2 - 4c^2 } \left( \frac{ K_{12} }{ \sqrt{2} } \right)^2 \left[ -8c + 4 \times \frac{ 2(\Delta^\prime a - c^2) }{ a - J_{11} } + 4 \times \frac{ 2c^2 - \frac{1}{2} J_{11} a }{  a - J_{11} } \right] \\
+		&= - \frac{ 1 }{ 2\Delta ( a - 2c ) } \times \frac{ K^2_{12} }{ 2 } \left[ -8c + 4 \times \frac{ 2 \Delta^\prime a - 2 c^2 + 2c^2 - \frac{1}{2} J_{11} a }{ a - J_{11} } \right] \\
+		&= - \frac{ K^2_{12} }{ 4\Delta ( a - 2c ) } \times 4 \left( -2c + \frac{ ( 2\Delta^\prime - J_{11} ) a }{ a - J_{11} } \right) \\
+		&= - \frac{ K^2_{12} }{ \Delta ( a - 2c ) } \times ( a - 2c ) = - \frac{ K^2_{12} }{ \Delta } .
+	\end{align*}
+	This states that one gets the same correlation energy using delocalized orbitals.
+
+	\end{itemize}
+	
+	\end{solution}
+	
+	\subsection{Some Illustrative Calculations}
+	
+	\section{Many-Electron Theories with Single Particle Hamiltonians}	
+	
+	% 5.13
+	\begin{exercise}
+	For the $2 \times 2$ matrix
+	\[
+		\begin{pmatrix}
+			\HH_{AA} & \HH_{AB} \\ \HH_{BA} & \HH_{BB} 
+		\end{pmatrix} \equiv \begin{pmatrix}
+		H_{11} & H_{12} \\ H_{21} & H_{22}
+		\end{pmatrix}
+	\]
+	where $H_{11} < H_{22}$ and $H_{12} > 0$. Equation (5.96) simplifies to
+	\[
+		E_R = \varepsilon_1 - H_{11} = H_{12} C
+	\]
+	and
+	\[
+		H_{21} + H_{22} C - C H_{11} - C^2 H_{12} = 0.
+	\]
+	Solve this quadratic equation for the lowest $C$ and then show that $\varepsilon_1$ thus obtained is the lowest eigenvalue of the matrix.
+	\end{exercise}
+	
+	\begin{solution}
+	The quadratic equation is	
+	\[
+		H_{12} C^2 + ( H_{11} - H_{22} ) C - H_{21} = 0,
+	\]	
+	and its discriminant $\Delta_C$ equals
+	\[
+		( H_{11} - H_{22} )^2 - 4 \times H_{12} \times ( -H_{21} ) = ( H_{11} - H_{22} )^2 + 4 H_{12} H_{21} > 0.
+	\]
+	Thus, we obtain that the lowest root is
+	\[
+		C = \frac{1}{ 2H_{12} } \left[ H_{22} - H_{11} - \sqrt{ ( H_{11} - H_{22} )^2 + 4 H_{12} H_{21} } \right],
+	\]
+	and the relaxation energy is
+	\[
+		E_R = \varepsilon_1 - H_{11} = H_{12} C = \frac{1}{ 2 } \left[ H_{22} - H_{11} - \sqrt{ ( H_{11} - H_{22} )^2 + 4 H_{12} H_{21} } \right] .
+	\]
+	Thus, we obtain that
+	\[
+		\varepsilon_1 = H_{11} + H_{12} C = \frac{1}{ 2 } \left[ H_{11} + H_{22} - \sqrt{ ( H_{11} - H_{22} )^2 + 4 H_{12} H_{21} } \right] .
+	\]
+	
+	For the $2 \times 2$ matrix, its eigen polynomial is
+	\[
+		\det{ \HH - \varepsilon \I } = \begin{vmatrix}
+			H_{11} - \varepsilon & H_{12} \\ H_{21} & H_{22} - \varepsilon
+		\end{vmatrix} = ( \varepsilon - H_{11} ) ( \varepsilon - H_{22} ) - H_{12} H_{21},
+	\]
+	which is a quadratic equation of $\varepsilon$, viz.,
+	\[
+		\varepsilon^2 - ( H_{11} + H_{22} ) \varepsilon + ( H_{11} H_{22} - H_{12} H_{21} ) = 0.
+	\]
+	Its discriminant $\Delta_\varepsilon$ equals
+	\[
+		\Delta_\varepsilon = ( H_{11} + H_{22} )^2 - 4 \times 1 \times ( H_{11} H_{22} - H_{12} H_{21} ) = ( H_{11} - H_{22} )^2 + 4 H_{12} H_{21} > 0,
+	\]
+	and the lowest root of is
+	\[
+		\frac{1}{2} \left[ ( H_{11} + H_{22} ) - \sqrt{ ( H_{11} - H_{22} )^2 + 4 H_{12} H_{21} } \right],
+	\]
+	which equals $\varepsilon_1$ obtained by solving (5.96) and (5.98).	
+	
+	In fact, for a general square matrix $\A$, if it has a eigenvector $a$ which belongs to the eigenvalue $\lambda$, for a general constant $c$, $\A+c\I$ will have the same eigenvector $a$ which belongs to the eigenvalue $\lambda + c$, and vice versa, viz.,
+	\[
+		\A a = \lambda a \Leftrightarrow (\A + c \I) a = \A a + c a = \lambda a + c a = (\lambda + c) a,
+	\]
+	Thus, the lowest eigenvalue of $\A+c\I$ is the sum of $c$ and the lowest eigenvalue of $\A$.
+	
+	\end{solution}
+	
+	\subsection{The Relaxation Energy via CI, IEPA, CEPA, and CCA}
+	
+	% 5.14
+	\begin{exercise}
+	Show that
+	\begin{enumerate}
+	
+	\item[a.]
+	\[
+		\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = v_{bs}.
+	\]
+	
+	\item[b.] 
+	\[
+		\langle \Psi^r_a | \mathscr{H} | \Psi_0 \rangle = v_{ra}.
+	\]
+	
+	\item[c.]
+	\begin{align*}
+	\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^s_b \rangle &= 0 , &\,\text{if} \, a\neq b, \, r \neq s, \\
+	&= v_{rs} , &\,\text{if} \, a = b , \, r \neq s. \\
+	&= -v_{ba} , &\,\text{if} \, a \neq b , \, r = s. \\
+	&= \varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa} &\, \text{if} \, a = b , \, r = s.
+	\end{align*}		
+	
+	\item[d.] 
+	\begin{align*}
+	\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle &= v_{bs} , &\,\text{if} \, a \neq b, \, r \neq s, \\
+	&=0, &\,\text{otherwise}.
+	\end{align*}	
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	
+	\begin{itemize}
+	
+	\item[a.]
+	\begin{sequation}
+		\langle \Psi_0 | \mathscr{H} | \Psi^s_b \rangle = \sum_{i=1}^N \langle \Psi_0 | h(i) | \Psi^s_b \rangle + \sum_{i=1}^N \langle \Psi_0 | v(i) | \Psi^s_b \rangle = \langle \chi^{(0)}_b | v | \chi^{(0)}_s \rangle = v_{bs} .
+	\end{sequation}
+	
+	\item[b.]
+	\begin{sequation}
+		\langle \Psi^r_a | \mathscr{H} | \Psi_0 \rangle = \sum_{i=1}^N \langle \Psi^r_a | h(i) | \Psi_0 \rangle + \sum_{i=1}^N \langle \Psi^r_a | v(i) | \Psi_0 \rangle = \langle \chi^{(0)}_r | v | \chi^{(0)}_a \rangle = v_{ra} .
+	\end{sequation}		
+	
+	\item[c.]
+	\begin{sequation}
+		\langle \Psi^r_a | \mathscr{H} | \Psi^r_a \rangle = \sum_{ i=1 }^N \langle \chi^{(0)}_i | h + v | \chi^{(0)}_i \rangle - \langle \chi^{(0)}_a | h + v | \chi^{(0)}_a \rangle + \langle \chi^{(0)}_r | h + v | \chi^{(0)}_r \rangle = E_0 + \varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa}.
+	\end{sequation}	
+	
+	\begin{sequation}
+		\langle \Psi^r_a | \mathscr{H} - E_0 | \Psi^s_b \rangle = \begin{cases}
+		0 , &\,\text{if} \, a\neq b, \, r \neq s, \\
+		v_{rs} , &\,\text{if} \, a = b , \, r \neq s. \\
+		-v_{ba} , &\,\text{if} \, a \neq b , \, r = s, \\
+		\varepsilon^{(0)}_r + v_{rr} - \varepsilon^{(0)}_a - v_{aa} &\, \text{if} \, a = b , \, r = s.
+	\end{cases}
+	\end{sequation}
+	
+	\item[d].
+	
+	\end{itemize}
+	\begin{sequation}
+		\langle \Psi^r_a | \mathscr{H} | \Psi^{rs}_{ab} \rangle = \begin{cases} v_{bs} , &\,\text{if} \, a \neq b, \, r \neq s, \\
+	0, &\,\text{otherwise}. \end{cases}
+	\end{sequation}
+	
+	
+	\end{solution}
+	
+	% 5.15
+	\begin{exercise}
+	Repeat the above analysis using
+	\begin{align*}
+		| \chi_1 \rangle &= a_1 | \chi^{(0)}_1 \rangle + a_2 | \chi^{(0)}_2 \rangle + a_3 | \chi^{(0)}_3 \rangle + a_4 | \chi^{(0)}_4 \rangle, \\
+		| \chi_2 \rangle &= b_1 | \chi^{(0)}_1 \rangle + b_2 | \chi^{(0)}_2 \rangle + b_3 | \chi^{(0)}_3 \rangle + b_4 | \chi^{(0)}_4 \rangle
+	\end{align*}
+	instead of Eqs.(5.121a,b).
+	\begin{enumerate}
+	
+	\item[a.] By repeated use of Eq.(1.40) show that
+	\begin{align*}
+		| \Phi_0 \rangle &= ( a_1 b_2 - b_1 a_2 ) | \chi^{(0)}_1 \chi^{(0)}_2 \rangle + ( a_1 b_3 - b_1 a_3 ) | \chi^{(0)}_1 \chi^{(0)}_3 \rangle + ( a_1 b_4 - b_1 a_4 ) | \chi^{(0)}_1 \chi^{(0)}_4 \rangle \\
+		&\hspace{2em} + ( a_3 b_2 - b_3 a_2 ) | \chi^{(0)}_3 \chi^{(0)}_2 \rangle + ( a_4 b_2 - b_4 a_2 ) | \chi^{(0)}_4 \chi^{(0)}_2 \rangle + ( a_3 b_4 - b_3 a_4 ) | \chi^{(0)}_3 \chi^{(0)}_4 \rangle .
+	\end{align*}
+	Intermediate normalize this wave function by dividing the right-hand side by $a_1 b_2 - b_1 a_2$ and then explicitly verify that Eq.(5.123) is satisfied.
+	
+	\item[b.] To make contact with the general formalism, note that
+	\[
+		\U_{AA} = \begin{pmatrix} a_1 & b_2 \\ a_2 & b_2 \end{pmatrix}, \, \U_{BA} = \begin{pmatrix} a_3 & b_3 \\ a_4 & b_4 \end{pmatrix}.
+	\]
+	Note that $|\U_{AA}| = a_1 b_2 - b_1 a_2$ as required to make Eq.(5.120a) consistent with the result obtained in part (a). Use the result of Exercise 1.4(f) to evaluate $\U^{-1}_{AA}$ and then verify the general result given in Eq.(5.120b) by calculating
+	\[
+		(\U_{BA}\U^{-1}_{AA})_{11} = c^3_1	
+	\]
+	and showing that it is identical to the coefficient of $| \chi^{(0)}_3 \chi^{(0)}_2 \rangle$ obtained in part (a).
+	\end{enumerate}
+	\end{exercise}
+	
+		\begin{solution}
+	
+	\begin{align*}
+		| \Phi_0 \rangle &= | ( a_1 \chi^{(0)}_1 + a_2 \chi^{(0)}_2 + a_3 \chi^{(0)}_3 + a_4 \chi^{(0)}_4 ) ( b_1 \chi^{(0)}_1 + b_2 \chi^{(0)}_2 + b_3 \chi^{(0)}_3 + b_4 \chi^{(0)}_4 ) \rangle	\\
+		&= a_1 b_2 | \chi^{(0)}_1 \chi^{(0)}_2 \rangle + a_1 b_3 | \chi^{(0)}_1 \chi^{(0)}_3 \rangle + a_1 b_4 | \chi^{(0)}_1 \chi^{(0)}_4 \rangle + a_2 b_1 | \chi^{(0)}_2 \chi^{(0)}_1 \rangle \\
+		&\hspace{2em} + a_2 b_3 | \chi^{(0)}_2 \chi^{(0)}_3 \rangle + a_2 b_4 | \chi^{(0)}_2 \chi^{(0)}_4 \rangle + a_3 b_1 | \chi^{(0)}_3 \chi^{(0)}_1 \rangle + a_3 b_2 | \chi^{(0)}_3 \chi^{(0)}_2 \rangle \\
+		&\hspace{2em}  + a_3 b_4 | \chi^{(0)}_3 \chi^{(0)}_4 \rangle + a_4 b_1 | \chi^{(0)}_4 \chi^{(0)}_1 \rangle + a_4 b_2 | \chi^{(0)}_4 \chi^{(0)}_2 \rangle + a_4 b_3 | \chi^{(0)}_4 \chi^{(0)}_3 \rangle \\
+		&= ( a_1 b_2 - a_2 b_1 ) | \chi^{(0)}_1 \chi^{(0)}_2 \rangle + ( a_1 b_3 - a_3 b_1 ) | \chi^{(0)}_1 \chi^{(0)}_3 \rangle + ( a_1 b_4  - a_4 b_1 ) | \chi^{(0)}_1 \chi^{(0)}_4 \rangle \\
+		&\hspace{2em} + ( a_2 b_3 - a_3 b_2 ) | \chi^{(0)}_2 \chi^{(0)}_3 \rangle + ( a_2 b_4 - a_4 b_2 ) | \chi^{(0)}_2 \chi^{(0)}_4 \rangle + ( a_3 b_4  - a_4 b_3 ) | \chi^{(0)}_3 \chi^{(0)}_4 \rangle \\
+		&= ( a_1 b_2 - a_2 b_1 ) | \Psi_0 \rangle + ( a_1 b_3 - a_3 b_1 ) | \Phi^3_2 \rangle + ( a_1 b_4  - a_4 b_1 ) | \Phi^4_2 \rangle \\
+		&\hspace{2em} - ( a_2 b_3 - a_3 b_2 ) | \Psi^3_1 \rangle - ( a_2 b_4 - a_4 b_2 ) | \Psi^4_1 \rangle + ( a_3 b_4  - a_4 b_3 ) | \Psi^{34}_{12} \rangle.
+	\end{align*}		
+
+	\begin{align*}
+		| \Phi^\prime_0 \rangle &= | \Psi_0 \rangle + \frac{1}{ a_1 b_2 - a_2 b_1 } \left[ ( a_1 b_3 - a_3 b_1 ) | \Phi^3_2 \rangle + ( a_1 b_4  - a_4 b_1 ) | \Phi^4_2 \rangle \right. \\
+		&\hspace{6em} \left. - ( a_2 b_3 - a_3 b_2 ) | \Psi^3_1 \rangle - ( a_2 b_4 - a_4 b_2 ) | \Psi^4_1 \rangle + ( a_3 b_4  - a_4 b_3 ) | \Psi^{34}_{12} \rangle \right].
+	\end{align*}
+	
+	\begin{align*}
+		c^3_2 &= \frac{ a_1 b_3 - a_3 b_1 }{ a_1 b_2 - a_2 b_1 } , \\
+		c^4_2 &= \frac{ a_1 b_4 - a_4 b_1 }{ a_1 b_2 - a_2 b_1 } , \\
+		c^3_1 &= -\frac{ a_2 b_3 - a_3 b_2 }{ a_1 b_2 - a_2 b_1 } , \\
+		c^4_1 &= -\frac{ a_2 b_4 - a_4 b_2 }{ a_1 b_2 - a_2 b_1 } , \\
+		c^{34}_{12} &= \frac{ a_3 b_4 - a_4 b_3 }{ a_1 b_2 - a_2 b_1 }.
+	\end{align*}
+	
+	\begin{align*}
+		c^3_1 c^4_2 - c^4_1 c^3_2 &= \left( -\frac{ a_2 b_3 - a_3 b_2 }{ a_1 b_2 - a_2 b_1 } \right) \left( \frac{ a_1 b_4 - a_4 b_1 }{ a_1 b_2 - a_2 b_1 } \right) - \left( -\frac{ a_2 b_4 - a_4 b_2 }{ a_1 b_2 - a_2 b_1 } \right) \left( \frac{ a_1 b_3 - a_3 b_1 }{ a_1 b_2 - a_2 b_1 } \right) \\
+		&= - \frac{ a_2 a_3 b_1 b_4 + a_1 a_4 b_2 b_3 - a_2 a_4 b_1 b_3 - a_1 a_3 b_2 b_4 }{ ( a_1 b_2 - a_2 b_1 )^2 } = - \frac{ ( a_1 b_2 - a_2 b_1 )( a_4 b_3 - a_3 b_4 ) }{ ( a_1 b_2 - a_2 b_1 )^2 } \\
+		&= - \frac{ a_4 b_3 - a_3 b_4 }{ a_1 b_2 - a_2 b_1  } = \frac{ a_3 b_4 - a_4 b_3 }{ a_1 b_2 - a_2 b_1 } = c^{34}_{12}.
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{The Resonance Energy of Polyenes in H{\"u}ckel Theory}
+	
+	% 5.16
+
+\end{document}

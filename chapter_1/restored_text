@@ -1,0 +1,917 @@
+	
+		\subsection{}
+			\[
+				[A,B]=AB-BA=
+				\begin{pmatrix}
+					0 & -2 & 4 \\
+					2 & 0 & 3 \\
+					-4 & -3 & 0
+				\end{pmatrix},
+				\{A,B\}=AB+BA=
+				\begin{pmatrix}
+					0	&	0	&	-2	\\
+					0	&	-2	&	3	\\
+					-2	&	3	&	-2
+				\end{pmatrix}.
+			\]
+		
+		\subsection{}
+			\[
+				(AB)^\dagger = B^\dagger A^\dagger \; \Leftrightarrow \; [(AB)^\dagger](i;j) = [B^\dagger A^\dagger](i;j).
+			\]
+			
+			故验证后者成立即证得原命题成立.
+			\[
+				[(AB)^\dagger](i;j) 
+				= [(AB)^*](j;i) 
+				= \sum_{k=1}^N A_{jk}^*B_{ki}^* 
+				= \sum_{k=1}^N B_{ki}^*A_{jk}^* 
+				= \sum_{k=1}^N B_{ik}^\dagger A_{kj}^\dagger 
+				= (B^\dagger A^\dagger)(i;j).
+			\]
+	
+		\subsection{}
+			a.
+			\[
+				\tr{AB} = \sum_{i=1}^N \sum_{k=1}^N a_{ik}b_{ki} = \sum_{k=1}^N \sum_{i=1}^N b_{ki}a_{ik} = \tr{BA}.
+			\]
+			
+			b.
+			\[
+				AB(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = AA^{-1} = I.
+			\]
+			
+			故
+			\[
+				B^{-1}A^{-1} = (AB)^{-1}.
+			\]
+			
+			矩阵的逆的唯一性保证等式成立.
+			
+			c.由于
+			\[
+				B = U^\dagger AU.
+			\]
+			
+			从而
+			\[
+				A = (U^\dagger)^{-1}BU^{-1} = UBU^\dagger .
+			\]
+			
+			d.由于$C = AB$是Hermite矩阵，从而
+			\[
+				C^* = B^*A^* = C = AB.
+			\]
+			
+			由于$A$、$B$为Hermite矩阵，所以
+			\[
+				B^*A^* = BA = AB.
+			\]
+			
+			即$A$、$B$可交换.
+			
+			e.由于
+			\[
+				(A^{-1})^\dagger A^\dagger = (AA^{-1})^\dagger = I^\dagger = I.
+			\]
+			
+			从而
+			\[
+				(A^\dagger)^{-1} = (A^{-1})^\dagger.
+			\]
+			
+			从而
+			\[
+				(A^{-1})^\dagger = (A^\dagger)^{-1} = A^{-1}.
+			\]
+			
+			即$A^{-1}$是Hermite矩阵.
+			
+			f.若
+			\[
+				a_{11}a_{22} - a_{12}a_{21} \neq 0.
+			\]
+			
+			则验算得
+			\[
+				A \frac{1}{a_{11}a_{22} - a_{12}a_{21}}
+					\begin{pmatrix}
+					a_{22} & -a_{12}  \\
+					-a_{21} & a_{11}
+					\end{pmatrix}
+				 = 
+				 	\begin{pmatrix}
+				 	1 & 0  \\
+				 	0 & 1
+				 	\end{pmatrix},
+			\]
+			
+			从而
+			\[
+				A^{-1} = \frac{1}{a_{11}a_{22} - a_{12}a_{21}}
+					\begin{pmatrix}
+					a_{22} & -a_{12}  \\
+					-a_{21} & a_{11}
+					\end{pmatrix}.
+			\]
+			
+		\subsection{}
+			改为对于n阶行列式证明性质(11-15).
+			
+			(1)
+			\[
+				\det{A} = \sum_{i_1i_2...i_N} (-1)^{\tau(i_1i_2...i_N)}a_{1i_1}a_{2i_2}...a_{Ni_N}.
+			\]
+			
+			由于有行/列中元素都是0，则对于每一加数均为0，则$\det{A} = 0$.
+			
+			(2)
+			\[
+				\det{A} = \sum_{i_1i_2...i_N} (-1)^{\tau(i_1i_2...i_N)} a_{1i_1}\delta_{1i_1} a_{2i_2}\delta_{2i_2} ... a_{Ni_N}\delta_{Ni_N} = a_{11}a_{22}...a_{NN}.
+			\]
+			
+			(3)
+			\[
+			\begin{aligned}
+				\det{A} &= \sum_{i_1i_2...i_N} (-1)^{\tau(i_1i_2...i_i...i_j...i_N)} a_{1i_1}a_{2i_2}...a_{ii_i}...a_{ji_j}...a_{Ni_N} \\
+				&= -\sum_{i_1i_2...i_N} (-1)^{\tau(i_1i_2...i_i...i_j...i_N)} a_{1i_1}a_{2i_2}...a_{ji_j}...a_{ii_i}...a_{Ni_N} \\
+				&= -\det{A}.
+			\end{aligned}
+			\]
+			
+			(4)
+			\[
+			\begin{aligned}
+				\det{A^\dagger}^* &= \Big( \sum_{i_1i_2...i_N} (-1)^{\tau(i_1i_2...i_N)}a_{1i_1}^*a_{2i_2}^*...a_{Ni_N}^* \Big)^* \\
+				&= \sum_{i_1i_2...i_N} (-1)^{\tau(i_1i_2...i_N)}a_{1i_1}a_{2i_2}...a_{Ni_N} \\
+				&= \det{A}.
+			\end{aligned}
+			\]
+			
+			(5)利用Laplace定理及分块矩阵运算，
+			\[
+				\det{
+					\begin{array}{cc}
+					A & 0 \\
+					-I & B 
+					\end{array}
+					}
+				 = 
+				\det{
+					 \begin{array}{cc}
+					 0 & AB \\
+					 -I & B 
+					 \end{array}
+					}.
+			\]
+			
+			所以
+			\[
+				\det{A}\det{B} = (-1)^{n^2}(-1)^n\det{AB} = \det{AB}.
+			\]
+	
+		\subsection{}
+			(6)由练习1.5性质(3)，由于
+			\[
+				\det{A} = -\det{A}
+			\]
+			
+			所以
+			\[
+				\det{A} = 0.
+			\]
+			
+			(7)由$AA^{-1} = I$，由练习1.5性质(5)，从而
+			\[
+				\det{A}\det{A^{-1}} = 1.
+			\]
+			
+			从而
+			\[
+				\det{A^{-1}} = \det{A}^{-1}.
+			\]
+			
+			(8)由$AA^\dagger = I$，由练习1.5性质(5)，从而
+			\[
+				\det{A}\det{A}^* = 1.
+			\]
+			
+			(9)由于
+			\[
+				U^\dagger U = I
+			\]
+			
+			所以
+			\[
+				\det{U^\dagger}\det{U} = 1.
+			\]
+			
+			由
+			\[
+				U^\dagger OU = \Omega,
+			\]
+			
+			由练习1.5性质5，有
+			\[
+				\det{O} = \det{U^\dagger}\det{O}\det{U} = \det{U^\dagger OU} = \det{\Omega}.
+			\]
+	
+		\subsection{}
+			由Cramer法则立刻得到.
+	
+		\subsection{}
+			\[
+				\tr(\Omega) = tr[U^\dagger(OU)] = tr[OUU^\dagger] = tr(O).
+			\]
+	
+		\subsection{}
+			\[
+			\begin{aligned}
+				OU &= O(c^1 , c^2 , ... , c^N) = (Oc^1 , Oc^2 , ... , Oc^N) = (\omega_1c^1 , \omega_2c^2 , ... , \omega_Nc^N)\\
+				&= (c^1 , c^2 , ... , c^N)
+					\left(
+					\begin{array}{cccc}
+					\omega_1 & \ & \ & \ \\
+					\ & \omega_2 & \ & \ \\
+					\ & \ & \ddots & \ \\
+					\ & \ & \ & \omega_N \\
+					\end{array}
+					\right)
+				=U_\omega.
+			\end{aligned}
+			\]
+	
+		\subsection{}
+			(略，似无处理内容.)
+	
+		\subsection{}
+			(a).
+			\[
+				|A - \lambda I| = 
+				\left|
+				\begin{array}{cc}
+					3 - \lambda & 1 \\
+					1 & 3 - \lambda 	
+				\end{array}
+				\right|
+				= (4 - \lambda)(2 - \lambda) = 0.
+			\]
+			
+			解出
+			\[
+				\lambda_1 = 4, \; \lambda_2 = 2.
+			\]
+			
+			解本征向量如下:
+			\[
+				A - \lambda_1I = 
+				\left(
+				\begin{array}{cc}
+					-1 & 1 \\
+					1 & -1 \\
+				\end{array}
+				\right)
+				\; \rightarrow \;
+				\left(
+				\begin{array}{cc}
+					1 & -1 \\
+					0 & 0 \\
+				\end{array}
+				\right)
+			\]
+			
+			求得属于本征值4的归一化本征向量为 $c^1 = \frac{1}{ \sqrt{2} }(1,1)^T$.
+			\[
+				A - \lambda_2I = 
+				\left(
+				\begin{array}{cc}
+					1 & 1 \\
+					1 & 1 \\
+				\end{array}
+				\right)
+				\; \rightarrow \;
+				\left(
+				\begin{array}{cc}
+					1 & 1 \\
+					0 & 0 \\
+				\end{array}
+				\right)
+			\]
+			
+			求得属于本征值2的归一化本征向量为 $c^2 = \frac{1}{ \sqrt{2} }(1,-1)^T$.
+			
+			用恒正变换(即酉变换)法,
+			\[
+				\frac{1}{2} (3 - 3) \sin 2\theta_0 - 1 \cdot \cos 2\theta_0 = 0.
+			\]
+			
+			取$\theta_0 = \frac{\pi}{4}$.
+			
+			所以，$\lambda_1= 4, \lambda_2 = 2, c^1 = \frac{1}{ \sqrt{2} }(1,1)^T, c^2 = \frac{1}{ \sqrt{2} }(1,-1)^T$.\\
+			
+			(b).同样，数值计算的结果为 $\lambda_1 = 1.3820, \lambda_2 = 3.6180. c^1 = (0.5257, -0.8507)^T, c^2 = (0.8507, 0.5257)^T$.
+	
+		\subsection{}
+			a.
+			\[
+				\det(A^n) = det[(UaU^\dagger)^n] = det[Ua^nU^\dagger] = det(a^n) = a_1^na_2^n...a_N^n.
+			\]
+			
+			b.
+			\[
+				\tr{A^n} = tr[(UaU^\dagger)^n] = tr[Ua^nU^\dagger] = tr[a^nU^\dagger U] = tr(a^n) = \sum_{\alpha = 1}^N a_\alpha ^n.
+			\]
+			
+			c.
+			\[
+				A = UaU^\dagger, \; \therefore \omega I - A = U(\omega I - a)U^\dagger, \; \therefore (\omega I - A)^{-1} = U(\omega I - a)^{-1}U^\dagger, \; \therefore G(\omega) = U(\omega I - a)^{-1}U^\dagger.
+			\]
+			
+			因此
+			\[
+				(G(\omega))_{ij} = \sum_{\alpha = 1}^{N}\sum_{\beta = 1}^{N} \frac{ U_{i\alpha}U_{j\beta}^* }{ (\omega - a_\alpha)\delta_{\alpha\beta} } = \sum_{\alpha = 1}^{N} \frac{ U_{i\alpha}U_{j\alpha}^* }{\omega - a_\alpha} = \sum_{\alpha = 1}^{N} \frac{ \langle i|\alpha \rangle \langle \alpha|j \rangle }{\omega - a_\alpha}.
+			\]
+	
+		\subsection{}
+			\[
+				|A - \lambda I| = 
+				\left|
+				\begin{array}{cc}
+					a - \lambda & b \\
+					b & a - \lambda \\
+				\end{array}
+				\right|
+				= (\lambda - a)^2 - b^2 = (\lambda - a - b)(\lambda - a + b). \; \therefore \lambda_1 = a + b, \; \lambda_2 = a - b.
+			\]
+			
+			解本征向量如下:
+			\[
+				A - \lambda_1 I = 
+				\left(
+				\begin{array}{cc}
+					-b & b \\
+					b & -b \\
+				\end{array}
+				\right)
+				\rightarrow
+				\left(
+				\begin{array}{cc}
+					1 & -1 \\
+					0 & 0 \\	
+				\end{array}
+				\right)
+			\]
+			
+			求得属于本征值$\lambda_1 = a + b$的归一化本征向量为$\frac{1}{ \sqrt{2} }(1,1)^T$,记为$c^1$.
+			\[
+				A - \lambda_2 I = 
+				\left(
+				\begin{array}{cc}
+					b & b \\
+					b & b \\
+				\end{array}
+				\right)
+				\rightarrow
+				\left(
+				\begin{array}{cc}
+					1 & 1 \\
+					0 & 0 \\	
+				\end{array}
+				\right)
+			\]
+			
+			求得属于本征值$\lambda_2 = a - b$的归一化本征向量为$\frac{1}{ \sqrt{2} }(1,-1)^T$,记为$c^2$.
+			\[
+				\therefore A(c^1, c^2) = (c^1, c^2)
+				\left(
+				\begin{array}{cc}
+					a + b & 0 \\
+					0 & a + b \\
+				\end{array}
+				\right)
+				\; \Leftrightarrow \;
+				A = (c^1, c^2)
+				\left(
+				\begin{array}{cc}
+					a + b & 0 \\
+					0 & a + b \\
+				\end{array}
+				\right)
+				(c^1, c^2)^{-1} = UaU^\dagger
+			\]
+			\[
+				\begin{aligned}
+				\therefore f(A) &= Uf(A)U^\dagger = U
+				\left(
+				\begin{array}{cc}
+				f(a + b) & 0 \\
+				0 & f(a + b) \\
+				\end{array}
+				\right)
+				U^\dagger \\
+				&= 
+				\left(
+				\begin{array}{cc}
+					\frac{1}{2}[f(a + b) + f(a - b)] & \frac{1}{2}[f(a + b) - f(a - b)] \\
+					\frac{1}{2}[f(a + b) - f(a - b)] & \frac{1}{2}[f(a + b) + f(a - b)] \\
+				\end{array}
+				\right).
+				\end{aligned}
+			\]
+	
+		\subsection{}
+			$\delta(x)$函数的筛选性质宜看作是其定义中的一部分，而无需证明.
+	
+		\subsection{}
+			\[
+				\vartheta |i\rangle = \sum_i |j\rangle \langle j|\vartheta |i\rangle = \sum_j |j\rangle O_{ji}. \ O_{ji} = \langle j|\vartheta |i\rangle .
+			\]
+	
+		\subsection{}
+			\[
+				\vartheta \phi(x) = \vartheta \sum_{j = 1}^{+\infty}c_j\psi_j(x) = \sum_{j = 1}^{+\infty}c_j\varphi\psi_j(x) = \omega\phi(x) = \omega\sum_{j = 1}^{+\infty}c_j\psi_j(x).
+			\]
+			
+			两边同乘$\psi_i^*(x)$并对$x$测度积分，得
+			\[
+				\therefore \sum_{j = 1}^{+\infty}O_{ij}c_j = \omega \sum_{j = 1}^{+\infty}c_j\delta_{ij} = \omega c_i, \; i\in I_1^\infty. \; \Leftrightarrow Oc = \omega c.
+			\]
+			
+			用Dirac符号表示.
+			\[
+				\vartheta |\phi\rangle = \vartheta \sum_jc_j|\psi_j\rangle = \sum_jc_j\vartheta|\psi_j\rangle = \omega|\phi\rangle = \omega\sum_jc_j|\psi_j\rangle. \; \therefore \sum_jO_{ij}c_j = \omega c_i, \; i \in I_1^N \; \Leftrightarrow \; Oc = \omega c.
+			\]
+	
+		\subsection{}
+			a.
+			\[
+				\int {\rm d} x\langle i|x\rangle \langle x|j\rangle = \langle i|j\rangle = \delta_{ij}.
+			\]
+			
+			故若$\psi_i^*(x) = \langle i|x\rangle, \; \psi_j(x) = \langle x|j\rangle. $
+			
+			b.
+			\[
+				\langle x|x'\rangle = \sum_{i = 1}^{+\infty}\langle x|i\rangle \langle i|x'\rangle = \delta(x - x') \; \therefore \sum_i \psi_i^*(x')\psi_i(x) = \delta(x - x').
+			\]
+			
+			c.
+			\[
+				\int {\rm d}x\langle x'|x\rangle \langle x|a\rangle = \langle x'|a\rangle \; \Leftrightarrow \; a(x') = \int {\rm d}x \delta(x' - x) a(x).
+			\]
+			
+			d.
+			\[
+				b(x') = \langle x'|b\rangle = \langle x'|\vartheta|a\rangle = \int {\rm d}x\langle x'|\vartheta|x\rangle \langle x|a\rangle = \int {\rm d}x O(x,x')a(x).
+			\]
+			
+			e.
+			\[
+				O(x, x') = \langle x|\vartheta|x'\rangle = \langle x|\sum_i |i\rangle \langle i|\vartheta|\sum_j |j\rangle\langle j|x'\rangle = \sum_i\sum_j \psi_i(x)O_{ij}\psi_j^*(x').
+			\]
+	
+		\subsection{}
+			由波函数的归一化条件，得$N^2 = \sqrt{\frac{2\alpha}{\pi}}$.
+			\[
+				\therefore \langle \Phi |- \frac{1}{2} \frac{ {\rm d}^2 } { {\rm d} x^2 } - \delta(x) | \Phi \rangle = \sqrt{ \frac{2\alpha}{\pi} } \int_{-\infty}^{+\infty} e^{-\alpha x^2} \Big(-\frac{1}{2} \frac{ {\rm d}^2 }{ {\rm d}x^2 } - \delta(x)\Big) e^{-\alpha x^2} {\rm d}x = \frac{\alpha}{2} = \sqrt{\frac{2\alpha}{\pi}}
+			\]
+			\[
+				\therefore E(a) = \frac{\alpha}{2} - \sqrt{\frac{2\alpha}{\pi}}
+			\]
+			\[
+				\therefore\frac{ {\rm d} E }{ {\rm d} a} = 0 \; \Rightarrow \; a_0 = \frac{2}{ \sqrt{\pi} }, \; E(a_0) = -\frac{1}{ \sqrt{\pi} }.
+			\]
+			
+			即用此试探函数得体系能量的上限值为$-\frac{1}{\pi}$ Hartree.
+	
+		\subsection{}
+			同练习1.18.
+			\[
+				\langle \tilde{\Phi} | \tilde{\Phi} \rangle = N^2 \int_0^{+\infty} r^2 e^{-2\alpha r^2} {\rm d}r \int_\Omega {\rm d} \Omega = 4\pi N^2 \cdot \frac{ \sqrt{\pi} }{ 8\sqrt{2} a^{3/2} } = 1
+			\]
+			\[
+				\therefore N^2 = \Big( \frac{ 2\alpha }{ \pi } \Big)^{ 3/2 }
+			\]
+			\[
+				\begin{aligned}
+					\therefore E &= \langle \tilde{\Phi} | - \frac{1}{2} \nabla^2 - \frac{1}{r} | \tilde{\Phi} \rangle \\
+					&= N^2 \int_0^{+\infty} ( 3\alpha r^2 - 2\alpha^2r^4 - r ) e^{ -2\alpha r^2 } {\rm d} r \int_\Omega {\rm d} \Omega \\
+					&= 4\pi \Big( \frac{2\alpha}{\pi} \Big)^{3/2} \Big( \frac{3}{16} \sqrt{ \frac{\pi}{2\alpha} } - \frac{1}{4\alpha} \Big) \\
+					&= \frac{3}{2} \alpha - 2\sqrt{ \frac{2\alpha}{\pi} }
+				\end{aligned}
+			\]
+			\[
+				\therefore \frac{ {\rm d}E }{ {\rm d}a } = 0 \; \Rightarrow \; a_0 = \frac{8}{9\pi} \; \Rightarrow \; E(a_0) = -\frac{4}{ 3\pi } = -0.4244{\rm (Hartree) }.
+			\]
+	
+		\subsection{}
+			\[
+				\omega(\theta) = c^\dagger Oc = O_{11}\cos^2 \theta + 2 O_{12} \sin\theta \cos\theta + O_{22}\sin^2 \theta
+			\]
+			\[
+				\therefore \omega'(\theta) = -O_{11}\sin 2\theta + 2O_{12}\cos 2\theta + O_{22}\sin 2\theta = 0.
+			\]
+			
+			若$O_{11} - O_{22} \neq 0$, 则
+			\[
+				\theta_0 = \frac{1}{2} \arctan \frac{ 2O_{12} }{ O_{11} - O_{22} }.
+			\]
+			
+			与用酉变换法所得相同. “设一法”仅对求体系最小本征值有效. 
+	
+		\subsection{}
+			a.
+			\[
+				\langle \tilde{\Phi}' | \mathscr{H} | \tilde{\Phi}' \rangle = \sum_\alpha \sum_s 
+				\langle \tilde{\Phi}' | \tilde{\Phi_\alpha} \rangle 
+				\langle \tilde{\Phi_\alpha} | \mathscr{H} | \tilde{\Phi_s} \rangle 
+				\langle \tilde{\Phi_s} | \tilde{\Phi}' \rangle
+				= \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}' | \tilde{\Phi_\alpha} \rangle |^2
+			\]
+			
+			由于
+			\[
+				\varepsilon_0 \leqslant \varepsilon_1 \leqslant \varepsilon_2 \leqslant ... \leqslant \varepsilon_{N - 1}, \; \langle \tilde{\Phi}' | \tilde{\Phi_0} \rangle = 0.
+			\]
+			\[
+				\therefore \langle \tilde{\Phi}' | \mathscr{H} | \tilde{\Phi}' \rangle 
+				= \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}' | \tilde{\Phi_\alpha} \rangle |^2 
+				\geqslant \sum_\alpha \varepsilon_1 | \langle \tilde{\Phi}' | \tilde{\Phi_\alpha} \rangle |^2 = \varepsilon_1
+			\]
+			
+			b.
+			\[
+				1 = \langle \tilde{\Phi}' | \tilde{\Phi}' \rangle 
+				= ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) ( x \langle \tilde{\Phi}_0 | + y \langle \tilde{\Phi}_1 | ) 
+				= |x|^2 + |y|^2 + x^*y \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle +  xy^* \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle = |x|^2 + |y|^2.
+			\]
+			
+			c.
+			\[
+				\langle \tilde{\Phi}' | \mathscr{H} | \tilde{\Phi}' \rangle 
+				= ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) \mathscr{H} ( x \langle \tilde{\Phi}_0 | + y \langle \tilde{\Phi}_1 | ) 
+				= |x|^2 E_0 + |y|^2 E_1 = ( |x|^2 + |y|^2 ) E_1 - |x|^2 E_1 + |x|^2 E_0
+			\]
+			\[
+				\therefore \langle \tilde{\Phi}' | \mathscr{H} | \tilde{\Phi}' \rangle = E_1 - |x|^2 ( E_1 - E_0 ) \geqslant E_0. 
+			\]
+	
+		\subsection{}
+			\[
+				\langle 1s | \mathscr{H}_0 | 1s \rangle = -\frac{1}{2}. 
+			\]
+			\[
+				\begin{aligned}
+					\langle 1s | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 1s | 2p_z \rangle \\
+					&= -\frac{1}{8} \int_0^{+\infty} r^3 e^{ -\frac{3}{2}r } {\rm d}r \int_0^\pi \sin\theta \cos\theta {\rm d}\theta \int_0^{2\pi} {\rm d}\varphi \cdot \frac{1}{ \sqrt{\pi} } \cdot \frac{1}{ \sqrt{32\pi} } = 0 \\
+					&= \langle 2p_z | \mathscr{H}_0 | 1s \rangle
+				\end{aligned}
+			\]
+			\[
+				\langle 2p_z | \mathscr{H}_0 | 2p_z \rangle = -\frac{1}{8} \langle 2p_z | 2p_z \rangle = -\frac{1}{8}. 
+			\]
+			
+			而
+			\[
+				\langle 1s | Fr\cos\theta | 1s \rangle = \frac{1}{\pi} \int_0^{+\infty} Fr^3 e^{-2r} {\rm d}r \int_0^\pi \sin\theta \cos\theta {\rm d}\theta \int_0^{2\pi} {\rm d}\varphi = 0.
+			\]
+			\[
+				\begin{aligned}
+					\langle 1s | Fr\cos\theta | 2p_z \rangle &= \langle 2p_z | Fr\cos\theta | 1s \rangle \\
+					&= \frac{1}{ \sqrt{\pi} } \cdot \frac{1}{ \sqrt{32\pi} } \int_0^{+\infty} Fr^4 e^{-3r/2} {\rm d}r \int_0^\pi \sin\theta \cos^2\theta {\rm d}\theta \int_0^{2\pi} {\rm d}\varphi \\
+					&= \frac{F}{ 4\sqrt{2} \pi } \cdot \frac{256}{81} \cdot \frac{2}{3} \cdot 2\pi = \frac{ 128 \sqrt{2} }{243}F.
+				\end{aligned}
+			\]
+			\[
+				\langle 2p_z | Fr\cos\theta | 2p_z \rangle = \frac{F}{ 32\pi } \int_0^{+\infty} r^5 e^{-r} {\rm d}r \int_0^\pi \sin\theta \cos^3\theta {\rm d}\theta \int_0^{2\pi} {\rm d}\varphi = 0.
+			\]
+			\[
+				\therefore \langle 1s | \mathscr{H}(F) | 1s \rangle = \langle 1s | \mathscr{H}_0 + Fr\cos\theta | 1s \rangle = \langle 1s | \mathscr{H}_0 | 1s \rangle + \langle 1s | Fr\cos\theta | 1s \rangle = -\frac{1}{2} + 0 = -\frac{1}{2}.
+			\]
+			
+			同理得
+			\[
+				\langle 1s | \mathscr{H}(F) | 2p_z \rangle = \langle 2p_z | \mathscr{H}(F) | 1s \rangle = \frac{ 128\sqrt{2} }{243}F \;\; 
+				\langle 2p_z | \mathscr{H}(F) | 2p_z \rangle = -\frac{1}{8}.
+			\]
+			
+			从而
+			\[
+				| H - \lambda E | = \left|
+				\begin{array}{cc}
+				-\frac{1}{2} - E & \frac{ 128\sqrt{2} }{243}F \\
+				\frac{ 128\sqrt{2} }{243}F & -\frac{1}{8} - E \\
+				\end{array}
+				\right|
+				= E^2 + \frac{5}{8}E + \frac{1}{16} - \frac{ 128^2 \cdot 2 }{ 243^2 } F^2 = 0.
+			\]
+			\[
+				\therefore E_{1, 2} = -\frac{5}{16} \pm \frac{3}{16} \sqrt{ 1 + \frac{ 128 \cdot 256^2 }{ 9 \cdot 243^2 } F^2 }
+			\]
+			
+			由能量最小化原理，故取负号. 并取二级幂级数近似. 从而
+			\[
+				E = -\frac{1}{2} -\frac{1}{2} \cdot \frac{ 8 \cdot 256^2 }{ 3 \cdot 243^2 } F^2 + o(F^2).
+			\]
+			
+			由Taylor级数的唯一性定理，从而
+			\[
+				\alpha = \frac{ 8 \cdot 256^2 }{ 3 \cdot 243^2 } \doteq 2.96.
+			\]
+			
+
+\section{Many Electron Wave Functions and Operators}
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+		EWFEW
+
+\section{The Hartree-Fock Approximation}
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	ESGRZBT
+	\subsection{}
+	
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	W4AY5HET
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+
+\section{Configuration Interaction}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+
+\section{Pair and Coupled-Pair Theories}
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+
+\section{Many-Body Perturbation Theory}
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
+	
+	\subsection{}
