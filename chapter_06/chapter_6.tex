@@ -1,11 +1,10 @@
 \documentclass[a4paper]{book}
+\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[hypcap=false]{caption}
 \usepackage{enumitem}	% 定制enumerate标号
-\usepackage{fancyhdr}
-\pagestyle{plain} 				% 此处为fancy时有页眉
 \usepackage{geometry}
 \geometry{
 	left=2cm,
@@ -13,7 +12,6 @@
 	top=2cm,
 	bottom=2cm,
 }
-\usepackage{graphics}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,            %链接颜色
@@ -40,7 +38,15 @@
 
 \definecolor{skyblue}{rgb}{0.54, 0.81, 0.94}
 
-\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{exercise}[1][]{
+\newcounter{exercise}[chapter]
+\newcounter{solution}[chapter]
+\newcounter{eqs}[solution]
+
+\newenvironment{sequation}
+  {\begin{equation}\stepcounter{eqs}\tag{\thesolution-\theeqs}}
+  {\end{equation}}
+
+\newtcolorbox[use counter=exercise, number within=chapter, number format=\arabic]{exercise}[1][]{
     title={Exercise~\thetcbcounter},
     colframe=skyblue,
     colback=skyblue!12!white,
@@ -51,7 +57,7 @@
     }
 }
 
-\newtcolorbox[auto counter, number within=chapter, number format=\arabic]{solution}[1][]{
+\newtcolorbox[use counter=solution, number within=chapter, number format=\arabic]{solution}[1][]{
     title={Solution~\thetcbcounter},
     colframe=teal!60!green,
     colback=green!12!white,
@@ -62,12 +68,9 @@
     }
 }
 
+
 % special new commands for common symbols used in the article
-\newcommand\la{\langle}
-\newcommand\ra{\rangle}
-\newcommand\lr[2]{\langle#1\|#2\rangle}
 \newcommand\tr[1]{\mathrm{tr(#1)}}
-\newcommand\Tr[3]{#1\mathrm\#2#3}
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
 \newcommand{\HF}{{\rm HF}}
@@ -340,7 +343,18 @@
 	\end{exercise}
 	
 	\begin{solution}
-		6-10 so
+	
+	\begin{align*}
+		E^{(1)}_0 &= - \frac{1}{2} \sum_{ i=1 } \sum_{ j=1 } \langle ij || ij \rangle \\
+			&= - \frac{1}{2} \left( \sum_{ i=1 }^N \langle 1_i 1_i || 1_i 1_i \rangle + \sum_{ i=1 }^N \langle 1_i \bar{1}_i || 1_i \bar{1}_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i 1_i || \bar{1}_i 1_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i \bar{1}_i || \bar{1}_i \bar{1}_i \rangle \right)	\\
+			&= -\frac{1}{2} \left( 0 + \sum_{ i=1 }^N J_{ii} + \sum_{ i=1 }^N J_{ii} + 0 \right) = -\sum_{ i=1 }^N J_{ii} = -N J_{11}
+	\end{align*}
+	
+	\begin{align*}
+		\langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{V} | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle &= \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle - \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H}_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle \\
+		&= ( 2N-2 )h_{11} + 2h_{22} + \sum_{ j=1 }^{2N} \sum_{ k=1 }^{2N} \langle jk || jk \rangle - \left[ ( 2N - 2 ) \varepsilon_1 + 2\varepsilon_2 \right]
+	\end{align*}
+	
 	\end{solution}
 	
 	\section{Diagrammatic Representation of the Perturbation Expansion of the Correlation Energy}
@@ -356,7 +370,7 @@
 	
 	is equal to
 	\[
-		-\frac{1}{2} \sum_{abcderst} \frac{ \lr{rs}{ac} \lr{at}{de} \lr{dc}{tb} \lr{eb}{rs} }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d + \varepsilon_e - \varepsilon_r - \varepsilon_t - \varepsilon_s ) ( \varepsilon_b + \varepsilon_e - \varepsilon_r - \varepsilon_s ) }.
+		-\frac{1}{2} \sum_{abcderst} \frac{ \langle rs || ac \rangle \langle at || de \rangle \langle dc || tb \rangle \langle eb||rs \rangle }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d + \varepsilon_e - \varepsilon_r - \varepsilon_t - \varepsilon_s ) ( \varepsilon_b + \varepsilon_e - \varepsilon_r - \varepsilon_s ) }.
 	\]	
 	
 	\end{exercise}
