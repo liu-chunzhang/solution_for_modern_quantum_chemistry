@@ -1,5 +1,5 @@
 \documentclass[a4paper]{book}
-%\usepackage{amsmath}\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+\usepackage{amsmath}\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -1537,7 +1537,7 @@
 		\langle \Psi_0 | \mathscr{H} - E_0 | \Psi_0 \rangle + \sum_{ i=1 }^3 \langle \Psi_0 | \mathscr{H} | \Psi^*_i \rangle c_i + \sum_{ i=1 }^3 \langle \Psi_0 | \mathscr{H} | \Psi^{\bar{*}}_{\bar{i}} \rangle \bar{c}_i &= E_R ( {\rm SCI} ) , \\
 		\langle \Psi^*_1 | \mathscr{H} | \Psi_0 \rangle + \langle \Psi^*_1 | \mathscr{H} - E_0 | \Psi^*_1 \rangle c_1 +  \sum_{ i=2 }^3 \langle \Psi^*_1 | \mathscr{H} | \Psi^*_i \rangle c_i + \sum_{ i=1 }^3 \langle \Psi^*_1  | \mathscr{H} | \Psi^{\bar{*}}_{\bar{i}} \rangle \bar{c}_i &= E_R ( {\rm SCI} ) c_1 .
 	\end{align*}
-	As $c_1 = c_2 = c_3 = c_{\bar{1}} = c_{\bar{2}}= c_{\bar{3}} = c$, we get	
+	As $c_1 = c_2 = c_3 = \bar{c}_1 = \bar{c}_2 = \bar{c}_3 = c$, we get	
 	\begin{align*}
 		0 + \sqrt{2} \beta c + \sqrt{2} \beta c + \sqrt{2} \beta c +  \sqrt{2} \beta c + \sqrt{2} \beta c + \sqrt{2} \beta c &= E_R ( {\rm SCI} ) , \\
 		\frac{1}{ \sqrt{2} } \beta - \frac{3}{2} \beta c + \frac{ \beta }{ 4 } c + \frac{ \beta }{ 4 } c + 0 + 0 + 0 = E_R ( {\rm SCI} ) c.
@@ -1562,7 +1562,7 @@
 	\]
 	and the lowest root is
 	\begin{sequation}
-		E_{\rm R}( {\rm SCI} ) = \frac{1}{2} \left( - \beta + \sqrt{13} \beta \right) = \frac{ \sqrt{13} - 1 }{2} \beta \approx 1.3028 \beta.
+		E_R( {\rm SCI} ) = \frac{1}{2} \left( - \beta + \sqrt{13} \beta \right) = \frac{ \sqrt{13} - 1 }{2} \beta \approx 1.3028 \beta.
 	\end{sequation}
 	
 	\end{solution}
@@ -1591,10 +1591,53 @@
 	\end{exercise}
 	
 	\begin{solution}
-	
+	Similar to Exercise 5.20, we find that
 	\[
 		\langle \Psi_0 | \mathscr{H} | {}^*_i \rangle = \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{(i+1)*}_i \rangle - \frac{1}{ \sqrt{2} } \langle \Psi_0 | \mathscr{H} | \Psi^{(i-1)*}_i \rangle = \frac{1}{ \sqrt{2} } \left( \frac{ \beta }{2} \right) - \frac{1}{ \sqrt{2} } \left( - \frac{ \beta }{2} \right) = \frac{ \beta }{ \sqrt{2} }.
+	\]
+	However, note that though $i \neq j \Leftrightarrow i \pm 1 \neq j \neq 1$, $i \neq j$ cannot guarantee $i \pm 1 \neq j \mp 1$, and we find that
+	\begin{align*}
+		\langle \Psi^{(i+1)*}_i | \mathscr{H} | \Psi^{(j+1)*}_j \rangle &= \delta_{ij} ( E_0 + \varepsilon_{(i+1)*} - \varepsilon_{i} ) = \delta_{ij} \left[ E_0 + ( \alpha - \beta ) - ( \alpha + \beta ) \right] = \delta_{ij} \left( E_0 - 2\beta \right) , \\
+		\langle \Psi^{(i+1)*}_i | \mathscr{H} | \Psi^{(j-1)*}_j \rangle &= \delta_{i+2,j} \langle i | v(i) | (i+2) \rangle = 0, \\
+		\langle \Psi^{(i-1)*}_i | \mathscr{H} | \Psi^{(j+1)*}_j \rangle &= \delta_{i,j+2} \langle (j+2) | v(j) | j \rangle = 0, \\
+		\langle \Psi^{(i-1)*}_i | \mathscr{H} | \Psi^{(j-1)*}_j \rangle &= \delta_{ij} ( E_0 + \varepsilon_{(i-1)*} - \varepsilon_{i} ) = \delta_{ij} \left[ E_0 + ( \alpha - \beta ) - ( \alpha + \beta ) \right] = \delta_{ij} \left( E_0 - 2\beta \right) .
+	\end{align*}
+	Thus,
+	\begin{align*}
+		\langle {}^*_i | \mathscr{H} - E_0 | {}^*_j \rangle &= \left( \frac{1}{ \sqrt{2} } \langle \Psi^{(i+1)*}_i | - \frac{1}{ \sqrt{2} } \langle \Psi^{(i-1)*}_i | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | \Psi^{(j+1)*}_j \rangle - \frac{1}{ \sqrt{2} } | \Psi^{(j-1)*}_j \rangle \right) - E_0 \\
+		&= \frac{1}{2} \left( \langle \Psi^{(i+1)*}_i | \mathscr{H} | \Psi^{(j+1)*}_j \rangle - \langle \Psi^{(i+1)*}_i | \mathscr{H} | \Psi^{(j-1)*}_j \rangle \right.\\
+		&\hspace{4em} \left. - \langle \Psi^{(i-1)*}_i | \mathscr{H} | \Psi^{(j+1)*}_j \rangle + \langle \Psi^{(i-1)*}_i | \mathscr{H} | \Psi^{(j-1)*}_j \rangle \right) - E_0 \\
+		&= \frac{1}{2} \left( E_0 - 2\beta - 0 - 0 + E_0 - 2\beta \right) - E_0 = E_0 - 2\beta - E_0 = -2 \beta,
+	\end{align*}
+	which is different from (5.152b) because when $N>6$, there exist other occupied orbitals which are not located in nearest-neighbor carbon atoms. This is the same as my opinion in Exercise 5.19(a).
+	
+	Similarly, due to the symmetry of benzene, it follows that $c_i = \bar{c}_i = c$. The first two equations of SCI equations are
+	\begin{align*}
+		0 + \sum_{i=1}^n \frac{ \beta }{ \sqrt{2} } c + \sum_{i=1}^n \frac{ \beta }{ \sqrt{2} } c &= E_R({\rm SCI}) , \\
+		\frac{ \beta }{ \sqrt{2} } + ( - 2 \beta ) + \sum_{ j=2 }^n ( -2 \beta ) \delta_{1j} c + ( - 2 \beta ) + \sum_{ j=1 }^n 0 \times c &= E_R({\rm SCI}) c,
+	\end{align*}
+	which can be simplified to
+	\begin{align*}
+		\frac{ N\beta }{ \sqrt{2} } c &= E_R({\rm SCI}) , \\
+		\frac{ \beta }{ \sqrt{2} } - 2 \beta c &= E_R({\rm SCI}) c.
+	\end{align*}
+	In the same way, we obtain a quadratic equation of $c$,
+	\[
+		\frac{ N \beta }{ \sqrt{2} } c^2 + 2 \beta c - \frac{ \beta }{ \sqrt{2} } = 0.		
+	\]
+	Its discriminant $\Delta_c$ is
+	\[
+		( 2\beta )^2 - 4 \times ( \frac{ N \beta }{ \sqrt{2} } )  \times ( - \frac{ \beta }{ \sqrt{2} } ) = (4 + 2N)\beta^2 = 4( 1 + \frac{N}{2} ) \beta^2,
 	\]	
+	and the lowest root is
+	\[
+		c_{\rm min} = \frac{ - 2\beta + 2\sqrt{ 1 + \frac{N}{2} } \beta }{ 2 \times \frac{ N \beta }{ \sqrt{2} } } = \frac{1}{N} \left( \sqrt{ 2 + N } - \sqrt{2} \right) .
+	\]
+	Thus, the correlation energy of SCI is
+	\[
+		E_R({\rm SCI}) = \frac{ N\beta }{ \sqrt{2} } \frac{1}{N} \left( \sqrt{ 2 + N } - \sqrt{2} \right) = \left( \sqrt{ 1 + \frac{N}{2} } - 1 \right) \beta,
+	\]
+	which is proportional to $N^{1/2}$ as $N$ becomes large.
 	
 	\end{solution}
 
