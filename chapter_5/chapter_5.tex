@@ -1,8 +1,8 @@
 \documentclass[a4paper]{book}
-\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+%\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
 \usepackage{amssymb}
-\usepackage{enumitem}	% 定制enumerate标号
+\usepackage{bookmark}
 \usepackage{geometry}
 \geometry{
 	left=2cm,
@@ -13,7 +13,7 @@
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,            %链接颜色
-    linkcolor=blue,             %内部链接
+    linkcolor=black,             %内部链接
     filecolor=magenta,          %本地文档
     urlcolor=cyan,              %网址链接
 }
@@ -21,6 +21,10 @@
 \usepackage{mathrsfs}
 \usepackage[version=4]{mhchem}
 \usepackage{titlesec}
+
+% setting about showing the contents
+\setcounter{tocdepth}{3}
+\setcounter{chapter}{4}
 
 \RequirePackage[many]{tcolorbox}
 \tcbset{
@@ -52,6 +56,11 @@
         \node[below right,font=\small,color=skyblue,text width=.8\linewidth]
         at (title.north east) {#1};
     }
+    label={\unskip},
+    before upper={
+        \phantomsection
+        \addcontentsline{toc}{subsubsection}{Exercise\hspace{1em}\thetcbcounter}
+    },
 }
 
 \newtcolorbox[use counter=solution, number within=chapter, number format=\arabic]{solution}[1][]{
@@ -94,7 +103,7 @@
 
 \begin{document}
 
-	\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}\stepcounter{chapter}
+	\tableofcontents
 
 	\chapter{Pair and Coupled-Pair Theories}
 	
