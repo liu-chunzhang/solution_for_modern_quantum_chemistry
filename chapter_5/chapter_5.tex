@@ -1,9 +1,7 @@
 \documentclass[a4paper]{book}
-\usepackage{amsmath}\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
-\usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[hypcap=false]{caption}
 \usepackage{enumitem}	% 定制enumerate标号
 \usepackage{geometry}
 \geometry{
@@ -22,7 +20,6 @@
 \usepackage[none]{hyphenat}		% 阻止长单词分在两行
 \usepackage{mathrsfs}
 \usepackage[version=4]{mhchem}
-\usepackage{subcaption}
 \usepackage{titlesec}
 
 \RequirePackage[many]{tcolorbox}
@@ -72,7 +69,6 @@
 \newcommand\tr[1]{\mathrm{tr(#1)}}
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{{\rm det}\left(#1\right)}
-\newcommand{\HF}{{\rm HF}}
 \newcommand{\corr}{{\rm corr}}
 \newcommand{\DCI}{{\rm DCI}}
 \newcommand{\FO}{{\rm FO}}
@@ -86,7 +82,6 @@
 \newcommand{\HH}{{\bf H}}
 \newcommand{\I}{{\bf 1}}
 \newcommand{\U}{{\bf U}}
-\newcommand{\Op}{{\bf O}}
 
 \titleformat{\chapter}[display]
   {\bfseries\Large}
