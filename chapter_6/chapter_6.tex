@@ -456,14 +456,139 @@
 		&= \sum_{abrs} \frac{v_{ar} v_{sb} \langle \Psi^r_a | \mathscr{V} | \Psi^s_b \rangle}{( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_s)}.
 	\end{align*}
 	
-	\item[c.]
+	\item[c.] Using the conclusion of Exercise 2.13, at once we get
+	\begin{align*}
+		\langle \Psi^r_a | \mathscr{V} | \Psi^s_b \rangle &= v_{rs} & \text{if} \, a = b  \quad r \neq s, \\
+		&= - v_{ba} & \text{if} \, a \neq b \quad r = s, \\
+		&= \sum_{c} v_{cc} - v_{aa} + v_{rr} & \text{if} \, a = b \quad r = s ,
+	\end{align*}
+	and zero otherwise.
 	
-	\item[d.]
+	\item[d.] Thus, we simplify $A^{(3)}_0$ as follows.
+	\begin{align*}
+		A^{(3)}_0 &= \sum_{abrs} \frac{ v_{ar} v_{sb} \langle \Psi^r_a | \mathscr{V} | \Psi^s_b \rangle}{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r) ( \varepsilon^{(0)}_b - \varepsilon^{(0)}_s) } \\
+		&= \sum_{ar} \frac{ v_{ar} v_{ra} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r )^2} \left( \sum_{c} v_{cc} - v_{aa} + v_{rr} \right) + \sum_{ \substack{ar \\ s \neq r} } \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } \\
+		&\hspace{2em} + \sum_{ \substack{ar \\ b \neq a } } \frac{ v_{ar} v_{rb} ( - v_{ba} ) }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) } \\
+		&= \sum_{ar} \frac{ v_{ar} v_{ra} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r )^2} \left( \sum_{b} v_{bb} \right) - v_{aa} \sum_{ar} \frac{ v_{ar} v_{ra} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r )^2} + v_{rr} \sum_{ar} \frac{ v_{ar} v_{ra} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r )^2} \\
+		&\hspace{2em} + \sum_{ \substack{ar \\ s \neq r} } \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } - \sum_{ \substack{ar \\ b \neq a } } \frac{ v_{ar} v_{rb} v_{ba} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) } \\
+		&= \left( \sum_{a} v_{aa} \right) \sum_{br} \frac{ v_{br} v_{rb} }{ ( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r )^2} + \sum_{ ars } \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } - \sum_{ abr } \frac{ v_{ar} v_{rb} v_{ba} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) } \\
+		&= \sum_{abr} \frac{ v_{aa} v_{br} v_{rb} }{ ( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r )^2} + \sum_{ ars } \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } - \sum_{ abr } \frac{ v_{ar} v_{rb} v_{ba} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) } .
+	\end{align*}
+	Finally,
+	\begin{align*}
+		E^{(3)}_0 &= A^{(3)}_0 + B^{(3)}_0 \\
+		&= \sum_{abr} \frac{ v_{aa} v_{br} v_{rb} }{ ( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r )^2} + \sum_{ ars } \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } \\
+		&\hspace{2em} - \sum_{ abr } \frac{ v_{ar} v_{rb} v_{ba} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) } - \sum_{abr} \frac{ v_{aa} v_{rb} v_{br}}{( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r)^2} \\
+		&= \sum_{ ars } \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } - \sum_{ abr } \frac{ v_{br} v_{ra} v_{ab} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) } .
+	\end{align*}
 	
-	\item[e.]
+	\item[e.] Since a matrix element $v_{ij}=\langle i | v | j \rangle$ is nonzero only if both spin orbitals $i$ and $j$ have the same spin, thus only $v_{ar} v_{sa} v_{rs}$ and $v_{\bar{a}\bar{r}} v_{\bar{s} \bar{a}} v_{\bar{r} \bar{s}}$ contribute, and so $v_{br} v_{ra} v_{ab}$ and $v_{\bar{b}\bar{r}} v_{\bar{r} \bar{a}} v_{\bar{a} \bar{b}}$ do $v_{br} v_{ra} v_{ab}$. Besides, the denominators is invariant regardless of spin up or down. In this way, we obtain that
+	\begin{align*}
+		E^{(3)}_0 &= \sum_{ ars }^{N/2} \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } + \sum_{ \bar{a} \bar{r} \bar{s} }^{N/2} \frac{ v_{\bar{a} \bar{r}} v_{\bar{s} \bar{a} } v_{ \bar{r} \bar{s}} }{ ( \varepsilon^{(0)}_{\bar{a}} - \varepsilon^{(0)}_{\bar{r}})( \varepsilon^{(0)}_{\bar{a}} - \varepsilon^{(0)}_{\bar{s}}) } \\
+		&\hspace{2em} - \sum_{ abr }^{N/2} \frac{ v_{br} v_{ra} v_{ab} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) } - \sum_{ \bar{a} \bar{b} \bar{r} }^{N/2} \frac{ v_{\bar{b} \bar{r}} v_{\bar{r} \bar{a}} v_{\bar{a} \bar{b} } }{ ( \varepsilon^{(0)}_{\bar{a}} - \varepsilon^{(0)}_{\bar{r}})( \varepsilon^{(0)}_{\bar{b}} - \varepsilon^{(0)}_{\bar{r}}) } \\
+		&= 2 \sum_{ ars }^{N/2} \frac{ v_{ar} v_{sa} v_{rs} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s) } - 2 \sum_{ abr }^{N/2} \frac{ v_{br} v_{ra} v_{ab} }{ ( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r) }.
+	\end{align*}
 	
 	\end{itemize}		
 	
 	\end{solution}
+	
+	% 6.5
+	\begin{exercise}
+	Show that the second term in Eq.(6.52) is equal to $\frac{3}{8}\beta$ for benzene.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The pictorial representation of the second term in $E^{(3)}_0$ can be seen in \Figref{fig:exe5}. 
+	\begin{center}
+		\includegraphics[scale=0.8]{./pictures/6.05/pictorial_representation_1.png}
+		\captionof{figure}{Pictorial representation of the second term in $E^{(3)}_0$, where the order is $v_{ij}$, $v_{jk^*}$ and $v_{k^*i}$ from the left to the right. The plus and minus signs indicate whether the matrix elements between the two orbitals is $\pm \frac{\beta}{2}$.}\label{fig:exe5}
+	\end{center}
+	
+	With the high symmetry, it is
+	\begin{sequation}
+		-2 \times \frac{1}{ (2\beta)^2 } \sum_{i=1}^3 \left[ v_{12} v_{23^*} v_{3^*1} + v_{13} v_{32^*} v_{2^*1} \right] = - \frac{3}{ 2\beta^2 } \left[ \frac{ \beta }{2} \times \frac{ \beta }{2} \times \left( - \frac{ \beta }{2} \right) + \frac{ \beta }{2} \times \left( - \frac{ \beta }{2} \right) \times \frac{ \beta }{2} \right] = \frac{3}{8\beta} .
+	\end{sequation}	
+	
+	\end{solution}
+
+	% 6.6
+		\begin{exercise}
+	Consider a cyclic polyene with $N = 4\nu+2$, $\nu=1$, $2$, ... carbons. Instead of assuming that all the bonds are identical, suppose they alternate in length. In the context of H{\"u}ckel theory this means that the resonance integrals between adjacent carbons are not all equal to $\beta$ but alternate between $\beta_11$ and $\beta_2$. For example, for benzene we have
+	
+	\begin{center}
+	\includegraphics[scale=1.2]{./pictures/6.06/exercise_1.png}
+	\end{center}
+	
+	Now it can be shown that the exact energy for a cyclic polyene of this type is
+	\[
+		\mathscr{E}_0 = N \alpha - 2 \sum_{j=-\nu}^\nu \left( \beta^2_1 + \beta^2_2 + 2 \beta_1 \beta_2 \cos{\frac{2j\pi}{2\nu+1}} \right)^{1/2}
+	\]
+	(see for example, L. Salem, {\it Molecular Orbital Theory of Conjugated Systems}, Benjamin, New York, 1966, pp.498-500). Note that when $\beta_1 = \beta_2 = \beta$, since $2\cos^2\theta=(1+\cos2\theta)$ and $\beta$ is negative, we recover
+	\[
+		\mathscr{E}_0 = N \alpha + 4 \beta \sum_{j=-\nu}^\nu \cos{\frac{j\pi}{2\nu+1}}
+	\]
+	which is the result quoted in Subsection 5.3.2. Also note that when $\beta_1=\beta$ but $\beta_2=0$, we have
+	\[
+		\mathscr{E}_0 = N \alpha + N \beta
+	\]
+	which is just the total energy of the polyene using the localized ethylenic description. The purpose of this exercise is to obtain the perturbation expansion for the resonance energy by expanding the exact energy in powers of $\beta_2/\beta_1$.
+	\begin{enumerate}
+	
+	\item[a.] Show that for benzene ($\nu=1$) the exact ground state energy in the alternating short and long bond model is
+	\[
+		\mathscr{E}_0 = 6 \alpha + 2(\beta_1 + \beta_2) - 4 ( \beta^2_1 + \beta^2_2 - \beta_1 \beta_2 )^{1/2}
+	\]
+	Do this first by using the general expression and then by setting up the H{\"u}ckel matrix, diagonalizing it and adding up the occupied orbital energies. Note that when $\beta_1=\beta_2=\beta$ we recover our old result, $6\alpha+8\beta$.
+	
+	\item[b.] Setting $\beta_1 = \beta$ and $\beta_2/\beta_1=x$ show that the resonance energy of benzene can be written as
+	\[
+		E_R = 4 \beta ( \frac{1}{2}x - 1 + (1-x+x^2)^{1/2})
+	\]
+	Note that when $x=0$, $E_R=0$ and when $x=1$, $E_R=2\beta$ which is exact.
+	
+	\item[c.] Using the relation
+	\[
+		(1 + y)^{1/2} = 1 + \frac{1}{2} y - \frac{1}{8}y^2 + \frac{1}{16} y^3 - \frac{5}{128}y^4 + \cdots , \quad |y|<1
+	\]	
+	expand $E_R$ to fourth order in x and thus show that
+	\[
+		E_R = \beta ( \frac{3}{2}x^2 + \frac{3}{4} x^3 + \frac{3}{32}x^4 + \cdots )
+	\]
+	Identifying the coefficient of $x^n$ with the $n$th-order perturbation result (i.e., $E^(n)_0$), we have
+	\begin{align*}
+		E^{(2)}_0 &= \frac{3}{2} \beta, \\
+		E^{(3)}_0 &= \frac{3}{4} \beta, \\
+		E^{(4)}_0 &= \frac{3}{32} \beta.
+	\end{align*}
+	Note that $E^{(2)}_0$ and $E^{(3)}_0$ agree with our previously calculated values. This derivation provides some insight into the poor convergence of the perturbation expansion of the resonance energy of benzene. Basically, the perturbation expansion converges rapidly when $x$ is small. However, for our problem $x$ is equal to unity.
+	
+	The resonance energy calculated up to $M$th-order as a function of $M$ is shown below. Note the oscillatory convergence towards the exact value to $2\beta$. The method used above to obtain $E^{(n)}_0$ for $n=2,3,4$ becomes extremely laborious for larger $n$. The results below were calculated by first showing that $E^{(n)}_0 = 4\beta C^{-1/2}_n(1/2)$, where $C^{-1/2}_n(x)$ is a Gegenbauer polynomial of degree $n$ and order $-\frac{1}{2}$, and then using the recursive properties of these polynomials, to show that
+	\[
+		(n+1)E^{(n+1)}_0 = (n-1) E^{(n)}_0 - (n-2) E^{(n-1)}_0.
+	\]
+	
+	\begin{center}
+	\includegraphics[scale=0.8]{./pictures/6.06/gegenbauer.png}
+	\end{center}
+	
+	\end{enumerate}
+	
+	\end{exercise}
+	
+	\begin{solution}
+		6-6 so
+		
+		ffff
+		
+		ffff
+		
+		fffff
+		
+	\end{solution}
+	
+	\section{Diagrammatic Representation of Orbital Perturbation Theory}
+	
 
 \end{document}
