@@ -257,16 +257,16 @@
 	% 6.2
 	\begin{exercise}
 	Use diagrammatic techniques to obtain the fourth-order perturbation energy of a particular state (say, $i$) of an $N$-state system. That is, evaluate the diagrams
-	
 	\begin{center}
 	\includegraphics[scale=1.0]{./pictures/6.02/exercise.png}
 	\end{center}
-	
 	where the indices $m$, $n$, $k$, ... exclude $i$. Using the approach of Section 6.1, obtain an algebraic expression for the fourth-order energy and compare it to the diagrammatic result.
 	
 	\end{exercise}
 	
 	\begin{solution}
+	
+	Firstly, all fourth-order diagrams and their mathematical expressions are listed in \Figref{fig:exe2}.
 	
 	\begin{center}
 	\begin{tabular}{cc}
@@ -311,27 +311,63 @@
 	\captionof{figure}{All fourth-order diagrams and their mathematical expressions.}\label{fig:exe2}
 	\end{center}
 	
-%	\begin{align*}
-%		E^{(4)}_i &= (-1)^{1+1} { \sum_{kmn} }^\prime \frac{ V_{ki} V_{nk} V_{mn} V_{im} }{ ( E^{(0)}_i - E^{(0)}_k ) ( E^{(0)}_i - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_m ) } + (-1)^{3+1} { \sum_n }^\prime \frac{ V_{ni} V^2_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n)^3 } \\
-%		&\hspace{2em} + (-1)^{2+1} { \sum_{mn} }^\prime \frac{ V_{mi} V_{ii} V_{in} V_{nm} }{ ( E^{(0)}_i - E^{(0)}_n) ( E^{(0)}_i - E^{(0)}_m )^2 } + (-1)^{2+1} { \sum_{mn} }^\prime \frac{ V_{ni} V_{ii} V_{im} V_{mn} }{ ( E^{(0)}_i - E^{(0)}_n) ( E^{(0)}_i - E^{(0)}_m )^2 } \\
-%		&\hspace{2em} + (-1)^{2+1} { \sum_{mn} }^\prime \frac{ V_{mi} V_{in} V_{ni} V_{im} }{ ( E^{(0)}_i - E^{(0)}_m ) ( 2E^{(0)}_i - E^{(0)}_m - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_n ) } \\
-%		&\hspace{2em} + (-1)^{2+1} { \sum_{mn} }^\prime \frac{ V_{in} V_{ni} V_{im} V_{mi} }{ ( 2E^{(0)}_i - E^{(0)}_m - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_n )^2 } \\
-%	\end{align*}
-
-htrETWREARHSTJ
-	
+	Before the formal algebraic derivation, we should obtain some useful intermediate results. From (6.7d), multiplying by $\langle n |$, where $n \neq i$, we find that
+	\[
+		E^{(0)}_n \langle n | \Psi^{(3)}_i \rangle + \langle n | \mathscr{V} | \Psi^{(2)}_i \rangle = E^{(0)}_i \langle n | \Psi^{(3)}_i \rangle + E^{(1)}_i \langle n | \Psi^{(2)}_i \rangle + E^{(1)}_i \langle n | \Psi^{(2)}_i \rangle,
+	\]
+	and thus
+	\[
+		\langle n | \Psi^{(3)}_i \rangle = \frac{ 1 }{ E^{(0)}_i - E^{(0)}_n }\left[ \langle n | \mathscr{V} | \Psi^{(2)}_i \rangle - E^{(1)}_i \langle n | \Psi^{(2)}_i \rangle - E^{(1)}_i \langle n | \Psi^{(2)}_i \rangle \right].
+	\]
+	Moreover, (6.8b), (6.10), (6.12), and (6.14) are used in the formal derivation. The fourth-order perturbation energy $E^{(4)}_i$ can be divided into 3 terms, viz.,
 	\begin{align*}
-		E^{(4)}_i &= \langle i | \mathscr{V} | \Psi^{(3)}_i \rangle = { \sum_n }^\prime \langle i | \mathscr{V} | n \rangle \langle n | \Psi^{(3)}_i \rangle \\
-		&= { \sum_n }^\prime \frac{ V_{in} }{ E^{(0)}_i - E^{(0)}_n } \left[ \langle n | \mathscr{V} | \Psi^{(2)}_i \rangle - E^{(1)}_i \langle n | \Psi^{(2)}_i \rangle - E^{(2)}_i \langle n | \Psi^{(1)}_i \rangle \right] \\
-		&= { \sum_n }^\prime \frac{ V_{in} \langle n | \mathscr{V} | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } - E^{(1)}_i { \sum_n }^\prime \frac{ V_{in} \langle n | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } - E^{(2)}_i { \sum_n }^\prime \frac{ V_{in} \langle n | \mathscr{V} | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } \\
-		&= { \sum_{mn} }^\prime \frac{ V_{in} \langle n | \mathscr{V} | m \rangle \langle m | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } - E^{(1)}_i { \sum_n }^\prime \frac{ V_{in} }{ E^{(0)}_i - E^{(0)}_n } \langle n | \Psi^{(2)}_i \rangle - E^{(2)}_i { \sum_{mn} }^\prime \frac{ V_{in} \langle n | \mathscr{V} | m \rangle \langle m | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } \\
-		&= { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} }{ E^{(0)}_i - E^{(0)}_n } \langle m | \Psi^{(2)}_i \rangle - { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ E^{(0)}_i - E^{(0)}_n } \langle n | \Psi^{(2)}_i \rangle - \left( { \sum_k }^\prime \frac{ V_{ik} V_{ki} }{ E^{(0)}_i - E^{(0)}_k } \right) { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} \langle m | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } \\
-		&= { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} }{ E^{(0)}_i - E^{(0)}_n } \frac{ \langle m | \mathscr{V} | \Psi^{(1)}_i \rangle - E^{(1)}_i \langle m | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_m } - { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ E^{(0)}_i - E^{(0)}_n } \frac{ \langle n | \mathscr{V} | \Psi^{(1)}_i \rangle - E^{(1)}_i \langle n | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } \\
-		&\hspace{2em} - \left( { \sum_k }^\prime \frac{ V_{ik} V_{ki} }{ E^{(0)}_i - E^{(0)}_k } \right) { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} }{ E^{(0)}_i - E^{(0)}_n } \langle m | \Psi^{(1)}_i \rangle \\
+		E^{(4)}_i &= \langle i | \mathscr{V} | \Psi^{(3)}_i \rangle = { \sum_n }^\prime \langle i | \mathscr{V} | n \rangle \langle n | \Psi^{(3)}_i \rangle = { \sum_n }^\prime V_{in} \frac{ \langle n | \mathscr{V} | \Psi^{(2)}_i \rangle - E^{(1)}_i \langle n | \Psi^{(2)}_i \rangle - E^{(2)}_i \langle n | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } \\
+		&= { \sum_n }^\prime \frac{ V_{in} \langle n | \mathscr{V} | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } - E^{(1)}_i { \sum_n }^\prime \frac{ V_{in} \langle n | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } - E^{(2)}_i { \sum_n }^\prime \frac{ V_{in} \langle n | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n }.
+	\end{align*}		
+	The first term is
+	\begin{align*}
+		&\hspace{1.4em}{ \sum_n }^\prime \frac{ V_{in} \langle n | \mathscr{V} | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } = { \sum_{mn} }^\prime \frac{ V_{in} \langle n | \mathscr{V} | m \rangle \langle m | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } = { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} }{ E^{(0)}_i - E^{(0)}_n } \langle m | \Psi^{(2)}_i \rangle \\
+		&= { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} }{ E^{(0)}_i - E^{(0)}_n } \frac{ \langle m | \mathscr{V} | \Psi^{(1)}_i \rangle - E^{(1)}_i \langle m | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_m } \\
+		&= { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} }{ ( E^{(0)}_i - E^{(0)}_n )( E^{(0)}_i - E^{(0)}_m ) } \left[ \langle m | \mathscr{V} | \Psi^{(1)}_i \rangle - E^{(1)}_i \langle m | \Psi^{(1)}_i \rangle \right] \\
 		&= { \sum_{mn} }^\prime \frac{ V_{in} V_{nm} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) } \left[ { \sum_k }^\prime \langle m | \mathscr{V} | k \rangle \langle k | \Psi^{(1)}_i \rangle - E^{(1)}_i \langle m | \Psi^{(1)}_i \rangle \right] \\
-		&\hspace{2em} - { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \left[ { \sum_m }^\prime \langle n | \mathscr{V} | m \rangle \langle m | \Psi^{(1)}_i \rangle - E^{(1)}_i \langle n | \Psi^{(1)}_i \rangle \right] - { \sum_{mnk} }^\prime \frac{ V_{ik} V_{ki} V_{in} V_{nm} \langle m | \Psi^{(1)}_i \rangle }{ ( E^{(0)}_i - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_k ) }  \\
 		&= { \sum_{mnk} }^\prime \frac{ V_{in} V_{nm} V_{mk} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) } \langle k | \Psi^{(1)}_i \rangle - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) } \langle m | \Psi^{(1)}_i \rangle \\
-		&\hspace{2em} - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \langle m | \Psi^{(1)}_i \rangle + { \sum_n }^\prime \frac{ V^2_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \langle n | \Psi^{(1)}_i \rangle - { \sum_{mnk} }^\prime \frac{ V_{ik} V_{ki} V_{in} V_{nm} \langle m | \Psi^{(1)}_i \rangle }{ ( E^{(0)}_i - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_k ) } \\ 
+		&= { \sum_{mnk} }^\prime \frac{ V_{in} V_{nm} V_{mk} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) } \frac{ V_{ki} }{ E^{(0)}_i - E^{(0)}_k } - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) } \frac{ V_{mi} }{ E^{(0)}_i - E^{(0)}_m } \\
+		&= { \sum_{mnk} }^\prime \frac{ V_{in} V_{nm} V_{mk} V_{ki} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) (E^{(0)}_i - E^{(0)}_k) } - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} V_{mi} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m)^2 } \\
+		&= { \sum_{mnk} }^\prime \frac{ V_{im} V_{mn} V_{nk} V_{ki} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) (E^{(0)}_i - E^{(0)}_k) } - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} V_{mi} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m)^2 }.
+	\end{align*}
+	It is evident that the first part of the first term correspond to the first subdiagram and the second part of the first term correspond to the third subdiagram.
+	
+	The second term is
+	\begin{align*}
+		&\hspace{1.4em}- E^{(1)}_i { \sum_n }^\prime \frac{ V_{in} \langle n | \Psi^{(2)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } - { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ E^{(0)}_i - E^{(0)}_n } \langle n | \Psi^{(2)}_i \rangle \\
+		&= - { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ E^{(0)}_i - E^{(0)}_n } \frac{ \langle n | \mathscr{V} | \Psi^{(1)}_i \rangle - E^{(1)}_i \langle n | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } \\
+		&= - { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \langle n | \mathscr{V} | \Psi^{(1)}_i \rangle + E^{(1)}_i { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \langle n | \Psi^{(1)}_i \rangle \\
+		&= - { \sum_n }^\prime \frac{ V_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } { \sum_m }^\prime \langle n | \mathscr{V} | m \rangle \langle m | \Psi^{(1)}_i \rangle + { \sum_n }^\prime \frac{ V^2_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \langle n | \Psi^{(1)}_i \rangle \\
+		&= - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \langle m | \Psi^{(1)}_i \rangle + { \sum_n }^\prime \frac{ V^2_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \langle n | \Psi^{(1)}_i \rangle \\
+		&= - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \frac{ \langle m | \mathscr{V} | i \rangle }{ E^{(0)}_i - E^{(0)}_m } + { \sum_n }^\prime \frac{ V^2_{ii} V_{in} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \frac{ \langle n | \mathscr{V} | i \rangle }{ E^{(0)}_i - E^{(0)}_n } \\
+		&= - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} V_{mi} }{ ( E^{(0)}_i - E^{(0)}_n )^2 (E^{(0)}_i - E^{(0)}_m) } + { \sum_n }^\prime \frac{ V^2_{ii} V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_n )^3 } \\
+		&= - { \sum_{mn} }^\prime \frac{ V_{ii} V_{im} V_{mn} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_m )^2 ( E^{(0)}_i - E^{(0)}_n ) } + { \sum_n }^\prime \frac{ V^2_{ii} V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_n )^3 } .
+	\end{align*}
+	It is evident that the first part of the second term correspond to the fourth subdiagram and the second part of the second term correspond to the second subdiagram.
+	
+	The third term is
+	\begin{align*}
+		&\hspace{1.4em} -E^{(2)}_i { \sum_n }^\prime \frac{ V_{in} \langle n | \Psi^{(1)}_i \rangle }{ E^{(0)}_i - E^{(0)}_n } = -E^{(2)}_i { \sum_n }^\prime \frac{ V_{in} }{ E^{(0)}_i - E^{(0)}_n } \frac{ \langle n | \mathscr{V} | i \rangle }{ E^{(0)}_i - E^{(0)}_n } = -E^{(2)}_i { \sum_n }^\prime \frac{ V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } \\
+		&= - \left( { \sum_m }^\prime \frac{ V_{im} V_{mi} }{ ( E^{(0)}_i - E^{(0)}_m ) } \right) { \sum_n }^\prime \frac{ V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_n )^2 } = - { \sum_{mn} }^\prime \frac{ V_{im} V_{mi} V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_m )( E^{(0)}_i - E^{(0)}_n )^2 } .
+	\end{align*}		
+	
+	It seems that it does not directly correspond to any subdiagram in \Figref{fig:exe2}. However, we can find that the sum of the mathematical expressions of the fifth and sixth subdiagram is
+	\begin{align*}
+		&\hspace{1.4em}(-1)^{2+1} { \sum_{mn} }^\prime \frac{ V_{mi} V_{in} V_{ni} V_{im} }{ ( E^{(0)}_i - E^{(0)}_m ) ( 2E^{(0)}_i - E^{(0)}_m - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_n ) }  \\
+		&\hspace{3.4em}+ (-1)^{2+1} { \sum_{mn} }^\prime \frac{ V_{in} V_{ni} V_{im} V_{mi} }{ ( 2E^{(0)}_i - E^{(0)}_m - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_n )^2 } \\
+		&= - { \sum_{mn} }^\prime \frac{ V_{in} V_{ni} V_{im} V_{mi} }{ ( 2E^{(0)}_i - E^{(0)}_m - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_n ) } \left[ \frac{ 1 }{ E^{(0)}_i - E^{(0)}_m } + \frac{ 1 }{ E^{(0)}_i - E^{(0)}_n } \right] \\
+		&= - { \sum_{mn} }^\prime \frac{ V_{in} V_{ni} V_{im} V_{mi} }{ ( 2E^{(0)}_i - E^{(0)}_m - E^{(0)}_n ) ( E^{(0)}_i - E^{(0)}_n ) } \frac{ 2E^{(0)}_i - E^{(0)}_m - E^{(0)}_n }{ ( E^{(0)}_i - E^{(0)}_m )( E^{(0)}_i - E^{(0)}_n ) } \\
+		&= - { \sum_{mn} }^\prime \frac{ V_{im} V_{mi} V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_m )( E^{(0)}_i - E^{(0)}_n )^2 } ,
+	\end{align*}
+	which is the third term exactly. Thus we can conclude that the results obtained by algebraic methods is the same as that by diagrammatic techniques. The mathematical expression of the fourth-order perturbation energy $E^{(4)}_i$ is
+	\begin{align*}
+		E^{(4)}_i &= { \sum_{mnk} }^\prime \frac{ V_{im} V_{mn} V_{nk} V_{ki} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m) (E^{(0)}_i - E^{(0)}_k) } - { \sum_{mn} }^\prime \frac{ V_{ii} V_{in} V_{nm} V_{mi} }{ (E^{(0)}_i - E^{(0)}_n) (E^{(0)}_i - E^{(0)}_m)^2 } \\
+		&\hspace{2em} - { \sum_{mn} }^\prime \frac{ V_{ii} V_{im} V_{mn} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_m )^2 ( E^{(0)}_i - E^{(0)}_n ) } + { \sum_n }^\prime \frac{ V^2_{ii} V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_n )^3 } - { \sum_{mn} }^\prime \frac{ V_{im} V_{mi} V_{in} V_{ni} }{ ( E^{(0)}_i - E^{(0)}_m )( E^{(0)}_i - E^{(0)}_n )^2 } .
 	\end{align*}
 	
 	\end{solution}
@@ -339,5 +375,95 @@ htrETWREARHSTJ
 	\subsection{Summation of Diagrams}
 	
 	\section{Orbital Perturbation Theory: One-Particle Perturbations}	
+	
+	% 6.3	
+	\begin{exercise}
+	Derive
+	\[
+		E^{(2)}_0 = \sum_{ar} \frac{v_{ar}v_{ra}}{\varepsilon^{(0)}_a - \varepsilon^{(0)}_r}
+	\]
+	starting with the general expression for the second-order energy (Eq.(6.12)) applied to an $N$-electron system,
+	\[
+		E^{(2)}_0 = { \sum_n }^\prime \frac{\left| \langle \Psi_0 | \displaystyle\sum_i v(i)| n \rangle \right|^2 }{E^{(0)}_0-E^{(0)}_n}
+	\]
+	where the sum runs over all states of the system except the ground state.
+	
+	{\it Hint}: The states $| n \rangle$ must be single excitations of the type
+	\[
+		|\Psi^r_a\rangle = | \chi^{(0)}_1 \cdots \chi^{(0)}_{a-1} \chi^{(0)}_{r} \chi^{(0)}_{a+1} \cdots \chi^{(0)}_{N} \rangle.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Note that (6.31) states that $\mathscr{V}=\sum_i v(i)$ only connects two Slater determinants whose different occupied orbitals should be no more than one, thus we obtain that
+	\begin{sequation}
+		E^{(2)}_0 = { \sum_n }^\prime \frac{\left| \langle \Psi_0 | \sum_i v(i)| n \rangle \right|^2 }{E^{(0)}_0-E^{(0)}_n} = \sum_{ ar } \frac{ \left| \langle \Psi_0 | \mathscr{V} | \Psi^r_a \rangle \right|^2 }{E^{(0)}_0-(E^{(0)}_0 + \varepsilon^{(0)}_r - \varepsilon^{(0)}_a) } = \sum_{ ar } \frac{ v_{ar} v_{ra} }{ \varepsilon^{(0)}_a - \varepsilon^{(0)}_r }.
+	\end{sequation}
+	
+	\end{solution}
+	
+	% 6.4
+	\begin{exercise}
+	Calculate the third-order energy $E^{(3)}_0$ using the general expression given in Eq.(6.15).
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	\[
+		B^{(3)}_0 = - E^{(1)}_0 { \sum_n }^\prime \frac{|\langle \Psi_0 | \mathscr{V} | n \rangle |^2}{(E^{(0)}_0-E^{(0)}_n)^2} = - \sum_{abr} \frac{v_{aa} v_{rb} v_{br}}{( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r)^2}.
+	\]
+		
+	\item[b.] Show that
+	\[
+		A^{(3)}_0 = { \sum_{nm} }^\prime \frac{\langle \Psi_0 | \mathscr{V} | n \rangle \langle n | \mathscr{V} | m \rangle \langle m | \mathscr{V} | \Psi_0 \rangle}{(E^{(0)}_0-E^{(0)}_n)(E^{(0)}_0-E^{(0)}_m)} = \sum_{abrs} \frac{v_{ar} v_{sb} \langle \Psi^r_a | \mathscr{V} | \Psi^s_b \rangle}{( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_s)}.
+	\]
+	
+	\item[c.] Show that
+	\begin{align*}
+		\langle \Psi^r_a | \mathscr{V} | \Psi^s_b \rangle &= v_{rs} & \text{if} \, a = b  \quad r \neq s, \\
+		&= - v_{ba} & \text{if} \, a \neq b \quad r = s, \\
+		&= \sum_{c} v_{cc} - v_{aa} + v_{rr} & \text{if} \, a = b \quad r = s ,
+	\end{align*}
+	and zero otherwise.
+		
+	\item[d.] Finally, combine the two terms to obtain
+	\[
+		E^{(3)}_0 = A^{(3)}_0 + B^{(3)}_0 = \sum_{ars} \frac{v_{ar} v_{rs} v_{sa}}{( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s)} - \sum_{abr} \frac{v_{ra} v_{ab} v_{br}}{( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r) ( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r)}.
+	\]
+	
+	\item[e.] Show that for a chosed-shell system
+	\[
+		E^{(3)}_0 = 2\sum_{ars}^{N/2} \frac{v_{ar} v_{rs} v_{sa}}{( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_a - \varepsilon^{(0)}_s)} - 2\sum_{abr}^{N/2} \frac{v_{ra} v_{ab} v_{br}}{( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r) ( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r)}.
+	\]
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] Similar to Exercise 6.3, it is evident that
+	\begin{align*}
+		B^{(3)}_0 &= - E^{(1)}_0 { \sum_n }^\prime \frac{|\langle \Psi_0 | \mathscr{V} | n \rangle |^2}{(E^{(0)}_0-E^{(0)}_n)^2} = - \left( \sum_{a} v_{aa} \right) \sum_{br} \frac{ v_{rb} v_{br}}{[ E^{(0)}_0- ( E^{(0)}_n + \varepsilon^{(0)}_r - \varepsilon^{(0)}_b ) ]^2} \\
+		&= - \sum_{abr} \frac{ v_{aa} v_{rb} v_{br}}{( \varepsilon^{(0)}_b - \varepsilon^{(0)}_r)^2}.
+	\end{align*}
+
+	\item[b.] In the same way, we obtain that
+	\begin{align*}
+		A^{(3)}_0 &= { \sum_{nm} }^\prime \frac{\langle \Psi_0 | \mathscr{V} | n \rangle \langle n | \mathscr{V} | m \rangle \langle m | \mathscr{V} | \Psi_0 \rangle}{(E^{(0)}_0-E^{(0)}_n)(E^{(0)}_0-E^{(0)}_m)} \\
+		&= \sum_{ar} \sum_{bs} \frac{\langle \Psi_0 | \mathscr{V} | \Psi^r_a \rangle \langle \Psi^r_a | \mathscr{V} | \Psi^s_b \rangle \langle \Psi^s_b | \mathscr{V} | \Psi_0 \rangle}{ [ E^{(0)}_0 - ( E^{(0)}_0 + \varepsilon^{(0)}_r - \varepsilon^{(0)}_a ) ][ E^{(0)}_0 - ( E^{(0)}_0 + \varepsilon^{(0)}_s - \varepsilon^{(0)}_b ) ]}  \\
+		&= \sum_{abrs} \frac{v_{ar} v_{sb} \langle \Psi^r_a | \mathscr{V} | \Psi^s_b \rangle}{( \varepsilon^{(0)}_a - \varepsilon^{(0)}_r)( \varepsilon^{(0)}_b - \varepsilon^{(0)}_s)}.
+	\end{align*}
+	
+	\item[c.]
+	
+	\item[d.]
+	
+	\item[e.]
+	
+	\end{itemize}		
+	
+	\end{solution}
 
 \end{document}
