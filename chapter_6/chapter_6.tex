@@ -89,6 +89,7 @@
 \newcommand{\C}{{\bf C}}
 \newcommand{\I}{{\bf 1}}
 \newcommand{\U}{{\bf U}}
+\newcommand{\HH}{{\bf H}}
 
 \titleformat{\chapter}[display]
   {\bfseries\Large}
@@ -514,8 +515,8 @@
 	\end{solution}
 
 	% 6.6
-		\begin{exercise}
-	Consider a cyclic polyene with $N = 4\nu+2$, $\nu=1$, $2$, ... carbons. Instead of assuming that all the bonds are identical, suppose they alternate in length. In the context of H{\"u}ckel theory this means that the resonance integrals between adjacent carbons are not all equal to $\beta$ but alternate between $\beta_11$ and $\beta_2$. For example, for benzene we have
+	\begin{exercise}
+	Consider a cyclic polyene with $N = 4\nu+2$, $\nu=1$, $2$, ... carbons. Instead of assuming that all the bonds are identical, suppose they alternate in length. In the context of H{\"u}ckel theory this means that the resonance integrals between adjacent carbons are not all equal to $\beta$ but alternate between $\beta_1$ and $\beta_2$. For example, for benzene we have
 	
 	\begin{center}
 	\includegraphics[scale=1.2]{./pictures/6.06/exercise_1.png}
@@ -552,11 +553,11 @@
 	\[
 		(1 + y)^{1/2} = 1 + \frac{1}{2} y - \frac{1}{8}y^2 + \frac{1}{16} y^3 - \frac{5}{128}y^4 + \cdots , \quad |y|<1
 	\]	
-	expand $E_R$ to fourth order in x and thus show that
+	expand $E_R$ to fourth order in $x$ and thus show that
 	\[
 		E_R = \beta ( \frac{3}{2}x^2 + \frac{3}{4} x^3 + \frac{3}{32}x^4 + \cdots )
 	\]
-	Identifying the coefficient of $x^n$ with the $n$th-order perturbation result (i.e., $E^(n)_0$), we have
+	Identifying the coefficient of $x^n$ with the $n$th-order perturbation result (i.e., $E^{(n)}_0$), we have
 	\begin{align*}
 		E^{(2)}_0 &= \frac{3}{2} \beta, \\
 		E^{(3)}_0 &= \frac{3}{4} \beta, \\
@@ -564,13 +565,13 @@
 	\end{align*}
 	Note that $E^{(2)}_0$ and $E^{(3)}_0$ agree with our previously calculated values. This derivation provides some insight into the poor convergence of the perturbation expansion of the resonance energy of benzene. Basically, the perturbation expansion converges rapidly when $x$ is small. However, for our problem $x$ is equal to unity.
 	
-	The resonance energy calculated up to $M$th-order as a function of $M$ is shown below. Note the oscillatory convergence towards the exact value to $2\beta$. The method used above to obtain $E^{(n)}_0$ for $n=2,3,4$ becomes extremely laborious for larger $n$. The results below were calculated by first showing that $E^{(n)}_0 = 4\beta C^{-1/2}_n(1/2)$, where $C^{-1/2}_n(x)$ is a Gegenbauer polynomial of degree $n$ and order $-\frac{1}{2}$, and then using the recursive properties of these polynomials, to show that
+	The resonance energy calculated up to $M$th-order as a function of $M$ is shown below. Note the oscillatory convergence towards the exact value of $2\beta$. The method used above to obtain $E^{(n)}_0$ for $n=2,3,4$ becomes extremely laborious for larger $n$. The results below were calculated by first showing that $E^{(n)}_0 = 4\beta C^{-1/2}_n(1/2)$, where $C^{-1/2}_n(x)$ is a Gegenbauer polynomial of degree $n$ and order $-\frac{1}{2}$, and then using the recursive properties of these polynomials, to show that
 	\[
 		(n+1)E^{(n+1)}_0 = (n-1) E^{(n)}_0 - (n-2) E^{(n-1)}_0.
 	\]
 	
 	\begin{center}
-	\includegraphics[scale=0.8]{./pictures/6.06/gegenbauer.png}
+	\includegraphics[scale=0.84]{./pictures/6.06/gegenbauer.png}
 	\end{center}
 	
 	\end{enumerate}
@@ -578,17 +579,325 @@
 	\end{exercise}
 	
 	\begin{solution}
-		6-6 so
-		
-		ffff
-		
-		ffff
-		
-		fffff
+
+	\begin{itemize}
+	
+	\item[a.] Using the general expression and note that $\beta_1 \le 0$ and $\beta_2 \le 0$, we get that
+	\begin{align*}
+		\mathscr{E}_0({\rm benzene}) &= 6 \times \alpha - 2 \sum_{ j=-1 }^1 \left( \beta^2_1 + \beta^2_2 + 2 \beta_1 \beta_2 \cos{\frac{2j\pi}{ 2 \times 1 + 1 }} \right)^{1/2} \\
+		&= 6\alpha - 2 \left( \beta^2_1 + \beta^2_2 + 2 \beta_1 \beta_2 \cos{\frac{-2\pi}{ 3 }} \right)^{1/2} \\
+		&\hspace{2em} - 2 \left( \beta^2_1 + \beta^2_2 + 2 \beta_1 \beta_2 \cos{\frac{0\pi}{ 3 }} \right)^{1/2} - 2 \left( \beta^2_1 + \beta^2_2 + 2 \beta_1 \beta_2 \cos{\frac{2\pi}{ 3 }} \right)^{1/2} \\
+		&= 6\alpha - 2\left( \beta^2_1 + \beta^2_2 - \beta_1 \beta_2 \right)^{1/2} + 2\left( \beta_1 + \beta_2 \right) - 2\left( \beta^2_1 + \beta^2_2 - \beta_1 \beta_2 \right)^{1/2}.
+	\end{align*}
+	In a nut shell,
+	\begin{sequation}
+		\mathscr{E}_0({\rm benzene}) = 6\alpha + 2\left( \beta_1 + \beta_2 \right) - 4\left( \beta^2_1 + \beta^2_2 - \beta_1 \beta_2 \right)^{1/2} .
+	\end{sequation}
+	
+	At this time, we should remember that the H{\"u}ckel matrix is 
+	\[
+		\HH = \begin{pmatrix}
+			\alpha & \beta_2 & 0 & 0 & 0 & \beta_1 \\
+			\beta_2& \alpha  & \beta_1 & 0 & 0 & 0 \\
+			0 & \beta_1& \alpha  & \beta_2 & 0 & 0 \\
+			0 & 0 & \beta_2& \alpha  & \beta_1 & 0 \\
+			0 & 0 & 0 & \beta_1& \alpha  & \beta_2 \\
+			\beta_1 & 0 & 0 & 0 & \beta_2 & \alpha
+		\end{pmatrix}.
+	\]
+	Its eigen function is
+	\[
+		\det{\HH-\varepsilon\I} = (\beta^2_1 - \beta_1 \beta_2 + \beta^2_2 - (\alpha - \varepsilon)^2)^2 (\alpha - \beta_1 - \beta_2 - \varepsilon) (\alpha + \beta_1 + \beta_2 - \varepsilon) = 0,
+	\]
+	and there are six roots:
+	\begin{align*}
+		\varepsilon_1 &= \alpha + \beta_1 + \beta_2 , \\
+		\varepsilon_2 = \varepsilon_3 &= \alpha - \sqrt{ \beta^2_1 - \beta_1 \beta_2 + \beta^2_2 }, \\
+		\varepsilon_4 = \varepsilon_5 &= \alpha + \sqrt{ \beta^2_1 - \beta_1 \beta_2 + \beta^2_2 }, \\
+		\varepsilon_6 &= \alpha - \beta_1 - \beta_2 .
+	\end{align*}
+	Thus,
+	\begin{sequation}
+		\mathscr{E}^\prime_0({\rm benzene}) = 2\varepsilon_1 + 2\varepsilon_2 + 2\varepsilon_3 = 6\alpha + 2\left( \beta_1 + \beta_2 \right) - 4\left( \beta^2_1 + \beta^2_2 - \beta_1 \beta_2 \right)^{1/2} .
+	\end{sequation}
+	It equals the results obtained by using the general expression.
+	
+	\item[b.] The verification is direct. With $\beta_1 = \beta$, $\beta_2 = x\beta_1 = x\beta$, we get that
+	\begin{align*}
+		E_R &= \mathscr{E}_0({\rm benzene}) - E_0 = 6\alpha + 2\left( \beta + x \beta \right) - 4\left( \beta^2 + ( x \beta )^2 - x \beta^2 \right)^{1/2} - ( 6\alpha + 6\beta ) \\
+		&= -4\beta + 2x \beta + 4\beta \left( 1 + x^2 - x \right)^{1/2} = 4\beta \left( \frac{x}{2} - 1 + \left( 1 + x^2 - x \right)^{1/2} \right)
+	\end{align*}
+	
+	\item[c.] When $0 \le x \le 1$, $-\frac{1}{4} \le x^2-x \le 0$, thus we obtain that
+	\begin{align*}
+		E_R &= 4\beta \left( \frac{x}{2} - 1 + \left( 1 + x^2 - x \right)^{1/2} \right) = 4\beta \left[ \frac{x}{2} - 1 + \left( 1 + \left( x^2 - x \right) \right)^{1/2} \right] \\
+		&= 4\beta \left[ \frac{x}{2} - 1 + 1 + \frac{1}{2} \left( x^2 - x \right) - \frac{1}{8} \left( x^2 - x \right)^2 + \frac{1}{16} \left( x^2 - x \right)^3 - \frac{5}{128} \left( x^2 - x \right)^4 + \cdots \right] \\
+		&= 4\beta \left[ \frac{x}{2} + \frac{1}{2} \left( - x + x^2 \right) - \frac{1}{8} \left( x^2 - 2 x^3 + x^4 \right)  \right. \\
+		&\hspace{4em} \left. + \frac{1}{16} \left( - x^3 + 3 x^4 - 3 x^5 + x^6 \right) - \frac{5}{128} \left( x^4 - 4x^5 + 6x^6 - 4x^7 + x^8 \right) + \cdots \right] \\
+		&= 4\beta \left[ \left( \frac{1}{2} - \frac{1}{2} \right) x + \left( \frac{1}{2} - \frac{1}{8} \right) x^2 + \left( \frac{1}{4} - \frac{1}{16} \right) x^3 + \left( - \frac{1}{8} + \frac{3}{16} - \frac{5}{128} \right) x^4 + \cdots \right] \\
+		&= \beta \left( \frac{3}{2} x^2 + \frac{3}{4} x^3 + \frac{3}{32} x^4 + \cdots \right) .
+	\end{align*}
+	
+	In fact, the Gegenbauer polynomials $C^\lambda_n(x)$ can be generated by $(1-2xt+t^2)^{-\lambda}$, viz.,
+	\[
+		(1-2xt+t^2)^{-\lambda} = \sum_{ n=0 }^\infty C^\lambda_n (x) t^n, \, \forall t \in (-1,1), x \in (-1,1).
+	\]
+	Let $\lambda=-\frac{1}{2}$ and $x=\frac{1}{2}$, we obtain that
+	\[
+		( 1 - t + t^2 )^{\frac{1}{2}} = \sum_{ n=0 }^\infty C^{-\frac{1}{2}}_n \left( \frac{1}{2} \right) t^n.
+	\]
+	Thus, with 
+	\[
+		C^\lambda_0(x) = 1 , \quad C^\lambda_1(x) = 2 \lambda x ,
+	\]	
+	we find that	
+	\[
+		\sum_{ n=0 }^\infty C^{-\frac{1}{2}}_n \left( \frac{1}{2} \right) t^n = C^{-\frac{1}{2}}_0 \left( \frac{1}{2} \right) + C^{-\frac{1}{2}}_0 \left( \frac{1}{2} \right) t + \sum_{ n=2 }^\infty C^{-\frac{1}{2}}_n \left( \frac{1}{2} \right) t^n = 1 - \frac{t}{2} + \sum_{ n=2 }^\infty C^{-\frac{1}{2}}_n \left( \frac{1}{2} \right) t^n.
+	\]
+	
+	Hence, we get
+	\begin{sequation}
+		E_R = 4\beta \left( \frac{x}{2} - 1 + \left( 1 - x + x^2 \right)^{1/2} \right) = 4\beta \sum_{ n=2 }^\infty C^{-\frac{1}{2}}_n \left( \frac{1}{2} \right) x^n.
+	\end{sequation}
+	It equals
+	\begin{sequation}
+		E^{(n)}_0 = 4\beta C^{-\frac{1}{2}}_n \left( \frac{1}{2} \right), \, n = 2, 3, 4, \cdots.
+	\end{sequation}
+	
+	Due to the recurrence relation of Gegenbauer polynomials,
+	\[
+		(n+1)C^\lambda_{n+1}(x) = 2(n+\lambda) x C^\lambda_n(x) - ( n + 2\lambda - 1 ) C^\lambda_{n-1}(x), \, \forall n \ge 1, 
+	\]
+	we know that for $n=2,3,\cdots$,
+	\begin{align*}
+		(n+1)E^{(n+1)}_0 &= (n+1) \times 4\beta C^{-\frac{1}{2}}_{n+1} \left( \frac{1}{2} \right) = 4\beta (n+1) C^{-\frac{1}{2}}_{n+1} \left( \frac{1}{2} \right) \\
+		&= 4\beta \left[ 2\left( n - \frac{1}{2} \right) \frac{1}{2} C^{ -\frac{1}{2} }_n \left( \frac{1}{2} \right) - \left( n + 2 \times \left( -\frac{1}{2} \right) - 1 \right) C^{ -\frac{1}{2} }_{n-1}\left( \frac{1}{2} \right) \right] \\
+		&= 4\beta \left[ \left( n - \frac{1}{2} \right) C^{ - \frac{1}{2} }_n\left( \frac{1}{2} \right) - ( n - 2 ) C^{ - \frac{1}{2}}_{n-1}\left( \frac{1}{2} \right) \right] \\
+		&= \left( n - \frac{1}{2} \right) 4\beta C^{ -\frac{1}{2} }_n\left( \frac{1}{2} \right) - ( n - 2 ) 4\beta C^{ -\frac{1}{2} }_{n-1}\left( \frac{1}{2} \right) \\
+		&= \left( n - \frac{1}{2} \right) E^{(n)}_0 - ( n - 2 ) E^{(n-1)}_0.
+	\end{align*}
+	
+	\end{itemize}
+	
+	Remark: You can read some introduction about Gegenbauer polynomials from WIKIPEDIA, whose url is \url{https://en.wikipedia.org/wiki/Gegenbauer_polynomials}.	
 		
 	\end{solution}
 	
-	\section{Diagrammatic Representation of Orbital Perturbation Theory}
+	\sectionstar{Diagrammatic Representation of Orbital Perturbation Theory}
 	
+	% 6.7
+	\begin{exercise}
+	Find the fourth-order energy for a closed-shell cyclic polyene.
+	\begin{enumerate}
+	
+	\item[a.] Show that
+	
+	\begin{center}
+	\includegraphics[scale=0.84]{./pictures/6.07/exercise_1.png}
+	\end{center}
+	
+	and
+	
+	\begin{center}
+	\includegraphics[scale=0.84]{./pictures/6.07/exercise_2.png}
+	\end{center}
+	
+	so that
+	\[
+		E^{(4)}_0 = \frac{N\beta}{64}
+	\]
+	Thus the resonance energy calculated for a cyclic polyene with $N>6$ up to fourth order is (1/4 + 1/64)$N\beta = 0.2656N\beta$, which compares very favorably with the asymptotically exact value of 0.2732$\beta$ (i.e., 97\%).
+	
+	\item[b.] For benzene, show that the diagrammatic result for the fourth-order energy agrees with the independently calculated result found in Exercise 6.6.
+	
+	\end{enumerate}		
+	
+	
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{center}
+	\begin{tabular}{ccc}
+	
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.07/diagram_1.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.07/diagram_2.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.07/diagram_3.png}
+		\end{minipage} \\
+		
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.07/diagram_4.png}
+		\end{minipage} &
+			
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.07/diagram_5.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.07/diagram_6.png}
+		\end{minipage}
+		
+	\end{tabular}
+	\captionof{figure}{AeWRHARGrhA}\label{fig:exe7_1}
+	\end{center}
+	
+	
+	\begin{center}
+	\begin{tabular}{ccc}
+	
+		\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[scale=0.5,trim=0 -8 0 -8]{./pictures/6.07/pictorial_representation_1.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[scale=0.5,trim=0 -8 0 -8]{./pictures/6.07/pictorial_representation_2.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[scale=0.5,trim=0 -8 0 -8]{./pictures/6.07/pictorial_representation_3.png}
+		\end{minipage} \\
+		
+		\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[scale=0.5,trim=0 -8 0 -8]{./pictures/6.07/pictorial_representation_4.png}
+		\end{minipage} &
+			
+		\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[scale=0.5,trim=0 -8 0 -8]{./pictures/6.07/pictorial_representation_5.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.3\linewidth}
+		\centering
+		\includegraphics[scale=0.5,trim=0 -8 0 -8]{./pictures/6.07/pictorial_representation_6.png}
+		\end{minipage}
+		
+	\end{tabular}
+	\captionof{figure}{AeWRHARGrhA}\label{fig:exe7_2}
+	\end{center}
+	
+	\end{solution}
+	
+	\section{Perturbation Expansion of the Correlation Energy}
+	
+	% 6.8
+	\begin{exercise}
+	Derive Eqs.(6.73) and (6.74) starting with Eq.(6.72).
+	\end{exercise}
+	
+	\begin{solution}
+		6-8 so
+	\end{solution}
+	
+	% 6.9
+	\begin{exercise}
+	Derive Eqs.(6.77) and (6.78) from Eq.(6.76).
+	\end{exercise}
+	
+	\begin{solution}
+		6-9 so
+	\end{solution}
+	
+	\section{The \texorpdfstring{$N$}--Dependence of the RS Perturbation Expansion}
+	
+	% 6.10
+	\begin{exercise}
+	Derive Eqs.(6.80b) and (6.90).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{align*}
+		E^{(1)}_0 &= - \frac{1}{2} \sum_{ i=1 } \sum_{ j=1 } \langle ij || ij \rangle \\
+			&= - \frac{1}{2} \left( \sum_{ i=1 }^N \langle 1_i 1_i || 1_i 1_i \rangle + \sum_{ i=1 }^N \langle 1_i \bar{1}_i || 1_i \bar{1}_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i 1_i || \bar{1}_i 1_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i \bar{1}_i || \bar{1}_i \bar{1}_i \rangle \right)	\\
+			&= -\frac{1}{2} \left( 0 + \sum_{ i=1 }^N J_{ii} + \sum_{ i=1 }^N J_{ii} + 0 \right) = -\sum_{ i=1 }^N J_{ii} = -N J_{11}
+	\end{align*}
+	
+	\begin{align*}
+		\langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{V} | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle &= \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle - \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H}_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle \\
+		&= ( 2N-2 )h_{11} + 2h_{22} + \sum_{ j=1 }^{2N} \sum_{ k=1 }^{2N} \langle jk || jk \rangle - \left[ ( 2N - 2 ) \varepsilon_1 + 2\varepsilon_2 \right]
+	\end{align*}
+	
+	\end{solution}
+	
+	\sectionstar{Diagrammatic Representation of the Perturbation Expansion of the Correlation Energy}
+	
+	\subsection{Hugenholtz Diagrams}
+	
+	% 6.11
+	\begin{exercise}
+	Show that the fourth-order diagram
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/6.11/exercise.png}
+	\end{center}
+	
+	is equal to
+	\[
+		-\frac{1}{2} \sum_{abcderst} \frac{ \langle rs || ac \rangle \langle at || de \rangle \langle dc || tb \rangle \langle eb||rs \rangle }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d + \varepsilon_e - \varepsilon_r - \varepsilon_t - \varepsilon_s ) ( \varepsilon_b + \varepsilon_e - \varepsilon_r - \varepsilon_s ) }.
+	\]	
+	
+	\end{exercise}
+	
+	\begin{solution}
+		6-11 so
+	\end{solution}
+	
+	\subsection{Goldstone Diagrams}
+	
+	% 6.12
+	\begin{exercise}
+	We stated that the Goldstone diagrams in Table 6.2 can be obtained by ``pulling apart" the second- and third-order Hugenholtz diagrams. This is quite tricky to see but the converse is much easier. For example, if we push
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/6.12/exercise_1.png}
+	\end{center}
+	
+	together, it is clear that we obtain
+	
+	\begin{center}
+	\includegraphics[scale=1.0]{./pictures/6.12/exercise_2.png}
+	\end{center}
+	
+	Push all third-order diagrams in Table 6.2 together in a similar way and, thus, find which Goldstone diagram comes from which Hugenholtz diagram. For the above Hugenholtz diagram, verify that its mathematical value is indeed the sum of the values of the corresponding Goldstone diagrams.
+	
+	\end{exercise}
+	
+	\begin{solution}
+		6-12 so
+	\end{solution}
+	
+	\subsection{Summation of Diagrams}
+	
+	\subsection{What Is the Linked Cluster Theorem?}
+	
+	% 6.13
+	\begin{exercise}
+	Calculate $E^{(3)}_0$ for a supermolecule consisting of $N$ non-interacting minimal basis $\ce{H2}$ molecules by evaluating the Goldstone diagrams in Table 6.2. Compare your result with that of Eq.(6.92), which was obtained algebraically by explicitly cancelling terms proportional to $N^2$.
+	
+	{\it Hint}: Simply show that the value of each Goldstone diagram for the supermolecule in $N$ times the result for a single molecule.
+	\end{exercise}
+	
+	\begin{solution}
+		6-13 so
+	\end{solution}
+	
+	\section{Some Illustrative Calculations}
 
 \end{document}
