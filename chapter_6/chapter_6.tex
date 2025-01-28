@@ -83,6 +83,7 @@
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
 \newcommand{\HF}{{\rm HF}}
+\newcommand{\corr}{{\rm corr}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
@@ -712,11 +713,13 @@
 	
 	\end{enumerate}		
 	
-	
 	\end{exercise}
 	
 	\begin{solution}
 	
+	\begin{itemize}	
+	
+	\item[a.] Firstly, we list all diagrams of the fourth-order energy. 	
 	\begin{center}
 	\begin{tabular}{ccc}
 	
@@ -751,9 +754,10 @@
 		\end{minipage}
 		
 	\end{tabular}
-	\captionof{figure}{AeWRHARGrhA}\label{fig:exe7_1}
+	\captionof{figure}{All fourth-order diagrams.}\label{fig:exe7_1}
 	\end{center}
 	
+	Note that when $N>6$, $(i+3)^*$ cannot interact with $i$, and when $N=6$, $1^*$ cannot interact with $1$, either. Thus, there is no essential difference in the shape and properties between the case of $N > 6$ and $N=6$. It is enough to draw the pictorial representation of benzene ($N=6$) in order to get the same result of $N>6$. The pictorial representation of benzene can be seen in \Figref{fig:exe7_2}.
 	
 	\begin{center}
 	\begin{tabular}{ccc}
@@ -789,8 +793,34 @@
 		\end{minipage}
 		
 	\end{tabular}
-	\captionof{figure}{AeWRHARGrhA}\label{fig:exe7_2}
+	\captionof{figure}{The pictorial representation of all fourth-order diagrams of the benzene.}\label{fig:exe7_2}
 	\end{center}
+	
+	Now we will calculate all terms according to their pictorial representation. Instead of lengthy calculation, we only care about the path from 1 to 1 in each diagram. For example, for the first subdiagram of \Figref{fig:exe7_2}, we know that it has eight paths, six valid but two invalid. If a path has a segment with a plus/minus token, it will be marked as $+$/$-$, and zero otherwise. And thus, its eight paths are:
+	\begin{center}
+	\begin{tabular}{cccc}
+		$(+,+,-,0)$ & $(+,+,-,+)$ & $(+,-,-,+)$ & $(+,-,-,-)$\\
+		$(+,+,-,+)$ & $(+,+,-,-)$ & $(+,-,-,-)$ & $(+,-,-,0)$
+	\end{tabular}
+	\end{center}		
+	If a path has a 0, the corresponding term is zero. Otherwise, the corresponding term has a factor $(-1)^k$, where $k$ is the number of its minus signs. Therefore, there are two positive and four negative terms, and the first term is
+	\[
+		(-1)^{2+1} \frac{2 \times 3}{ (2\beta)^3 } \left[ 2 \times \left( \frac{\beta^4}{16} \right) + 4 \times \left( -\frac{\beta^4}{16} \right) \right] = \frac{6}{64} \beta = \frac{N}{64} \beta,
+	\]
+	where the factor $2$ occurs for the closed-shell structure, and the factor $3$ is the number of occupied spin orbitals.
+	
+	Similarly, we find that the second, third, ..., sixth term is $\frac{N}{64} \beta$, $\frac{N}{64} \beta$, $\frac{N}{64} \beta$, $-\frac{3N}{128} \beta$, $-\frac{3N}{128} \beta$. Thus, we obtain that
+	\begin{sequation}
+		E^{(4)}_0 = 4 \times \left( \frac{N}{64} \beta \right) + 2 \times \left( -\frac{3N}{128} \beta \right) = \frac{N}{64} \beta.
+	\end{sequation}
+
+	\item[b.] As mentioned before, the general expression of the correlation energy with $N>6$ is also suitable for benzene. Thus, the correlation energy of the benzene is
+	\begin{sequation}
+		E^{(4)}_0({\rm benzene} ) = \frac{6}{64} \beta = \frac{3}{32} \beta,
+	\end{sequation}		
+	which agrees with the independently calculated result found in Exercise 6.6.
+	
+	\end{itemize}	
 	
 	\end{solution}
 	
@@ -802,7 +832,25 @@
 	\end{exercise}
 	
 	\begin{solution}
-		6-8 so
+	The simplification of (6.72) is direct.	
+	\begin{align*}
+		E^{(2)}_0 &= \frac{1}{4} \sum_{abrs} \frac{ | \langle ab || rs \rangle |^2 }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{4} \sum_{abrs} \frac{ \langle ab || rs \rangle \langle rs || ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{4} \sum_{abrs} \frac{ ( \langle ab | rs \rangle - \langle ab | sr \rangle ) ( \langle rs | ab \rangle - \langle rs | ba \rangle )  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \\
+		&= \frac{1}{4} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | sr \rangle \langle rs | ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \frac{ \langle ab | sr \rangle \langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \\
+		&= \frac{1}{4} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle \langle sr | ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r } + \frac{ \langle ab | rs \rangle \langle sr | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r } \\
+		&= \frac{1}{4} \sum_{abrs} \frac{ 2 \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ 2 \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{2} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } .
+	\end{align*}
+	
+	Note that for a closed-shell system, only six terms in the numerators can be nonzero, viz.,
+	\begin{align*}
+		E^{(2)}_0 &= \frac{1}{2} \sum_{abrs} \left(  \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \right) \\
+		&= \frac{1}{2} \left( \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \sum^{N/2}_{\bar{a}b\bar{r}s} \frac{ \langle \bar{a}b | \bar{r}s \rangle \langle \bar{r}s | \bar{a}b \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_{\bar{r}} - \varepsilon_s } - \frac{ \langle \bar{a}b | \bar{r}s \rangle\langle \bar{r}s | b\bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_{\bar{r}} - \varepsilon_s } \right. \\
+		&\hspace{4em} \left. + \sum^{N/2}_{\bar{a}br\bar{s}} \frac{ \langle \bar{a}b | r\bar{s} \rangle \langle r\bar{s} | \bar{a}b \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_r - \varepsilon_{\bar{s}} } - \frac{ \langle \bar{a}b | r\bar{s} \rangle\langle r\bar{s} | b\bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_r - \varepsilon_{\bar{s}} } + \sum^{N/2}_{a\bar{b}\bar{r}s} \frac{ \langle a\bar{b} | \bar{r}s \rangle \langle \bar{r}s | a\bar{b} \rangle  }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_s } - \frac{ \langle a\bar{b} | \bar{r}s \rangle \langle \bar{r}s | \bar{b}a \rangle }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_s } \right. \\
+		&\hspace{4em} \left. + \sum^{N/2}_{a\bar{b}r\bar{s}} \frac{ \langle a\bar{b} | r\bar{s} \rangle \langle r\bar{s} | a\bar{b} \rangle  }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } - \frac{ \langle a\bar{b} | r\bar{s} \rangle \langle r\bar{s} | \bar{b}a \rangle }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \sum^{N/2}_{\bar{a} \bar{b} \bar{r} \bar{s}} \frac{ \langle \bar{a} \bar{b} | \bar{r} \bar{s} \rangle \langle \bar{r} \bar{s} | \bar{a} \bar{b} \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_{\bar{s}} } - \frac{ \langle \bar{a} \bar{b} | \bar{r} \bar{s} \rangle \langle \bar{r} \bar{s} | \bar{b} \bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_{\bar{s}} } \right) \\
+		&= \frac{1}{2} \left( \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - 0 + 0 - 0 \right. \\
+		&\hspace{4em} \left. + 0 - 0 + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - 0 + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle \langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \right) \\
+		&= 2 \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s }.
+	\end{align*}
+	
 	\end{solution}
 	
 	% 6.9
@@ -811,7 +859,22 @@
 	\end{exercise}
 	
 	\begin{solution}
-		6-9 so
+	We assume that $\Delta \approx (\varepsilon_2 - \varepsilon_1)$, thus	
+	\[
+		\Delta = ( \varepsilon_2 - \varepsilon_1 ) + \frac{1}{2} J_{11} + \frac{1}{2} J_{22} - 2 J_{12} + K_{12} = ( \varepsilon_2 - \varepsilon_1 ) \left[ 1 + \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right].
+	\]
+	Using binomial series and geometric series, we find that
+	\begin{align*}
+		E_\corr &= \Delta - \left( \Delta^2 + K^2_{12} \right)^{\frac{1}{2}} = \Delta \left[ 1 - \left( 1 + \frac{ K^2_{12} }{ \Delta^2 } \right)^{\frac{1}{2}} \right] = \Delta \left[ 1 - \left( 1 + \frac{ K^2_{12} }{ 2\Delta^2 } - \frac{ K^4_{12} }{ 8\Delta^4 } + \cdots \right) \right] \\
+		&= - \frac{ K^2_{12} }{ 2\Delta } + \frac{ K^4_{12} }{ 8\Delta^3 } + \cdots \\
+		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) \left[ 1 + \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right] } + \frac{ K^4_{12} }{ 8 ( \varepsilon_2 - \varepsilon_1 )^3 \left[ 1 + \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right]^3 } + \cdots \\
+		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 )} \left[ 1 - \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } + \left( \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right)^2 + \cdots \right] \\
+		&\hspace{6em} + \frac{ K^4_{12} }{ 8 ( \varepsilon_2 - \varepsilon_1 )^3 } \left[ 1 - \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } + \cdots \right]^3 + \cdots \\
+		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 )} + \frac{ K^2_{12} ( J_{11} + J_{22} - 4 J_{12} + 2 K_{12} ) }{ 4( \varepsilon_2 - \varepsilon_1 )^2 } + o\left( \left( \frac{1}{ \varepsilon_2 - \varepsilon_1 } \right)^2 \right) \\
+		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 )} + \frac{ K^2_{12} ( J_{11} + J_{22} - 4 J_{12} + 2 K_{12} ) }{ 4( \varepsilon_2 - \varepsilon_1 )^2 } + o\left( \left( \frac{1}{ \varepsilon_2 - \varepsilon_1 } \right)^2 \right) .
+	\end{align*}
+	Thus, we obtain (6.77) and (6.78) from (6.76).
+	
 	\end{solution}
 	
 	\section{The \texorpdfstring{$N$}--Dependence of the RS Perturbation Expansion}
@@ -822,16 +885,20 @@
 	\end{exercise}
 	
 	\begin{solution}
-	
+	From (6.68), we find that with the truth that all two-electron integrals involving orbitals from different units are zero and $\langle mm || mm \rangle = 0$,
 	\begin{align*}
-		E^{(1)}_0 &= - \frac{1}{2} \sum_{ i=1 } \sum_{ j=1 } \langle ij || ij \rangle \\
+		E^{(1)}_0 &= - \frac{1}{2} \sum_{ i=1 }^{2N} \sum_{ j=1 }^{2N} \langle 1_i 1_j || 1_i 1_j \rangle \\
+			&= - \frac{1}{2} \left( \sum_{ i=1 }^N \sum_{ j=1 }^N \langle 1_i 1_j || 1_i 1_j \rangle + \sum_{ i=1 }^N \sum_{ j=1 }^N \langle 1_i \bar{1}_j || 1_i \bar{1}_j \rangle + \sum_{ i=1 }^N \sum_{ j=1 }^N \langle \bar{1}_i 1_j || \bar{1}_i 1_j \rangle + \sum_{ i=1 }^N \sum_{ j=1 }^N \langle \bar{1}_i \bar{1}_j || \bar{1}_i \bar{1}_j \rangle \right)	\\
 			&= - \frac{1}{2} \left( \sum_{ i=1 }^N \langle 1_i 1_i || 1_i 1_i \rangle + \sum_{ i=1 }^N \langle 1_i \bar{1}_i || 1_i \bar{1}_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i 1_i || \bar{1}_i 1_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i \bar{1}_i || \bar{1}_i \bar{1}_i \rangle \right)	\\
-			&= -\frac{1}{2} \left( 0 + \sum_{ i=1 }^N J_{ii} + \sum_{ i=1 }^N J_{ii} + 0 \right) = -\sum_{ i=1 }^N J_{ii} = -N J_{11}
+			&= -\frac{1}{2} \left( 0 + \sum_{ i=1 }^N J_{11} + \sum_{ i=1 }^N J_{11} + 0 \right) = -\sum_{ i=1 }^N J_{11} = -N J_{11}.
 	\end{align*}
 	
+	Besides, we obtain that
 	\begin{align*}
 		\langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{V} | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle &= \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H} | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle - \langle \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} | \mathscr{H}_0 | \Psi^{2_i \bar{2}_i}_{1_i \bar{1}_i} \rangle \\
-		&= ( 2N-2 )h_{11} + 2h_{22} + \sum_{ j=1 }^{2N} \sum_{ k=1 }^{2N} \langle jk || jk \rangle - \left[ ( 2N - 2 ) \varepsilon_1 + 2\varepsilon_2 \right]
+		&= \sum_{ i=1 }^{2N} h_{11} + 2h_{22} - 2h_{11} + \sum_{ i=1 }^N  J_{11} + J_{22} - J_{11} - \left[ ( 2N - 2 ) \varepsilon_1 + 2\varepsilon_2 \right] \\
+		&= (2N-2)h_{11} + 2h_{22} + (N-1) J_{11} + J_{22} - (2N-2) ( h_{11} + J_{11} ) - 2 (h_{22} + 2J_{12} - K_{12})\\
+		&= -(N-1) J_{11} + J_{22} - 4J_{12} + 2K_{12}. 
 	\end{align*}
 	
 	\end{solution}
@@ -856,11 +923,38 @@
 	\end{exercise}
 	
 	\begin{solution}
-		6-11 so
+	
+	Using the diagrammatic method, this term is made of four parts as follows.
+	\begin{enumerate}
+	
+	\item There are 5 hole lines ($a$, $b$, $c$, $d$, $e$) and 3 particle lines ($r$, $s$, $t$). Thus we add a summation token with subscripts $abcderst$. 
+	
+	\item There are 2 loops, $r \rightarrow a \rightarrow d \rightarrow t \rightarrow e \rightarrow r$, $s \rightarrow c \rightarrow b \rightarrow s$, and 5 hole lines, thus we should add a $(-1)^{2+5} = (-1)^7$.	
+	
+	\item From the top to the bottom, 4 dots contribute $\langle rs|| ac \rangle$, $\langle at||de \rangle$, $\langle dc || tb \rangle$, $\langle eb || rs \rangle$, respectively.
+	
+	\item There are 3 imaginary horizontal lines.
+		\begin{itemize}
+		
+		\item The first one crosses $a$, $c$, $r$, $s$, contributing a factor $\varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s$ to the denominator.
+		
+		\item The second one crosses $c$, $d$, $e$, $r$, $t$, $s$ contributing a factor $\varepsilon_c + \varepsilon_d + \varepsilon_e - \varepsilon_r - \varepsilon_t - \varepsilon_s$ to the denominator.
+		
+		\item The third one crosses $b$, $e$, $r$, $s$, contributing a factor $\varepsilon_b + \varepsilon_e - \varepsilon_r - \varepsilon_s$ to the denominator.
+		
+		\end{itemize}			
+	
+	\end{enumerate}
+	
+	In conclusion, we know the mathematical expression of this diagram is
+	\begin{sequation}
+		-\frac{1}{2} \sum_{abcderst} \frac{ \langle rs || ac \rangle \langle at || de \rangle \langle dc || tb \rangle \langle eb||rs \rangle }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d + \varepsilon_e - \varepsilon_r - \varepsilon_t - \varepsilon_s ) ( \varepsilon_b + \varepsilon_e - \varepsilon_r - \varepsilon_s ) }.
+	\end{sequation}
+	
 	\end{solution}
 	
 	\subsection{Goldstone Diagrams}
-	
+
 	% 6.12
 	\begin{exercise}
 	We stated that the Goldstone diagrams in Table 6.2 can be obtained by ``pulling apart" the second- and third-order Hugenholtz diagrams. This is quite tricky to see but the converse is much easier. For example, if we push
@@ -880,7 +974,105 @@
 	\end{exercise}
 	
 	\begin{solution}
-		6-12 so
+
+	As the textbook mentioned at the page 361, there are three third-order Hugenholtz diagrams, which are listed in \Figref{fig:exe12_1}.
+
+	\begin{center}
+	\begin{tabular}{ccc}
+	
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.12/hugenholtz_1.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.12/hugenholtz_2.png}
+		\end{minipage} &
+		
+		\begin{minipage}{0.22\linewidth}
+		\centering
+		\includegraphics[scale=1.0,trim=0 -4 0 -4]{./pictures/6.12/hugenholtz_3.png}
+		\end{minipage}
+		
+	\end{tabular}
+	\captionof{figure}{All third-order Hugenholtz diagrams.}\label{fig:exe12_1}
+	\end{center}
+	
+	In fact, the ``pushing together" results of these third-order Goldstone diagrams in the table 6.2 can be summarized as follows.
+	\begin{itemize}
+	
+	\item Pushing together the second or the seventh third-order Goldstone diagrams leads to the first Hugenholtz diagram.
+	
+	\item Pushing together the first and the eighth third-order Goldstone diagrams leads to the second Hugenholtz diagram.
+	
+	\item Pushing together the rest of third-order Goldstone diagrams leads to the third Hugenholtz diagram.
+	
+	\end{itemize}
+	
+	Firstly, we will verify that the sum of the second and the seventh third-order Goldstone diagrams is the first third-order Hugenholtz diagram. The sum of the second and the seventh third-order Goldstone diagrams is
+	\begin{align*}
+		&\hspace{1.4em} (-1)^{4+2} \left( \frac{1}{2} \right) \sum_{abcdrs} \frac{ \langle ad | rs \rangle \langle cb | ad \rangle \langle rs | cb \rangle }{ ( \varepsilon_a + \varepsilon_d - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{6em} + (-1)^{4+1} \left( \frac{1}{2} \right) \sum_{abcdrs} \frac{ \langle ac | rs \rangle \langle db | ac \rangle \langle sr | db \rangle }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s ) ( \varepsilon_d + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } \\
+		&= \frac{1}{2} \sum_{abcdrs} \frac{ \langle ad | rs \rangle \langle cb | ad \rangle \langle rs | cb \rangle }{ ( \varepsilon_a + \varepsilon_d - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } - \frac{ \langle ad | rs \rangle \langle cb | ad \rangle \langle sr | cb \rangle }{ ( \varepsilon_a + \varepsilon_d - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } \\
+		&= \frac{1}{2} \sum_{abcdrs} \frac{ \langle ad | rs \rangle \langle cb | ad \rangle \left( \langle rs | cb \rangle - \langle sr | cb \rangle \right) }{ ( \varepsilon_a + \varepsilon_d - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } = \frac{1}{2} \sum_{abcdrs} \frac{ \langle ab | rs \rangle \langle cd | ab \rangle \left( \langle rs | cd \rangle - \langle sr | cd \rangle \right) }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) },
+	\end{align*}
+	and the first Hugenholtz diagram can be simplified to
+	\begin{align*}
+		&\hspace{1.4em} \frac{1}{8} \sum_{abcdrs} \frac{ \langle ab || rs \rangle \langle rs || cd \rangle \langle cd || ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&= \frac{1}{8} \sum_{abcdrs} \frac{ ( \langle ab | rs \rangle - \langle ab | sr \rangle )( \langle rs | cd \rangle - \langle rs | dc \rangle ) ( \langle cd | ab \rangle - \langle cd | ba \rangle ) }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&= \frac{1}{8} \sum_{abcdrs} \frac{ \langle ab | rs \rangle \langle rs | cd \rangle \langle cd | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } - \frac{ \langle ab | rs \rangle \langle rs | cd \rangle \langle cd | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{6em} - \frac{ \langle ab | rs \rangle \langle rs | dc \rangle \langle cd | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } + \frac{ \langle ab | rs \rangle \langle rs | dc \rangle \langle cd | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{6em} - \frac{ \langle ab | sr \rangle \langle rs | cd \rangle \langle cd | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } + \frac{ \langle ab | sr \rangle \langle rs | cd \rangle \langle cd | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{6em} + \frac{ \langle ab | sr \rangle \langle rs | dc \rangle \langle cd | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } - \frac{ \langle ab | sr \rangle \langle rs | dc \rangle \langle cd | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&= \frac{1}{8} \sum_{abcdrs} \frac{ \langle ab | rs \rangle \langle cd | ab \rangle \langle rs | cd \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } - \frac{ \langle ab | rs \rangle \langle rs | dc \rangle \langle dc | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{6em} - \frac{ \langle ab | rs \rangle \langle sr | cd \rangle \langle cd | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } + \frac{ \langle ab | rs \rangle \langle sr | dc \rangle \langle dc | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{6em} - \frac{ \langle ab | rs \rangle \langle sr | cd \rangle \langle cd | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } + \frac{ \langle ab | rs \rangle \langle sr | dc \rangle \langle dc | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{6em} + \frac{ \langle ab | rs \rangle \langle sr | dc \rangle \langle cd | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } - \frac{ \langle ab | rs \rangle \langle sr | cd \rangle \langle dc | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) } \\
+		&= \frac{1}{2} \sum_{abcdrs} \frac{ \langle ab | rs \rangle \langle cd | ab \rangle \left( \langle rs | cd \rangle - \langle sr | cd \rangle \right) }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d - \varepsilon_r - \varepsilon_s ) }.
+	\end{align*}
+	Thus, we have verified that the sum of the second and the seventh third-order Goldstone diagrams is the first third-order Hugenholtz diagram.
+	
+	Secondly, we will verify that the sum of the first and the eighth third-order Goldstone diagrams is the second third-order Hugenholtz diagram. The sum of the first and the eighth third-order Goldstone diagrams is
+	\begin{align*}
+		&(-1)^{2+2} \left( \frac{1}{2} \right) \sum_{abrsut} \frac{ \langle ab | ru \rangle \langle ru | ts \rangle \langle ts | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_u ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_s ) } \\
+		&\hspace{6em}+ (-1)^{2+1} \left( \frac{1}{2} \right) \sum_{abrsut} \frac{ \langle ab | rt \rangle \langle tr | us \rangle \langle us | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_r ) ( \varepsilon_a + \varepsilon_b - \varepsilon_u - \varepsilon_s ) } \\
+		&= \frac{1}{2} \sum_{abrsut} \frac{ \langle ab | ru \rangle \langle ru | ts \rangle \langle ts | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_u ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_s ) } - \frac{ \langle ab | ru \rangle \langle ur | ts \rangle \langle ts | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_u - \varepsilon_r ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_s ) } \\
+		&= \frac{1}{2} \sum_{abrsut} \frac{ \langle ab | ru \rangle \langle ts | ab \rangle ( \langle ru | ts \rangle - \langle ur | ts \rangle ) }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_u ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_s ) } = \frac{1}{2} \sum_{abrsut} \frac{ \langle ab | rs \rangle \langle tu | ab \rangle ( \langle rs | tu \rangle - \langle sr | tu \rangle ) }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) }.
+	\end{align*}
+	and the second Hugenholtz diagram can be simplified to
+	\begin{align*}
+		&\hspace{1.4em} \frac{1}{8} \sum_{abrstu} \frac{ \langle ab || rs \rangle \langle rs || tu \rangle \langle tu || ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&= \frac{1}{8} \sum_{abrstu} \frac{ ( \langle ab | rs \rangle - \langle ab | sr \rangle )( \langle rs | tu \rangle - \langle rs | ut \rangle ) ( \langle tu | ab \rangle - \langle tu | ba \rangle ) }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&= \frac{1}{8} \sum_{abrstu} \frac{ \langle ab | rs \rangle \langle rs | tu \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } - \frac{ \langle ab | rs \rangle \langle rs | tu \rangle \langle tu | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&\hspace{6em} - \frac{ \langle ab | rs \rangle \langle rs | ut \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } + \frac{ \langle ab | rs \rangle \langle rs | ut \rangle \langle tu | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&\hspace{6em} - \frac{ \langle ab | sr \rangle \langle rs | tu \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } + \frac{ \langle ab | sr \rangle \langle rs | tu \rangle \langle tu | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&\hspace{6em} + \frac{ \langle ab | sr \rangle \langle rs | ut \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } - \frac{ \langle ab | sr \rangle \langle rs | ut \rangle \langle tu | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&= \frac{1}{8} \sum_{abrstu} \frac{ \langle ab | rs \rangle \langle rs | tu \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } - \frac{ \langle ab | rs \rangle \langle rs | ut \rangle \langle ut | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&\hspace{6em} - \frac{ \langle ab | rs \rangle \langle rs | tu \rangle \langle ut | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } + \frac{ \langle ab | rs \rangle \langle rs | tu \rangle \langle ut | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&\hspace{6em} - \frac{ \langle ab | rs \rangle \langle sr | tu \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } + \frac{ \langle ab | rs \rangle \langle sr | ut \rangle \langle ut | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&\hspace{6em} + \frac{ \langle ab | rs \rangle \langle sr | ut \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } - \frac{ \langle ab | rs \rangle \langle sr | tu \rangle \langle ut | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&= \frac{1}{2} \sum_{abrstu} \frac{ \langle ab | rs \rangle \langle rs | tu \rangle \langle tu | ab \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } - \frac{ \langle ab | rs \rangle \langle rs | ut \rangle \langle ut | ba \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) } \\
+		&= \frac{1}{2} \sum_{abrsut} \frac{ \langle ab | rs \rangle \langle tu | ab \rangle ( \langle rs | tu \rangle - \langle sr | tu \rangle ) }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_b - \varepsilon_t - \varepsilon_u ) }.
+	\end{align*}
+	Thus, we have verified that the sum of the first and the eighth third-order Goldstone diagrams is the second third-order Hugenholtz diagram.
+	
+	Thirdly, we will verify that the sum of the rest of third-order Goldstone diagrams is the third third-order Hugenholtz diagram. The third third-order Hugenholtz diagram is	
+	\begin{align*}
+		&\hspace{1.4em}\sum_{abcrst} \frac{ \langle ab || rs \rangle \langle cs || tb \rangle \langle rt || ac \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } \\
+		&= \sum_{abcrst} \frac{ [ \langle ab | rs \rangle - \langle ab | sr \rangle ] [ \langle cs | tb \rangle - \langle cs | bt \rangle ] [ \langle rt | ac \rangle - \langle rt | ca \rangle ] }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } \\
+		&= \sum_{abcrst} \frac{ \langle ab | rs \rangle \langle cs | tb \rangle \langle rt | ac \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } - \frac{ \langle ab | rs \rangle \langle cs | tb \rangle \langle rt | ca \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } \\
+		&\hspace{4em} - \frac{ \langle ab | rs \rangle \langle cs | bt \rangle \langle rt | ac \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } + \frac{ \langle ab | rs \rangle \langle cs | bt \rangle \langle rt | ca \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } \\
+		&\hspace{4em} - \frac{ \langle ab | sr \rangle \langle cs | tb \rangle \langle rt | ac \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } + \frac{ \langle ab | sr \rangle \langle cs | tb \rangle \langle rt | ca \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } \\
+		&\hspace{4em} + \frac{ \langle ab | sr \rangle \langle cs | bt \rangle \langle rt | ac \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } - \frac{ \langle ab | sr \rangle \langle cs | bt \rangle \langle rt | ca \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) } \\
+		&= \sum_{abcrst} \frac{ \langle ac | rt \rangle \langle bt | sc \rangle \langle rs | ab \rangle }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } - \frac{ \langle bc | rt \rangle \langle at | sc \rangle \langle rs | ab \rangle }{ ( \varepsilon_b + \varepsilon_c - \varepsilon_t - \varepsilon_r ) ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{2em} - \sum_{abcrst} \frac{ \langle bc | rt \rangle \langle ra | sb \rangle \langle st | ac \rangle }{ ( \varepsilon_b + \varepsilon_c - \varepsilon_r - \varepsilon_t ) ( \varepsilon_a + \varepsilon_c - \varepsilon_s - \varepsilon_t ) } + \sum_{abcrst} \frac{ \langle bc | rt \rangle \langle ar | bs \rangle \langle ts | ac \rangle }{ ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_t ) ( \varepsilon_a + \varepsilon_c - \varepsilon_s - \varepsilon_t ) } \\
+		&\hspace{2em} - \sum_{abcrst} \frac{ \langle ab | rs \rangle \langle sc | at \rangle \langle rt | bc \rangle }{ ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_t ) } + \sum_{abcrst} \frac{ \langle cb | rt \rangle \langle at | sc \rangle \langle rs | ab \rangle }{ ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_t ) ( \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s ) } \\
+		&\hspace{2em} + \sum_{abcrst} \frac{ \langle cb | rt \rangle \langle ra | sb \rangle \langle st | ac \rangle }{ ( \varepsilon_c + \varepsilon_b - \varepsilon_r - \varepsilon_t ) ( \varepsilon_a + \varepsilon_c - \varepsilon_s - \varepsilon_t ) } - \sum_{abcrst} \frac{ \langle ac | rt \rangle \langle rb | sc \rangle \langle st | ab \rangle }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_t ) ( \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_t ) }.
+	\end{align*}	
+	These eight terms correspond to the fifth, twelfth, fourth, ninth, eleventh, sixth, tenth, third third-order Goldstone diagrams, respectively.
+	
+	In conclusion, we have verified that the first third-order Hugenholtz diagram corresponds the second and the seventh third-order Goldstone diagrams, the second third-order Hugenholtz diagram corresponds the first and the eighth third-order Goldstone diagrams, and the third third-order Hugenholtz diagram corresponds the third, fourth, fifth, sixth, ninth, tenth, eleventh, twelfth third-order Goldstone diagrams.
 	\end{solution}
 	
 	\subsection{Summation of Diagrams}
@@ -895,9 +1087,7 @@
 	\end{exercise}
 	
 	\begin{solution}
-		6-13 so
+	Note that in this model, all two-electron integrals involving orbitals from different units are zero, and all third-order terms in the table 6.2 will be zero unless their numerators are non-zero. Thus, each third-order term of this model is just the sum of that of each units, leading that the value of each Goldstone diagram for the supermolecule in $N$ times the result for a single molecule.
 	\end{solution}
-	
-	\section{Some Illustrative Calculations}
 
 \end{document}
