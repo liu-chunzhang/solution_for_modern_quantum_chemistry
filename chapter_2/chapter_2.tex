@@ -565,14 +565,69 @@
 	
 	Note that a Slater determinant is a linear combination of $N!$ Hartree product. With the conclusion of Exercise 2.2 and the truth that $\mathscr{H}$ commutes with the permutation operator $\mathscr{P}_n$, we find that
 	\begin{align*}
-		\mathscr{H} \Psi^\HP &= \mathscr{H} \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \mathscr{H} \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) \\
-		&= \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \sum_{ i=1 }^N \varepsilon_i \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \sum_{ i=1 }^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \sum_{ i=1 }^N \varepsilon_i \Psi^\HP .
+		\mathscr{H} \Psi &= \mathscr{H} \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \mathscr{H} \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) \\
+		&= \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \sum_{ i=1 }^N \varepsilon_i \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \sum_{ i=1 }^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \sum_{ i=1 }^N \varepsilon_i \Psi .
 	\end{align*}
 	
 	\end{solution}
 	
 	% 2.16
+	\begin{exercise}
+	A different procedure for deriving the above matrix elements uses the theorem that $\langle K | \mathscr{H} | L \rangle = (N!)^{1/2} \langle K^{\rm HP} | \mathscr{H} | L \rangle$ where $|K^{\rm HP} \rangle$ is the Hartree product corresponding to the determinant $| K \rangle$, i.e.,
+	\[
+		| K \rangle = | \chi_m( \bfx_1 ) \chi_n( \bfx_2 ) \cdots \rangle
+	\]
+	and
+	\[
+		| K^{\rm HP} \rangle = \chi_m( \bfx_1 ) \chi_n( \bfx_2 ) \cdots.
+	\]
+	Prove this theorem. Use it to derive the matrix elements of a sum of one-electron operators.
+	\end{exercise}
 	
+	\begin{solution}
+	
+	Firstly, note that for a general permutation operator $\mathscr{P}_k$ and a general ket $| L \rangle$, due to the antisymmetry of the ket, we have that 
+	\[
+		(-1)^{p_k} \mathscr{P}_k \langle K^{\rm HP} | \mathscr{H} | L \rangle = \langle K^{\rm HP} | \mathscr{H} | L \rangle .
+	\]	
+	Thus, we find that
+	\begin{align*}
+		\langle K | \mathscr{H} | L \rangle &= \frac{1}{\sqrt{N!}} \sum_{ k=1 }^{ N! } (-1)^{p_k} \mathscr{P}_k \langle  K^{\rm HP} | \mathscr{H} | L \rangle = \frac{1}{\sqrt{N!}} \sum_{ k=1 }^{ N! } \langle K^{\rm HP} | \mathscr{H} | L \rangle  \\
+		&= \frac{1}{\sqrt{N!}} N! \langle K^{\rm HP} | \mathscr{H} | L \rangle = \sqrt{N!} \langle K^{\rm HP} | \mathscr{H} | L \rangle .
+	\end{align*}
+	
+	Hence, for the operator $\mathscr{O}_1$, which is a sum of one-electron operators $o$, we get that
+	\begin{align*}
+		&\hspace{1.4em}\langle K | \mathscr{O}_1 | L \rangle = \sqrt{N!} \langle K^{\rm HP} | \mathscr{O}_1 | L \rangle \\
+		&= \frac{\sqrt{N!}}{ \sqrt{N!} } \sum_j (-1)^{p_j} \int \dif \bfx_1 \int \dif \bfx_2 \cdots \int \dif \bfx_N \{ \chi^*_m(1) \chi^*_n(2) \cdots \chi^*_l(N) \} \sum_i o(i) \mathscr{P}_j \{ \chi_p(1) \chi_q(2) \cdots \chi_r(N) \} \\
+		&= \sum_i \sum_j (-1)^{p_j} \int \dif \bfx_1 \int \dif \bfx_2 \cdots \int \dif \bfx_N \{ \chi^*_m(1) \chi^*_n(2) \cdots \chi^*_l(N) \} o(i) \mathscr{P}_j \{ \chi_p(1) \chi_q(2) \cdots \chi_r(N) \} .
+	\end{align*}
+	
+	Here, for a given Hartree product $K^{\rm HP}$, the maximum coincidence is dependent of the number of spin orbitals which $|K\rangle$ and $|L\rangle$ differ.
+	\begin{itemize}
+		
+	\item When $|K\rangle$ and $|L\rangle$ are the same, at this time, there are $N$ ways for the maximum coincidence and all of them are using an even permutation, thus,
+	\[
+		\langle K | \mathscr{O}_1 | L \rangle = \sum_i \int \dif \bfx_i \chi^*_m(i) o(i) \chi_m(i) \int \dif \bfx_1 \chi^*_n(1) \chi_n(1) \cdots \int \dif \bfx_N \chi^*_l(N) \chi_l(N) = \sum_i \langle i | o | i \rangle .
+	\]
+	
+	\item When $|K\rangle$ and $|L\rangle$ differ by one spin orbital, at this time, there is only one way for the maximum coincidence and it is using an even permutation, viz.,
+	\[
+		\langle K | \mathscr{O}_1 | L \rangle = \sum_i \int \dif \bfx_i \chi^*_m(i) o(i) \chi_p(i) \int \dif \bfx_1 \chi^*_n(1) \chi_n(1) \cdots \int \dif \bfx_N \chi^*_l(N) \chi_l(N) = \langle m | o | p \rangle .
+	\]
+	
+	\item When $|K\rangle$ and $|L\rangle$ differ by more than one spin orbital, at this time, there is no way for the maximum coincidence and thus,
+	\[
+		\langle K | \mathscr{O}_1 | L \rangle = 0 .
+	\]
+	
+	\end{itemize}
+
+	In conclusion, we have derived the matrix elements of a sum of one-electron operators using $\langle K | \mathscr{H} | L \rangle = (N!)^{1/2} \langle K^{\rm HP} | \mathscr{H} | L \rangle$.
+	
+	\end{solution}
+	
+	\subsection{Transition from Spin Orbitals to Spatial Orbitals}
 	
 	
 	
