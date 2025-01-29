@@ -73,7 +73,6 @@
 }
 
 % special new commands for common symbols used in the article
-\newcommand\lr[2]{\langle#1\|#2\rangle}
 \newcommand\tr[1]{\mathrm{tr(#1)}}
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
@@ -354,9 +353,9 @@
 	
 	\begin{solution}
 	From (2.92), we know that
-	\begin{equation}
+	\[
 		\langle \Psi_0 | \mathscr{H} | \Psi_0 \rangle = \langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 12 | 12 \rangle - \langle 12 | 21 \rangle.
-	\end{equation}
+	\]
 	For $\langle \Psi_0 | \mathscr{H} | \Psi_{12}^{34} \rangle$, from Exercise 2.8, we know
 	\[
 		\langle \Psi_0 | \mathscr{O}_1 | \Psi^{34}_{12} \rangle = 0.
@@ -409,5 +408,161 @@
 	\subsection{Notations for One- and Two-Electron Integrals}
 	
 	\subsection{General Rules for Matrix Elements}
+	
+	% 2.10
+	\begin{exercise}
+	Derive Eq.(2.110) from Eq.(2.107).
+	\end{exercise}
+	
+	\begin{solution}
+	We derive Eqs.(2.109a, b) firstly, then derive other equations. Note that
+	\begin{sequation}
+		\langle mm || mm \rangle = \langle mm | mm \rangle - \langle mm | mm \rangle = 0.
+	\end{sequation}
+	Thus (2.109a) has been proved. Besides, note that
+	\begin{sequation}
+		\langle mn || mn \rangle = \langle mn | mn \rangle - \langle mn | nm \rangle = \langle nm | nm \rangle - \langle nm | mn \rangle = \langle nm || nm \rangle .
+	\end{sequation}
+	Thus, (2.109b) has been proved. From Eq.(2.107), with $\langle mm || mm \rangle = 0$, we find that
+	\begin{align*}
+		\langle K | \mathscr{H} | K \rangle &= \sum_m^N \langle m | h | m \rangle + \frac{1}{2} \sum_m^N \sum_n^N \langle mn ||mn \rangle \\
+		&= \sum_m^N \langle m | h | m \rangle + \frac{1}{2}\sum_m^N \sum_{n>m}^N \langle mn || mn \rangle + \frac{1}{2}\sum_n^N \sum_{m>n}^N \langle mn || mn \rangle \\
+		&= \sum_m^N \langle m | h | m \rangle + \frac{1}{2}\sum_m^N \sum_{n>m}^N \langle mn || mn \rangle + \frac{1}{2}\sum_m^N \sum_{n>m}^N \langle nm || nm \rangle \\
+		&= \sum_m^N \langle m | h | m \rangle + \sum_m^N \sum_{n>m}^N \langle mn || mn \rangle .
+	\end{align*}
+	The first line of (2.110) has been verified. Then,		
+	\begin{align*}
+		\langle K | \mathscr{H} | K \rangle &= \sum_m^N \langle m | h | m \rangle + \sum_m^N \sum_{n>m}^N \langle mn || mn \rangle = \sum_m^N \langle m | h | m \rangle + \sum_m^N \sum_{n>m}^N \langle mn | mn \rangle - \langle mn | nm \rangle \\
+		&= \sum_m^N [ m | h | m ] + \sum_m^N \sum_{n>m}^N [ mm | nn ] - [ mn | nm ] .
+	\end{align*}
+	
+	\end{solution}
+	
+	% 2.11
+	\begin{exercise}
+	If $|K\rangle = |\chi_1 \chi_2 \chi_3 \rangle$ show that
+	\[
+		\langle K | \mathscr{H} | K \rangle = \langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 3 | h | 3 \rangle + \langle 12 || 12 \rangle + \langle 13 || 13 \rangle + \langle 23 || 23 \rangle .
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From the conclusion of Exercise 2.10, we immediately obtain that
+	\[
+		\langle K | \mathscr{H} | K \rangle = \langle 1 | h | 1 \rangle + \langle 2 | h | 2 \rangle + \langle 3 | h | 3 \rangle + \langle 12 || 12 \rangle + \langle 13 || 13 \rangle + \langle 23 || 23 \rangle .
+	\]
+	
+	\end{solution}
+	
+	% 2.12
+	\begin{exercise}
+	Evaluate the matrix elements that occur in the minimal basis $\ce{H2}$ full CI matrix (Eq.(2.79)) using the rules. Compare with the result obtained in Exercise 2.9.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	$\langle \Psi_0 | \mathscr{H} | \Psi_0 \rangle$ has been delivered by (2.111) and (2.114). Applying the rules, we get that
+	\begin{align*}
+		\langle \Psi_0 | \mathscr{H} | \Psi^{34}_{12} \rangle &= \langle \Psi_0 | \mathscr{O}_1 | \Psi^{34}_{12} \rangle + \langle \Psi_0 | \mathscr{O}_2 | \Psi^{34}_{12} \rangle = 0 + \langle 12 || 34 \rangle = \langle 12 || 34 \rangle , \\
+		\langle \Psi^{34}_{12} | \mathscr{H} | \Psi_0 \rangle &= \langle \Psi^{34}_{12} | \mathscr{O}_1 | \Psi_0 \rangle + \langle \Psi^{34}_{12} | \mathscr{O}_2 | \Psi_0 \rangle = 0 + \langle 34 || 12 \rangle = \langle 34 || 12 \rangle , \\
+		\langle \Psi^{34}_{12} | \mathscr{H} | \Psi^{34}_{12} \rangle &= \langle \Psi^{34}_{12} | \mathscr{O}_1 | \Psi^{34}_{12} \rangle + \langle \Psi^{34}_{12} | \mathscr{O}_2 | \Psi^{34}_{12} \rangle = \langle 3 | h | 3 \rangle + \langle 4 | h | 4 \rangle + \langle 34 || 34 \rangle .
+	\end{align*}
+	This result equals that of Exercise 2.9.
+	
+	\end{solution}
+	
+	% 2.13
+	\begin{exercise}
+	Show that
+	\[ \langle \Psi^r_a| \mathscr{O}_1 | \Psi^s_b \rangle =
+	\begin{dcases}
+		0, & \text{if } a \neq b , \, r \neq s ; \\ 
+		\langle r | h | s \rangle, & \text{if } a = b , \, r \neq s ; \\ 
+		-\langle b | h | a \rangle, & \text{if } a \neq b , \, r = s ; \\
+		\sum_c^N \langle c | h | c \rangle - \langle a | h | a \rangle + \langle r | h | r \rangle & \text{if } a = b , \, r = s. 
+	\end{dcases}
+	\]	
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Note that this result is not correct until the two determinants are in maximum coincidence! We talk about the final result according to the different occupation of the bra and the ket.
+	\begin{itemize}
+	
+	\item When $a \neq b$ and $r \neq s$, the two determinants differ by two spin orbitals, and thus
+	\[
+		\langle \Psi^r_a| \mathscr{O}_1 | \Psi^s_b \rangle = 0.
+	\]
+	
+	\item When $a = b$ and $r \neq s$, the two determinants differ by one spin orbital, and thus 
+	\[
+		\langle \Psi^r_a| \mathscr{O}_1 | \Psi^s_b \rangle = \langle \Psi^r_a | \mathscr{O}_1 | \Psi^s_a \rangle = \langle r | h | s \rangle.
+	\]
+	
+	\item When $a \neq b$ and $r = s$, the two determinants differ by one spin orbital, and thus $\langle \Psi^r_a | \mathscr{O}_1 | \Psi^s_b \rangle = \langle \Psi^r_a | \mathscr{O}_1 | \Psi^r_b \rangle$. Note that
+	\[
+		\langle \Psi^r_a | \mathscr{O}_1 | \Psi^r_b \rangle = \langle \cdots \chi_r \chi_b \cdots | \mathscr{O}_1 | \cdots \chi_a \chi_r \cdots \rangle = -\langle \cdots \chi_r \chi_b \cdots | \mathscr{O}_1 | \cdots \chi_r\chi_a  \cdots \rangle = -\langle r | h | a \rangle.
+	\]
+
+	\item When $a = b$ and $r = s$, the two determinants are the same, and thus
+	\[
+		\langle \Psi^r_a | \mathscr{O}_1 | \Psi^s_b \rangle = \langle \Psi^r_a | \mathscr{O}_1 | \Psi^r_a \rangle = \langle \cdots \chi_{a \rightarrow r} \cdots | \mathscr{O}_1 | \cdots \chi_{a \rightarrow r}  \cdots \rangle = \sum_{c\neq a} \langle c | h | c \rangle + \langle r | h | r \rangle .
+	\]
+	In other words,
+	\[
+		\langle \Psi^r_a | \mathscr{O}_1 | \Psi^s_b \rangle = \sum_{c} \langle c | h | c \rangle - \langle a | h | a \rangle + \langle r | h | r \rangle.
+	\]
+
+	\end{itemize}
+	
+	In conclusion, we get that
+	\begin{sequation}
+		\langle \Psi^r_a| \mathscr{O}_1 | \Psi^s_b \rangle =
+		\begin{dcases}
+			0, & \text{if } a \neq b , \, r \neq s ; \\ 
+			\langle r | h | s \rangle, & \text{if } a = b , \, r \neq s ; \\ 
+			-\langle b | h | a \rangle, & \text{if } a \neq b , \, r = s ; \\
+		\sum_c^N \langle c | h | c \rangle - \langle a | h | a \rangle 	+ \langle r | h | r \rangle & \text{if } a = b , \, r = s. 
+		\end{dcases}	
+	\end{sequation}
+	
+	\end{solution}
+	
+	% 2.14
+	\begin{exercise}
+	The Hartree-Fock ground state energy for an $N$-electron system is $^N E_0 = \langle ^N \Psi_0 | \mathscr{H} | ^N \Psi_0 \rangle$. Consider a state of the ionized system (in which an electron has been removed from spin orbital $\chi_a$) with energy $^{N-1} E_a = \langle ^{N-1} \Psi_a | \mathscr{H} | ^{N-1} \Psi_a \rangle$, where $| ^{N-1} \Psi_a \rangle$ is a single determinant with all spin orbitals but $\chi_a$ occupied,
+	\[
+		| ^{N-1} \Psi_a \rangle = | \chi_1 \chi_2 \cdots \chi_{a-1} \chi_{a+1} \cdots \chi_N \rangle.
+	\]
+	Show, using the rules in the tables, that the energy required for this ionization process is
+	\[
+		^N E_0 - ^{N-1} E_a = \langle a | h | a \rangle + \sum_b^N \langle ab || ab \rangle.
+	\]
+	%To show the power and simplicity of the mnemonic device introduced in this subsection, let us derive the above result without doing any algebra. Consider the representation of $|^N \Psi_0 \rangle$ in Fig. 2.4. If we remove an electron from $\chi_a$, we lose the ``one-electron energy" contribution $\langle a | h | a \rangle$ to $^N E_0$. Moreover, we lose the pair-wise contributions arising from the ``interaction" of the electron in $\chi_a$ with the remaining electrons $\displaystyle \left( \text{i.e.,} \sum_{b \neq a}^N \langle ab || ab \rangle \right)$. Because $\langle aa || aa \rangle = 0$, the above result follows immediately.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The verification is direct.
+	\begin{align*}
+		^N E_0 - ^{N-1} E_0 &= \left[ \sum^N_b \langle b | h | b \rangle + \frac{1}{2} \sum^N_c \sum^N_d \langle cd || cd \rangle \right] - \left[ \sum^N_{b \neq a}  \langle b | h | b \rangle + \frac{1}{2} \sum^N_{c \neq a} \sum^N_{d \neq a} \langle cd ||cd \rangle \right] \\
+		&= \left[ \sum^N_b \langle b | h | b \rangle - \sum^N_{b \neq a} \langle b | h | b \rangle \right] + \frac{1}{2} \left[  \sum^N_c \sum^N_d \langle cd || cd \rangle - \sum^N_{c \neq a} \sum^N_{d \neq a} \langle cd ||cd \rangle \right] \\
+		&= \langle a | h | a \rangle + \frac{1}{2} \left[ \sum^N_d \langle ad || ad \rangle + \sum^N_c \langle ca || ca \rangle - \langle aa || aa \rangle \right] \\
+		&= \langle a | h | a \rangle + \frac{1}{2} \left[ \sum^N_b \langle ab || ab \rangle + \sum^N_b \langle ab || ab \rangle \right] = \langle a | h | a \rangle + \sum^N_b \langle ab ||ab \rangle.
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{Derivation of the Rules for Matrix Elements}
+	
+	% 2.15
+	\begin{exercise}
+	Generalize the result of Exercise 2.4 to $N$-electron Slater determinants. Show that the Slater determinant $| \chi_i \chi_j \cdots \chi_k \rangle$ formed from spin orbitals, which are eigenfunctions of the one-electron operator $h$ as in Eq.(2.29), is an eigenfunction of the independent-electron Hamiltonian (2.28), $\mathscr{H} = \sum_{i=1}^N h(i)$, with an eigenvalue $\varepsilon_i + \varepsilon_j + \cdots + \varepsilon_k$. {\it Hint}: Since $\mathscr{H}$ is invariant to permutations of the electron labels, it commutes with the permutation operator $\mathscr{P}_n$.
+	\end{exercise}
+	
+	\begin{solution}
+		2-15 so
+	\end{solution}
 
 \end{document}
