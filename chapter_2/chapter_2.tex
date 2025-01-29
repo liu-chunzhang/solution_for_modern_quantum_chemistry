@@ -562,7 +562,64 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-15 so
+	
+	Note that a Slater determinant is a linear combination of $N!$ Hartree product. With the conclusion of Exercise 2.2 and the truth that $\mathscr{H}$ commutes with the permutation operator $\mathscr{P}_n$, we find that
+	\begin{align*}
+		\mathscr{H} \Psi^\HP &= \mathscr{H} \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \mathscr{H} \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) \\
+		&= \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \sum_{ i=1 }^N \varepsilon_i \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \sum_{ i=1 }^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{ n }^{ N!} (-1)^{p_n} \mathscr{P}_n \prod_{ j=1 }^N \chi_{j^\prime}( \bfx_j ) = \sum_{ i=1 }^N \varepsilon_i \Psi^\HP .
+	\end{align*}
+	
 	\end{solution}
+	
+	% 2.16
+	
+	
+	
+	
+%	由练习2.15. $ \mathscr{H}|\chi_i\chi_j \cdots \chi_k \rangle = \Big( \sum_{i=1}^N \varepsilon_i \Big) | \chi_i \chi_j \cdots \chi_k \rangle $, 
+%		
+%		由练习2.2. $ \mathscr{H} |K^{HP}\rangle = \Big( \sum_{i=1}^N \varepsilon_i \Big) |K^{HP}\rangle $.
+%		\[
+%		\begin{aligned}
+%			\therefore \langle K | \mathscr{H} | L \rangle =& \sum_{i=1}^N \varepsilon_i \langle K | L \rangle \\
+%			=& \sum_{i=1}^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)}\langle i_1i_2\cdots i_N | L \rangle \\
+%			=& \sum_{i=1}^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)} \delta_{i_1i_2\cdots i_N}^L.
+%		\end{aligned}
+%		\]
+%		
+%		若$|K^{HP}\rangle$与$|L\rangle$不相同, 即$\langle K^{HP} | L \rangle = 0$. 则由相同种类轨道构成的$|K\rangle$必然有$\langle K|L\rangle = 0$; 反之, 若$\langle K^{HP}|L\rangle = 1$或$\langle K^{HP}|L\rangle = -1$, 则$ \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)}\delta_{i_1i_2\cdots i_N}^L $中有且仅有一项为1, 其余为0，从而
+%		\[
+%			\lrs{K}{\mathscr{H}}{L} = \frac{1}{\sqrt{N!}} \sum_{i=1}^N \varepsilon_i \langle K_{i}^{HP} | L \rangle = \frac{1}{\sqrt{N!}} \langle K^{HP} | L \rangle.
+%		\]
+%		
+%		证明单电子积分的运算规则的可参考个人读后感2.3.4节，有详细同思路证明。
+	
+%	% 2.17
+%	\[
+%		\begin{aligned}
+%			&H(1,1) = \la 1|h|1 \ra + \la 2|h|2 \ra + \la 12|12 \ra + \la 12 | 21\ra \\
+%			&= [1|h|1] + [\bar 1|h|\bar 1] + [11|\bar1 \bar1] + [1\bar1 | \bar11] \\
+%			&= (1|h|1) + (1|h|1) + (11|11) = 2(1|h|1) + (11|11).
+%		\end{aligned}
+%		\]
+%		\[
+%			H(1,2) = \la12|34\ra - \la12|43\ra = [12|\bar1\bar2] - [1\bar2|\bar12] = (12|12).
+%		\]
+%		\[
+%			H(2,1) = \la34|12\ra - \la34|21\ra = [21|\bar2\bar1] - [2\bar1|\bar21] = (21|21).
+%		\]
+%		\[
+%		\begin{aligned}
+%			&H(2,2) = \la3|h|3\ra + \la4|h|4\ra + \la34|34\ra - \la34|43\ra \\
+%			&= [2|h|2] + [\bar2|h|\bar2] + [22|\bar2\bar2] - [2\bar2|\bar22] \\
+%			&= (2|h|2) + (2|h|2) + (22|22) = 2(2|h|2) + (22|22).
+%		\end{aligned}
+%		\]
+%
+%
+%	2.18
+%	类比于教材中将电子傀标在闭壳层结构下折半为电子对傀标，我也如此处理。此外，由于对闭壳层系统，同一能级上电子能量（不论其自旋）相同，即成立$\varepsilon_i = \varepsilon_{i'}$，从而求和范围折半后，和表达式的分母不变，从而在不改变结果的情况下，我将求和过程中出现的分母略去不写，以使过程简便，在最后结果中再加上它。那么，先分析求和范围变化，原求和裂为$2^4 = 16$组求和，而由求和表达式
+	
+	
 
 \end{document}
