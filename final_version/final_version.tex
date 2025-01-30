@@ -3280,24 +3280,8 @@
 	\end{exercise}
 	
 	\begin{solution}
-	The simplification of (6.72) is direct.	
-	\begin{align*}
-		E^{(2)}_0 &= \frac{1}{4} \sum_{abrs} \frac{ | \langle ab || rs \rangle |^2 }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{4} \sum_{abrs} \frac{ \langle ab || rs \rangle \langle rs || ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{4} \sum_{abrs} \frac{ ( \langle ab | rs \rangle - \langle ab | sr \rangle ) ( \langle rs | ab \rangle - \langle rs | ba \rangle )  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \\
-		&= \frac{1}{4} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | sr \rangle \langle rs | ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \frac{ \langle ab | sr \rangle \langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \\
-		&= \frac{1}{4} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle \langle sr | ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r } + \frac{ \langle ab | rs \rangle \langle sr | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r } \\
-		&= \frac{1}{4} \sum_{abrs} \frac{ 2 \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ 2 \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{2} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } .
-	\end{align*}
-	
-	Note that for a closed-shell system, only six terms in the numerators can be nonzero, viz.,
-	\begin{align*}
-		E^{(2)}_0 &= \frac{1}{2} \sum_{abrs} \left(  \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \right) \\
-		&= \frac{1}{2} \left( \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \sum^{N/2}_{\bar{a}b\bar{r}s} \frac{ \langle \bar{a}b | \bar{r}s \rangle \langle \bar{r}s | \bar{a}b \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_{\bar{r}} - \varepsilon_s } - \frac{ \langle \bar{a}b | \bar{r}s \rangle\langle \bar{r}s | b\bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_{\bar{r}} - \varepsilon_s } \right. \\
-		&\hspace{4em} \left. + \sum^{N/2}_{\bar{a}br\bar{s}} \frac{ \langle \bar{a}b | r\bar{s} \rangle \langle r\bar{s} | \bar{a}b \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_r - \varepsilon_{\bar{s}} } - \frac{ \langle \bar{a}b | r\bar{s} \rangle\langle r\bar{s} | b\bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_r - \varepsilon_{\bar{s}} } + \sum^{N/2}_{a\bar{b}\bar{r}s} \frac{ \langle a\bar{b} | \bar{r}s \rangle \langle \bar{r}s | a\bar{b} \rangle  }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_s } - \frac{ \langle a\bar{b} | \bar{r}s \rangle \langle \bar{r}s | \bar{b}a \rangle }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_s } \right. \\
-		&\hspace{4em} \left. + \sum^{N/2}_{a\bar{b}r\bar{s}} \frac{ \langle a\bar{b} | r\bar{s} \rangle \langle r\bar{s} | a\bar{b} \rangle  }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } - \frac{ \langle a\bar{b} | r\bar{s} \rangle \langle r\bar{s} | \bar{b}a \rangle }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \sum^{N/2}_{\bar{a} \bar{b} \bar{r} \bar{s}} \frac{ \langle \bar{a} \bar{b} | \bar{r} \bar{s} \rangle \langle \bar{r} \bar{s} | \bar{a} \bar{b} \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_{\bar{s}} } - \frac{ \langle \bar{a} \bar{b} | \bar{r} \bar{s} \rangle \langle \bar{r} \bar{s} | \bar{b} \bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_{\bar{s}} } \right) \\
-		&= \frac{1}{2} \left( \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - 0 + 0 - 0 \right. \\
-		&\hspace{4em} \left. + 0 - 0 + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - 0 + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle \langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \right) \\
-		&= 2 \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s }.
-	\end{align*}
+
+	The detailed simplification can be seen in Exercise 2.18.
 	
 	\end{solution}
 	
@@ -3316,9 +3300,7 @@
 		E_\corr &= \Delta - \left( \Delta^2 + K^2_{12} \right)^{\frac{1}{2}} = \Delta \left[ 1 - \left( 1 + \frac{ K^2_{12} }{ \Delta^2 } \right)^{\frac{1}{2}} \right] = \Delta \left[ 1 - \left( 1 + \frac{ K^2_{12} }{ 2\Delta^2 } - \frac{ K^4_{12} }{ 8\Delta^4 } + \cdots \right) \right] \\
 		&= - \frac{ K^2_{12} }{ 2\Delta } + \frac{ K^4_{12} }{ 8\Delta^3 } + \cdots \\
 		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 ) \left[ 1 + \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right] } + \frac{ K^4_{12} }{ 8 ( \varepsilon_2 - \varepsilon_1 )^3 \left[ 1 + \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right]^3 } + \cdots \\
-		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 )} \left[ 1 - \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } + \left( \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right)^2 + \cdots \right] \\
-		&\hspace{6em} + \frac{ K^4_{12} }{ 8 ( \varepsilon_2 - \varepsilon_1 )^3 } \left[ 1 - \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } + \cdots \right]^3 + \cdots \\
-		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 )} + \frac{ K^2_{12} ( J_{11} + J_{22} - 4 J_{12} + 2 K_{12} ) }{ 4( \varepsilon_2 - \varepsilon_1 )^2 } + o\left( \left( \frac{1}{ \varepsilon_2 - \varepsilon_1 } \right)^2 \right) \\
+		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 )} \left[ 1 - \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } + \left( \frac{ J_{11} + J_{22} - 4 J_{12} + 2 K_{12} }{ 2 ( \varepsilon_2 - \varepsilon_1 ) } \right)^2 + \cdots \right] + \cdots \\
 		&= - \frac{ K^2_{12} }{ 2( \varepsilon_2 - \varepsilon_1 )} + \frac{ K^2_{12} ( J_{11} + J_{22} - 4 J_{12} + 2 K_{12} ) }{ 4( \varepsilon_2 - \varepsilon_1 )^2 } + o\left( \left( \frac{1}{ \varepsilon_2 - \varepsilon_1 } \right)^2 \right) .
 	\end{align*}
 	Thus, we obtain (6.77) and (6.78) from (6.76).
@@ -3335,10 +3317,8 @@
 	\begin{solution}
 	From (6.68), we find that with the truth that all two-electron integrals involving orbitals from different units are zero and $\langle mm || mm \rangle = 0$,
 	\begin{align*}
-		E^{(1)}_0 &= - \frac{1}{2} \sum_{ i=1 }^{2N} \sum_{ j=1 }^{2N} \langle 1_i 1_j || 1_i 1_j \rangle \\
-			&= - \frac{1}{2} \left( \sum_{ i=1 }^N \sum_{ j=1 }^N \langle 1_i 1_j || 1_i 1_j \rangle + \sum_{ i=1 }^N \sum_{ j=1 }^N \langle 1_i \bar{1}_j || 1_i \bar{1}_j \rangle + \sum_{ i=1 }^N \sum_{ j=1 }^N \langle \bar{1}_i 1_j || \bar{1}_i 1_j \rangle + \sum_{ i=1 }^N \sum_{ j=1 }^N \langle \bar{1}_i \bar{1}_j || \bar{1}_i \bar{1}_j \rangle \right)	\\
-			&= - \frac{1}{2} \left( \sum_{ i=1 }^N \langle 1_i 1_i || 1_i 1_i \rangle + \sum_{ i=1 }^N \langle 1_i \bar{1}_i || 1_i \bar{1}_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i 1_i || \bar{1}_i 1_i \rangle + \sum_{ i=1 }^N \langle \bar{1}_i \bar{1}_i || \bar{1}_i \bar{1}_i \rangle \right)	\\
-			&= -\frac{1}{2} \left( 0 + \sum_{ i=1 }^N J_{11} + \sum_{ i=1 }^N J_{11} + 0 \right) = -\sum_{ i=1 }^N J_{11} = -N J_{11}.
+		E^{(1)}_0 &= - \frac{1}{2} \sum_{ i=1 }^{2N} \sum_{ j=1 }^{2N} \langle 1_i 1_j || 1_i 1_j \rangle = - \frac{1}{2} \sum_{ i=1 }^{2N} \langle 1_i 1_i || 1_i 1_i \rangle \\
+			&= - \frac{1}{2} \sum_{ i=1 }^N \langle 1_i 1_i || 1_i 1_i \rangle + \langle 1_i \bar{1}_i || 1_i \bar{1}_i \rangle + \langle \bar{1}_i 1_i || \bar{1}_i 1_i \rangle + \langle \bar{1}_i \bar{1}_i || \bar{1}_i \bar{1}_i \rangle = -\frac{1}{2} \sum_{ i=1 }^N 2J_{11} = -\sum_{ i=1 }^N J_{11} = -N J_{11}.
 	\end{align*}
 	
 	Besides, we obtain that
@@ -3360,9 +3340,8 @@
 	Show that the fourth-order diagram
 	
 	\begin{center}
-	\includegraphics[scale=1.0]{./pictures/6.11/exercise.png}
+	\includegraphics[scale=0.9]{./pictures/6.11/exercise.png}
 	\end{center}
-	
 	is equal to
 	\[
 		-\frac{1}{2} \sum_{abcderst} \frac{ \langle rs || ac \rangle \langle at || de \rangle \langle dc || tb \rangle \langle eb||rs \rangle }{ ( \varepsilon_a + \varepsilon_c - \varepsilon_r - \varepsilon_s ) ( \varepsilon_c + \varepsilon_d + \varepsilon_e - \varepsilon_r - \varepsilon_t - \varepsilon_s ) ( \varepsilon_b + \varepsilon_e - \varepsilon_r - \varepsilon_s ) }.
@@ -3402,19 +3381,19 @@
 	\end{solution}
 	
 	\subsection{Goldstone Diagrams}
-
+	
 	% 6.12
 	\begin{exercise}
 	We stated that the Goldstone diagrams in Table 6.2 can be obtained by ``pulling apart" the second- and third-order Hugenholtz diagrams. This is quite tricky to see but the converse is much easier. For example, if we push
 	
 	\begin{center}
-	\includegraphics[scale=1.0]{./pictures/6.12/exercise_1.png}
+	\includegraphics[scale=0.9]{./pictures/6.12/exercise_1.png}
 	\end{center}
 	
 	together, it is clear that we obtain
 	
 	\begin{center}
-	\includegraphics[scale=1.0]{./pictures/6.12/exercise_2.png}
+	\includegraphics[scale=0.9]{./pictures/6.12/exercise_2.png}
 	\end{center}
 	
 	Push all third-order diagrams in Table 6.2 together in a similar way and, thus, find which Goldstone diagram comes from which Hugenholtz diagram. For the above Hugenholtz diagram, verify that its mathematical value is indeed the sum of the values of the corresponding Goldstone diagrams.
