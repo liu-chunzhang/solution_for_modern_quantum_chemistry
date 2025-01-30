@@ -87,7 +87,6 @@
   {\titlerule\vspace{1ex}\filleft}
   [\vspace{1ex}\titlerule]
  
-
 \newcommand\Figref[1]{Fig \ref{#1}}
 \newcommand\Tableref[1]{Table \ref{#1}}
  
@@ -622,58 +621,90 @@
 	\]
 	
 	\end{itemize}
-
-	In conclusion, we have derived the matrix elements of a sum of one-electron operators using $\langle K | \mathscr{H} | L \rangle = (N!)^{1/2} \langle K^{\rm HP} | \mathscr{H} | L \rangle$.
 	
 	\end{solution}
 	
 	\subsection{Transition from Spin Orbitals to Spatial Orbitals}
 	
+	% 2.17
+	\begin{exercise}
+	By integrating out spin, show that the full CI matrix for minimal basis $\ce{H2}$ (see Exercise 2.9) is
+	\[
+		{\bf H} = \begin{pmatrix}
+			2(1|h|1) + (11|11) & (12|12) \\
+			(21|21) & 2(2|h|2) + (22|22)
+		\end{pmatrix}.
+	\]
+	\end{exercise}
 	
+	\begin{solution}
 	
-%	由练习2.15. $ \mathscr{H}|\chi_i\chi_j \cdots \chi_k \rangle = \Big( \sum_{i=1}^N \varepsilon_i \Big) | \chi_i \chi_j \cdots \chi_k \rangle $, 
-%		
-%		由练习2.2. $ \mathscr{H} |K^{HP}\rangle = \Big( \sum_{i=1}^N \varepsilon_i \Big) |K^{HP}\rangle $.
-%		\[
-%		\begin{aligned}
-%			\therefore \langle K | \mathscr{H} | L \rangle =& \sum_{i=1}^N \varepsilon_i \langle K | L \rangle \\
-%			=& \sum_{i=1}^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)}\langle i_1i_2\cdots i_N | L \rangle \\
-%			=& \sum_{i=1}^N \varepsilon_i \frac{1}{\sqrt{N!}} \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)} \delta_{i_1i_2\cdots i_N}^L.
-%		\end{aligned}
-%		\]
-%		
-%		若$|K^{HP}\rangle$与$|L\rangle$不相同, 即$\langle K^{HP} | L \rangle = 0$. 则由相同种类轨道构成的$|K\rangle$必然有$\langle K|L\rangle = 0$; 反之, 若$\langle K^{HP}|L\rangle = 1$或$\langle K^{HP}|L\rangle = -1$, 则$ \sum_{i_1i_2\cdots i_N} (-1)^{\tau(i_1i_2\cdots i_N)}\delta_{i_1i_2\cdots i_N}^L $中有且仅有一项为1, 其余为0，从而
-%		\[
-%			\lrs{K}{\mathscr{H}}{L} = \frac{1}{\sqrt{N!}} \sum_{i=1}^N \varepsilon_i \langle K_{i}^{HP} | L \rangle = \frac{1}{\sqrt{N!}} \langle K^{HP} | L \rangle.
-%		\]
-%		
-%		证明单电子积分的运算规则的可参考个人读后感2.3.4节，有详细同思路证明。
+	Note that the general reduction using physicists' notation is
+	\begin{sequation}
+		\langle ij | kl \rangle = \langle \bar{i} j | \bar{k} l \rangle = \langle i \bar{j} | k \bar{l} \rangle = \langle \bar{i} \bar{j} | \bar{k} \bar{l} \rangle = (ik|jl).
+	\end{sequation}
+	From the conclusion of Exercise 2.9, we find that
+	\begin{align*}
+		H_{11} &= \langle 1|h|1 \rangle + \langle \bar{1} | h | \bar{1} \rangle + \langle 1 \bar{1} | 1 \bar{1} \rangle - \langle 1 \bar{1} | \bar{1} 1 \rangle = (1|h|1) + (1|h|1) + (11|11) - 0 = 2(1|h|1) + (11|11). \\
+		H_{12} &= \langle 1\bar{1} | 2\bar{2} \rangle - \langle 1\bar{1} | \bar{2}2 \rangle = ( 12 | 12 ) - 0 = ( 12 | 12 ). \\
+		H_{21} &= \langle 2 \bar{2} | 1 \bar{1} \rangle - \langle 2 \bar{2} | \bar{1} 1 \rangle = ( 21 | 21 ) - 0 = ( 21 | 21 ) . \\
+		H_{22} &= \langle 2|h|2 \rangle + \langle \bar{2} | h | \bar{2} \rangle + \langle 2 \bar{2} | 2 \bar{2} \rangle - \langle 2 \bar{2} | \bar{2} 2 \rangle = (2|h|2) + (2|h|2) + (22|22) - 0 = 2(2|h|2) + (22|22) .
+	\end{align*}		
 	
-%	% 2.17
-%	\[
-%		\begin{aligned}
-%			&H(1,1) = \la 1|h|1 \ra + \la 2|h|2 \ra + \la 12|12 \ra + \la 12 | 21\ra \\
-%			&= [1|h|1] + [\bar 1|h|\bar 1] + [11|\bar1 \bar1] + [1\bar1 | \bar11] \\
-%			&= (1|h|1) + (1|h|1) + (11|11) = 2(1|h|1) + (11|11).
-%		\end{aligned}
-%		\]
-%		\[
-%			H(1,2) = \la12|34\ra - \la12|43\ra = [12|\bar1\bar2] - [1\bar2|\bar12] = (12|12).
-%		\]
-%		\[
-%			H(2,1) = \la34|12\ra - \la34|21\ra = [21|\bar2\bar1] - [2\bar1|\bar21] = (21|21).
-%		\]
-%		\[
-%		\begin{aligned}
-%			&H(2,2) = \la3|h|3\ra + \la4|h|4\ra + \la34|34\ra - \la34|43\ra \\
-%			&= [2|h|2] + [\bar2|h|\bar2] + [22|\bar2\bar2] - [2\bar2|\bar22] \\
-%			&= (2|h|2) + (2|h|2) + (22|22) = 2(2|h|2) + (22|22).
-%		\end{aligned}
-%		\]
-%
-%
-%	2.18
-%	类比于教材中将电子傀标在闭壳层结构下折半为电子对傀标，我也如此处理。此外，由于对闭壳层系统，同一能级上电子能量（不论其自旋）相同，即成立$\varepsilon_i = \varepsilon_{i'}$，从而求和范围折半后，和表达式的分母不变，从而在不改变结果的情况下，我将求和过程中出现的分母略去不写，以使过程简便，在最后结果中再加上它。那么，先分析求和范围变化，原求和裂为$2^4 = 16$组求和，而由求和表达式
+	\end{solution}
+	
+	% 2.18
+	\begin{exercise}
+	In Chapter 6, where we consider perturbation theory, we show that the leading correction to the Hartree-Fock ground state energy is
+	\[
+		E^{[2]}_0 = \frac{1}{4} \sum_{abrs} \frac{ | \langle ab|| rs \rangle |^2 }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s }.
+	\]
+	Show that for a closed-shell system (where $\varepsilon_i = \varepsilon_{\bar{i}}$) this becomes
+	\[
+		E^{[2]}_0 = \sum_{a,b=1}^{N/2} \sum_{r,s=(N/2+1)}^K \frac{ \langle ab|rs \rangle ( 2\langle rs | ab \rangle - \langle rs | ba \rangle ) }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s }.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The simplification is direct.	
+	\begin{align*}
+		E^{(2)}_0 &= \frac{1}{4} \sum_{abrs} \frac{ | \langle ab || rs \rangle |^2 }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{4} \sum_{abrs} \frac{ \langle ab || rs \rangle \langle rs || ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{4} \sum_{abrs} \frac{ ( \langle ab | rs \rangle - \langle ab | sr \rangle ) ( \langle rs | ab \rangle - \langle rs | ba \rangle )  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \\
+		&= \frac{1}{4} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | sr \rangle \langle rs | ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \frac{ \langle ab | sr \rangle \langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \\
+		&= \frac{1}{4} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle \langle sr | ab \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r } + \frac{ \langle ab | rs \rangle \langle sr | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_s - \varepsilon_r } \\
+		&= \frac{1}{4} \sum_{abrs} \frac{ 2 \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ 2 \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \frac{1}{2} \sum_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } .
+	\end{align*}
+	
+	Note that for a closed-shell system, only six terms in the numerators can be nonzero, viz.,
+	\begin{align*}
+		E^{(2)}_0 &= \frac{1}{2} \sum_{abrs} \left(  \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \right) \\
+		&= \frac{1}{2} \left( \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \sum^{N/2}_{\bar{a}b\bar{r}s} \frac{ \langle \bar{a}b | \bar{r}s \rangle \langle \bar{r}s | \bar{a}b \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_{\bar{r}} - \varepsilon_s } - \frac{ \langle \bar{a}b | \bar{r}s \rangle\langle \bar{r}s | b\bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_{\bar{r}} - \varepsilon_s } \right. \\
+		&\hspace{4em} \left. + \sum^{N/2}_{\bar{a}br\bar{s}} \frac{ \langle \bar{a}b | r\bar{s} \rangle \langle r\bar{s} | \bar{a}b \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_r - \varepsilon_{\bar{s}} } - \frac{ \langle \bar{a}b | r\bar{s} \rangle\langle r\bar{s} | b\bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_b - \varepsilon_r - \varepsilon_{\bar{s}} } + \sum^{N/2}_{a\bar{b}\bar{r}s} \frac{ \langle a\bar{b} | \bar{r}s \rangle \langle \bar{r}s | a\bar{b} \rangle  }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_s } - \frac{ \langle a\bar{b} | \bar{r}s \rangle \langle \bar{r}s | \bar{b}a \rangle }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_s } \right. \\
+		&\hspace{4em} \left. + \sum^{N/2}_{a\bar{b}r\bar{s}} \frac{ \langle a\bar{b} | r\bar{s} \rangle \langle r\bar{s} | a\bar{b} \rangle  }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } - \frac{ \langle a\bar{b} | r\bar{s} \rangle \langle r\bar{s} | \bar{b}a \rangle }{ \varepsilon_a + \varepsilon_{\bar{b}} - \varepsilon_r - \varepsilon_{\bar{s}} } + \sum^{N/2}_{\bar{a} \bar{b} \bar{r} \bar{s}} \frac{ \langle \bar{a} \bar{b} | \bar{r} \bar{s} \rangle \langle \bar{r} \bar{s} | \bar{a} \bar{b} \rangle  }{ \varepsilon_{\bar{a}} + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_{\bar{s}} } - \frac{ \langle \bar{a} \bar{b} | \bar{r} \bar{s} \rangle \langle \bar{r} \bar{s} | \bar{b} \bar{a} \rangle }{ \varepsilon_{\bar{a}} + \varepsilon_{\bar{b}} - \varepsilon_{\bar{r}} - \varepsilon_{\bar{s}} } \right) \\
+		&= \frac{1}{2} \left( \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle\langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - 0 + 0 - 0 \right. \\
+		&\hspace{4em} \left. + 0 - 0 + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - 0 + \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle \langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } \right) \\
+		&= 2 \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle \langle rs | ab \rangle  }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } - \frac{ \langle ab | rs \rangle \langle rs | ba \rangle }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s } = \sum^{N/2}_{abrs} \frac{ \langle ab | rs \rangle ( 2 \langle rs | ab \rangle - \langle rs | ba \rangle ) }{ \varepsilon_a + \varepsilon_b - \varepsilon_r - \varepsilon_s }.
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{Coulomb and Exchange Integrals}
+	
+	% 2.19	
+	\begin{exercise}
+	Prove the following properties of coulomb and exchange integrals
+	\begin{center}
+	\begin{tabular}{ccccc}
+		$J_{ii} = K_{ii}$, & $J^*_{ij} = J_{ij}$, &  $K^*_{ij} = K_{ij}$, & $J_{ij} = J_{ji}$, & $K_{ij} = K_{ji}$.
+	\end{tabular}
+	\end{center}
+	\end{exercise}
+	
+	\begin{solution}
+   
+	ghf   
+   
+	\end{solution}
 	
 	
 
