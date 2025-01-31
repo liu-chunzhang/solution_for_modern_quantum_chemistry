@@ -1326,7 +1326,272 @@
 	\end{exercise}
 	
 	\begin{solution}
-		2-38 so
+	
+%	Firstly, we verify (2.251). Similar to Exercise 2.32, we know that from 
+%	\[
+%		\mathscr{S}_+ = \mathscr{S}_x + i \mathscr{S}_y , \quad \mathscr{S}_- = \mathscr{S}_x - i \mathscr{S}_y ,
+%	\]
+%	we can obtain that
+%	\[
+%		\mathscr{S}_x = \frac{ \mathscr{S}_+ + \mathscr{S}_- }{2}, \quad \mathscr{S}_y = \frac{ \mathscr{S}_+ - \mathscr{S}_- }{2i} ,
+%	\]
+%	and
+%	\[
+%		[ \mathscr{S}_+ , \mathscr{S}_- ] = [ \mathscr{S}_x + i \mathscr{S}_y , \mathscr{S}_x - i \mathscr{S}_y ] = - 2i [ \mathscr{S}_x , \mathscr{S}_y ] .
+%	\]
+%	Here, note that if $j \neq i$, $[ s_x(i) , s_y(j) ]$ will vanish, and thus
+%	\[
+%		[ \mathscr{S}_x , \mathscr{S}_y ] = \left[ \sum_{ i=1 }^N s_x(i) , \sum_{ j=1 }^N s_y(j) \right] = \sum_{ i=1 }^N \sum_{ j=1 }^N [ s_x(i) , s_y(j) ] = \sum_{ i=1 }^N [ s_x(i) , s_y(i) ] =  \sum_{ i=1 }^N i s_z(i) = i \mathscr{S}_z .
+%	\]
+%	Using this conclusion, we find that
+%	\[
+%		[ \mathscr{S}_+ , \mathscr{S}_- ] = - 2i [ \mathscr{S}_x , \mathscr{S}_y ] = -2i \times i \mathscr{S}_z = 2 \mathscr{S}_z .
+%	\]
+	Firstly, we verify (2.251). Similar to Exercise 2.32, we find that
+	\begin{align*}
+		\mathscr{S}^2 &= \sum_{ i=1 }^N \sum_{ j=1 }^N \vec{s}(i) \cdot \vec{s}(j) = \sum_{ i=1 }^N \sum_{ j=1 }^N s_x(i) s_x(j) +  s_y(i) s_y(j) + s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \left( \frac{ s_+(i) + s_-(i) }{2} \right) \left( \frac{ s_+(j) + s_-(j) }{2} \right) + \left( \frac{ s_+(i) - s_-(i) }{2i} \right) \left( \frac{ s_+(j) - s_-(j) }{2i} \right) + s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \frac{1}{4} \left[ s_+(i) s_+(j) + s_+(i) s_-(j) + s_-(i) s_+(j) + s_-(i) s_-(j) \right] \\
+		&\hspace{6em} - \frac{1}{4} \left[ s_+(i) s_+(j) - s_+(i) s_-(j) - s_-(i) s_+(j) + s_-(i) s_-(j) \right] + s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N \frac{1}{2} \left[ s_+(i) s_-(j) + s_-(i) s_+(j) \right] + s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N s_+(i) s_-(j) + \frac{1}{2} \left[ s_-(i) s_+(j) - s_+(i) s_-(j) \right] + s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N \sum_{ j=1 }^N s_-(i) s_+(j) + \frac{1}{2} \left[ s_+(i) s_-(j) - s_-(i) s_+(j) \right] + s_z(i) s_z(j) .
+	\end{align*}
+	
+	The first result can be further simplified to
+	\begin{align*}
+		&\hspace{1.4em}\sum_{ i=1 }^N \sum_{ j=1 }^N s_+(i) s_-(j) + \frac{1}{2} \left[ s_-(i) s_+(j) - s_+(i) s_-(j) \right] + s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_+(i) \sum_{ j=1 }^N s_-(j) + \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_-(i) s_+(j) - \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_+(i) s_-(j) + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_+(i) \sum_{ j=1 }^N s_-(j) + \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N [ s_-(i) , s_+(j) ] + s_+(j) s_-(i) - \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_+(j) s_-(i) + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_+(i) \sum_{ j=1 }^N s_-(j) + \frac{1}{2} \sum_{ i=1 }^N [ s_-(i) , s_+(i) ] + \frac{1}{2} \sum_{ i=1 }^N \sum_{ \substack{ j=1 \\ j \neq i } }^N [ s_-(i) , s_+(j) ] \\
+		&\hspace{6em} + \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_+(j) s_-(i) - \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_+(j) s_-(i) + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_+(i) \sum_{ j=1 }^N s_-(j) + \frac{1}{2} \sum_{ i=1 }^N -2s_z(i) + 0 + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_+(i) \sum_{ j=1 }^N s_-(j) - \sum_{ i=1 }^N s_z(i) + \sum_{ i=1 }^N s_z(i) \sum_{ j=1 }^N s_z(j) \\
+		&= \mathscr{S}_+ \mathscr{S}_- - \mathscr{S}_z + \mathscr{S}_z^2 .
+	\end{align*}
+	Thus,
+	\begin{sequation}
+		\mathscr{S}^2 = \mathscr{S}_+ \mathscr{S}_- - \mathscr{S}_z + \mathscr{S}_z^2 .
+	\end{sequation}
+	
+	The second result can be further simplified to
+	\begin{align*}
+		&\hspace{1.4em}\sum_{ i=1 }^N \sum_{ j=1 }^N s_-(i) s_+(j) + \frac{1}{2} \left[ s_+(i) s_-(j) - s_-(i) s_+(j) \right] + s_z(i) s_z(j)  \\
+		&= \sum_{ i=1 }^N s_-(i) \sum_{ j=1 }^N s_+(j) + \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_+(i) s_-(j) - \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_-(i) s_+(j) + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_-(i) \sum_{ j=1 }^N s_+(j) + \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N [ s_+(i) , s_-(j) ] + s_-(j) s_+(i) - \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_-(j) s_+(i) + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_-(i) \sum_{ j=1 }^N s_+(j) + \frac{1}{2} \sum_{ i=1 }^N [ s_+(i) , s_-(i) ] + \frac{1}{2} \sum_{ i=1 }^N \sum_{ \substack{ j=1 \\ j \neq i } }^N [ s_+(i) , s_-(j) ] \\
+		&\hspace{6em} + \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_-(j) s_+(i) - \frac{1}{2} \sum_{ i=1 }^N \sum_{ j=1 }^N s_-(j) s_+(i) + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_-(i) \sum_{ j=1 }^N s_+(j) + \frac{1}{2} \sum_{ i=1 }^N 2s_z(i) + 0 + \sum_{ i=1 }^N \sum_{ j=1 }^N s_z(i) s_z(j) \\
+		&= \sum_{ i=1 }^N s_-(i) \sum_{ j=1 }^N s_+(j) + \sum_{ i=1 }^N s_z(i) + \sum_{ i=1 }^N s_z(i) \sum_{ j=1 }^N s_z(j) \\
+		&= \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}_z^2 .
+	\end{align*}
+	Thus,
+	\begin{sequation}
+		\mathscr{S}^2 = \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}_z^2 .
+	\end{sequation}
+	
+	Secondly, we find that with $N=2n$,
+	\begin{align*}
+		\mathscr{S}_+ | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle &= \sum_{ i=1 }^{ 2n } s_+(i) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle \\
+		&= \sum_{ i=1 }^{ n } s_+(2i-1) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle + \sum_{ i=1 }^{ n } s_+(2i) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle .
+	\end{align*}
+	Note that
+	\begin{align*}
+		&\hspace{1.4em}s_+(2i-1) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle \\
+		&= s_+(2i-1) \frac{1}{ \sqrt{N!} } \sum_{ k } (-1)^k \mathscr{P}_k \psi_1(1) \bar{\psi}_1(2) \cdots \psi_j( 2i-1 ) \bar{\psi}_{j}( 2i ) \cdots \psi_l( 2n - 1 ) \bar{\psi}_l (2n) \\
+		&= \frac{1}{ \sqrt{N!} } \sum_{ k } (-1)^k \mathscr{P}_k \psi_1(1) \bar{\psi}_1(2) \cdots \left[ s_+(2i-1) \psi_j( 2i-1 ) \right] \bar{\psi}_{j}( 2i ) \cdots \psi_l( 2n - 1 ) \bar{\psi}_l (2n) \\
+		&= \frac{1}{ \sqrt{N!} } \sum_{ k } (-1)^k \mathscr{P}_k \psi_1(1) \bar{\psi}_1(2) \cdots 0 \bar{\psi}_{j}( 2i ) \cdots \psi_l( 2n - 1 ) \bar{\psi}_l (2n) = 0, \\
+		&\hspace{1.4em}s_+(2i) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle \\
+		&= s_+(2i) \frac{1}{ \sqrt{N!} } \sum_{ k } (-1)^k \mathscr{P}_k \psi_1(1) \bar{\psi}_1(2) \cdots \psi_j( 2i-1 ) \bar{\psi}_{j}( 2i ) \cdots \psi_l( 2n - 1 ) \bar{\psi}_l (2n) \\
+		&= \frac{1}{ \sqrt{N!} } \sum_{ k } (-1)^k \mathscr{P}_k \psi_1(1) \bar{\psi}_1(2) \cdots \psi_j( 2i-1 ) \left[ s_+(2i) \bar{\psi}_{j}( 2i ) \right] \cdots \psi_l( 2n - 1 ) \bar{\psi}_l (2n) \\
+		&= \frac{1}{ \sqrt{N!} } \sum_{ k } (-1)^k \mathscr{P}_k \psi_1(1) \bar{\psi}_1(2) \cdots \psi_j( 2i-1 ) \psi_{j}( 2i ) \cdots \psi_l( 2n - 1 ) \bar{\psi}_l (2n) \\
+		&= | \psi_1 \bar{\psi}_1 \cdots \psi_j \psi_j \psi_n \bar{\psi}_n \rangle = 0 .
+	\end{align*}		
+	
+	Thus,
+	\[
+		\mathscr{S}_+ | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle = \sum_{ i=1 }^{ n } s_+(2i-1) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle + \sum_{ i=1 }^{ n } s_+(2i) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle = 0 + 0 = 0 ,
+	\]	
+	and	using (2.254),
+	\begin{align*}
+		\mathscr{S}^2 | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle &= ( \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}_z^2 ) | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle \\
+		&= \mathscr{S}_- \mathscr{S}_+ | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle + \mathscr{S}_z | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle + \mathscr{S}_z \mathscr{S}_z | \psi_1 \bar{\psi}_1 \cdots \psi_n \bar{\psi}_n \rangle =  0 .
+	\end{align*}
+	
+	In conclusion, (2.256) has been proved.
+	
+	\end{solution}
+	
+	% 2.39
+	\begin{exercise}
+	Using $\mathscr{S}^2 = \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}^2_z$, show that $|{}^1 \Psi^2_1 \rangle$ is a singlet while $|{}^3 \Psi^2_1 \rangle$, $| \Psi^{\bar 2}_1 \rangle$ and $| \Psi^2_{\bar{1}} \rangle$ are triplets.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Note that spin operators like $\mathscr{S}^2$ only inspect the spin properties. Note that
+	\begin{align*}
+		\mathscr{S}_z \alpha(1) \alpha(2) &= ( s_z(1) + s_z(2) )\alpha(1) \alpha(2) = s_z(1) \alpha(1) \alpha(2) + s_z(2) \alpha(1) \alpha(2) \\
+		&= s_z(1) \alpha(1) \alpha(2) + \alpha(1) s_z(2) \alpha(2) = \frac{1}{2}\alpha(1) \alpha(2) + \alpha(1) \frac{1}{2} \alpha(2) = \alpha(1) \alpha(2) , \\
+		\mathscr{S}_+ \alpha(1) \alpha(2) &= ( s_+(1) + s_+(2) )\alpha(1) \alpha(2) = s_+(1) \alpha(1) \alpha(2) + s_+(2) \alpha(1) \alpha(2) \\
+		&= s_+(1) \alpha(1) \alpha(2) + \alpha(1) s_+(2) \alpha(2) = 0 \alpha(2) + \alpha(1) 0 = 0 , \\
+		\mathscr{S}^2 \alpha(1) \alpha(2) &= ( \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}_z^2 ) \alpha(1) \alpha(2) \\
+		&= \mathscr{S}_- \mathscr{S}_+ \alpha(1) \alpha(2) + \mathscr{S}_z \alpha(1) \alpha(2) + \mathscr{S}_z^2 \alpha(1) \alpha(2) \\
+		&= 0 + \alpha(1) \alpha(2) + \mathscr{S}_z \alpha(1) \alpha(2) = \alpha(1) \alpha(2) + \alpha(1) \alpha(2) = 2 \alpha(1) \alpha(2) = 1(1+1) \alpha(1) \alpha(2) .
+	\end{align*}
+	Thus, we conclude that $| \Psi^2_{\bar{1}} \rangle$ is a triplet.
+	In the same way, note that
+	\begin{align*}
+		\mathscr{S}_z \beta(1) \beta(2) &= - \beta(1) \beta(2) , \\
+		\mathscr{S}_- \beta(1) \beta(2) &= 0 , \\
+		\mathscr{S}^2 \beta(1) \beta(2) &= ( \mathscr{S}_+ \mathscr{S}_- - \mathscr{S}_z + \mathscr{S}_z^2 ) \beta(1) \beta(2) = 2 \beta(1) \beta(2) = 1(1+1) \beta(1) \beta(2) .
+	\end{align*}
+	Hence, $| \Psi^{\bar 2}_1 \rangle$ is also a triplet.
+	
+	And similarly, our calculation is listed below.
+	\begin{align*}
+		\mathscr{S}_z ( \alpha(1) \beta(2) - \beta(1) \alpha(2) ) &= 0 , \\
+		\mathscr{S}_- ( \alpha(1) \beta(2) - \beta(1) \alpha(2) ) &= \beta(1) \beta(2) - \beta(1) \beta(2) = 0 , \\
+		\mathscr{S}^2 ( \alpha(1) \beta(2) - \beta(1) \alpha(2) ) &= 0 = 0(0+1) ( \alpha(1) \beta(2) - \beta(1) \alpha(2) ), \\
+		\mathscr{S}_z ( \alpha(1) \beta(2) + \beta(1) \alpha(2) ) &= 0 , \\
+		\mathscr{S}_- ( \alpha(1) \beta(2) + \beta(1) \alpha(2) ) &= \beta(1) \beta(2) + \beta(1) \beta(2) = 2 \beta(1) \beta(2) , \\
+		\mathscr{S}_+ \beta(1) \beta(2) &= \alpha(1) \beta(2) + \beta(1) \alpha(2) , \\
+		\mathscr{S}^2 ( \alpha(1) \beta(2) + \beta(1) \alpha(2) ) &= 2 \mathscr{S}_+ \beta(1) \beta(2) = 1(1+1)(\alpha(1) \beta(2) + \beta(1) \alpha(2) ) .
+	\end{align*}
+	Therefore, we conclude that $|{}^3 \Psi^2_1 \rangle$ is a triplet while $|{}^1 \Psi^2_1 \rangle$ is a singlet.
+	
+	\end{solution}
+	
+	% 2.40
+	\begin{exercise}
+	Show that
+	\begin{align*}
+		\langle {}^1 \Psi^2_1 | \mathscr{H} | {}^1 \Psi^2_1 \rangle &= h_{11} + h_{22} + J_{12} + K_{12} , \\
+		\langle {}^3 \Psi^2_1 | \mathscr{H} | {}^3 \Psi^2_1 \rangle &= h_{11} + h_{22} + J_{12} - K_{12} .
+	\end{align*}
+	Note that the energy of the triplet is lower than the energy of the singlet. Why is this to be expected from the space parts of the two wave functions?
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The energy of the singlet and triplet can be calculated directly.
+	\begin{align*}
+		\langle {}^1 \Psi^2_1 | \mathscr{H} | {}^1 \Psi^2_1 \rangle &= \left( \frac{1}{ \sqrt{2} } \langle 1 \bar{2} | + \frac{1}{ \sqrt{2} } \langle 2 \bar{1} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | 1 \bar{2} \rangle + \frac{1}{ \sqrt{2} } | 2 \bar{1} \rangle \right) \\
+		&= \frac{1}{2} \left( \langle 1 \bar{2} | \mathscr{H} | 1 \bar{2} \rangle + \langle 1 \bar{2} | \mathscr{H} | 2 \bar{1} \rangle + \langle 2 \bar{1} | \mathscr{H} | 1 \bar{2} \rangle + \langle 2 \bar{1} | \mathscr{H} | 2 \bar{1} \rangle \right) \\
+		&= \frac{1}{2} \left( h_{11} + h_{22} + J_{12} + K_{12} + K_{12} + h_{11} + h_{22} + J_{12} \right) \\
+		&= h_{11} + h_{22} + J_{12} + K_{12} , \\
+		\langle {}^3 \Psi^2_1 | \mathscr{H} | {}^3 \Psi^2_1 \rangle &= \left( \frac{1}{ \sqrt{2} } \langle 1 \bar{2} | - \frac{1}{ \sqrt{2} } \langle 2 \bar{1} | \right) \mathscr{H} \left( \frac{1}{ \sqrt{2} } | 1 \bar{2} \rangle - \frac{1}{ \sqrt{2} } | 2 \bar{1} \rangle \right) \\
+		&= \frac{1}{2} \left( \langle 1 \bar{2} | \mathscr{H} | 1 \bar{2} \rangle - \langle 1 \bar{2} | \mathscr{H} | 2 \bar{1} \rangle - \langle 2 \bar{1} | \mathscr{H} | 1 \bar{2} \rangle + \langle 2 \bar{1} | \mathscr{H} | 2 \bar{1} \rangle \right) \\
+		&= \frac{1}{2} \left( h_{11} + h_{22} + J_{12} - K_{12} - K_{12} + h_{11} + h_{22} + J_{12} \right) \\
+		&= h_{11} + h_{22} + J_{12} - K_{12} .
+	\end{align*}
+	In fact, we can find that
+	\[
+		\langle {}^1 \Psi^2_1 | \mathscr{H} | {}^1 \Psi^2_1 \rangle - \langle {}^3 \Psi^2_1 | \mathscr{H} | {}^3 \Psi^2_1 \rangle = 2 K_{12} > 0 .
+	\]
+	The energy difference between the singlet and the triplet results is a two-electron term. The only two-electron term in the Hamiltonian $\mathscr{H}$ is the Coulomb interaction. From the expression of the singlet and the triplet, we find that in the triplet, two electrons are more concentrated while two electrons are diffused. It is evident that the former has a lower electrostatic potential. Thus, from the perspective of classical physics, the triplet state should have lower energy.
+	
+	\end{solution}
+	
+	\subsection{Unrestricted Determinants}
+	
+	% 2.41
+	\begin{exercise}
+	Consider the determinant $| K \rangle = |\psi_1^\alpha \bar{\psi}^\beta_1 \rangle$ formed from {\it nonorthogonal} spatial orbitals, $\langle \psi^\alpha_1 | \psi^\beta_1 \rangle = S^{\alpha\beta}_{11}$. 
+	\begin{enumerate}
+	
+	\item[a.] Show that $| K \rangle$ is an eigenfunction of $\mathscr{S}^2$ only if $\psi^\alpha_1 = \psi^\beta_1$.
+	
+	\item[b.] Show that $\langle K | \mathscr{S}^2 | K \rangle$ = 1 - $|S^{\alpha\beta}_{11}|^2$ in agreement with Eq.(2.271).	
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] For any $| K \rangle = |\psi_1^\alpha \bar{\psi}^\beta_1 \rangle$, $\mathscr{S}_z | K \rangle = 0$. Thus, $| K \rangle$ is an eigenfunction of $\mathscr{S}^2$ if and only if it is also an eigenfunction of $\mathscr{S}_- \mathscr{S}_+$. However, we can find that	
+	\begin{align*}
+		\mathscr{S}_- \mathscr{S}_+ | K \rangle &= \mathscr{S}_- ( s_+(1) + s_+(2) ) \frac{1}{ \sqrt{2} } \left( \psi^\alpha_1(1) \alpha(1) \psi^\beta_1(2) \beta(2) - \psi^\beta_1(1) \beta(1) \psi^\alpha_1(2) \alpha(2) \right) \\
+		&= \frac{1}{ \sqrt{2} } \mathscr{S}_- \left( \psi^\alpha_1(1) \alpha(1) \psi^\beta_1(2) \alpha(2) - \psi^\beta_1(1) \alpha(1) \psi^\alpha_1(2) \alpha(2) \right) \\
+		&= \frac{1}{ \sqrt{2} } ( s_-(1) + s_-(2) ) \left( \psi^\alpha_1(1) \alpha(1) \psi^\beta_1(2) \alpha(2) - \psi^\beta_1(1) \alpha(1) \psi^\alpha_1(2) \alpha(2) \right) \\
+		&= \frac{1}{ \sqrt{2} } \left( \psi^\alpha_1(1) \beta(1) \psi^\beta_1(2) \alpha(2) + \psi^\alpha_1(1) \alpha(1) \psi^\beta_1(2) \beta(2) \right. \\
+		&\hspace{6em} \left. - \psi^\beta_1(1) \beta(1) \psi^\alpha_1(2) \alpha(2) - \psi^\beta_1(1) \alpha(1) \psi^\alpha_1(2) \beta(2) \right) \\
+		&= | \psi_1^\alpha \bar{\psi}^\beta_1 \rangle + |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle = | K \rangle + |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle.
+	\end{align*}
+	Thus, $|\bar{\psi}_1^\alpha \psi^\beta_1 \rangle$ is also an eigenfunction of $\mathscr{S}^2$, belonging to the same eigenvalue as $| K \rangle$. Here, we apply the contrapositive of a lemma that if an operator $\mathscr{A}$ has two eigenvector $a_1$ and $a_2$ which belong to different eigenvalues, for any real numbers $\lambda_1$ and $\lambda_2$, $\lambda_1 a_1 + \lambda_2 a_2$ cannot be a eigenvector of $\mathscr{A}$.
+	
+	It is evident that $|\bar{\psi}_1^\alpha \psi^\beta_1 \rangle$ should be either a triplet or a singlet. Note that
+	\[
+		\mathscr{S}_z | \bar{\psi}_1^\alpha \psi^\beta_1 \rangle = 0 , \quad \mathscr{S}_z | K \rangle = 0.
+	\]
+	\begin{itemize}
+	
+	\item If it is a triplet ($S=1$), $|K \rangle$ will be a triplet, too. 
+	However, we find that
+	\begin{align*}
+		2 | K \rangle &= 1(1+1) | K \rangle = \mathscr{S}^2 | K \rangle = ( \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}_z^2 ) | K \rangle \\
+		&= \mathscr{S}_- \mathscr{S}_+ | K \rangle + \mathscr{S}_z | K \rangle + \mathscr{S}_z^2 | K \rangle = \mathscr{S}_- \mathscr{S}_+ | K \rangle + 0 + 0 \\
+		&= | K \rangle + |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle,
+	\end{align*}
+	which requires
+	\[
+		| K \rangle \equiv |\psi_1^\alpha \bar{\psi}^\beta_1 \rangle = | \bar{\psi}_1^\alpha \psi^\beta_1 \rangle = - | \psi^\beta_1 \bar{\psi}_1^\alpha \rangle.
+	\]
+	Nevertheless, it is evident that this is forbidden.
+	
+	\item If it is a singlet ($S=0$), $|K \rangle$ will be a singlet, too. We can find that
+	\begin{align*}
+		0 | K \rangle &= 0(0+1) | K \rangle = \mathscr{S}^2 | K \rangle = ( \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}_z^2 ) | K \rangle \\
+		&= \mathscr{S}_- \mathscr{S}_+ | K \rangle + \mathscr{S}_z | K \rangle + \mathscr{S}_z^2 | K \rangle = \mathscr{S}_- \mathscr{S}_+ | K \rangle \\
+		&= | K \rangle + |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle,
+	\end{align*}
+	which requires
+	\[
+		| K \rangle \equiv |\psi_1^\alpha \bar{\psi}^\beta_1 \rangle = - |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle = |\psi^\beta_1 \bar{\psi}_1^\alpha \rangle \Leftrightarrow \psi^\alpha_1 = \psi^\beta_1 .
+	\]
+	
+	\end{itemize}		
+	
+	Thus, we conclude that $| K \rangle$ is an eigenfunction of $\mathscr{S}^2$ if and only if $\psi^\alpha_1 = \psi^\beta_1$.
+	
+	\item[b.] Now we know that
+	\[
+		\mathscr{S}_- \mathscr{S}_+ | K \rangle = | K \rangle + |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle.
+	\]
+	Thus,
+	\begin{align*}
+		\langle K | \mathscr{S}^2 | K \rangle = \langle K | \mathscr{S}_- \mathscr{S}_+ + \mathscr{S}_z + \mathscr{S}^2_z | K \rangle = \langle K | \mathscr{S}_- \mathscr{S}_+ | K \rangle = \langle K ( | K \rangle + |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle ) = 1 + \langle K |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle .
+	\end{align*}
+	While
+	\begin{align*}
+		& \hspace{1.4em} \langle K |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle \\
+		&= \int \dif \bfr_1 \int \dif \bfr_2 \int \dif \omega_1 \int \dif \omega_2 \frac{1}{ \sqrt{2} } \left( \psi^\alpha_1(1) \alpha(1) \psi^\beta_1(2) \beta(2) - \psi^\beta_1(1) \beta(1) \psi^\alpha_1(2) \alpha(2) \right)^* \\
+		&\hspace{6em} \frac{1}{ \sqrt{2} } \left( \psi^\alpha_1(1) \beta(1) \psi^\beta_1(2) \alpha(2) - \psi^\beta_1(1) \alpha(1) \psi^\alpha_1(2) \beta(2) \right) \\
+		&= \frac{1}{2} \left[ \int \dif \bfr_1 \psi^{\alpha*}_1(1) \psi^\alpha_1(1) \int \dif \bfr_2 \psi^{\beta*}_1(2) \psi^\beta_1(2) \int \dif \omega_1 \alpha^*(1) \beta(1) \int \dif \omega_2 \beta^*(2) \alpha(2) \right. \\
+		&\hspace{4em} - \left. \int \dif \bfr_1 \psi^{\alpha*}_1(1) \psi^\beta_1(1) \int \dif \bfr_2 \psi^{\beta*}_1(2) \psi^\alpha_1(2) \int \dif \omega_1 \alpha^*(1) \alpha(1) \int \dif \omega_2 \beta^*(2) \beta(2) \right. \\
+		&\hspace{4em} - \left. \int \dif \bfr_1 \psi^{\beta*}_1(1) \psi^\alpha_1(1) \int \dif \bfr_2 \psi^{\alpha*}_1(2) \psi^\beta_1(2) \int \dif \omega_1 \beta^*(1) \beta(1) \int \dif \omega_2 \alpha^*(2) \alpha(2) \right. \\
+		&\hspace{4em} + \left. \int \dif \bfr_1 \psi^{\beta*}_1(1) \psi^\beta_1(1) \int \dif \bfr_2 \psi^{\alpha*}_1(2)\psi^\alpha_1(2) \int \dif \omega_1 \beta^*(1) \alpha(1) \int \dif \omega_2 \alpha^*(2) \beta(2) \right] \\
+		&= \frac{1}{2} \left( 0 - | S^{\alpha\beta}_{11} |^2 - |  S^{\alpha\beta}_{11} |^2 + 0 \right) = - | S^{\alpha\beta}_{11} |^2 .
+	\end{align*}
+	Therefore, we arrive at
+	\begin{sequation}
+		\langle K | \mathscr{S}^2 | K \rangle = 1 + \langle K |\bar{\psi}_1^\alpha \psi^\beta_1 \rangle = 1 - | S^{\alpha\beta}_{11} |^2 .
+	\end{sequation}
+	
+	Moreover, when restricted spin orbitals are used, namely $\psi^\alpha_1 = \psi^\beta_1$, at this time,
+	\[
+		S^{\alpha\beta}_{11} = 1,
+	\]	
+	at once we get
+	\[
+		\langle K | \mathscr{S}^2 | K \rangle = 1 - 1^2 = 1 - 1 = 0 ,
+	\]
+	which means that $| K \rangle $ is a singlet, indeed. Hence $| K \rangle$ will not be a singlet unless $\psi^\alpha_1 = \psi^\beta_1$.
+	
+	\end{itemize}
+	
 	\end{solution}
 
 \end{document}
