@@ -274,6 +274,68 @@
 	\end{exercise}
 	
 	\begin{solution}
+
+	From (1.39), we can verify the above properties for $2\times2$ determinants.
+
+	\begin{itemize}
+	
+	\item[1.] If each element in the first row of $|\A|$ is zero, we will find that
+	\[
+		\begin{vmatrix}
+			0  & 0 \\ A_{21} &  A_{22} 
+		\end{vmatrix} = 0 \times A_{22} - 0 \times A_{21} = 0 .
+	\]
+	In the same way, we can verify that if each element in a row or in a column is zero, the value of the $2 \times 2$ determinant $|\A|$ is zero.
+	
+	\item[2.] If $(\A)_{ij} = A_{ii} \delta_{ij}$, we will find that
+	\[
+		\begin{vmatrix}
+			A_{11}  & 0 \\ 0 & A_{22} 
+		\end{vmatrix} = A_{11} A_{22} - 0 \times 0 = A_{11} A_{22} = \prod_{ i=1 }^2 A_{ii} .
+	\]
+	
+	\item[3.] We can interchange two rows of the $2\times2$ determinant $|\A|$ and find that
+	\[
+		\begin{vmatrix}
+			A_{21}  & A_{22} \\ A_{11} & A_{12} 
+		\end{vmatrix} = A_{21} A_{12} - A_{11} A_{22} = - ( A_{11} A_{22} - A_{12} A_{21} ) = - \begin{vmatrix}
+			A_{11}  & A_{12} \\ A_{21} & A_{22} 
+		\end{vmatrix} .
+	\]
+	In the same way, we can verify that a single interchange of any two rows (or columns) of a determinant changes its sign.
+	
+	\item[4.] Note that $(\A^\dagger)_{ij} = A^*_{ji}$,
+	\[
+		(| \A^\dagger |)^* = \begin{vmatrix}
+			A^*_{11}  & A^*_{21} \\ A^*_{12} & A^*_{22} 
+		\end{vmatrix}^* = ( A^*_{11} A^*_{22} - A^*_{12} A^*_{21} )^* = A_{11} A_{22} - A_{12} A_{21} = | \A | .
+	\]	
+	
+	\item[5.] It is evident that for two $2\times2$ matrices $\A$ and $\B$, the determinant of their product is
+	\[
+		\A \B = \begin{pmatrix}
+			A_{11} & A_{12} \\ A_{21} & A_{22} 
+		\end{pmatrix} \begin{pmatrix}
+			B_{11} & B_{12} \\ B_{21} & B_{22} 
+		\end{pmatrix} = \begin{pmatrix}
+			A_{11} B_{11} + A_{12} B_{21} & A_{11} B_{12} + A_{12} B_{22} \\
+			A_{21} B_{11} + A_{22} B_{21} & A_{21} B_{12} + A_{22} B_{22}
+		\end{pmatrix} .
+	\]
+	Thus, we can find that
+	\begin{align*}
+		\det{\A \B} &= \begin{vmatrix}
+			A_{11} B_{11} + A_{12} B_{21} & A_{11} B_{12} + A_{12} B_{22} \\
+			A_{21} B_{11} + A_{22} B_{21} & A_{21} B_{12} + A_{22} B_{22}
+		\end{vmatrix} \\
+		&= ( A_{11} B_{11} + A_{12} B_{21} ) ( A_{21} B_{12} + A_{22} B_{22} ) - ( A_{11} B_{12} + A_{12} B_{22} ) ( A_{21} B_{11} + A_{22} B_{21} ) \\
+		&= A_{11} A_{21} B_{11} B_{12} + A_{11} A_{22} B_{11} B_{22} + A_{12} A_{21} B_{12} B_{21} + A_{12} A_{22} B_{21} B_{22} \\
+		&\hspace{4em} - A_{11} A_{21} B_{11} B_{12} - A_{11} A_{22} B_{12} B_{21} - A_{12} A_{21} B_{11} B_{22} - A_{12} A_{22} B_{21} B_{22} \\
+		&= A_{11} A_{22} ( B_{11} B_{22} - B_{12} B_{21} ) + A_{12} A_{21} ( B_{12} B_{21} - B_{11} B_{22} ) \\
+		&= ( A_{11} A_{22} - A_{12} A_{21} ) ( B_{11} B_{22} - B_{12} B_{21} ) = | \A | | \B | .
+	\end{align*}
+	
+	\end{itemize}		
 	
 	\end{solution}
 	
@@ -295,6 +357,35 @@
 	
 	\begin{solution}
 	
+	\begin{itemize}
+	
+	\item[6.] According to the property 3, a single interchange of any two rows (or columns) of a determinant $|\A|$ generates a minus sign. However, a single interchange of any two equal rows (or columns) does not change $|\A|$, which means $|\A| = -|\A|$ and thus $|\A| = 0$.
+	
+	\item[7.] For a general square matrix $\A$, it is evident that
+	\[
+		1 = |\I| = |\A \A^{-1}| = |\A| |\A^{-1}| .
+	\] 
+	Therefore,
+	\[
+		| \A^{-1} | = ( |\A| )^{-1} .
+	\]
+	
+	\item[8.] Using the property 4, we find that
+	\[
+		1 = |\I| = | \A \A^\dagger | = | \A | | \A^\dagger | = | \A | (| \A |)^* .
+	\]
+	
+	\item[9.] Note that	
+	\[
+		\U \U^\dagger = \I \Leftrightarrow \U^{-1} = \U^\dagger \Rightarrow | \U^{-1} | = | \U^\dagger | = | \U |^* ,
+	\]	
+	and thus $1 = | \I | = | \U^\dagger \U | = | \U^\dagger | | \U | = | \U |^* | \U |$. Therefore, we obtain that
+	\[
+		| {\bf \Omega} | = | \U^\dagger \Op \U | = | \U^\dagger | | \Op \U | = | \U |^* | \Op | | \U | = | \Op | | \U |^* | \U | = | \Op | .
+	\]
+	
+	\end{itemize}		
+	
 	\end{solution}
 	
 	% 1.7
@@ -314,6 +405,170 @@
 	
 	\begin{solution}
 	
+	This conclusion is a corollary of Cramer's rule, whose WIKIPEDIA's url is \url{https://en.wikipedia.org/wiki/Cramer's_rule}. Its proof is too lengthy to be omitted here.
+	
 	\end{solution}
+	
+	\subsection{\texorpdfstring{$N$}--Dimentional Complex Vector Spaces}
+	
+	\subsection{Change of Basis}
+	
+	% 1.8
+	\begin{exercise}
+	Show that the trace of a matrix is invariant under a unitary transformation, i.e., if ${\bf \Omega} = \U^\dagger \Op \U$ then show that $\tr{{\bf \Omega}}=\tr{\Op}$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using the conclusion of Exercise 1.4(a), we find that
+	\begin{sequation}
+		\tr{{\bf \Omega}} = \tr{ \U^\dagger \Op \U } = \tr{ \Op \U \U^\dagger } = \tr{ \Op \I } = \tr{ \Op } .
+	\end{sequation}		
+	
+	\end{solution}
+	
+	\subsection{The Eigenvalue Problem}
+	
+	% 1.9
+	\begin{exercise}
+	Show that Eq.(1.90) contains Eq.(1.87) for all $\alpha=1,2,\ldots,N$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	It is evident that
+	\begin{sequation}
+		\Op \U = \Op ( {\bf c}^1 , {\bf c}^2 , \cdots , {\bf c}^N ) = ( \Op {\bf c}^1 , \Op {\bf c}^2 , \cdots , \Op {\bf c}^N ) = ( \omega_1 {\bf c}^1 , \omega_2 {\bf c}^2 , \cdots , \omega_N {\bf c}^N ) = \U {\bf \omega} ,
+	\end{sequation}
+	which equals (1.87) for all $\alpha=1,2,\ldots,N$.
+	
+	\end{solution}
+	
+	% 1.10
+	\begin{exercise}
+	Since the components of an eigenvector can be found from the eigenvalue equation only to within a multiplicative constant, which is later determined by the normalization, one can set $c_1 = 1$ and $c_2 = c$ in Eq.(1.94). If this is done, Eq.(1.94) becomes
+	\begin{align*}
+		O_{11} + O_{12} c &= \omega \\
+		O_{21} + O_{22} c &= \omega c. 
+	\end{align*}
+	After eliminating $c$, find the two roots of the resulting equation and show that they are the same as those given in Eq.(1.96). This technique, which we shall use numerous times in the book for finding the lowest eigenvalue of a matrix, is basically the secular determinant approach {\it without} determinants. Thus one can use it to find the lowest eigenvalue of certain $N \times N$ matrices without having to evaluate an $N \times N$ determinant.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof should be discussed according to the value of $O_{12} = O_{21}$.
+	
+	\begin{itemize}
+	
+	\item When $O_{12} = O_{21} = 0$, assume that $c\neq 0$ and we find that
+	\[
+		\omega_1 = O_{11} , \quad \omega_2 = O_{22} .
+	\]
+	If $c=0$, we find that
+	\[
+		\begin{pmatrix}
+			O_{11} & 0 \\ 0 & O_{22} 
+		\end{pmatrix} \begin{pmatrix}
+			1 \\ 0 
+		\end{pmatrix} = \begin{pmatrix}
+			Q_{11} \\ 0
+		\end{pmatrix} = Q_{11} \begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix} .
+	\]
+	At this time, the only $\omega = O_{11}$.
+	
+	\item When $O_{12} = O_{21} \neq 0$, from the first equation, we get that
+	\[
+		c = \frac{ \omega - O_{11} }{ O_{12} } .
+	\]
+	Substitute it into the second equation, we obtain that
+	\[
+		O_{21} = ( \omega - O_{22} ) c = ( \omega - O_{22} ) \frac{ \omega - O_{11} }{ O_{12} },
+	\]
+	which equals
+	\[
+		( \omega - O_{11} )( \omega - O_{22} ) - O_{12} O_{21} = \omega^2 - ( O_{11} + O_{22} ) \omega + ( O_{11} O_{22} - O_{12} O_{21} ) = 0 .
+	\]	
+	The discriminant of the quadratic equation is
+	\[
+		\Delta_\omega = ( O_{11} + O_{22} )^2 - 4 \times 1 \times ( O_{11} O_{22} - O_{12} O_{21} ) = ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} > 0 ,
+	\]
+	and the two roots are
+	\[
+		\omega_\pm = \frac{1}{2} \left[ O_{11} + O_{22} \pm \sqrt{ ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} } \right] .
+	\]
+	\end{itemize}
+	
+	Note that
+	\begin{align*}
+		\lim_{O_{12} \rightarrow 0} \omega_\pm &= \lim_{O_{12} \rightarrow 0} \frac{1}{2} \left[ O_{11} + O_{22} \pm \sqrt{ ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} } \right] \\
+		&= \frac{1}{2} \left( O_{11} + O_{22} \right) \pm \frac{1}{2} \lim_{O_{12} \rightarrow 0} \sqrt{ ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} } \\
+		&= \frac{1}{2} \left( O_{11} + O_{22} \right) \pm \frac{1}{2} | O_{11} - O_{22} | .
+	\end{align*}
+	
+	When $O_{11} \ge O_{22}$,
+	\[
+		\omega_+ = \frac{1}{2} \left( O_{11} + O_{22} \right) + \frac{1}{2} \left( O_{11} - O_{22} \right) = O_{11} , \quad \omega_- = \frac{1}{2} \left( O_{11} + O_{22} \right) - \frac{1}{2} \left( O_{11} - O_{22} \right) = O_{22} .
+	\]	
+	while $O_{11} < O_{22}$,
+	\[
+		\omega_+ = \frac{1}{2} \left( O_{11} + O_{22} \right) + \frac{1}{2} \left( O_{22} - O_{11} \right) = O_{22} , \quad \omega_- = \frac{1}{2} \left( O_{11} + O_{22} \right) - \frac{1}{2} \left( O_{22} - O_{11} \right) = O_{11} .
+	\]	
+	
+	In conclusion, we obtain that
+	\[
+		\lim_{O_{12} \rightarrow 0} \omega_1 = O_{11} , \quad \lim_{O_{12} \rightarrow 0} \omega_2 = O_{22} .
+	\]
+	Thus, the special case of $O_{12} = O_{21} = 0$ can be merged in the general case. And we conclude that two roots obtained by eliminating $c$ are the same as those given in Eq.(1.96).
+	
+	\end{solution}
+	
+	% 1.11
+	\begin{exercise}
+	Consider the matrices
+	\begin{equation*}
+		\A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}, \,  \B = \begin{pmatrix} 3 & 1 \\ 1 & 2 \end{pmatrix}.
+	\end{equation*}
+	Find numerical values for the eigenvalues and corresponding eigenvectors of these matrices by a) the secular determinant approach; b) the unitary transformation approach. You will see that approach (b) is much easier.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using the secular determinant approach,
+	\begin{align*}
+		| \A - \omega \I | = \begin{vmatrix}
+			3 - \omega & 1 \\ 1 & 3 - \omega 
+		\end{vmatrix} = ( 3 - \omega )^2 - 1 = ( 4 - \omega ) ( 2 - \omega ) = 0.
+	\end{align*}
+	
+	\[
+		\omega_1 = 2 , \quad \omega_2 = 4.
+	\]
+	
+	\[
+		\A - \omega_1 \I = \begin{pmatrix}
+			3 - 2 & 1 \\ 1 & 3 - 2
+		\end{pmatrix} = \begin{pmatrix}
+			1 & 1 \\ 1 & 1
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & 1 \\ 0 & 0
+		\end{pmatrix}
+	\]
+	The eigenvector is $(1,-1)^T$.
+	
+		\[
+		\A - \omega_2 \I = \begin{pmatrix}
+			3 - 4 & 1 \\ 1 & 3 - 4
+		\end{pmatrix} = \begin{pmatrix}
+			-1 & 1 \\ 1 & -1
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & -1 \\ 0 & 0
+		\end{pmatrix}
+	\]
+	The eigenvector is $(1,1)^T$.
+	\end{solution}
+
+	\subsection{Functions of Matrices}
 	
 \end{document}
