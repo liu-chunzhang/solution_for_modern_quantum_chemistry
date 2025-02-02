@@ -1,80 +1,5 @@
-\subsection{\texorpdfstring{$N$}--Dimentional Complex Vector Spaces}
-	
-	\subsection{Change of Basis}
-	
-	\begin{exercise}
-		Show that the trace of a matrix is invariant under a unitary transformation, i.e., if
-		\begin{equation*}
-			\bf{\Omega} = \U^\dagger \Op \U
-		\end{equation*}
-		then show that $\tr{\bf{\Omega}}=\tr{\Op}$.
-	\end{exercise}
-	
-	\begin{solution}
-		1-8 so
-	\end{solution}
-	
-	\subsection{The Eigenvalue Problem}
-	
-	\begin{exercise}
-		Show that Eq.(1.90) contains Eq.(1.87) for all $\alpha=1,2,\cdots,N$.
-	\end{exercise}
-	
-	\begin{solution}
-		1-9 so
-	\end{solution}
-	
-	\begin{exercise}
-	Since the components of an eigenvector can be found from the eigenvalue equation only to within a multiplicative constant, which is later determined by the normalization, one can set $c_1 = 1$ and $c_2 = c$ in Eq.(1.94). If this is done, Eq.(1.94) becomes
-	\begin{align*}
-		O_{11} + O_{12} c &= \omega \\
-		O_{21} + O_{22} c &= \omega c. 
-	\end{align*}
-	After eliminating $c$, find the two roots of the resulting equation and show that they are the same as those given in Eq.(1.96). This technique, which we shall use numerous times in the book for finding the lowest eigenvalue of a matrix, is basically the secular determinant approach without determinants. Thus one can use it to find the lowest eigenvalue of certain $N \times N$ matrices without having to evaluate an $N \times N$ determinant.
-	\end{exercise}
-	
-	\begin{solution}
-		1-10 so
-	\end{solution}
-	
-	\begin{exercise}
-	Consider the matrices
-	\begin{equation*}
-		\A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}, \,  \B = \begin{pmatrix} 3 & 1 \\ 1 & 2 \end{pmatrix}.
-	\end{equation*}
-	Find numerical values for the eigenvalues and corresponding eigenvectors of these matrices by a) the secular determinant approach; b) the unitary transformation approach. You will see that approach (b) is much easier.
-	\end{exercise}
-	
-	\begin{solution}
-		1-11
-	\end{solution}
 
-	\subsection{Functions of Matrices}
 	
-	\begin{exercise}
-	Given that
-	\begin{equation*}
-		\U^\dagger \A \U = \bf{a} = \begin{pmatrix} a_1 & 0 & \cdots & 0 \\ & a_2 & \cdots & 0 \\ \cdots & \cdots & \cdots & \cdots \\ 0 & 0 & \cdots & a_N \end{pmatrix}
-	\end{equation*}
-	or
-	\begin{equation*}
-		\A {\bf c^\alpha} = a_\alpha {\bf c^\alpha} , \, \alpha = 1,2,\cdots, N.
-	\end{equation*}
-	Show that
-	\begin{enumerate}
-	
-	\item[a.] $\det{\A^n}=a^n_1 a^n_2 \cdots a^n_N$.
-
-	\item[b.] $\tr{\A^n}=\displaystyle\sum_{\alpha=1}^N a^n_\alpha$.
-	
-	\item[c.] If ${\bf G}(\omega) = (\omega\I - \A)^{-1}$, then
-	\begin{equation*}
-		({\bf G}(\omega))_{ij} = \sum_{\alpha=1}^N \frac{U_{i\alpha}U^*_{j\alpha}}{\omega-a_\alpha} = \sum_{\alpha=1}^N \frac{c^\alpha_i {c^\alpha_j}^*}{\omega-a_\alpha}.
-	\end{equation*}
-	Show that using Dirac notation this can be rewritten as
-	\begin{equation*}
-		({\bf G}(\omega))_{ij} \equiv \langle i | \mathcal{G}(\omega) | j \rangle = \sum_{\alpha} \frac{\langle i | \alpha \rangle \langle \alpha | j \rangle }{\omega - a_\alpha}.
-	\end{equation*}
 	As an interesting application of this relation consider the problem of solving the following set of inhomogeneous linear equations
 	\begin{equation*}
 		(\omega\I-\A){\bf x} = {\bf c}
@@ -87,13 +12,13 @@
 	\begin{equation*}
 		x_i = \sum_j ({\bf G}(\omega))_{ij}c_j = \sum_{j\alpha} \frac{ U_{i\alpha}U^*_{j\alpha} c_j}{\omega-a_\alpha}.
 	\end{equation*}
-	\end{enumerate}
-	\end{exercise}
 	
-	\begin{solution}
-		1-12 so
-	\end{solution}
-
+	
+	
+	
+	
+	
+	% 1.13
 	\begin{exercise}
 	If
 	\begin{equation*}

@@ -535,17 +535,21 @@
 	
 	\begin{solution}
 	
-	Using the secular determinant approach,
+	Using the secular determinant approach, the intermediate results are as follows.
+	
+	\begin{itemize}
+	
+	\item For the matrix $\A$. Its eigenpolynomial is
 	\begin{align*}
 		| \A - \omega \I | = \begin{vmatrix}
 			3 - \omega & 1 \\ 1 & 3 - \omega 
 		\end{vmatrix} = ( 3 - \omega )^2 - 1 = ( 4 - \omega ) ( 2 - \omega ) = 0.
 	\end{align*}
-	
+	Its two roots are
 	\[
 		\omega_1 = 2 , \quad \omega_2 = 4.
 	\]
-	
+	For the eigenvalue $\omega_1$,
 	\[
 		\A - \omega_1 \I = \begin{pmatrix}
 			3 - 2 & 1 \\ 1 & 3 - 2
@@ -553,22 +557,389 @@
 			1 & 1 \\ 1 & 1
 		\end{pmatrix} \Rightarrow \begin{pmatrix}
 			1 & 1 \\ 0 & 0
-		\end{pmatrix}
+		\end{pmatrix} .
 	\]
 	The eigenvector is $(1,-1)^T$.
 	
-		\[
+	For the eigenvalue $\omega_2$,
+	\[
 		\A - \omega_2 \I = \begin{pmatrix}
 			3 - 4 & 1 \\ 1 & 3 - 4
 		\end{pmatrix} = \begin{pmatrix}
 			-1 & 1 \\ 1 & -1
 		\end{pmatrix} \Rightarrow \begin{pmatrix}
 			1 & -1 \\ 0 & 0
-		\end{pmatrix}
+		\end{pmatrix} .
 	\]
 	The eigenvector is $(1,1)^T$.
-	\end{solution}
+	
+	\item For the matrix $\B$. Its eigenpolynomial is
+	\begin{align*}
+		| \B - \omega \I | = \begin{vmatrix}
+			3 - \omega & 1 \\ 1 & 2 - \omega 
+		\end{vmatrix} = ( 3 - \omega )( 2 - \omega ) - 1 = \omega^2 - 5 \omega + 5 = 0.
+	\end{align*}
+	Its two roots are
+	\[
+		\omega_1 = \frac{ 5 + \sqrt{5} }{2} , \quad \omega_2 = \frac{ 5 - \sqrt{5} }{2} .
+	\]
+	For the eigenvalue $\omega_1$,
+	\[
+		\B - \omega_1 \I = \begin{pmatrix}
+			3 - \frac{ 5 + \sqrt{5} }{2} & 1 \\ 1 & 2 - \frac{ 5 + \sqrt{5} }{2}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 - \sqrt{5} }{2} & 1 \\ 1 & \frac{ - 1 - \sqrt{5} }{2}
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & - \frac{ 1 + \sqrt{5} }{2} \\ 0 & 0
+		\end{pmatrix} .
+	\]
+	The eigenvector is $( \frac{ 1 + \sqrt{5} }{2} , 1 )^T$.
+	
+	For the eigenvalue $\omega_2$,
+	\[
+		\B - \omega_2 \I = \begin{pmatrix}
+			3 - \frac{ 5 - \sqrt{5} }{2} & 1 \\ 1 & 2 - \frac{ 5 - \sqrt{5} }{2}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 + \sqrt{5} }{2} & 1 \\ 1 & \frac{ -1 + \sqrt{5} }{2}
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & \frac{ -1 + \sqrt{5} }{2} \\ 0 & 0
+		\end{pmatrix} .
+	\]
+	The eigenvector is $( \frac{ 1 - \sqrt{5} }{2} , 1 )^T$.
+	
+	\end{itemize}
+	
+	Using the unitary transformation approach, the intermediate results are as follows.
+	\begin{itemize}
+	
+	\item For the matrix $\A$. Its $\theta_0$ is
+	\[
+		\theta_0 = \frac{1}{2} \arctan{\frac{ 2O_{12} }{ O_{11} - O_{22} } } = \frac{1}{2} \arctan{ \frac{ 2 \times 1 }{ 3 - 3 } } = \frac{1}{2} \arctan{ \infty } = \frac{1}{2} \times \frac{ \pi }{ 2 } = \frac{ \pi }{ 4 } .
+	\]
+	Here note that $\infty$	means that both $+\infty$ and $-\infty$ are allowed but only $+\infty$ is used for the following calculation. The same results can be obtained by using $-\infty$ and this process is omitted for the sake of simplicity!
+	
+	From (1.106a,b) and (1.107a,b), we obtain that the first eigenvalue $\omega_1$ is
+	\[
+		\omega_1 = O_{11} \cos^2 \theta_0 + O_{22} \sin^2 \theta_0 + O_{12} \sin 2\theta = 3 \cos^2 \frac{\pi}{4} + 3 \sin^2 \frac{\pi}{4} + 1 \sin \left( \frac{2 \pi}{4} \right) = 4 ,
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^1_1 \\ c^1_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\cos \frac{\pi}{4} \\ \sin \frac{\pi}{4}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } \\ \frac{1}{ \sqrt{2} }
+		\end{pmatrix} ,
+	\]
+	and the second eigenvalue $\omega_2$ is
+	\[
+		\omega_2 = O_{11} \sin^2 \theta_0 + O_{22} \cos^2 \theta_0 - O_{12} \sin 2\theta = 3 \sin^2 \frac{\pi}{4} + 3 \cos^2 \frac{\pi}{4} - 1 \sin \left( \frac{2 \pi}{4} \right) = 2 ,
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^2_1 \\ c^2_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\sin \frac{\pi}{4} \\ -\cos \frac{\pi}{4}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } \\ -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} .
+	\]
+	
+	\item For the matrix $\B$. Its $\theta_0$ is
+	\[
+		\theta_0 = \frac{1}{2} \arctan{\frac{ 2O_{12} }{ O_{11} - O_{22} } } = \frac{1}{2} \arctan{ \frac{ 2 \times 1 }{ 3 - 2 } } = \frac{1}{2} \arctan{ 2 } .
+	\]
+	In other words, 
+	\[
+		2 = \tan 2\theta_0 = \frac{ 2 \tan \theta_0 }{ 1 - \tan^2 \theta_0 } \Rightarrow \tan (\theta_0)_\pm = \frac{ -1 \pm \sqrt{5} }{2}. 
+	\]
+	We use $\tan \theta_0 = \frac{ -1 + \sqrt{5} }{2}$ in the following calculation. Of course, with $\tan \theta_0 = \frac{ -1 - \sqrt{5} }{2}$, the same results can be omitted and the derivation is omitted, too.
+	
+	Thus, we know that from
+	\begin{align*}
+		\sin^2 \theta_0 + \cos^2 \theta_0 &= 1 , \\
+		\frac{ \sin \theta_0 }{ \cos \theta_0 } = \tan \theta_0 &= \frac{ -1 + \sqrt{5} }{2},
+	\end{align*}
+	we get
+	\begin{align*}
+		\cos^2 \theta_0 &= \frac{1}{ 1 + \left( \frac{ -1 + \sqrt{5} }{2} \right)^2 } = \frac{ 4 }{ 4 + 6 - 2\sqrt{5} } = \frac{ 4 }{ 2\sqrt{5} ( \sqrt{5} - 1 ) } = \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } , \\
+		\sin^2 \theta_0 &= 1 - \cos^2 \theta_0 = 1 - \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } = \frac{ -1 + \sqrt{5} }{ 2\sqrt{5} } , \\
+		\sin 2\theta_0 &= 2 \sin \theta_0 \cos \theta_0 = 2 \frac{ -1 + \sqrt{5} }{ 2 } \cos \theta_0 \cos \theta_0 = ( -1 + \sqrt{5} ) \cos^2 \theta_0 = \frac{ 2 }{ \sqrt{5} } .
+	\end{align*}
+	
+	From (1.106a,b) and (1.107a,b), we obtain that the first eigenvalue $\omega_1$ is
+	\[
+		\omega_1 = O_{11} \cos^2 \theta_0 + O_{22} \sin^2 \theta_0 + O_{12} \sin 2\theta = 3 \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } + 2 \frac{ -1 + \sqrt{5} }{ 2\sqrt{5} } + 1 \frac{ 2 }{ \sqrt{5} } = \frac{ 5 + \sqrt{5} }{2} .
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^1_1 \\ c^1_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\cos \theta_0 \\ \sin \theta_0
+		\end{pmatrix} \Leftrightarrow \begin{pmatrix}
+			\cos^2 \theta_0 \\ \sin \theta \cos \theta_0
+		\end{pmatrix} = \begin{pmatrix}
+			\cos^2 \theta_0 \\ \frac{1}{2}\sin 2\theta_0
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } \\ \frac{ 1 }{ \sqrt{5} }
+		\end{pmatrix} \Leftrightarrow \begin{pmatrix}
+			\frac{ \sqrt{5} + 1 }{ 2 } \\ 1
+		\end{pmatrix} .
+	\]
+	and the second eigenvalue $\omega_2$ is
+	\[
+		\omega_2 = O_{11} \sin^2 \theta_0 + O_{22} \sin^2 \theta_0 - O_{12} \sin 2\theta = 3 \frac{ -1 + \sqrt{5} }{ 2\sqrt{5} } + 2 \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } - 1 \frac{ 2 }{ \sqrt{5} } = \frac{ 5 - \sqrt{5} }{ 2 } .
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^2_1 \\ c^2_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\sin \theta_0 \\ -\cos \theta_0
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{1}{2} \sin 2\theta_0 \\ -\cos^2 \theta_0
+		\end{pmatrix} \Leftrightarrow  \begin{pmatrix}
+			1 \\ \frac{ -\sqrt{5} - 1 }{ 2 }
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 - \sqrt{5} }{ 2 } \\ 1 
+		\end{pmatrix} .
+	\]
+	
+	\end{itemize}
+	
+	I think that the first approach is much easier.
+	
+	\end{solution}	
 
 	\subsection{Functions of Matrices}
+	
+	% 1.12
+	\begin{exercise}
+	Given that
+	\begin{equation*}
+		\U^\dagger \A \U = {\bf a} = \begin{pmatrix} a_1 & 0 & \cdots & 0 \\ 0 & a_2 & \cdots & 0 \\ \cdots & \cdots & \cdots & \cdots \\ 0 & 0 & \cdots & a_N \end{pmatrix} \quad \text{or} \quad \A {\bf c^\alpha} = a_\alpha {\bf c^\alpha} , \, \alpha = 1,2,\cdots, N.
+	\end{equation*}
+	Show that
+	\begin{enumerate}
+	
+	\item[a.] $\det{\A^n}=a^n_1 a^n_2 \cdots a^n_N$.
+
+	\item[b.] $\tr{\A^n}=\displaystyle\sum_{\alpha=1}^N a^n_\alpha$.
+	
+	\item[c.] If ${\bf G}(\omega) = (\omega\I - \A)^{-1}$, then
+	\begin{equation*}
+		({\bf G}(\omega))_{ij} = \sum_{\alpha=1}^N \frac{U_{i\alpha}U^*_{j\alpha}}{\omega-a_\alpha} = \sum_{\alpha=1}^N \frac{c^\alpha_i {c^\alpha_j}^*}{\omega-a_\alpha}.
+	\end{equation*}
+	Show that using Dirac notation this can be rewritten as
+	\begin{equation*}
+		({\bf G}(\omega))_{ij} \equiv \langle i | \mathscr{G}(\omega) | j \rangle = \sum_{\alpha} \frac{\langle i | \alpha \rangle \langle \alpha | j \rangle }{\omega - a_\alpha}.
+	\end{equation*}
+	\end{enumerate}
+	
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Before the formal derivation, note that
+	\[
+		\U^\dagger \A \U = {\bf a} \Leftrightarrow \A = \U {\bf a} \U^\dagger \Rightarrow \A^n = (  \U {\bf a} \U^\dagger )^n = \U {\bf a}^n \U^\dagger .
+	\]	
+	
+	\begin{itemize}
+	
+	\item[a.] Using $\det{\A\B} = \det{\A} \det{\B} = \det{\B} \det{\A}$ and $\det{\I} = 1$, we find that
+	\begin{align*}
+		\det{ \A^n } &= \det{ \U {\bf a}^n \U^\dagger } = \det{ \U } \det{ {\bf a}^n \U^\dagger } = \det{ {\bf a}^n \U^\dagger } \det{ \U } \\
+		&= \det{ {\bf a}^n  } \det{ \U^\dagger } \det{ \U } = \det{ {\bf a}^n  } \det{ \U^\dagger \U } = \det{ {\bf a}^n } \det{ \I } = \det{ {\bf a}^n } .
+	\end{align*}
+	
+	\item[b.] Using $\tr{\A\B} = \tr{\B\A}$, we find that
+	\begin{align*}
+		\tr{\A^n} = \tr{ \U {\bf a}^n \U^\dagger } = \tr{ {\bf a}^n \U^\dagger \U } = \tr{{\bf a}^n} .
+	\end{align*}
+	
+	\item[c.] From $\A = \U {\bf a} \U^\dagger$, we get that
+	\[
+		\omega \I - \A = \omega \U \I \U^\dagger - \U {\bf a} \U^\dagger = \U ( \omega \I - {\bf a} ) \U^\dagger .
+	\]
+	Thus,
+	\[
+		{\bf G}(\omega) = (\omega\I - \A)^{-1} = [ \U ( \omega \I - {\bf a} ) \U^\dagger ]^{-1} = ( \U^\dagger )^{-1} ( \omega \I - {\bf a} )^{-1} \U^{-1} = \U ( \omega \I - {\bf a} )^{-1} \U^\dagger ,
+	\]
+	and then
+	\begin{sequation}
+		({\bf G}(\omega))_{ij} = [ \U ( \omega \I - {\bf a} )^{-1} \U^\dagger ]_{ij} = \sum_{\alpha=1}^N \sum_{\beta=1}^N (\U)_{i\alpha} \frac{ \delta_{\alpha \beta} }{ \omega - a_\alpha  } (\U^\dagger)_{\beta j} = \sum_{\alpha=1}^N \frac{ U_{i\alpha} U^*_{j\alpha} }{ \omega - a_\alpha } .
+	\end{sequation}
+	
+	Note that in the basis $\{ | \alpha \rangle \}$, $\U$ is diagonal, viz., $\U = \sum_\beta | \beta \rangle \langle \beta | $ and thus $\U | \alpha \rangle = | \alpha \rangle$. Using Dirac notation, the final result equals 
+	\begin{align*}
+		({\bf G}(\omega))_{ij} &= \langle i | \U ( \omega \I - {\bf a} )^{-1} \U^\dagger | j \rangle = \sum_\alpha \sum_\beta \langle i | \U | \alpha \rangle \langle \alpha | \frac{1}{ \omega \I - {\bf a} } | \beta \rangle \langle \beta | \U^\dagger | j \rangle \\
+		&= \sum_\alpha \sum_\beta \langle i | \U | \alpha \rangle \frac{ \delta_{\alpha \beta} }{ \omega - a_\alpha } \langle \beta | \U^\dagger | j \rangle = \sum_\alpha \frac{ \langle i | \U | \alpha \rangle \langle \alpha | \U^\dagger | j \rangle }{ \omega - a_\alpha } = \sum_\alpha \frac{ \langle i | \alpha \rangle \langle \alpha | j \rangle }{ \omega - a_\alpha } .
+	\end{align*}
+	
+	\end{itemize}
+	
+	\end{solution}
+	
+	% 1.13
+	\begin{exercise}
+	If
+	\begin{equation*}
+		\A = \begin{pmatrix} a & b \\ b & a \end{pmatrix}			
+	\end{equation*}
+	show that
+	\begin{equation*}
+		f(\A) = \begin{pmatrix}
+		\frac{1}{2}[f(a+b)+f(a-b)] & \frac{1}{2}[f(a+b)-f(a-b)] \\
+		\frac{1}{2}[f(a+b)-f(a-b)] & \frac{1}{2}[f(a+b)+f(a-b)]
+		\end{pmatrix}.
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The eigenpolynomial of $\A$ is
+	\[
+		\det{\A-\varepsilon\I} = \begin{vmatrix}
+			a - \varepsilon & b \\ b & a - \varepsilon
+		\end{vmatrix} = ( a - \varepsilon )^2 - b^2 = ( a + b - \varepsilon ) ( a - b - \varepsilon ) = 0.
+	\]
+	It has two roots,
+	\[
+		\varepsilon_1 = a - b , \quad \varepsilon_2 = a + b.
+	\]
+	The eigenvector of $\varepsilon_1$ is
+	\[
+		\A - \varepsilon_1 \I = \begin{pmatrix}
+			a - ( a - b ) & b \\ b & a - ( a - b )
+		\end{pmatrix} = \begin{pmatrix}
+			b & b \\ b & b 
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & 1 \\ 0 & 0 
+		\end{pmatrix}.
+	\]
+	The normalized eigenvector is $\frac{1}{ \sqrt{2} }(1,-1)^T$.
+	
+	Besides, the eigenvector of $\varepsilon_2$ is
+	\[
+		\A - \varepsilon_2 \I = \begin{pmatrix}
+			a - ( a + b ) & b \\ b & a - ( a + b )
+		\end{pmatrix} = \begin{pmatrix}
+			-b & b \\ b & -b 
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & -1 \\ 0 & 0 
+		\end{pmatrix}.
+	\]
+	The normalized eigenvector is $\frac{1}{ \sqrt{2} }(1,1)^T$.
+	
+	Thus, we know that
+	\[
+		\A = \U {\bf a} \U^\dagger = \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \begin{pmatrix}
+			a + b & 0 \\ 0 & a - b 
+		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} .
+	\] 
+	and thus
+	\begin{align*}
+		f(\A) = \U f( {\bf a} ) \U^\dagger &= \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \begin{pmatrix}
+			f( a + b ) & 0 \\ 0 & f( a - b )
+ 		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } f( a + b ) & \frac{1}{ \sqrt{2} } f( a - b ) \\
+			\frac{1}{ \sqrt{2} } f( a + b ) & -\frac{1}{ \sqrt{2} } f( a - b ) 
+		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+		\frac{1}{2}[f(a+b)+f(a-b)] & \frac{1}{2}[f(a+b)-f(a-b)] \\
+		\frac{1}{2}[f(a+b)-f(a-b)] & \frac{1}{2}[f(a+b)+f(a-b)]
+		\end{pmatrix} .
+	\end{align*}
+	
+	\end{solution}
+	
+	\section{Orthogonal Functions, Eigenfunctions, and Operators}
+	
+	% 1.14
+	\begin{exercise}
+	Using the above representation of $\delta(x)$, show that
+	\begin{equation*}
+		a(0) = \int_{-\infty}^\infty \dif x \, a(x) \delta(x) .
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using first mean value theorem for definite integrals, we find that
+	\begin{align*}
+		\int_{-\infty}^\infty \dif x \, a(x) \delta(x) &= \int_{-\infty}^\infty \dif x \, a(x) \lim_{\varepsilon \rightarrow 0}  \delta_\varepsilon(x) = \lim_{\varepsilon \rightarrow 0} \int_{-\varepsilon}^\varepsilon \dif x \, a(x) \delta_\varepsilon(x) \\
+		&= \lim_{\varepsilon \rightarrow 0} \frac{ 1 }{ 2 \varepsilon } \int_{-\varepsilon}^\varepsilon \dif x \, a(x) = \lim_{ \substack{ \varepsilon \rightarrow 0 \\ \zeta \in ( -\varepsilon, \varepsilon )} } \frac{ 1 }{ 2 \varepsilon }a(\zeta) [ \varepsilon - ( - \varepsilon ) ]  = a(0) .
+	\end{align*}		
+	
+	More detailed description about first mean value theorem for definite integrals can be seen in \url{https://en.wikipedia.org/wiki/Mean_value_theorem}.
+	
+	\end{solution}
+	
+	% 1.15
+	\begin{exercise}
+	As a further illustration of the consistency of our notation, consider the matrix representation of an operator $\mathscr{O}$ in the basis $\{\psi_i(x)\}$. Starting with
+	\begin{equation}
+		\mathscr{O} \psi_i(x) = \sum_{j} \psi_j(x) O_{ji} . \tag{1}
+	\end{equation}
+	Show that
+	\begin{equation*}
+		O_{ji} = \int \dif x \psi^*_j(x) \mathscr{O} \psi_i(x) .
+	\end{equation*}
+	Then using Eqs.(1.127a) and (1.138) rewrite (1) in the bra-ket notation and show that it is identical to Eq.(1.55).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (1), we find that
+	\[
+		\int \dif x \psi^*_j(x) \mathscr{O} \psi_i(x) = \int \dif x \psi^*_j(x) \sum_{k} \psi_k(x) O_{ki} = \sum_{k} \int \dif x \psi^*_j(x) \psi_k(x) O_{ki} = \sum_{k} \delta_{jk} O_{ki} = O_{ji} .
+	\]
+	Therefore, using (1.127a) and (1.138), (1.55) equals
+	\[
+		\mathscr{O} | i \rangle = \sum_j | j \rangle O_{ji} .
+	\]
+	
+	\end{solution}	
+	
+	% 1.16
+	\begin{exercise}
+	Consider the eigenvalue problem
+	\begin{equation}
+		\mathcal{O} \phi(x) = \omega \phi(x).
+	\end{equation}
+	By expanding $\phi$ in the complete set $\{\psi_i(x),i=1,2,\cdots\}$ as
+	\begin{equation*}
+		\phi(x) = \sum_{i=1}^\infty c_i \psi_i(x)
+	\end{equation*}
+	show that it becomes equivalent to the matrix eigenvalue problem
+	\begin{equation*}
+		\Op {\bf c} = \omega {\bf c}
+	\end{equation*}
+	where $({\bf c})_i=c_i$ and $({\bf O})_{ij} = \int \dif x \psi^*_i(x)\mathcal{O}\psi_j(x)$. Do this with and without using bra-ket notation. Note that $\Op$ is an infinite matrix. In practice, we cannot handle infinite matrices. To keep things manageable, one uses only a finite subset of the set $\{\psi_i(x)\}$, i.e., $\{\psi_i(x),i=1,2,\cdots, N\}$. If the above analysis is repeated in this subspace, we obtain an $N \times N$ eigenvalue problem. As we shall see in Section 1.3, the corresponding $N$ eigenvalues approximate the true eigenvalues. In particular, we shall prove that the lowest eigenvalue of the truncated eigenvalue problem is greater or equal to the exact lowest eigenvalue.
+	\end{exercise}
+	
+	\begin{solution}
+		1-16 so
+	\end{solution}
 	
 \end{document}
