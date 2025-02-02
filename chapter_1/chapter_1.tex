@@ -69,6 +69,8 @@
 \newcommand\tr[1]{\mathrm{tr(#1)}}
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \renewcommand\det[1]{\mathrm{det\left(#1\right)}}
+\newcommand{\bfr}{{\bf r}}
+\newcommand{\bfx}{{\bf x}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
@@ -925,9 +927,9 @@
 	\begin{exercise}
 	Consider the eigenvalue problem
 	\begin{equation}
-		\mathcal{O} \phi(x) = \omega \phi(x).
+		\mathscr{O} \phi(x) = \omega \phi(x).
 	\end{equation}
-	By expanding $\phi$ in the complete set $\{\psi_i(x),i=1,2,\cdots\}$ as
+	By expanding $\phi$ in the complete set $\{\psi_i(x),i=1,2,\ldots\}$ as
 	\begin{equation*}
 		\phi(x) = \sum_{i=1}^\infty c_i \psi_i(x)
 	\end{equation*}
@@ -935,11 +937,360 @@
 	\begin{equation*}
 		\Op {\bf c} = \omega {\bf c}
 	\end{equation*}
-	where $({\bf c})_i=c_i$ and $({\bf O})_{ij} = \int \dif x \psi^*_i(x)\mathcal{O}\psi_j(x)$. Do this with and without using bra-ket notation. Note that $\Op$ is an infinite matrix. In practice, we cannot handle infinite matrices. To keep things manageable, one uses only a finite subset of the set $\{\psi_i(x)\}$, i.e., $\{\psi_i(x),i=1,2,\cdots, N\}$. If the above analysis is repeated in this subspace, we obtain an $N \times N$ eigenvalue problem. As we shall see in Section 1.3, the corresponding $N$ eigenvalues approximate the true eigenvalues. In particular, we shall prove that the lowest eigenvalue of the truncated eigenvalue problem is greater or equal to the exact lowest eigenvalue.
+	where $({\bf c})_i=c_i$ and $({\bf O})_{ij} = \int \dif x \psi^*_i(x)\mathscr{O}\psi_j(x)$. Do this with and without using bra-ket notation. Note that $\Op$ is an infinite matrix. In practice, we cannot handle infinite matrices. To keep things manageable, one uses only a finite subset of the set $\{\psi_i(x)\}$, i.e., $\{\psi_i(x),i=1,2,\ldots, N\}$. If the above analysis is repeated in this subspace, we obtain an $N \times N$ eigenvalue problem. As we shall see in Section 1.3, the corresponding $N$ eigenvalues approximate the true eigenvalues. In particular, we shall prove that the lowest eigenvalue of the truncated eigenvalue problem is greater or equal to the exact lowest eigenvalue.
 	\end{exercise}
 	
 	\begin{solution}
-		1-16 so
+	
+	Without bra-ket notation, we start from
+	\[
+		\mathscr{O} \phi(x) = \mathscr{O} \sum_j c_j \psi_j(x) = \sum_j \mathscr{O} \psi_j(x) c_j = \omega \sum_j c_j \psi_j(x) .
+	\]
+	Multiplying this by $\psi^*_i(x)$ and integrate over all $x$, we find that
+	\[
+		\sum_j \int \dif x \psi^*_i(x) \mathscr{O} \psi_j(x) c_j = \sum_j O_{ij} c_j = \omega \sum_j c_j \int \dif x \psi^*_i(x) \psi_j(x) = \omega \sum_j c_j \delta_{ij} = c_i ,
+	\]
+	which means $\Op {\bf c} = \omega {\bf c}$.
+	
+	With bra-ket notation, we start from
+	\[
+		\sum_j \mathscr{O} | j \rangle c_j = \omega \sum_j | j \rangle c_j
+	\]
+	Multiplying this by $\langle i |$ and we find that
+	\[
+		\sum_j \langle i | \mathscr{O} | j \rangle c_j = \sum_j O_{ij} c_j = \omega \sum_j \langle i | j \rangle c_j = \omega \sum_j \delta_{ij} c_j = \omega c_i .
+	\]
+	which means $\Op {\bf c} = \omega {\bf c}$, too.
 	\end{solution}
+	
+	% 1.17
+	\begin{exercise}
+	In this subsection we have used a watered-down version of Dirac notation that is sufficient for our purposes but that oversimplifies the deep relationship between vectors and functions. The purpose of this exercise is to provide a glimpse at Dirac notation in its full glory. Consider a denumerably infinite set of complete orthonormal basis vectors, i.e.,
+	\begin{align}
+		\sum_{i=1}^\infty | i \rangle \langle i | &= \I, \tag{1a} \\
+		\langle i | j \rangle &= \delta_{ij}. \tag{1b}
+	\end{align}		
+	Let us introduce a continuously infinite complete set of basis vectors denoted by $|x\rangle$. The analogue of (1a) is
+	\begin{equation*}
+		\int \dif x | x \rangle \langle x | = \I, \tag{2a}
+	\end{equation*}
+	that is, we have replaced the summation in (1a) by an integral. If we multiply (2a) on the left by $\langle a |$ and on the right by $| b \rangle$ we have
+	\begin{equation*}
+		\int \dif x \langle a | x \rangle \langle x | b \rangle = \langle a | b \rangle.
+	\end{equation*}
+	Comparing this to Eq.(1.128) suggests that we identify $a^*(x)$ with $\langle a | x \rangle$ and $b(x)$ with $\langle x | b \rangle$. Recall that $\langle i | a \rangle$ is the component of $| a \rangle$ along the basis vector $| i \rangle$. Thus we can regard a function $b(x)$ as the $x$ component of the abstract vector $| b \rangle$ in a coordinate system with a continuously infinite number of axes.
+	\begin{enumerate}
+	
+	\item[a.] Multiply (2a) on the left by $\langle i |$ and on the right by $| j \rangle$. Using (1b) show that the resulting equation is identical to (1.116) if
+	\begin{equation*}
+		\psi^*_i(x) = \langle i | x \rangle, \quad \psi_j(x) = \langle x | j \rangle.
+	\end{equation*}
+	
+	\item[b.] Multiply (1a) by $\langle x |$ on the left and $| x^\prime \rangle$ on the right. Show that the resulting equation is identical to (1.120) if
+	\begin{equation*}
+		\langle x | x^\prime \rangle = \delta( x - x^\prime ). \tag{2b}
+	\end{equation*}
+	This is just the continuous analogue of (1b).
+	
+	\item[c.] Multiply (2a) by $\langle x^\prime |$ on the left and $| a \rangle$ on the right. Show that the resulting expression is identical to (1.121).
+	
+	\item[d.] Consider an abstract operator $\mathscr{O}$. Its matrix elements in the continuous basis $| x \rangle$ are
+	\begin{equation*}
+		\langle x | \mathscr{O} | x^\prime \rangle = O(x,x^\prime).
+	\end{equation*}
+	Starting with the relation $\mathscr{O}| a \rangle = | b \rangle$ and inserting unity, we have
+	\begin{equation*}
+		\mathscr{O} | a \rangle = \mathscr{O} \I | a \rangle = \int \dif x \mathscr{O} | x \rangle \langle x | a \rangle = | b \rangle .
+	\end{equation*}
+	Multiply this equation by $\langle x^\prime |$ and show that the result is identical to Eq.(1.133).
+	
+	\item[e.] If $O_{ij} = \langle i | \mathscr{O} | j \rangle$, show that
+	\begin{equation*}
+		O(x,x^\prime) = \sum_{ij} \psi_i(x) O_{ij} \psi^*_j(x^\prime).
+	\end{equation*}
+	
+	\end{enumerate}
+
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] Multiply (2a) on the left by $\langle i |$ and on the right by $| j \rangle$. Using (1b) show that the resulting equation is identical to 	
+	\[
+		\int \dif x \psi^*_i(x) \psi_j(x) = \int \dif x \langle i | x \rangle \langle x | j \rangle = \langle i | j \rangle = \delta_{ij} ,
+	\]
+	if $\psi^*_i(x) = \langle i | x \rangle$ and $\psi_j(x) = \langle x | j \rangle$.
+	
+	\item[b.] Multiply (1a) by $\langle x |$ on the left and $| x^\prime \rangle$ on the right. We find that
+	\begin{equation*}
+		\langle x | x^\prime \rangle = \sum_{i=1}^\infty \langle x | i \rangle \langle i | x^\prime \rangle = \sum_{i=1}^\infty \psi_i(x) \psi^*_i(x) = \delta( x - x^\prime ) .
+	\end{equation*}
+	This is just the continuous analogue of (1b).
+	
+	\item[c.] Multiply (2a) by $\langle x^\prime |$ on the left and $| a \rangle$ on the right. We find that
+	\[
+		\langle x^\prime | a \rangle = \int \dif x \langle x^\prime | x \rangle \langle x | a \rangle = \int \dif x \delta(  x - x^\prime ) a(x) = a( x^\prime ).
+	\]
+	It is identical to (1.121).
+	
+	\item[d.] From
+	\[
+		\mathscr{O} | a \rangle = \mathscr{O} \I | a \rangle = \int \dif x \mathscr{O} | x \rangle \langle x | a \rangle = | b \rangle ,
+	\]
+	multiply this equation by $\langle x^\prime |$ and we find that
+	\[
+		b( x^\prime ) = \langle x^\prime | b \rangle = \int \dif x \langle x^\prime | \mathscr{O} | x \rangle \langle x | a \rangle = \int \dif x O( x^\prime , x ) a(x) ,
+	\]
+	which is identical to Eq.(1.133).
+	
+	\item[e.] It is evident that
+	\[
+		O(x,x^\prime) = \langle x | \mathscr{O} | x^\prime \rangle = \sum_{ij} \langle x | i \rangle \langle i | \mathscr{O} | j \rangle \langle j | x^\prime \rangle  = \sum_{ij} \psi_i(x) O_{ij} \psi^*_j(x^\prime).
+	\]	
+	
+	\end{itemize}		
+	
+	\end{solution}
+	
+	\section{The Variation Method}
+	
+	\subsection{The Variation Principle}
+	
+	% 1.18
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) of an electron moving in one dimension under the influence of the potential $-\delta(x)$ is
+	\begin{equation*}
+		\left(-\frac 12 \frac{\dif^2}{\dif x^2}-\delta(x)\right) | \Phi \rangle = \mathscr{E} | \Phi \rangle
+	\end{equation*}
+	Use the variation method with the trial function
+	\begin{equation*}
+		| \tilde{\Phi} \rangle = N e^{-\alpha x^2}
+	\end{equation*}
+	to show that $-\pi^{-1}$ is an upper bound to the exact ground state energy (which is -0.5). You will need the integral
+	\begin{equation*}
+		\int_{-\infty}^{\infty} \dif x x^{2m} e^{-\alpha x^2} = \frac{(2m)!\pi^{1/2}}{2^{2m}m!\alpha^{m+1/2}}.
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+
+	The norm of the trial function is
+	\[
+		\langle \tilde{\Phi} | \tilde{\Phi} \rangle = \int \dif x \, \langle \tilde{\Phi} | x \rangle \langle x | \tilde{\Phi} \rangle = N^2 \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} e^{-\alpha x^2} = N^2 \int_{-\infty}^{\infty} \dif x \, e^{-2\alpha x^2} = N^2 \sqrt{ \frac{ \pi }{ 2\alpha } } .
+	\]
+	Thus the normalized trial function is
+	\[
+		| \Phi \rangle = \sqrt[4]{ \frac{ 2\alpha }{ \pi } } | \tilde{\Phi} \rangle = \sqrt[4]{ \frac{ 2\alpha }{ \pi } } e^{- \alpha x^2} ,
+	\]
+	and its energy functional is
+	\begin{align*}
+		E( \alpha ) &= \int \dif x \int \dif x^\prime \, \langle \Phi | x \rangle \left\langle x \left| -\frac 12 \frac{\dif^2}{\dif x^2}-\delta(x) \right| x^\prime \right\rangle \langle x^\prime | \Phi \rangle \\
+		&= \sqrt{ \frac{ 2\alpha }{ \pi } } \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \left( -\frac 12 \frac{\dif^2}{\dif x^2}-\delta(x) \right) e^{-\alpha x^2} \\
+		&= \sqrt{ \frac{ 2\alpha }{ \pi } } \left( - \frac{1}{2} \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \frac{\dif^2}{\dif x^2} \left( e^{-\alpha x^2} \right) - \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \delta(x) e^{-\alpha x^2} \right) .
+	\end{align*}
+	The first integral is
+	\begin{align*}
+		&\hspace{1.4em}\int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \frac{\dif^2}{\dif x^2} \left( e^{-\alpha x^2} \right) = \int_{-\infty}^{\infty} e^{-\alpha x^2} \dif \left[ \frac{\dif}{\dif x}  \left( e^{-\alpha x^2} \right) \right] = \int_{-\infty}^{\infty} e^{-\alpha x^2} \dif \left( - 2\alpha x e^{-\alpha x^2} \right) \\
+		&= - 2\alpha \int_{-\infty}^{\infty} e^{-\alpha x^2} \dif \left( x e^{-\alpha x^2} \right) = -2\alpha \left( \left[ x e^{-2\alpha x^2} \right]^{+\infty}_{-\infty} - \int_{-\infty}^{\infty} xe^{-\alpha x^2} \dif \left( e^{-\alpha x^2} \right) \right) \\
+		&= - 2 \alpha \left( 0 - ( -2\alpha ) \int_{-\infty}^{\infty} x^2 e^{-2\alpha x^2} \dif x \right) = -4\alpha^2 \int_{-\infty}^{\infty} \dif x x^2 e^{-2\alpha x^2} = - \sqrt{ \frac{ \alpha \pi }{ 2 } } ,
+	\end{align*}
+	and the second integral is
+	\begin{align*}
+		&\hspace{1.4em} \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \delta(x) e^{-\alpha x^2} = \left[ e^{-2\alpha x^2} \right]_{x=0} = 1 .
+	\end{align*}
+	Thus,
+	\[
+		E( \alpha ) = \sqrt{ \frac{ 2\alpha }{ \pi } } \left[ -\frac{1}{2} \times \left( - \sqrt{ \frac{ \alpha \pi }{ 2 } } \right) - 1 \right] = \frac{ \alpha }{2} - \sqrt{ \frac{ 2\alpha }{ \pi } } .
+	\]
+	And
+	\begin{align*}
+		\frac{ \dif E( \alpha ) }{ \dif \alpha } = \frac{1}{2} -  \frac{1}{2} \sqrt{ \frac{2}{\pi} } \alpha^{-\frac{1}{2}} = 0 \Rightarrow a_0 = \frac{ 2 }{ \pi } , \quad E( a_0 ) = - \frac{1}{\pi} .
+	\end{align*}
+	We conclude that $-\pi^{-1}$ is an upper bound to the exact ground state energy.
+	
+	\end{solution}
+	
+	% 1.19
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) for the hydrogen atom is
+	\[
+		\left( -\frac{1}{2}\nabla^2 - \frac{1}{r} \right) |\Phi\rangle = \mathscr{E} | \Phi \rangle .
+	\]
+	Use the variation method with the trial function
+	\[
+		|\tilde{\Phi}\rangle = N e^{-\alpha r^2}
+	\]
+	to show that $-4/3\pi=-0.4244$ is an upper bound to the exact ground state energy (which is $-0.5$). You will need the relations
+	\begin{align*}
+		\nabla^2 f(r) &= r^{-2} \frac{\dif }{\dif r}\left( r^2 \frac{\dif}{\dif r}\right) f(r) , \\
+		\int_0^\infty \dif r \, r^{2m} e^{-\alpha r^2} &= \frac{ (2m)! \pi^{1/2} }{ 2^{2m+1} m! \alpha^{m+1/2} } , \\
+		\int_0^\infty \dif r \, r^{2m+1} e^{-\alpha r^2} &= \frac{ m! }{ 2 \alpha^{m+1} } .
+	\end{align*}		
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The norm of the trial function is
+	\[
+		\langle \tilde{\Phi} | \tilde{\Phi} \rangle = \int \dif \bfr \, \langle \tilde{\Phi} | \bfr \rangle \langle \bfr | \tilde{\Phi} \rangle = 4 \pi N^2 \int_0^{\infty} r^2 \dif r \, e^{-\alpha r^2} e^{-\alpha r^2} = 4 \pi N^2 \int_0^{\infty} \dif r \, r^2 e^{-2\alpha r^2} = N^2 \sqrt{ \left( \frac{\pi}{2\alpha} \right)^3 } .
+	\]
+	Thus the normalized trial function is
+	\[
+		| \Phi \rangle = \sqrt[4]{ \left( \frac{2\alpha}{\pi} \right)^3 } | \tilde{\Phi} \rangle = \sqrt[4]{ \left( \frac{2\alpha}{\pi} \right)^3 } e^{- \alpha r^2} ,
+	\]
+	and its energy functional is
+	\begin{align*}
+		E( \alpha ) &= \int \dif \bfr \int \dif \bfr^\prime \, \langle \Phi | \bfr \rangle \left\langle \bfr \left| -\frac 12 \nabla^2 - \frac{1}{r} \right| \bfr^\prime \right\rangle \langle \bfr^\prime | \Phi \rangle \\
+		&= 4\pi N^2 \int_0^\infty \dif r \, r^2 e^{- \alpha r^2}  \left( -\frac 12 \nabla^2 - \frac{1}{r} \right) e^{- \alpha r^2}   \\
+		&= 4\pi \sqrt{ \left( \frac{2\alpha}{\pi} \right)^3 } \left[ -\frac{1}{2} \int_0^\infty \dif r \, r^2 e^{- \alpha r^2} \nabla^2 \left( e^{- \alpha r^2} \right) - \int_0^\infty \dif r \, r e^{- 2 \alpha r^2} \right] .
+	\end{align*}
+	The first integral is
+	\begin{align*}
+		&\hspace{1.4em}\int_0^\infty \dif r \, r^2 e^{- \alpha r^2} \nabla^2 \left( e^{- \alpha r^2} \right) = \int_0^\infty \dif r \, e^{- \alpha r^2} \frac{ \dif }{ \dif r } \left[ r^2 \frac{ \dif }{ \dif r } \left( e^{- \alpha r^2} \right) \right] \\
+		&= \int_0^\infty \dif r \, e^{- \alpha r^2} \frac{ \dif }{ \dif r } \left[ r^2 \left( -2 \alpha r e^{- \alpha r^2} \right) \right] = - 2 \alpha \int_0^\infty \dif r \, e^{- \alpha r^2} \frac{ \dif }{ \dif r } \left( r^3 e^{- \alpha r^2} \right) = - 2\alpha \int_0^\infty \, e^{- \alpha r^2} \dif \left( r^3 e^{- \alpha r^2} \right)  \\
+		&= -2 \alpha \left[ \left[ r^3 e^{- 2\alpha r^2} \right]^\infty_0 - \int_0^\infty \, r^3 e^{- \alpha r^2} ( -2\alpha r e^{- \alpha r^2} \dif r ) \right] = -2 \alpha \left( 0 + 2\alpha \int_0^\infty \dif \, r^4 e^{-2\alpha r^2} \right) \\
+		&= -4 \alpha^2 \int_0^\infty \dif \, r^4 e^{-2\alpha r^2} = -4 \alpha^2 \times \frac{3}{8} \sqrt{ \frac{ \pi }{ ( 2\alpha )^5 } } = - \frac{3}{2} \sqrt{ \frac{ \pi }{ 32 \alpha } } ,
+	\end{align*}
+	and the second integral is
+	\begin{align*}
+		&\hspace{1.4em} \int_0^\infty \dif r \, r e^{- 2 \alpha r^2} = \frac{1}{2(2\alpha)} = \frac{1}{4\alpha} .
+	\end{align*}
+	
+	Thus,
+	\[
+		E( \alpha ) = 4\pi \sqrt{ \left( \frac{2\alpha}{\pi} \right)^3 } \left[ -\frac{1}{2} \times \left( - \frac{3}{2} \sqrt{ \frac{ \pi }{ 32 \alpha } } \right) - \frac{1}{4\alpha} \right] = \frac{ 3 \alpha }{ 2 } - 2 \sqrt{ \frac{ 2\alpha }{ \pi } } .
+	\]
+	And
+	\begin{align*}
+		\frac{ \dif E( \alpha ) }{ \dif \alpha } = \frac{3}{2} -  \sqrt{ \frac{2}{\pi} } \alpha^{-\frac{1}{2}} = 0 \Rightarrow a_0 = \frac{ 8 }{ 9\pi } , \quad E( a_0 ) = - \frac{4}{3\pi} = -0.4244 .
+	\end{align*}
+	We conclude that $-4/3\pi = -0.4244$ is an upper bound to the exact ground state energy.
+	
+	\end{solution}
+	
+	% 1.20
+	\begin{exercise}
+	The variation principle as applied to matrix eigenvalue problems states that if ${\bf c}$ is a normalized (${\bf c}^\dagger {\bf c}=1$) column vector, then ${\bf c}^\dagger\Op{\bf c}$ is greater or equal to the lowest eigenvalue of $\Op$. For the $2\times2$ symmetric matrix ($O_{12}=O_{21}$)
+	\[
+		\Op = \begin{pmatrix} O_{11} & O_{12} \\ O_{21} & O_{22} \end{pmatrix},
+	\]
+	consider the trial vector
+	\[
+		{\bf c} = \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}
+	\]
+	which is normalized for any value of $\theta$. Calculate
+	\[
+		\omega(\theta) = {\bf c}^\dagger \Op {\bf c}
+	\]
+	and find the value of $\theta$ (i.e., $\theta_0$) for which $\omega(\theta)$ is a minimum. Show that $\omega(\theta_0)$ is exactly equal to the lowest eigenvalue of $\Op$ (see Eqs.(1.105) and (1.106a)). Why should you have anticipated this result?
+	\end{exercise}
+	
+	\begin{solution}
+		222
+	\end{solution}
+	
+	\subsection{The Linear Variational Problem}
+	
+	\begin{exercise}
+	Consider a normalized trial function $|\tilde{\Phi}^\prime \rangle$ that is orthogonal to the exact ground state wave function, i.e., $\langle \tilde{\Phi}^\prime | \Phi_0 \rangle = 0$.
+	\begin{enumerate}
+	
+	\item[a.] Generalize the proof of the variation principle of Subsection 1.3.1 to show that
+	\[
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle \geq \mathscr{E}_1.
+	\]	
+
+	\item[b.] Consider the function
+	\[
+		| \tilde{\Phi}^\prime \rangle = x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle
+	\]
+	where $| \tilde{\Phi}^\prime_\alpha \rangle$, $\alpha = 0, 1$ are given by Eq.(1.168). Show that if it is normalized, then
+	\[
+		|x|^2 + |y|^2 = 1.
+	\]
+	
+	\item[c.] When $x$ and $y$ are chosen so that $| \tilde{\Phi}^\prime \rangle$ is normalized and so that $\langle \tilde{\Phi}^\prime | \Phi_0 \rangle = 0$, then from part (a) it follows that $\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle \geq \mathscr{E}_1$. Show that
+	\[
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = E_1 - |x|^2 ( E_1 - E_0 ).
+	\]
+	Since $E_1 \geq E_0$, conclude that $E_1 \geq \mathscr{E}_1$. The above argument can be generalized to show that $E_\alpha \geq \mathscr{E}_\alpha$, $\alpha=2,3,\cdots$.
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	\begin{enumerate}
+	\item[a.]
+	\begin{equation*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \sum_\beta \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle \langle \tilde{\Phi}_\alpha |\mathscr{H} | \tilde{\Phi}_\beta \rangle \langle \tilde{\Phi}_\beta | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2
+	\end{equation*}
+	
+	Due to $\varepsilon_0 \leqslant \varepsilon_1 \leqslant \varepsilon_2 \leqslant ... \leqslant \varepsilon_{N - 1}$ and $\langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle = 0$,
+	\begin{equation}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 \geqslant \sum_\alpha \varepsilon_1 | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_1.
+	\end{equation}
+			
+	\item[b.]
+	\begin{align}
+		1 &= \langle \tilde{\Phi}^\prime | \tilde{\Phi}^\prime \rangle = ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
+		&= |x|^2 + |y|^2 + x^*y \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle +  xy^* \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle = |x|^2 + |y|^2.
+	\end{align}
+				
+	\item[c.]
+	
+	\begin{align*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle &= ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) \mathscr{H} ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
+		&= |x|^2 E_0 + |y|^2 E_1 = ( |x|^2 + |y|^2 ) E_1 - |x|^2 E_1 + |x|^2 E_0
+	\end{align*}
+				
+	\begin{equation}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = E_1 - |x|^2 ( E_1 - E_0 ) \geqslant E_0. 
+	\end{equation}
+	
+	\end{enumerate}
+			
+	\end{solution}
+	
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) for a hydrogen atom in a uniform electric field $F$ in the $z$ direction is
+	\[
+		\left( -\frac{1}{2}\nabla^2 - \frac{1}{r} + Fr\cos\theta \right) | \Phi \rangle = ( \mathscr{H}_0 + Fr \cos\theta ) | \Phi \rangle = \mathscr{E}(F) | \Phi \rangle.
+	\]
+	Use the trial function
+	\[
+		| \tilde{\Phi} \rangle = c_1 | 1s \rangle + c_2 | 2p_z \rangle
+	\]
+	where $|1s\rangle$ and $|2p_z\rangle$ are the normalized eigenfunctions of $\mathscr{H}_0$, i.e.,
+	\begin{subequations}
+	\[
+		| 1s \rangle = \pi^{-1/2} e^{-r},
+	\]
+	\[
+		| 2p_z \rangle = (32\pi)^{-1/2} r e^{-r/2} \cos\theta
+	\]
+	\end{subequations}
+	to find an upper bound to $\mathscr{E}(F)$. In constructing the matrix representation of $\mathscr{H}$, you can avoid a lot of work by noting that
+	\[
+		\mathscr{H}_0 | 1s \rangle = -\frac{1}{2} | 1s \rangle, \, \mathscr{H}_0 | 2p_z \rangle = -\frac{1}{8} | 2p_z \rangle.
+	\]
+	Using $(1+x)^{1/2} \approx 1 + x/2$, expand your answer in a Taylor series in $F$, i.e.,
+	\[
+		E(F) = E(0) - \frac{1}{2} \alpha F^2 + \cdots.
+	\]
+	Show that the coefficient $\alpha$, which is the approximate dipole polarizability of the system, is equal to 2.96. The exact result is 4.5.
+	\end{exercise}
+	
+	\begin{solution}
+		
+	\begin{align*}
+		\langle 1s | \mathscr{H}_0 | 1s \rangle &= -\frac{1}{2}, \\
+		\langle 1s | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 1s | 2p_z \rangle = -\frac{1}{8} \int_0^{+\infty} r^3 e^{ -\frac{3}{2}r } {\rm d}r \int_0^\pi \sin\theta \cos\theta {\rm d}\theta \int_0^{2\pi} {\rm d}\varphi \cdot \frac{1}{ \sqrt{\pi} } \cdot \frac{1}{ \sqrt{32\pi} } = 0, \\
+		\langle 2p_z | \mathscr{H}_0 | 1s \rangle &= (\langle 1s | \mathscr{H}_0 | 2p_z \rangle)^* = 0, \\
+		\langle 2p_z | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 2p_z | 2p_z \rangle = -\frac{1}{8}.
+ 	\end{align*}
+	
+	\end{solution}	
 	
 \end{document}
