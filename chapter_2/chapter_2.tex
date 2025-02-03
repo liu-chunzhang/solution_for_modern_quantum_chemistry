@@ -2,6 +2,7 @@
 %\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
 \usepackage{amssymb}
+\usepackage{bookmark}
 \usepackage[hypcap=false]{caption}
 \usepackage{geometry}
 \geometry{
@@ -13,7 +14,7 @@
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,            %链接颜色
-    linkcolor=blue,             %内部链接
+    linkcolor=black,             %内部链接
     filecolor=magenta,          %本地文档
     urlcolor=cyan,              %网址链接
 }
@@ -23,6 +24,10 @@
 \usepackage[version=4]{mhchem}
 \usepackage{subcaption}
 \usepackage{titlesec}
+
+% setting about showing the contents
+\setcounter{tocdepth}{3}
+\setcounter{chapter}{1}
 
 \RequirePackage[many]{tcolorbox}
 \tcbset{
@@ -93,8 +98,8 @@
 \allowdisplaybreaks
 
 \begin{document}
-
-	\stepcounter{chapter}
+	
+	\tableofcontents
 
 	\chapter{Many Electron Wave Functions and Operators}
 	
