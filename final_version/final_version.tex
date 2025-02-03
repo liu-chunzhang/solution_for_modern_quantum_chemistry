@@ -28,7 +28,6 @@
 
 % setting about showing the contents
 \setcounter{tocdepth}{3}
-\setcounter{chapter}{1}
 
 \RequirePackage[many]{tcolorbox}
 \tcbset{
@@ -100,6 +99,7 @@
 \newcommand{\U}{{\bf U}}
 \newcommand{\HH}{{\bf H}}
 \newcommand{\h}{{\bf h}}
+\newcommand{\Op}{{\bf O}}
 
 \titleformat{\chapter}[display]
   {\bfseries\Large}
@@ -129,6 +129,1261 @@
 \begin{document}
 
 	\tableofcontents
+
+	\chapter{Mathematical Review}
+	
+	\section{Linear Algebra}
+	
+	\subsection{Three-Dimensional Vector Algebra}
+	
+	% 1.1
+	\begin{exercise}
+	a) Show that $O_{ij} = \hat e_i \cdot \mathscr{O} \hat{e}_j$. b) If $\mathscr{O} \vec{a} = \vec{b}$ show that $b_i = \displaystyle \sum_j O_{ij} a_j$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{enumerate}
+	
+	\item Using (1.7) and (1.13), we get that
+	\begin{sequation}
+		\hat{e}_i \cdot \mathscr{O} \hat{e}_j = \hat{e}_i \cdot \sum_{k=1}^3 \hat{e}_k O_{kj} = \sum_{k=1}^3 \hat{e}_i \cdot  \hat{e}_k O_{kj} = \sum_{k=1}^3 \delta_{ik} O_{kj} = O_{ij}.
+	\end{sequation}
+	
+	\item Similarly,
+	\[
+		\vec{b} = \sum_{i=1}^3 b_i\hat{e}_i = \mathscr{O} \vec{a} = \mathscr{O} \sum_{j=1}^3 a_j \hat{e}_j = \sum_{j=1}^3 a_j \mathscr{O} \hat{e}_j = \sum_{j=1}^3 a_j \sum_{i=1}^3 \hat{e}_i O_{ij} = \sum_{i=1}^3 \Big( \sum_{j=1}^3 O_{ij} a_j \Big) \hat{e}_i.
+	\]
+	From the uniqueness of linear expression by a basis, we arrive at
+	\begin{sequation}
+		b_i = \sum_{j=1}^3 O_{ij} a_j.
+	\end{sequation}
+	% These two conclusions have been proved.
+	
+	\end{enumerate}
+	
+	\end{solution}
+
+	% 1.2
+	\begin{exercise}
+	Calculate $[\A,\B]$ and $\{\A,\B\}$ when
+	\[
+		\A = \begin{pmatrix}
+					1 & 1 & 0 \\
+					1 & 2 & 2 \\
+					0 & 2 & -1
+		\end{pmatrix}, \quad \B = \begin{pmatrix}
+					1 & -1 & 1 \\
+					-1 & 0 & 0 \\
+					1 & 0 & 1
+		\end{pmatrix}.
+	\]
+	\end{exercise}
+
+	\begin{solution}
+	
+	\begin{align*}
+		[\A,\B] &\equiv \A\B-\B\A = \begin{pmatrix}
+		0 & -1 & 1 \\
+		1 & -1 & 3 \\
+		-3 & 0 & -1
+		\end{pmatrix} - \begin{pmatrix}
+		0 & 1 & -3 \\
+		-1 & -1 & 0 \\
+		1 & 3 & -1
+		\end{pmatrix} = \begin{pmatrix}
+					0 & -2 & 4 \\
+					2 & 0 & 3 \\
+					-4 & -3 & 0
+		\end{pmatrix}, \\
+		\{\A,\B\} &\equiv \A\B + \B\A = \begin{pmatrix}
+		0 & -1 & 1 \\
+		1 & -1 & 3 \\
+		-3 & 0 & -1
+		\end{pmatrix} + \begin{pmatrix}
+		0 & 1 & -3 \\
+		-1 & -1 & 0 \\
+		1 & 3 & -1
+		\end{pmatrix} = 
+		\begin{pmatrix}
+					0	&	0	&	-2	\\
+					0	&	-2	&	3	\\
+					-2	&	3	&	-2
+		\end{pmatrix}.
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{Matrices}
+	
+	% 1.3
+	\begin{exercise}
+		If $\A$ is an $N \times M$ matrix and $\B$ is a $M \times K$ matrix show that $(\A\B)^\dagger = \B^\dagger \A^\dagger$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	It is obvious that
+	\begin{sequation}
+		(\B^\dagger \A^\dagger)_{ij} = \sum_{k=1}^M (\B^\dagger)_{ik} (\A^\dagger)_{kj} = \sum_{k=1}^M B_{ki}^* A^*_{jk} = \left(\sum_{k=1}^M A_{jk} B_{ki} \right)^* = [(\A\B)^*]_{ji} = [(\A\B)^\dagger]_{ij} ,
+	\end{sequation}
+	which means that $(\A\B)^\dagger = \B^\dagger \A^\dagger$.
+	
+	\end{solution}
+	
+	% 1.4
+	\begin{exercise}
+	Show that 
+	\begin{enumerate}
+	
+	\item[a.] $\tr{\A\B} = \tr{\B\A}$.
+	
+	\item[b.] $(\A\B)^{-1}=\B^{-1}\A^{-1}$.
+	
+	\item[c.] If $\U$ is unitary and $\B = \U^\dagger \A \U$, then $\A = \U \B \U^\dagger$.
+	
+	\item[d.] If the product $\C=\A\B$ of two Hermitian matrices is also Hermitian, then $\A$ and $\B$ commute.
+	
+	\item[e.] If $\A$ is Hermitian then $\A^{-1}$, if it exists, is also Hermitian.
+	
+	\item[f.] If $\A=\begin{pmatrix} A_{11} & A_{12} \\ A_{21} & A_{22}	\end{pmatrix}$, then $\A^{-1}=\frac{1}{ ( A_{11} A_{22} - A_{12} A_{21} ) }\begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11}	\end{pmatrix}$.
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	\begin{enumerate}
+	
+	\item[a.] At this time, we assume that $\A$ is an $N \times M$ matrix while $\B$ is a $M \times N$ matrix. Then,
+	\begin{sequation}
+		\tr{\A\B} = \sum_{i=1}^N (\A\B)_{ii} = \sum_{i=1}^N \sum_{k=1}^M A_{ik} B_{ki} = \sum_{k=1}^M \sum_{i=1}^N B_{ki} A_{ik} = \sum_{k=1}^M (\B\A)_{kk} = \tr{\B\A}.
+	\end{sequation}
+	
+	From this issue, we assume that both $\A$ and $\B$ are $N \times N$ matrices.
+	
+	\item[b.] We find that
+	\[
+		\A\B (\B^{-1}\A^{-1}) = \A(\B \B^{-1})\A^{-1} = \A \A^{-1} = \I.
+	\]
+	Since the inverse of a matrix is unique, we immediately get that
+	\begin{sequation}
+		(\A\B)^{-1}=\B^{-1}\A^{-1}.
+	\end{sequation}
+	
+	\item[c.] Due to $\B = \U^\dagger \A \U$, we can find
+	\begin{sequation}
+		\A = \I \A \I = (\U \U^\dagger) \A (\U \U^\dagger) = \U (\U^\dagger \A \U )\U^\dagger = \U \B \U^\dagger.
+	\end{sequation}
+	
+	\item[d.] Because $\C=\A\B$ of two Hermitian matrices is also Hermitian, we know that
+	\[
+		\C^\dagger = (\A\B)^\dagger = \B^\dagger \A^\dagger = \C = \A \B. 
+	\]
+	With $\A^\dagger = \A, \, \B^\dagger = \B$, we find
+	\begin{sequation}
+		\B^\dagger \A^\dagger = \B \A = \A \B.
+	\end{sequation}
+	In other words, $\A$ and $\B$ commute.
+	
+	\item[e.] It is obvious that if $\A^{-1}$ exists,
+	\[
+		(\A^{-1})^\dagger \A^\dagger = (\A \A^{-1})^\dagger = \I^\dagger = \I.
+	\]
+	We know $(\A^\dagger)^{-1} = (\A^{-1})^\dagger$. Then, with $\A = \A^\dagger$, we find that
+	\begin{sequation}
+		(\A^{-1})^\dagger = (\A^\dagger)^{-1} = \A^{-1}.
+	\end{sequation}
+	Namely, $\A^{-1}$ is also Hermitian if it exists.
+	
+	\item[f.] If $A_{11}A_{22}-A_{12}A_{21}\neq 0$, we can find
+	\[
+		\A \times \frac{1}{A_{11}A_{22}-A_{12}A_{21}}\begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11}	\end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix},
+	\]
+	which means that if $A_{11}A_{22}-A_{12}A_{21} \neq 0$,
+	\begin{sequation}
+		\A^{-1} = \frac{1}{ A_{11} A_{22} - A_{12} A_{21} }\begin{pmatrix} A_{22} & -A_{12} \\ -A_{21} & A_{11}	\end{pmatrix}.
+	\end{sequation}
+		
+	\end{enumerate}
+	
+	\end{solution}
+	
+	\subsection{Determinants}
+	
+	% 1.5
+	\begin{exercise}
+	Verify the above properties for $2\times2$ determinants.
+	\end{exercise}
+	
+	\begin{solution}
+
+	From (1.39), we can verify the above properties for $2\times2$ determinants.
+
+	\begin{itemize}
+	
+	\item[1.] If each element in the first row of $|\A|$ is zero, we will find that
+	\[
+		\begin{vmatrix}
+			0  & 0 \\ A_{21} &  A_{22} 
+		\end{vmatrix} = 0 \times A_{22} - 0 \times A_{21} = 0 .
+	\]
+	In the same way, we can verify that if each element in a row or in a column is zero, the value of the $2 \times 2$ determinant $|\A|$ is zero.
+	
+	\item[2.] If $(\A)_{ij} = A_{ii} \delta_{ij}$, we will find that
+	\[
+		\begin{vmatrix}
+			A_{11}  & 0 \\ 0 & A_{22} 
+		\end{vmatrix} = A_{11} A_{22} - 0 \times 0 = A_{11} A_{22} = \prod_{ i=1 }^2 A_{ii} .
+	\]
+	
+	\item[3.] We can interchange two rows of the $2\times2$ determinant $|\A|$ and find that
+	\[
+		\begin{vmatrix}
+			A_{21}  & A_{22} \\ A_{11} & A_{12} 
+		\end{vmatrix} = A_{21} A_{12} - A_{11} A_{22} = - ( A_{11} A_{22} - A_{12} A_{21} ) = - \begin{vmatrix}
+			A_{11}  & A_{12} \\ A_{21} & A_{22} 
+		\end{vmatrix} .
+	\]
+	In the same way, we can verify that a single interchange of any two rows (or columns) of a determinant changes its sign.
+	
+	\item[4.] Note that $(\A^\dagger)_{ij} = A^*_{ji}$,
+	\[
+		(| \A^\dagger |)^* = \begin{vmatrix}
+			A^*_{11}  & A^*_{21} \\ A^*_{12} & A^*_{22} 
+		\end{vmatrix}^* = ( A^*_{11} A^*_{22} - A^*_{12} A^*_{21} )^* = A_{11} A_{22} - A_{12} A_{21} = | \A | .
+	\]	
+	
+	\item[5.] It is evident that for two $2\times2$ matrices $\A$ and $\B$, the determinant of their product is
+	\[
+		\A \B = \begin{pmatrix}
+			A_{11} & A_{12} \\ A_{21} & A_{22} 
+		\end{pmatrix} \begin{pmatrix}
+			B_{11} & B_{12} \\ B_{21} & B_{22} 
+		\end{pmatrix} = \begin{pmatrix}
+			A_{11} B_{11} + A_{12} B_{21} & A_{11} B_{12} + A_{12} B_{22} \\
+			A_{21} B_{11} + A_{22} B_{21} & A_{21} B_{12} + A_{22} B_{22}
+		\end{pmatrix} .
+	\]
+	Thus, we can find that
+	\begin{align*}
+		\det{\A \B} &= \begin{vmatrix}
+			A_{11} B_{11} + A_{12} B_{21} & A_{11} B_{12} + A_{12} B_{22} \\
+			A_{21} B_{11} + A_{22} B_{21} & A_{21} B_{12} + A_{22} B_{22}
+		\end{vmatrix} \\
+		&= ( A_{11} B_{11} + A_{12} B_{21} ) ( A_{21} B_{12} + A_{22} B_{22} ) - ( A_{11} B_{12} + A_{12} B_{22} ) ( A_{21} B_{11} + A_{22} B_{21} ) \\
+		&= A_{11} A_{21} B_{11} B_{12} + A_{11} A_{22} B_{11} B_{22} + A_{12} A_{21} B_{12} B_{21} + A_{12} A_{22} B_{21} B_{22} \\
+		&\hspace{4em} - A_{11} A_{21} B_{11} B_{12} - A_{11} A_{22} B_{12} B_{21} - A_{12} A_{21} B_{11} B_{22} - A_{12} A_{22} B_{21} B_{22} \\
+		&= A_{11} A_{22} ( B_{11} B_{22} - B_{12} B_{21} ) + A_{12} A_{21} ( B_{12} B_{21} - B_{11} B_{22} ) \\
+		&= ( A_{11} A_{22} - A_{12} A_{21} ) ( B_{11} B_{22} - B_{12} B_{21} ) = | \A | | \B | .
+	\end{align*}
+	
+	\end{itemize}		
+	
+	\end{solution}
+	
+	% 1.6
+	\begin{exercise}
+	Using properties (1)-(5) prove that in general
+	\begin{itemize}
+	
+	\item[6.] If any two rows (or columns) of a determinant are equal, the value of the determinant is zero.
+	
+	\item[7.] $|\A^{-1}| = (|\A|)^{-1}$.
+	
+	\item[8.] If $\A\A^\dagger=\I$, then $|\A|(|\A|)^*=1$.
+	
+	\item[9.] If $\U^\dagger\Op\U = {\bf \Omega}$ and $\U^\dagger\U=\U\U^\dagger=\I$, then $|\Op|=|{\bf \Omega}|$.	
+	
+	\end{itemize}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[6.] According to the property 3, a single interchange of any two rows (or columns) of a determinant $|\A|$ generates a minus sign. However, a single interchange of any two equal rows (or columns) does not change $|\A|$, which means $|\A| = -|\A|$ and thus $|\A| = 0$.
+	
+	\item[7.] For a general square matrix $\A$, it is evident that
+	\[
+		1 = |\I| = |\A \A^{-1}| = |\A| |\A^{-1}| .
+	\] 
+	Therefore,
+	\[
+		| \A^{-1} | = ( |\A| )^{-1} .
+	\]
+	
+	\item[8.] Using the property 4, we find that
+	\[
+		1 = |\I| = | \A \A^\dagger | = | \A | | \A^\dagger | = | \A | (| \A |)^* .
+	\]
+	
+	\item[9.] Note that	
+	\[
+		\U \U^\dagger = \I \Leftrightarrow \U^{-1} = \U^\dagger \Rightarrow | \U^{-1} | = | \U^\dagger | = | \U |^* ,
+	\]	
+	and thus $1 = | \I | = | \U^\dagger \U | = | \U^\dagger | | \U | = | \U |^* | \U |$. Therefore, we obtain that
+	\[
+		| {\bf \Omega} | = | \U^\dagger \Op \U | = | \U^\dagger | | \Op \U | = | \U |^* | \Op | | \U | = | \Op | | \U |^* | \U | = | \Op | .
+	\]
+	
+	\end{itemize}		
+	
+	\end{solution}
+	
+	% 1.7
+	\begin{exercise}
+	Using Eq.(1.39), note that the inverse of a $2\times2$ matrix $\A$ obtained in Exercise 1.4f can be written as
+	\[
+		\A^{-1} = \frac{1}{|\A|}\begin{pmatrix}
+			A_{22} & -A_{12} \\ -A_{21} & A_{11}
+		\end{pmatrix}
+	\]
+	and thus $\A^{-1}$ does not exist when $|\A|=0$. This result holds in general for $N\times N$ matrices. Show that the equation
+	\[
+		\A {\bf c} = {\bf 0}
+	\]
+	where $\A$ is an $N \times N$ matrix and ${\bf c}$ is a column matrix with elements $c_i$, $i=1,2,\ldots,N$ can have a nontrivial solution (${\bf c} \neq 0$) only when $|\A|=0$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	This conclusion is a corollary of Cramer's rule, whose WIKIPEDIA's url is \url{https://en.wikipedia.org/wiki/Cramer's_rule}. Its proof is too lengthy to be omitted here.
+	
+	\end{solution}
+	
+	\subsection{\texorpdfstring{$N$}--Dimentional Complex Vector Spaces}
+	
+	\subsection{Change of Basis}
+	
+	% 1.8
+	\begin{exercise}
+	Show that the trace of a matrix is invariant under a unitary transformation, i.e., if ${\bf \Omega} = \U^\dagger \Op \U$ then show that $\tr{{\bf \Omega}}=\tr{\Op}$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using the conclusion of Exercise 1.4(a), we find that
+	\begin{sequation}
+		\tr{{\bf \Omega}} = \tr{ \U^\dagger \Op \U } = \tr{ \Op \U \U^\dagger } = \tr{ \Op \I } = \tr{ \Op } .
+	\end{sequation}		
+	
+	\end{solution}
+	
+	\subsection{The Eigenvalue Problem}
+	
+	% 1.9
+	\begin{exercise}
+	Show that Eq.(1.90) contains Eq.(1.87) for all $\alpha=1,2,\ldots,N$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	It is evident that
+	\begin{sequation}
+		\Op \U = \Op ( {\bf c}^1 , {\bf c}^2 , \cdots , {\bf c}^N ) = ( \Op {\bf c}^1 , \Op {\bf c}^2 , \cdots , \Op {\bf c}^N ) = ( \omega_1 {\bf c}^1 , \omega_2 {\bf c}^2 , \cdots , \omega_N {\bf c}^N ) = \U {\bf \omega} ,
+	\end{sequation}
+	which equals (1.87) for all $\alpha=1,2,\ldots,N$.
+	
+	\end{solution}
+	
+	% 1.10
+	\begin{exercise}
+	Since the components of an eigenvector can be found from the eigenvalue equation only to within a multiplicative constant, which is later determined by the normalization, one can set $c_1 = 1$ and $c_2 = c$ in Eq.(1.94). If this is done, Eq.(1.94) becomes
+	\begin{align*}
+		O_{11} + O_{12} c &= \omega \\
+		O_{21} + O_{22} c &= \omega c. 
+	\end{align*}
+	After eliminating $c$, find the two roots of the resulting equation and show that they are the same as those given in Eq.(1.96). This technique, which we shall use numerous times in the book for finding the lowest eigenvalue of a matrix, is basically the secular determinant approach {\it without} determinants. Thus one can use it to find the lowest eigenvalue of certain $N \times N$ matrices without having to evaluate an $N \times N$ determinant.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof should be discussed according to the value of $O_{12} = O_{21}$.
+	
+	\begin{itemize}
+	
+	\item When $O_{12} = O_{21} = 0$, assume that $c\neq 0$ and we find that
+	\[
+		\omega_1 = O_{11} , \quad \omega_2 = O_{22} .
+	\]
+	If $c=0$, we find that
+	\[
+		\begin{pmatrix}
+			O_{11} & 0 \\ 0 & O_{22} 
+		\end{pmatrix} \begin{pmatrix}
+			1 \\ 0 
+		\end{pmatrix} = \begin{pmatrix}
+			Q_{11} \\ 0
+		\end{pmatrix} = Q_{11} \begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix} .
+	\]
+	At this time, the only $\omega = O_{11}$.
+	
+	\item When $O_{12} = O_{21} \neq 0$, from the first equation, we get that
+	\[
+		c = \frac{ \omega - O_{11} }{ O_{12} } .
+	\]
+	Substitute it into the second equation, we obtain that
+	\[
+		O_{21} = ( \omega - O_{22} ) c = ( \omega - O_{22} ) \frac{ \omega - O_{11} }{ O_{12} },
+	\]
+	which equals
+	\[
+		( \omega - O_{11} )( \omega - O_{22} ) - O_{12} O_{21} = \omega^2 - ( O_{11} + O_{22} ) \omega + ( O_{11} O_{22} - O_{12} O_{21} ) = 0 .
+	\]	
+	The discriminant of the quadratic equation is
+	\[
+		\Delta_\omega = ( O_{11} + O_{22} )^2 - 4 \times 1 \times ( O_{11} O_{22} - O_{12} O_{21} ) = ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} > 0 ,
+	\]
+	and the two roots are
+	\[
+		\omega_\pm = \frac{1}{2} \left[ O_{11} + O_{22} \pm \sqrt{ ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} } \right] .
+	\]
+	\end{itemize}
+	
+	Note that
+	\begin{align*}
+		\lim_{O_{12} \rightarrow 0} \omega_\pm &= \lim_{O_{12} \rightarrow 0} \frac{1}{2} \left[ O_{11} + O_{22} \pm \sqrt{ ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} } \right] \\
+		&= \frac{1}{2} \left( O_{11} + O_{22} \right) \pm \frac{1}{2} \lim_{O_{12} \rightarrow 0} \sqrt{ ( O_{11} - O_{22} )^2 + 4 O_{12} O_{21} } \\
+		&= \frac{1}{2} \left( O_{11} + O_{22} \right) \pm \frac{1}{2} | O_{11} - O_{22} | .
+	\end{align*}
+	
+	When $O_{11} \ge O_{22}$,
+	\[
+		\omega_+ = \frac{1}{2} \left( O_{11} + O_{22} \right) + \frac{1}{2} \left( O_{11} - O_{22} \right) = O_{11} , \quad \omega_- = \frac{1}{2} \left( O_{11} + O_{22} \right) - \frac{1}{2} \left( O_{11} - O_{22} \right) = O_{22} .
+	\]	
+	while $O_{11} < O_{22}$,
+	\[
+		\omega_+ = \frac{1}{2} \left( O_{11} + O_{22} \right) + \frac{1}{2} \left( O_{22} - O_{11} \right) = O_{22} , \quad \omega_- = \frac{1}{2} \left( O_{11} + O_{22} \right) - \frac{1}{2} \left( O_{22} - O_{11} \right) = O_{11} .
+	\]	
+	
+	In conclusion, we obtain that
+	\[
+		\lim_{O_{12} \rightarrow 0} \omega_1 = O_{11} , \quad \lim_{O_{12} \rightarrow 0} \omega_2 = O_{22} .
+	\]
+	Thus, the special case of $O_{12} = O_{21} = 0$ can be merged in the general case. And we conclude that two roots obtained by eliminating $c$ are the same as those given in Eq.(1.96).
+	
+	\end{solution}
+	
+	% 1.11
+	\begin{exercise}
+	Consider the matrices
+	\begin{equation*}
+		\A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}, \,  \B = \begin{pmatrix} 3 & 1 \\ 1 & 2 \end{pmatrix}.
+	\end{equation*}
+	Find numerical values for the eigenvalues and corresponding eigenvectors of these matrices by a) the secular determinant approach; b) the unitary transformation approach. You will see that approach (b) is much easier.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using the secular determinant approach, the intermediate results are as follows.
+	
+	\begin{itemize}
+	
+	\item For the matrix $\A$. Its eigenpolynomial is
+	\begin{align*}
+		| \A - \omega \I | = \begin{vmatrix}
+			3 - \omega & 1 \\ 1 & 3 - \omega 
+		\end{vmatrix} = ( 3 - \omega )^2 - 1 = ( 4 - \omega ) ( 2 - \omega ) = 0.
+	\end{align*}
+	Its two roots are
+	\[
+		\omega_1 = 2 , \quad \omega_2 = 4.
+	\]
+	For the eigenvalue $\omega_1$,
+	\[
+		\A - \omega_1 \I = \begin{pmatrix}
+			3 - 2 & 1 \\ 1 & 3 - 2
+		\end{pmatrix} = \begin{pmatrix}
+			1 & 1 \\ 1 & 1
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & 1 \\ 0 & 0
+		\end{pmatrix} .
+	\]
+	The eigenvector is $(1,-1)^T$.
+	
+	For the eigenvalue $\omega_2$,
+	\[
+		\A - \omega_2 \I = \begin{pmatrix}
+			3 - 4 & 1 \\ 1 & 3 - 4
+		\end{pmatrix} = \begin{pmatrix}
+			-1 & 1 \\ 1 & -1
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & -1 \\ 0 & 0
+		\end{pmatrix} .
+	\]
+	The eigenvector is $(1,1)^T$.
+	
+	\item For the matrix $\B$. Its eigenpolynomial is
+	\begin{align*}
+		| \B - \omega \I | = \begin{vmatrix}
+			3 - \omega & 1 \\ 1 & 2 - \omega 
+		\end{vmatrix} = ( 3 - \omega )( 2 - \omega ) - 1 = \omega^2 - 5 \omega + 5 = 0.
+	\end{align*}
+	Its two roots are
+	\[
+		\omega_1 = \frac{ 5 + \sqrt{5} }{2} , \quad \omega_2 = \frac{ 5 - \sqrt{5} }{2} .
+	\]
+	For the eigenvalue $\omega_1$,
+	\[
+		\B - \omega_1 \I = \begin{pmatrix}
+			3 - \frac{ 5 + \sqrt{5} }{2} & 1 \\ 1 & 2 - \frac{ 5 + \sqrt{5} }{2}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 - \sqrt{5} }{2} & 1 \\ 1 & \frac{ - 1 - \sqrt{5} }{2}
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & - \frac{ 1 + \sqrt{5} }{2} \\ 0 & 0
+		\end{pmatrix} .
+	\]
+	The eigenvector is $( \frac{ 1 + \sqrt{5} }{2} , 1 )^T$.
+	
+	For the eigenvalue $\omega_2$,
+	\[
+		\B - \omega_2 \I = \begin{pmatrix}
+			3 - \frac{ 5 - \sqrt{5} }{2} & 1 \\ 1 & 2 - \frac{ 5 - \sqrt{5} }{2}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 + \sqrt{5} }{2} & 1 \\ 1 & \frac{ -1 + \sqrt{5} }{2}
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & \frac{ -1 + \sqrt{5} }{2} \\ 0 & 0
+		\end{pmatrix} .
+	\]
+	The eigenvector is $( \frac{ 1 - \sqrt{5} }{2} , 1 )^T$.
+	
+	\end{itemize}
+	
+	Using the unitary transformation approach, the intermediate results are as follows.
+	\begin{itemize}
+	
+	\item For the matrix $\A$. Its $\theta_0$ is
+	\[
+		\theta_0 = \frac{1}{2} \arctan{\frac{ 2O_{12} }{ O_{11} - O_{22} } } = \frac{1}{2} \arctan{ \frac{ 2 \times 1 }{ 3 - 3 } } = \frac{1}{2} \arctan{ \infty } = \frac{1}{2} \times \frac{ \pi }{ 2 } = \frac{ \pi }{ 4 } .
+	\]
+	Here note that $\infty$	means that both $+\infty$ and $-\infty$ are allowed but only $+\infty$ is used for the following calculation. The same results can be obtained by using $-\infty$ and this process is omitted for the sake of simplicity!
+	
+	From (1.106a,b) and (1.107a,b), we obtain that the first eigenvalue $\omega_1$ is
+	\[
+		\omega_1 = O_{11} \cos^2 \theta_0 + O_{22} \sin^2 \theta_0 + O_{12} \sin 2\theta = 3 \cos^2 \frac{\pi}{4} + 3 \sin^2 \frac{\pi}{4} + 1 \sin \left( \frac{2 \pi}{4} \right) = 4 ,
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^1_1 \\ c^1_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\cos \frac{\pi}{4} \\ \sin \frac{\pi}{4}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } \\ \frac{1}{ \sqrt{2} }
+		\end{pmatrix} ,
+	\]
+	and the second eigenvalue $\omega_2$ is
+	\[
+		\omega_2 = O_{11} \sin^2 \theta_0 + O_{22} \cos^2 \theta_0 - O_{12} \sin 2\theta = 3 \sin^2 \frac{\pi}{4} + 3 \cos^2 \frac{\pi}{4} - 1 \sin \left( \frac{2 \pi}{4} \right) = 2 ,
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^2_1 \\ c^2_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\sin \frac{\pi}{4} \\ -\cos \frac{\pi}{4}
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } \\ -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} .
+	\]
+	
+	\item For the matrix $\B$. Its $\theta_0$ is
+	\[
+		\theta_0 = \frac{1}{2} \arctan{\frac{ 2O_{12} }{ O_{11} - O_{22} } } = \frac{1}{2} \arctan{ \frac{ 2 \times 1 }{ 3 - 2 } } = \frac{1}{2} \arctan{ 2 } .
+	\]
+	In other words, 
+	\[
+		2 = \tan 2\theta_0 = \frac{ 2 \tan \theta_0 }{ 1 - \tan^2 \theta_0 } \Rightarrow \tan (\theta_0)_\pm = \frac{ -1 \pm \sqrt{5} }{2}. 
+	\]
+	We use $\tan \theta_0 = \frac{ -1 + \sqrt{5} }{2}$ in the following calculation. Of course, with $\tan \theta_0 = \frac{ -1 - \sqrt{5} }{2}$, the same results can be omitted and the derivation is omitted, too.
+	
+	Thus, we know that from
+	\begin{align*}
+		\sin^2 \theta_0 + \cos^2 \theta_0 &= 1 , \\
+		\frac{ \sin \theta_0 }{ \cos \theta_0 } = \tan \theta_0 &= \frac{ -1 + \sqrt{5} }{2},
+	\end{align*}
+	we get
+	\begin{align*}
+		\cos^2 \theta_0 &= \frac{1}{ 1 + \left( \frac{ -1 + \sqrt{5} }{2} \right)^2 } = \frac{ 4 }{ 4 + 6 - 2\sqrt{5} } = \frac{ 4 }{ 2\sqrt{5} ( \sqrt{5} - 1 ) } = \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } , \\
+		\sin^2 \theta_0 &= 1 - \cos^2 \theta_0 = 1 - \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } = \frac{ -1 + \sqrt{5} }{ 2\sqrt{5} } , \\
+		\sin 2\theta_0 &= 2 \sin \theta_0 \cos \theta_0 = 2 \frac{ -1 + \sqrt{5} }{ 2 } \cos \theta_0 \cos \theta_0 = ( -1 + \sqrt{5} ) \cos^2 \theta_0 = \frac{ 2 }{ \sqrt{5} } .
+	\end{align*}
+	
+	From (1.106a,b) and (1.107a,b), we obtain that the first eigenvalue $\omega_1$ is
+	\[
+		\omega_1 = O_{11} \cos^2 \theta_0 + O_{22} \sin^2 \theta_0 + O_{12} \sin 2\theta = 3 \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } + 2 \frac{ -1 + \sqrt{5} }{ 2\sqrt{5} } + 1 \frac{ 2 }{ \sqrt{5} } = \frac{ 5 + \sqrt{5} }{2} .
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^1_1 \\ c^1_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\cos \theta_0 \\ \sin \theta_0
+		\end{pmatrix} \Leftrightarrow \begin{pmatrix}
+			\cos^2 \theta_0 \\ \sin \theta \cos \theta_0
+		\end{pmatrix} = \begin{pmatrix}
+			\cos^2 \theta_0 \\ \frac{1}{2}\sin 2\theta_0
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } \\ \frac{ 1 }{ \sqrt{5} }
+		\end{pmatrix} \Leftrightarrow \begin{pmatrix}
+			\frac{ \sqrt{5} + 1 }{ 2 } \\ 1
+		\end{pmatrix} .
+	\]
+	and the second eigenvalue $\omega_2$ is
+	\[
+		\omega_2 = O_{11} \sin^2 \theta_0 + O_{22} \sin^2 \theta_0 - O_{12} \sin 2\theta = 3 \frac{ -1 + \sqrt{5} }{ 2\sqrt{5} } + 2 \frac{ \sqrt{5} + 1 }{ 2\sqrt{5} } - 1 \frac{ 2 }{ \sqrt{5} } = \frac{ 5 - \sqrt{5} }{ 2 } .
+	\]
+	whose eigenvector is
+	\[
+		\begin{pmatrix}
+			c^2_1 \\ c^2_2 
+		\end{pmatrix} = \begin{pmatrix}
+			\sin \theta_0 \\ -\cos \theta_0
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{1}{2} \sin 2\theta_0 \\ -\cos^2 \theta_0
+		\end{pmatrix} \Leftrightarrow  \begin{pmatrix}
+			1 \\ \frac{ -\sqrt{5} - 1 }{ 2 }
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 - \sqrt{5} }{ 2 } \\ 1 
+		\end{pmatrix} .
+	\]
+	
+	\end{itemize}
+	
+	I think that the first approach is much easier.
+	
+	\end{solution}	
+
+	\subsection{Functions of Matrices}
+	
+	% 1.12
+	\begin{exercise}
+	Given that
+	\begin{equation*}
+		\U^\dagger \A \U = {\bf a} = \begin{pmatrix} a_1 & 0 & \cdots & 0 \\ 0 & a_2 & \cdots & 0 \\ \cdots & \cdots & \cdots & \cdots \\ 0 & 0 & \cdots & a_N \end{pmatrix} \quad \text{or} \quad \A {\bf c^\alpha} = a_\alpha {\bf c^\alpha} , \, \alpha = 1,2,\cdots, N.
+	\end{equation*}
+	Show that
+	\begin{enumerate}
+	
+	\item[a.] $\det{\A^n}=a^n_1 a^n_2 \cdots a^n_N$.
+
+	\item[b.] $\tr{\A^n}=\displaystyle\sum_{\alpha=1}^N a^n_\alpha$.
+	
+	\item[c.] If ${\bf G}(\omega) = (\omega\I - \A)^{-1}$, then
+	\begin{equation*}
+		({\bf G}(\omega))_{ij} = \sum_{\alpha=1}^N \frac{U_{i\alpha}U^*_{j\alpha}}{\omega-a_\alpha} = \sum_{\alpha=1}^N \frac{c^\alpha_i {c^\alpha_j}^*}{\omega-a_\alpha}.
+	\end{equation*}
+	Show that using Dirac notation this can be rewritten as
+	\begin{equation*}
+		({\bf G}(\omega))_{ij} \equiv \langle i | \mathscr{G}(\omega) | j \rangle = \sum_{\alpha} \frac{\langle i | \alpha \rangle \langle \alpha | j \rangle }{\omega - a_\alpha}.
+	\end{equation*}
+	\end{enumerate}
+	
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Before the formal derivation, note that
+	\[
+		\U^\dagger \A \U = {\bf a} \Leftrightarrow \A = \U {\bf a} \U^\dagger \Rightarrow \A^n = (  \U {\bf a} \U^\dagger )^n = \U {\bf a}^n \U^\dagger .
+	\]	
+	
+	\begin{itemize}
+	
+	\item[a.] Using $\det{\A\B} = \det{\A} \det{\B} = \det{\B} \det{\A}$ and $\det{\I} = 1$, we find that
+	\begin{align*}
+		\det{ \A^n } &= \det{ \U {\bf a}^n \U^\dagger } = \det{ \U } \det{ {\bf a}^n \U^\dagger } = \det{ {\bf a}^n \U^\dagger } \det{ \U } \\
+		&= \det{ {\bf a}^n  } \det{ \U^\dagger } \det{ \U } = \det{ {\bf a}^n  } \det{ \U^\dagger \U } = \det{ {\bf a}^n } \det{ \I } = \det{ {\bf a}^n } .
+	\end{align*}
+	
+	\item[b.] Using $\tr{\A\B} = \tr{\B\A}$, we find that
+	\begin{align*}
+		\tr{\A^n} = \tr{ \U {\bf a}^n \U^\dagger } = \tr{ {\bf a}^n \U^\dagger \U } = \tr{{\bf a}^n} .
+	\end{align*}
+	
+	\item[c.] From $\A = \U {\bf a} \U^\dagger$, we get that
+	\[
+		\omega \I - \A = \omega \U \I \U^\dagger - \U {\bf a} \U^\dagger = \U ( \omega \I - {\bf a} ) \U^\dagger .
+	\]
+	Thus,
+	\[
+		{\bf G}(\omega) = (\omega\I - \A)^{-1} = [ \U ( \omega \I - {\bf a} ) \U^\dagger ]^{-1} = ( \U^\dagger )^{-1} ( \omega \I - {\bf a} )^{-1} \U^{-1} = \U ( \omega \I - {\bf a} )^{-1} \U^\dagger ,
+	\]
+	and then
+	\begin{sequation}
+		({\bf G}(\omega))_{ij} = [ \U ( \omega \I - {\bf a} )^{-1} \U^\dagger ]_{ij} = \sum_{\alpha=1}^N \sum_{\beta=1}^N (\U)_{i\alpha} \frac{ \delta_{\alpha \beta} }{ \omega - a_\alpha  } (\U^\dagger)_{\beta j} = \sum_{\alpha=1}^N \frac{ U_{i\alpha} U^*_{j\alpha} }{ \omega - a_\alpha } .
+	\end{sequation}
+	
+	Note that in the basis $\{ | \alpha \rangle \}$, $\U$ is diagonal, viz., $\U = \sum_\beta | \beta \rangle \langle \beta | $ and thus $\U | \alpha \rangle = | \alpha \rangle$. Using Dirac notation, the final result equals 
+	\begin{align*}
+		({\bf G}(\omega))_{ij} &= \langle i | \U ( \omega \I - {\bf a} )^{-1} \U^\dagger | j \rangle = \sum_\alpha \sum_\beta \langle i | \U | \alpha \rangle \langle \alpha | \frac{1}{ \omega \I - {\bf a} } | \beta \rangle \langle \beta | \U^\dagger | j \rangle \\
+		&= \sum_\alpha \sum_\beta \langle i | \U | \alpha \rangle \frac{ \delta_{\alpha \beta} }{ \omega - a_\alpha } \langle \beta | \U^\dagger | j \rangle = \sum_\alpha \frac{ \langle i | \U | \alpha \rangle \langle \alpha | \U^\dagger | j \rangle }{ \omega - a_\alpha } = \sum_\alpha \frac{ \langle i | \alpha \rangle \langle \alpha | j \rangle }{ \omega - a_\alpha } .
+	\end{align*}
+	
+	\end{itemize}
+	
+	\end{solution}
+	
+	% 1.13
+	\begin{exercise}
+	If
+	\begin{equation*}
+		\A = \begin{pmatrix} a & b \\ b & a \end{pmatrix}			
+	\end{equation*}
+	show that
+	\begin{equation*}
+		f(\A) = \begin{pmatrix}
+		\frac{1}{2}[f(a+b)+f(a-b)] & \frac{1}{2}[f(a+b)-f(a-b)] \\
+		\frac{1}{2}[f(a+b)-f(a-b)] & \frac{1}{2}[f(a+b)+f(a-b)]
+		\end{pmatrix}.
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The eigenpolynomial of $\A$ is
+	\[
+		\det{\A-\varepsilon\I} = \begin{vmatrix}
+			a - \varepsilon & b \\ b & a - \varepsilon
+		\end{vmatrix} = ( a - \varepsilon )^2 - b^2 = ( a + b - \varepsilon ) ( a - b - \varepsilon ) = 0.
+	\]
+	It has two roots,
+	\[
+		\varepsilon_1 = a - b , \quad \varepsilon_2 = a + b.
+	\]
+	The eigenvector of $\varepsilon_1$ is
+	\[
+		\A - \varepsilon_1 \I = \begin{pmatrix}
+			a - ( a - b ) & b \\ b & a - ( a - b )
+		\end{pmatrix} = \begin{pmatrix}
+			b & b \\ b & b 
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & 1 \\ 0 & 0 
+		\end{pmatrix}.
+	\]
+	The normalized eigenvector is $\frac{1}{ \sqrt{2} }(1,-1)^T$.
+	
+	Besides, the eigenvector of $\varepsilon_2$ is
+	\[
+		\A - \varepsilon_2 \I = \begin{pmatrix}
+			a - ( a + b ) & b \\ b & a - ( a + b )
+		\end{pmatrix} = \begin{pmatrix}
+			-b & b \\ b & -b 
+		\end{pmatrix} \Rightarrow \begin{pmatrix}
+			1 & -1 \\ 0 & 0 
+		\end{pmatrix}.
+	\]
+	The normalized eigenvector is $\frac{1}{ \sqrt{2} }(1,1)^T$.
+	
+	Thus, we know that
+	\[
+		\A = \U {\bf a} \U^\dagger = \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \begin{pmatrix}
+			a + b & 0 \\ 0 & a - b 
+		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} .
+	\] 
+	and thus
+	\begin{align*}
+		f(\A) = \U f( {\bf a} ) \U^\dagger &= \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \begin{pmatrix}
+			f( a + b ) & 0 \\ 0 & f( a - b )
+ 		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } f( a + b ) & \frac{1}{ \sqrt{2} } f( a - b ) \\
+			\frac{1}{ \sqrt{2} } f( a + b ) & -\frac{1}{ \sqrt{2} } f( a - b ) 
+		\end{pmatrix} \begin{pmatrix}
+			\frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{2} } \\
+			\frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{2} }
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+		\frac{1}{2}[f(a+b)+f(a-b)] & \frac{1}{2}[f(a+b)-f(a-b)] \\
+		\frac{1}{2}[f(a+b)-f(a-b)] & \frac{1}{2}[f(a+b)+f(a-b)]
+		\end{pmatrix} .
+	\end{align*}
+	
+	\end{solution}
+	
+	\section{Orthogonal Functions, Eigenfunctions, and Operators}
+	
+	% 1.14
+	\begin{exercise}
+	Using the above representation of $\delta(x)$, show that
+	\begin{equation*}
+		a(0) = \int_{-\infty}^\infty \dif x \, a(x) \delta(x) .
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using first mean value theorem for definite integrals, we find that
+	\begin{align*}
+		\int_{-\infty}^\infty \dif x \, a(x) \delta(x) &= \int_{-\infty}^\infty \dif x \, a(x) \lim_{\varepsilon \rightarrow 0}  \delta_\varepsilon(x) = \lim_{\varepsilon \rightarrow 0} \int_{-\varepsilon}^\varepsilon \dif x \, a(x) \delta_\varepsilon(x) \\
+		&= \lim_{\varepsilon \rightarrow 0} \frac{ 1 }{ 2 \varepsilon } \int_{-\varepsilon}^\varepsilon \dif x \, a(x) = \lim_{ \substack{ \varepsilon \rightarrow 0 \\ \zeta \in ( -\varepsilon, \varepsilon )} } \frac{ 1 }{ 2 \varepsilon }a(\zeta) [ \varepsilon - ( - \varepsilon ) ]  = a(0) .
+	\end{align*}		
+	
+	More detailed description about first mean value theorem for definite integrals can be seen in \url{https://en.wikipedia.org/wiki/Mean_value_theorem}.
+	
+	\end{solution}
+	
+	% 1.15
+	\begin{exercise}
+	As a further illustration of the consistency of our notation, consider the matrix representation of an operator $\mathscr{O}$ in the basis $\{\psi_i(x)\}$. Starting with
+	\begin{equation}
+		\mathscr{O} \psi_i(x) = \sum_{j} \psi_j(x) O_{ji} . \tag{1}
+	\end{equation}
+	Show that
+	\begin{equation*}
+		O_{ji} = \int \dif x \psi^*_j(x) \mathscr{O} \psi_i(x) .
+	\end{equation*}
+	Then using Eqs.(1.127a) and (1.138) rewrite (1) in the bra-ket notation and show that it is identical to Eq.(1.55).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (1), we find that
+	\[
+		\int \dif x \psi^*_j(x) \mathscr{O} \psi_i(x) = \int \dif x \psi^*_j(x) \sum_{k} \psi_k(x) O_{ki} = \sum_{k} \int \dif x \psi^*_j(x) \psi_k(x) O_{ki} = \sum_{k} \delta_{jk} O_{ki} = O_{ji} .
+	\]
+	Therefore, using (1.127a) and (1.138), (1.55) equals
+	\[
+		\mathscr{O} | i \rangle = \sum_j | j \rangle O_{ji} .
+	\]
+	
+	\end{solution}	
+	
+	% 1.16
+	\begin{exercise}
+	Consider the eigenvalue problem
+	\[
+		\mathscr{O} \phi(x) = \omega \phi(x).
+	\]
+	By expanding $\phi$ in the complete set $\{\psi_i(x),i=1,2,\ldots\}$ as
+	\begin{equation*}
+		\phi(x) = \sum_{i=1}^\infty c_i \psi_i(x)
+	\end{equation*}
+	show that it becomes equivalent to the matrix eigenvalue problem
+	\begin{equation*}
+		\Op {\bf c} = \omega {\bf c}
+	\end{equation*}
+	where $({\bf c})_i=c_i$ and $({\bf O})_{ij} = \int \dif x \psi^*_i(x)\mathscr{O}\psi_j(x)$. Do this with and without using bra-ket notation. Note that $\Op$ is an infinite matrix. In practice, we cannot handle infinite matrices. To keep things manageable, one uses only a finite subset of the set $\{\psi_i(x)\}$, i.e., $\{\psi_i(x),i=1,2,\ldots, N\}$. If the above analysis is repeated in this subspace, we obtain an $N \times N$ eigenvalue problem. As we shall see in Section 1.3, the corresponding $N$ eigenvalues approximate the true eigenvalues. In particular, we shall prove that the lowest eigenvalue of the truncated eigenvalue problem is greater or equal to the exact lowest eigenvalue.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Without bra-ket notation, we start from
+	\[
+		\mathscr{O} \phi(x) = \mathscr{O} \sum_j c_j \psi_j(x) = \sum_j \mathscr{O} \psi_j(x) c_j = \omega \sum_j c_j \psi_j(x) .
+	\]
+	Multiplying this by $\psi^*_i(x)$ and integrate over all $x$, we find that
+	\[
+		\sum_j \int \dif x \psi^*_i(x) \mathscr{O} \psi_j(x) c_j = \sum_j O_{ij} c_j = \omega \sum_j c_j \int \dif x \psi^*_i(x) \psi_j(x) = \omega \sum_j c_j \delta_{ij} = c_i ,
+	\]
+	which means $\Op {\bf c} = \omega {\bf c}$.
+	
+	With bra-ket notation, we start from
+	\[
+		\sum_j \mathscr{O} | j \rangle c_j = \omega \sum_j | j \rangle c_j
+	\]
+	Multiplying this by $\langle i |$ and we find that
+	\[
+		\sum_j \langle i | \mathscr{O} | j \rangle c_j = \sum_j O_{ij} c_j = \omega \sum_j \langle i | j \rangle c_j = \omega \sum_j \delta_{ij} c_j = \omega c_i .
+	\]
+	which means $\Op {\bf c} = \omega {\bf c}$, too.
+	\end{solution}
+	
+	% 1.17
+	\begin{exercise}
+	In this subsection we have used a watered-down version of Dirac notation that is sufficient for our purposes but that oversimplifies the deep relationship between vectors and functions. The purpose of this exercise is to provide a glimpse at Dirac notation in its full glory. Consider a denumerably infinite set of complete orthonormal basis vectors, i.e.,
+	\begin{align}
+		\sum_{i=1}^\infty | i \rangle \langle i | &= \I, \tag{1a} \\
+		\langle i | j \rangle &= \delta_{ij}. \tag{1b}
+	\end{align}		
+	Let us introduce a continuously infinite complete set of basis vectors denoted by $|x\rangle$. The analogue of (1a) is
+	\begin{equation*}
+		\int \dif x | x \rangle \langle x | = \I, \tag{2a}
+	\end{equation*}
+	that is, we have replaced the summation in (1a) by an integral. If we multiply (2a) on the left by $\langle a |$ and on the right by $| b \rangle$ we have
+	\begin{equation*}
+		\int \dif x \langle a | x \rangle \langle x | b \rangle = \langle a | b \rangle.
+	\end{equation*}
+	Comparing this to Eq.(1.128) suggests that we identify $a^*(x)$ with $\langle a | x \rangle$ and $b(x)$ with $\langle x | b \rangle$. Recall that $\langle i | a \rangle$ is the component of $| a \rangle$ along the basis vector $| i \rangle$. Thus we can regard a function $b(x)$ as the $x$ component of the abstract vector $| b \rangle$ in a coordinate system with a continuously infinite number of axes.
+	\begin{enumerate}
+	
+	\item[a.] Multiply (2a) on the left by $\langle i |$ and on the right by $| j \rangle$. Using (1b) show that the resulting equation is identical to (1.116) if
+	\begin{equation*}
+		\psi^*_i(x) = \langle i | x \rangle, \quad \psi_j(x) = \langle x | j \rangle.
+	\end{equation*}
+	
+	\item[b.] Multiply (1a) by $\langle x |$ on the left and $| x^\prime \rangle$ on the right. Show that the resulting equation is identical to (1.120) if
+	\begin{equation*}
+		\langle x | x^\prime \rangle = \delta( x - x^\prime ). \tag{2b}
+	\end{equation*}
+	This is just the continuous analogue of (1b).
+	
+	\item[c.] Multiply (2a) by $\langle x^\prime |$ on the left and $| a \rangle$ on the right. Show that the resulting expression is identical to (1.121).
+	
+	\item[d.] Consider an abstract operator $\mathscr{O}$. Its matrix elements in the continuous basis $| x \rangle$ are
+	\begin{equation*}
+		\langle x | \mathscr{O} | x^\prime \rangle = O(x,x^\prime).
+	\end{equation*}
+	Starting with the relation $\mathscr{O}| a \rangle = | b \rangle$ and inserting unity, we have
+	\begin{equation*}
+		\mathscr{O} | a \rangle = \mathscr{O} \I | a \rangle = \int \dif x \mathscr{O} | x \rangle \langle x | a \rangle = | b \rangle .
+	\end{equation*}
+	Multiply this equation by $\langle x^\prime |$ and show that the result is identical to Eq.(1.133).
+	
+	\item[e.] If $O_{ij} = \langle i | \mathscr{O} | j \rangle$, show that
+	\begin{equation*}
+		O(x,x^\prime) = \sum_{ij} \psi_i(x) O_{ij} \psi^*_j(x^\prime).
+	\end{equation*}
+	
+	\end{enumerate}
+
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{itemize}
+	
+	\item[a.] Multiply (2a) on the left by $\langle i |$ and on the right by $| j \rangle$. Using (1b) show that the resulting equation is identical to 	
+	\[
+		\int \dif x \psi^*_i(x) \psi_j(x) = \int \dif x \langle i | x \rangle \langle x | j \rangle = \langle i | j \rangle = \delta_{ij} ,
+	\]
+	if $\psi^*_i(x) = \langle i | x \rangle$ and $\psi_j(x) = \langle x | j \rangle$.
+	
+	\item[b.] Multiply (1a) by $\langle x |$ on the left and $| x^\prime \rangle$ on the right. We find that
+	\begin{equation*}
+		\langle x | x^\prime \rangle = \sum_{i=1}^\infty \langle x | i \rangle \langle i | x^\prime \rangle = \sum_{i=1}^\infty \psi_i(x) \psi^*_i(x) = \delta( x - x^\prime ) .
+	\end{equation*}
+	This is just the continuous analogue of (1b).
+	
+	\item[c.] Multiply (2a) by $\langle x^\prime |$ on the left and $| a \rangle$ on the right. We find that
+	\[
+		\langle x^\prime | a \rangle = \int \dif x \langle x^\prime | x \rangle \langle x | a \rangle = \int \dif x \delta(  x - x^\prime ) a(x) = a( x^\prime ).
+	\]
+	It is identical to (1.121).
+	
+	\item[d.] From
+	\[
+		\mathscr{O} | a \rangle = \mathscr{O} \I | a \rangle = \int \dif x \mathscr{O} | x \rangle \langle x | a \rangle = | b \rangle ,
+	\]
+	multiply this equation by $\langle x^\prime |$ and we find that
+	\[
+		b( x^\prime ) = \langle x^\prime | b \rangle = \int \dif x \langle x^\prime | \mathscr{O} | x \rangle \langle x | a \rangle = \int \dif x O( x^\prime , x ) a(x) ,
+	\]
+	which is identical to Eq.(1.133).
+	
+	\item[e.] It is evident that
+	\[
+		O(x,x^\prime) = \langle x | \mathscr{O} | x^\prime \rangle = \sum_{ij} \langle x | i \rangle \langle i | \mathscr{O} | j \rangle \langle j | x^\prime \rangle  = \sum_{ij} \psi_i(x) O_{ij} \psi^*_j(x^\prime).
+	\]	
+	
+	\end{itemize}		
+	
+	\end{solution}
+	
+	\section{The Variation Method}
+	
+	\subsection{The Variation Principle}
+	
+	% 1.18
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) of an electron moving in one dimension under the influence of the potential $-\delta(x)$ is
+	\begin{equation*}
+		\left(-\frac 12 \frac{\dif^2}{\dif x^2}-\delta(x)\right) | \Phi \rangle = \mathscr{E} | \Phi \rangle
+	\end{equation*}
+	Use the variation method with the trial function
+	\begin{equation*}
+		| \tilde{\Phi} \rangle = N e^{-\alpha x^2}
+	\end{equation*}
+	to show that $-\pi^{-1}$ is an upper bound to the exact ground state energy (which is -0.5). You will need the integral
+	\begin{equation*}
+		\int_{-\infty}^{\infty} \dif x x^{2m} e^{-\alpha x^2} = \frac{(2m)!\pi^{1/2}}{2^{2m}m!\alpha^{m+1/2}}.
+	\end{equation*}
+	\end{exercise}
+	
+	\begin{solution}
+
+	The norm of the trial function is
+	\[
+		\langle \tilde{\Phi} | \tilde{\Phi} \rangle = \int \dif x \, \langle \tilde{\Phi} | x \rangle \langle x | \tilde{\Phi} \rangle = N^2 \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} e^{-\alpha x^2} = N^2 \int_{-\infty}^{\infty} \dif x \, e^{-2\alpha x^2} = N^2 \sqrt{ \frac{ \pi }{ 2\alpha } } .
+	\]
+	Thus the normalized trial function is
+	\[
+		| \Phi \rangle = \sqrt[4]{ \frac{ 2\alpha }{ \pi } } | \tilde{\Phi} \rangle = \sqrt[4]{ \frac{ 2\alpha }{ \pi } } e^{- \alpha x^2} ,
+	\]
+	and its energy functional is
+	\begin{align*}
+		E( \alpha ) &= \int \dif x \int \dif x^\prime \, \langle \Phi | x \rangle \left\langle x \left| -\frac 12 \frac{\dif^2}{\dif x^2}-\delta(x) \right| x^\prime \right\rangle \langle x^\prime | \Phi \rangle \\
+		&= \sqrt{ \frac{ 2\alpha }{ \pi } } \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \left( -\frac 12 \frac{\dif^2}{\dif x^2}-\delta(x) \right) e^{-\alpha x^2} \\
+		&= \sqrt{ \frac{ 2\alpha }{ \pi } } \left( - \frac{1}{2} \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \frac{\dif^2}{\dif x^2} \left( e^{-\alpha x^2} \right) - \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \delta(x) e^{-\alpha x^2} \right) .
+	\end{align*}
+	The first integral is
+	\begin{align*}
+		&\hspace{1.4em}\int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \frac{\dif^2}{\dif x^2} \left( e^{-\alpha x^2} \right) = \int_{-\infty}^{\infty} e^{-\alpha x^2} \dif \left[ \frac{\dif}{\dif x}  \left( e^{-\alpha x^2} \right) \right] = \int_{-\infty}^{\infty} e^{-\alpha x^2} \dif \left( - 2\alpha x e^{-\alpha x^2} \right) \\
+		&= - 2\alpha \int_{-\infty}^{\infty} e^{-\alpha x^2} \dif \left( x e^{-\alpha x^2} \right) = -2\alpha \left( \left[ x e^{-2\alpha x^2} \right]^{+\infty}_{-\infty} - \int_{-\infty}^{\infty} xe^{-\alpha x^2} \dif \left( e^{-\alpha x^2} \right) \right) \\
+		&= - 2 \alpha \left( 0 - ( -2\alpha ) \int_{-\infty}^{\infty} x^2 e^{-2\alpha x^2} \dif x \right) = -4\alpha^2 \int_{-\infty}^{\infty} \dif x x^2 e^{-2\alpha x^2} = - \sqrt{ \frac{ \alpha \pi }{ 2 } } ,
+	\end{align*}
+	and the second integral is
+	\begin{align*}
+		&\hspace{1.4em} \int_{-\infty}^{\infty} \dif x \, e^{-\alpha x^2} \delta(x) e^{-\alpha x^2} = \left[ e^{-2\alpha x^2} \right]_{x=0} = 1 .
+	\end{align*}
+	Thus,
+	\[
+		E( \alpha ) = \sqrt{ \frac{ 2\alpha }{ \pi } } \left[ -\frac{1}{2} \times \left( - \sqrt{ \frac{ \alpha \pi }{ 2 } } \right) - 1 \right] = \frac{ \alpha }{2} - \sqrt{ \frac{ 2\alpha }{ \pi } } .
+	\]
+	And
+	\begin{align*}
+		\frac{ \dif E( \alpha ) }{ \dif \alpha } = \frac{1}{2} -  \frac{1}{2} \sqrt{ \frac{2}{\pi} } \alpha^{-\frac{1}{2}} = 0 \Rightarrow a_0 = \frac{ 2 }{ \pi } , \quad E( a_0 ) = - \frac{1}{\pi} .
+	\end{align*}
+	We conclude that $-\pi^{-1}$ is an upper bound to the exact ground state energy.
+	
+	\end{solution}
+	
+	% 1.19
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) for the hydrogen atom is
+	\[
+		\left( -\frac{1}{2}\nabla^2 - \frac{1}{r} \right) |\Phi\rangle = \mathscr{E} | \Phi \rangle .
+	\]
+	Use the variation method with the trial function
+	\[
+		|\tilde{\Phi}\rangle = N e^{-\alpha r^2}
+	\]
+	to show that $-4/3\pi=-0.4244$ is an upper bound to the exact ground state energy (which is $-0.5$). You will need the relations
+	\begin{align*}
+		\nabla^2 f(r) &= r^{-2} \frac{\dif }{\dif r}\left( r^2 \frac{\dif}{\dif r}\right) f(r) , \\
+		\int_0^\infty \dif r \, r^{2m} e^{-\alpha r^2} &= \frac{ (2m)! \pi^{1/2} }{ 2^{2m+1} m! \alpha^{m+1/2} } , \\
+		\int_0^\infty \dif r \, r^{2m+1} e^{-\alpha r^2} &= \frac{ m! }{ 2 \alpha^{m+1} } .
+	\end{align*}		
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The norm of the trial function is
+	\[
+		\langle \tilde{\Phi} | \tilde{\Phi} \rangle = \int \dif \bfr \, \langle \tilde{\Phi} | \bfr \rangle \langle \bfr | \tilde{\Phi} \rangle = 4 \pi N^2 \int_0^{\infty} r^2 \dif r \, e^{-\alpha r^2} e^{-\alpha r^2} = 4 \pi N^2 \int_0^{\infty} \dif r \, r^2 e^{-2\alpha r^2} = N^2 \sqrt{ \left( \frac{\pi}{2\alpha} \right)^3 } .
+	\]
+	Thus the normalized trial function is
+	\[
+		| \Phi \rangle = \sqrt[4]{ \left( \frac{2\alpha}{\pi} \right)^3 } | \tilde{\Phi} \rangle = \sqrt[4]{ \left( \frac{2\alpha}{\pi} \right)^3 } e^{- \alpha r^2} ,
+	\]
+	and its energy functional is
+	\begin{align*}
+		E( \alpha ) &= \int \dif \bfr \int \dif \bfr^\prime \, \langle \Phi | \bfr \rangle \left\langle \bfr \left| -\frac 12 \nabla^2 - \frac{1}{r} \right| \bfr^\prime \right\rangle \langle \bfr^\prime | \Phi \rangle \\
+		&= 4\pi N^2 \int_0^\infty \dif r \, r^2 e^{- \alpha r^2}  \left( -\frac 12 \nabla^2 - \frac{1}{r} \right) e^{- \alpha r^2}   \\
+		&= 4\pi \sqrt{ \left( \frac{2\alpha}{\pi} \right)^3 } \left[ -\frac{1}{2} \int_0^\infty \dif r \, r^2 e^{- \alpha r^2} \nabla^2 \left( e^{- \alpha r^2} \right) - \int_0^\infty \dif r \, r e^{- 2 \alpha r^2} \right] .
+	\end{align*}
+	The first integral is
+	\begin{align*}
+		&\hspace{1.4em}\int_0^\infty \dif r \, r^2 e^{- \alpha r^2} \nabla^2 \left( e^{- \alpha r^2} \right) = \int_0^\infty \dif r \, e^{- \alpha r^2} \frac{ \dif }{ \dif r } \left[ r^2 \frac{ \dif }{ \dif r } \left( e^{- \alpha r^2} \right) \right] \\
+		&= \int_0^\infty \dif r \, e^{- \alpha r^2} \frac{ \dif }{ \dif r } \left[ r^2 \left( -2 \alpha r e^{- \alpha r^2} \right) \right] = - 2 \alpha \int_0^\infty \dif r \, e^{- \alpha r^2} \frac{ \dif }{ \dif r } \left( r^3 e^{- \alpha r^2} \right) = - 2\alpha \int_0^\infty \, e^{- \alpha r^2} \dif \left( r^3 e^{- \alpha r^2} \right)  \\
+		&= -2 \alpha \left[ \left[ r^3 e^{- 2\alpha r^2} \right]^\infty_0 - \int_0^\infty \, r^3 e^{- \alpha r^2} ( -2\alpha r e^{- \alpha r^2} \dif r ) \right] = -2 \alpha \left( 0 + 2\alpha \int_0^\infty \dif \, r^4 e^{-2\alpha r^2} \right) \\
+		&= -4 \alpha^2 \int_0^\infty \dif \, r^4 e^{-2\alpha r^2} = -4 \alpha^2 \times \frac{3}{8} \sqrt{ \frac{ \pi }{ ( 2\alpha )^5 } } = - \frac{3}{2} \sqrt{ \frac{ \pi }{ 32 \alpha } } ,
+	\end{align*}
+	and the second integral is
+	\begin{align*}
+		&\hspace{1.4em} \int_0^\infty \dif r \, r e^{- 2 \alpha r^2} = \frac{1}{2(2\alpha)} = \frac{1}{4\alpha} .
+	\end{align*}
+	
+	Thus,
+	\[
+		E( \alpha ) = 4\pi \sqrt{ \left( \frac{2\alpha}{\pi} \right)^3 } \left[ -\frac{1}{2} \times \left( - \frac{3}{2} \sqrt{ \frac{ \pi }{ 32 \alpha } } \right) - \frac{1}{4\alpha} \right] = \frac{ 3 \alpha }{ 2 } - 2 \sqrt{ \frac{ 2\alpha }{ \pi } } .
+	\]
+	And
+	\begin{align*}
+		\frac{ \dif E( \alpha ) }{ \dif \alpha } = \frac{3}{2} -  \sqrt{ \frac{2}{\pi} } \alpha^{-\frac{1}{2}} = 0 \Rightarrow a_0 = \frac{ 8 }{ 9\pi } , \quad E( a_0 ) = - \frac{4}{3\pi} = -0.4244 .
+	\end{align*}
+	We conclude that $-4/3\pi = -0.4244$ is an upper bound to the exact ground state energy.
+	
+	\end{solution}
+	
+	% 1.20
+	\begin{exercise}
+	The variation principle as applied to matrix eigenvalue problems states that if ${\bf c}$ is a normalized (${\bf c}^\dagger {\bf c}=1$) column vector, then ${\bf c}^\dagger\Op{\bf c}$ is greater or equal to the lowest eigenvalue of $\Op$. For the $2\times2$ symmetric matrix ($O_{12}=O_{21}$)
+	\[
+		\Op = \begin{pmatrix} O_{11} & O_{12} \\ O_{21} & O_{22} \end{pmatrix},
+	\]
+	consider the trial vector
+	\[
+		{\bf c} = \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}
+	\]
+	which is normalized for any value of $\theta$. Calculate
+	\[
+		\omega(\theta) = {\bf c}^\dagger \Op {\bf c}
+	\]
+	and find the value of $\theta$ (i.e., $\theta_0$) for which $\omega(\theta)$ is a minimum. Show that $\omega(\theta_0)$ is exactly equal to the lowest eigenvalue of $\Op$ (see Eqs.(1.105) and (1.106a)). Why should you have anticipated this result?
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The functional $\omega$ of the variable $\theta$ is
+	\begin{align*}
+		\omega(\theta) &= {\bf c}^\dagger \Op {\bf c} = O_{11} \cos^2 \theta + 2O_{12} \sin \theta \cos \theta + O_{22} \sin^2 \theta \\
+		&= O_{11} \frac{ 1 + \cos 2\theta }{2} + O_{12} \sin 2 \theta + O_{22} \frac{ 1 - \cos 2\theta }{2} \\
+		&= \left( \frac{O_{11}}{2} - \frac{ O_{22} }{2} \right) \cos 2 \theta + O_{12} \sin 2 \theta + \frac{O_{11}}{2} + \frac{ O_{22} }{2} . 
+	\end{align*}
+	
+	Its derivative with respect to $\theta$ is
+	\begin{align*}
+		\frac{\dif \omega(\theta) }{\dif \theta} = -2 \left( \frac{O_{11}}{2} - \frac{ O_{22} }{2} \right) \sin 2 \theta + 2 O_{12} \cos 2\theta = - ( O_{11} - O_{22} ) \sin 2 \theta + 2 O_{12} \cos 2\theta = 0.
+	\end{align*}	
+	
+	If $O_{11} \neq O_{22}$, the solution will be
+	\[
+		\theta_0 = \frac{1}{2} \arctan{ \frac{ 2O_{12} }{ O_{11} - O_{22} } } ,
+	\]
+	which is (1.105), and the lowest root is
+	\[
+		\omega(\theta_0) = O_{11} \cos^2 \theta_0 + O_{22} \sin^2 \theta_0 + O_{12} \sin 2\theta_0 ,
+	\]
+	which is (1.106a). At this time, the trial function is the exact, and thus you can expect the exact solution.
+	
+	\end{solution}
+	
+	\subsection{The Linear Variational Problem}
+	
+	% 1.21
+	\begin{exercise}
+	Consider a normalized trial function $|\tilde{\Phi}^\prime \rangle$ that is orthogonal to the exact ground state wave function, i.e., $\langle \tilde{\Phi}^\prime | \Phi_0 \rangle = 0$.
+	\begin{enumerate}
+	
+	\item[a.] Generalize the proof of the variation principle of Subsection 1.3.1 to show that
+	\[
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle \geq \mathscr{E}_1.
+	\]	
+
+	\item[b.] Consider the function
+	\[
+		| \tilde{\Phi}^\prime \rangle = x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle
+	\]
+	where $| \tilde{\Phi}_\alpha \rangle$, $\alpha = 0, 1$ are given by Eq.(1.168). Show that if it is normalized, then
+	\[
+		|x|^2 + |y|^2 = 1.
+	\]
+	
+	\item[c.] When $x$ and $y$ are chosen so that $| \tilde{\Phi}^\prime \rangle$ is normalized and so that $\langle \tilde{\Phi}^\prime | \Phi_0 \rangle = 0$, then from part (a) it follows that $\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle \geq \mathscr{E}_1$. Show that
+	\[
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = E_1 - |x|^2 ( E_1 - E_0 ).
+	\]
+	Since $E_1 \geq E_0$, conclude that $E_1 \geq \mathscr{E}_1$. The above argument can be generalized to show that $E_\alpha \geq \mathscr{E}_\alpha$, $\alpha=2,3,\ldots$.
+	
+	\end{enumerate}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{enumerate}
+	\item[a.] Using (1.170), we obtain that
+	\begin{equation*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \sum_\beta \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle \langle \tilde{\Phi}_\alpha |\mathscr{H} | \tilde{\Phi}_\beta \rangle \langle \tilde{\Phi}_\beta | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 .
+	\end{equation*}
+	Due to $\varepsilon_0 \leqslant \varepsilon_1 \leqslant \varepsilon_2 \leqslant ... \leqslant \varepsilon_{N - 1}$ and $\langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle = 0$, we get that
+	\begin{align*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle &= \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_0 | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle |^2 + \sum_{\alpha \neq 0} \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 \\
+		&= \sum_{\alpha \neq 0} \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 \geqslant \sum_{\alpha \neq 0} \varepsilon_1 | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_1 \left( \sum_{\alpha \neq 0} | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 + | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle |^2 \right) \\
+		&= \varepsilon_1 \sum_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_1 .
+	\end{align*} % \geqslant
+			
+	\item[b.] If the trial function $|\tilde{\Phi}^\prime \rangle$ is normalized, with (1.169), we will find that
+	\begin{align*}
+		1 &= \langle \tilde{\Phi}^\prime | \tilde{\Phi}^\prime \rangle = ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \\
+		&= |x|^2 + |y|^2 + x^*y \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle +  xy^* \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle = |x|^2 + |y|^2.
+	\end{align*}
+				
+	\item[c.] The proof is direct.	
+	\begin{align*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle &= ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) \mathscr{H} ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
+		&= |x|^2 E_0 + |y|^2 E_1 = ( |x|^2 + |y|^2 ) E_1 - |x|^2 E_1 + |x|^2 E_0 = E_1 - |x|^2 ( E_1 - E_0 ) \geqslant E_0. 
+	\end{align*}
+	Thus, we conclude that $E_1 \geq \mathscr{E}_1$ with $E_1 \geq E_0$.
+	
+	\end{enumerate}
+			
+	\end{solution}
+	
+	% 1.22
+	\begin{exercise}
+	The Schr{\"o}dinger equation (in atomic units) for a hydrogen atom in a uniform electric field $F$ in the $z$ direction is
+	\[
+		\left( -\frac{1}{2}\nabla^2 - \frac{1}{r} + Fr\cos\theta \right) | \Phi \rangle = ( \mathscr{H}_0 + Fr \cos\theta ) | \Phi \rangle = \mathscr{E}(F) | \Phi \rangle.
+	\]
+	Use the trial function
+	\[
+		| \tilde{\Phi} \rangle = c_1 | 1s \rangle + c_2 | 2p_z \rangle
+	\]
+	where $|1s\rangle$ and $|2p_z\rangle$ are the normalized eigenfunctions of $\mathscr{H}_0$, i.e.,
+	\begin{align*}
+		| 1s \rangle &= \pi^{-1/2} e^{-r}, \\
+		| 2p_z \rangle &= (32\pi)^{-1/2} r e^{-r/2} \cos\theta
+	\end{align*}
+	to find an upper bound to $\mathscr{E}(F)$. In constructing the matrix representation of $\mathscr{H}$, you can avoid a lot of work by noting that
+	\[
+		\mathscr{H}_0 | 1s \rangle = -\frac{1}{2} | 1s \rangle, \quad \mathscr{H}_0 | 2p_z \rangle = -\frac{1}{8} | 2p_z \rangle.
+	\]
+	Using $(1+x)^{1/2} \approx 1 + x/2$, expand your answer in a Taylor series in $F$, i.e.,
+	\[
+		E(F) = E(0) - \frac{1}{2} \alpha F^2 + \cdots.
+	\]
+	Show that the coefficient $\alpha$, which is the approximate dipole polarizability of the system, is equal to 2.96. The exact result is 4.5.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	In fact, many integrals used in this exercise is zero due to their odd parity. The non-zero integrals used in this exercise are as follows.
+	\begin{align*}
+		\langle 1s | \mathscr{H}_0 | 1s \rangle &= -\frac{1}{2} \langle 1s | 1s \rangle = -\frac{1}{2} , \\
+		\langle 2p_z | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 2p_z | 2p_z \rangle = -\frac{1}{8}, \\
+		\langle 1s | Fr\cos \theta | 2p_z \rangle &= \frac{1}{ \sqrt{\pi} } \frac{1}{ \sqrt{ 32\pi } } \int_0^{+\infty} F r^4 e^{ -\frac{3}{2}r } \dif r \int_0^\pi \sin\theta \cos^2 \theta \dif \theta \int_0^{2\pi} \dif \varphi \\
+		&= \frac{ F }{ 4\pi \sqrt{2} } \times \left( \frac{2}{3} \right)^5 \int_0^{+\infty} r^4 e^{ -r } \dif r \times \left(  \int_0^\pi \cos^2 \theta \dif ( - \cos \theta ) \right) \times 2\pi \\
+		&= \frac{ F }{ 2\sqrt{2} } \times \frac{ 32 }{ 243 } \times \Gamma( 5 ) \times \left( - \left[ \frac{ \cos^3 \theta }{3} \right]^\pi_0 \right) = \frac{ 8\sqrt{2} F }{ 243 } \times 4! \times \frac{2}{3} = \frac{ 128\sqrt{2} F }{ 243 } .
+	\end{align*}
+	And the matrix elements of the Hamiltonian $\mathscr{H}$ are
+	\begin{align*}
+		H_{11} &= \langle 1s | \mathscr{H} | 1s \rangle = \langle 1s | \mathscr{H}_0 | 1s \rangle + \langle 1s | Fr\cos \theta | 1s \rangle = -\frac{1}{2} + 0 = -\frac{1}{2} , \\
+		H_{12} &= \langle 1s | \mathscr{H} | 2p_z \rangle = \langle 1s | \mathscr{H}_0 | 2p_z \rangle + \langle 1s | Fr\cos \theta | 2p_z \rangle = 0 + \frac{ 128\sqrt{2} F }{ 243 } = \frac{ 128\sqrt{2} F }{ 243 } , \\
+		H_{22} &= \langle 2p_z | \mathscr{H} | 2p_z \rangle = \langle 2p_z | \mathscr{H}_0 | 2p_z \rangle + \langle 2p_z | Fr\cos \theta | 2p_z \rangle = -\frac{1}{8} + 0 = -\frac{1}{8}.
+ 	\end{align*}
+ 	
+ 	Now we know that
+ 	\[
+ 		{\bf H} = \begin{pmatrix}
+ 			-\frac{1}{2} & \frac{ 128\sqrt{2} F }{ 243 } \\
+ 			\frac{ 128\sqrt{2} F }{ 243 } & -\frac{1}{8}
+ 		\end{pmatrix},
+ 	\]
+ 	and its eigenpolynomial is
+ 	\[
+ 		\det{{\bf H} - \omega \I} = \begin{vmatrix}
+ 			-\frac{1}{2} - \omega & \frac{ 128\sqrt{2} F }{ 243 } \\
+ 			\frac{ 128\sqrt{2} F }{ 243 } & -\frac{1}{8} - \omega
+ 		\end{vmatrix} = ( -\frac{1}{2} - \omega ) ( -\frac{1}{8} - \omega ) - \frac{ 128\sqrt{2} F }{ 243 } \frac{ 128\sqrt{2} F }{ 243 } = \omega^2 + \frac{5}{8} \omega + \left( \frac{1}{16} - \frac{ 2^{15} F^2 }{ 3^{10} } \right) .
+ 	\]
+	Its lowest root is
+	\begin{align*}
+		\omega_0 &= \frac{1}{2} \left( - \frac{5}{8} - \sqrt{ \frac{9}{64} + \frac{ 2^{17} }{ 3^{10} } F^2 } \right) = \frac{1}{2} \left( - \frac{5}{8} - \frac{3}{8} \sqrt{ 1 + \frac{ 2^{23} }{ 3^{12} } F^2 } \right) = \frac{1}{16} \left( - 5 - 3 \sqrt{ 1 + \frac{ 2^{23} }{ 3^{12} } F^2 } \right) \\
+		&= \frac{1}{16} \left[ - 5 - 3 \left( 1 + \frac{ 2^{22} }{ 3^{12} } F^2 + \cdots \right) \right] = - \frac{1}{2} - \frac{ 2^{18} }{ 3^{11} } F^2 + \cdots = - \frac{1}{2} - \frac{1}{2} \frac{ 2^{19} }{ 3^{11} } F^2 + \cdots ,
+	\end{align*}
+	where
+	\[
+		\alpha = \frac{ 2^{19} }{ 3^{11} } \approx 2.96.
+	\]
+	
+	\end{solution}
+	
+	\clearpage
 
 	\chapter{Many Electron Wave Functions and Operators}
 	
