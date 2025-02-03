@@ -3,6 +3,7 @@
 
 \usepackage{amssymb}
 \usepackage{bookmark}
+\usepackage[hypcap=false]{caption}
 \usepackage{geometry}
 \geometry{
 	left=2cm,
@@ -20,6 +21,7 @@
 \usepackage[none]{hyphenat}		% 阻止长单词分在两行
 \usepackage{mathrsfs}
 \usepackage[version=4]{mhchem}
+\usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{titlesec}
 
@@ -1027,15 +1029,88 @@
 	
 	\begin{solution}
 	
+	All SCF total energy data used in this exercise can be listed in \Tableref{tab:scf_total_energy}.
+	\vspace{-1em}
 	\begin{center}
-	\begin{tabular}{cccccc}\hline
-	molecules & STO-3G & 4-31G & 6-31G* & 6-31G** & HF-limit \\ \hline \\
-	$\ce{H2}$ & 1.117 & -1.127 & -1.127 & -1.131 & -1.134 \\
+	\captionof{table}{SCF total energy ($\au$) for several molecules with the standard basis sets.}\label{tab:scf_total_energy}
+	\begin{tabular}{c|c|c|c|c|c}\hline
+	\multirow{2}*{molecules} & \multicolumn{5}{c}{basis set} \\ \cline{2-6}
+	 & STO-3G & 4-31G & 6-31G* & 6-31G** & HF-limit \\ \hline 
+	$\ce{H2}$ & -1.117 & -1.127 & -1.127 & -1.131 & -1.134 \\
+	$\ce{N2}$ & -107.496 & -108.754 & -108.942 & -108.942 & -108.997 \\
+	$\ce{CO}$ & -111.225 & -112.552 & -112.737 & -112.737 & -112.791 \\
+	$\ce{NH3}$ & -55.454 & -56.102 & -56.184 & -56.195 &  -56.225 \\
+	$\ce{CH4}$ & -39.727 & -40.140 & -40.195 & -40.202 & -40.225 \\
+	$\ce{H2O}$ & -74.963 & -75.907 & -76.011 & -76.023 & -76.065 \\ \hline
 	\end{tabular}
-	\end{center}		
+	\end{center}
+	
+	The enthalpy change of reaction 1 is
+	\begin{align*}
+		\Delta H({\rm STO-3G}) &= 2 H( \ce{NH3} , {\rm STO-3G } ) - 3 H( \ce{H2} , {\rm STO-3G } ) - H( \ce{N2} , {\rm STO-3G } ) \\
+		&= 2 \times ( -55.454 \, \au ) - 3 \times ( -1.117 \, \au ) - ( -107.496 \, \au ) \\
+		&= -0.061 \, \au = -0.061 \, \au \times 627.51 \, {\rm kcal \cdot mol^{-1} } / \au = -38.3 \, {\rm kcal \cdot mol^{-1} }.
+	\end{align*}
+	
+	In the same way, we can calculate the enthalpy change of the reaction 1 under various basis sets. These results are listed in \Tableref{tab:enthalpy_1}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The enthalpy change of the reaction 1 under various standard basis sets.}\label{tab:enthalpy_1}
+	\begin{tabular}{c|c|c|c} \hline
+	basis set & $\Delta H (\au)$ & $\Delta H ({\rm kcal\cdot mol^{-1}})$ & excergic or endoergic \\ \hline
+	STO-3G 		& -0.061	& -38.3 & exoergic \\
+	4-31G 		& -0.069 	& -43.3 & exoergic \\
+	6-31G* 		& -0.045	& -28.2 & exoergic \\
+	6-31G** 	& -0.055	& -34.5 & exoergic \\
+	HF-limit 	& -0.051	& -32.0 & exoergic \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	Similarly, we summarize the results of the enthalpy change of the reaction 2 under various basis sets. These results are listed in \Tableref{tab:enthalpy_2}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The enthalpy change of the reaction 2 under various standard basis sets.}\label{tab:enthalpy_2}
+	\begin{tabular}{c|c|c|c} \hline
+	basis set & $\Delta H (\au)$ & $\Delta H ({\rm kcal\cdot mol^{-1}})$ & excergic or endoergic \\ \hline
+	STO-3G 		& -0.114	& -71.5 & exoergic \\
+	4-31G 		& -0.114 	& -71.5 & exoergic \\
+	6-31G* 		& -0.088	& -55.2 & exoergic \\
+	6-31G** 	& -0.095	& -59.6 & exoergic \\
+	HF-limit 	& -0.097	& -60.9 & exoergic \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	Now pay attention to the zero-point energy. For example, as for $\ce{CH4}$, it is a nonlinear molecule and there are 5 atoms, thus it has $3\times5-6=9$ degress of freedom, and its total zero-point energy is
+	\[
+		( 1.86 \times 3 + 2.17 \times 2 + 4.14 + 4.2 \times 3 ) \, {\rm kcal \cdot mol^{-1}} = 26.66 \, {\rm kcal \cdot mol^{-1}}.
+	\]
+	And we can establish the table of the zero-point energy of these molecules, as shown in \Tableref{tab:zero_point_energy}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The zero-point energy of several molecules .}\label{tab:zero_point_energy}
+	\begin{tabular}{c|c|c|c|c}\hline
+	molecules & $N$ & linear or nonlinear & degrees of freedom & total zero-point energy (${\rm kcal \cdot mol^{-1}}$) \\ \hline
+	$\ce{H2}$ & 2 & linear & 1 & 6.18 \\
+	$\ce{N2}$ & 2 & linear & 1 & 3.35 \\
+	$\ce{CO}$ & 2 & linear & 1 & 3.08 \\
+	$\ce{H2O}$ & 3 & nonlinear & 3 & 12.74 \\
+	$\ce{NH3}$ & 4 & nonlinear & 6 & 20.46 \\
+	$\ce{CH4}$ & 5 & nonlinear & 9 & 26.66 \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	For the reaction 1, its zero-point energy is
+	\[
+		( 2 \times 20.46 - 3 \times 6.18 - 1 \times 3.35 ) \, {\rm kcal \cdot mol^{-1}} = 19.03 \, {\rm kcal \cdot mol^{-1}} .
+	\]
+	And for the reaction 1, its zero-point energy is
+	\[
+		( 1 \times 26.66 + 1 \times 12.74 - 3 \times 6.18 - 1 \times 3.08 ) \, {\rm kcal \cdot mol^{-1}} = 17.78 \, {\rm kcal \cdot mol^{-1}} .
+	\]
+	
+	It is evident that the effect of zero-point vibrations should not be ignored in the reaction 1 and 2.
 	
 	\end{solution}
-	
 	
 	\subsection{Ionization Potentials}
 	
@@ -1046,5 +1121,22 @@
 	\section{Unrestricted Open-Shell Hartree-Fock: The Pople-Nesbet \texorpdfstring{\\}- Equations}
 	
 	\subsection{Open-Shell Hartree Fock: Unrestricted Spin Orbitals}
+
+	% 3.33
+	\begin{exercise}
+	Rather than use the simple technique of writing down $f^\alpha(1)$ by inspection of the possible interactions, as we have done above, use expression (3.314) for $f^\alpha(1)$  and explicitly integrate over spin and carry through the algebra, as was done in Subsection 3.4.1 for the restricted closed-shell case, to derive
+	\[
+		f^\alpha(1) = h(1) + \sum_a^{N^\alpha} \left[ J^\alpha_a(1) - K^\alpha_a(1) \right] + \sum_a^{N^\beta} J^\beta_a(1).
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.115), we find that
+	\begin{align*}
+		f^\alpha(1) &= \int \dif \omega_1 \alpha^*( \omega_1 ) \left[ \sum_c^N \int \dif \bfx_2 \chi^*_c( \bfx_2 ) r^{-1}_{12} ( 1 - \mathscr{P}_{12} ) \chi_c ( \bfx_2 ) \right] \\
+	\end{align*}
+	
+	\end{solution}
 
 \end{document}
