@@ -737,7 +737,7 @@
 	Use the general definition (3.154) of the Fock matrix to show that the converged values of its elements for minimal basis $\ce{H2}$ are
 	\begin{align*}
 		F_{11} &= F_{22} = H^\core_{11} + \frac{ \frac{1}{2} ( \phi_1 \phi_1 | \phi_1 \phi_1 ) + ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) - \frac{1}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} }  = -0.3655 \, \au , \\
-		F_{12} &= F_{21} = H^\core_{12} + \frac{ -\frac{1}{2} ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) + \frac{3}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} }  = -0.5939 \, \au
+		F_{12} &= F_{21} = H^\core_{12} + \frac{ -\frac{1}{2} ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) + \frac{3}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} } = -0.5939 \, \au
 	\end{align*}
 	\end{exercise}
 	
@@ -830,13 +830,221 @@
 	
 	\begin{solution}
 	
-	From (3.184), we find that
+	From (3.184) and Exercise 3.25, we find that
 	\begin{align*}
-		E_0 = \frac{1}{2} \sum_{ \mu=1 }^2 \sum_{ \nu=1 }^2 
-	\end{align*}		
+		E_0 &= \frac{1}{2} \sum_{ \mu=1 }^2 \sum_{ \nu=1 }^2 P_{\nu \mu} ( H^\core_{\mu \nu} + F_{\mu \nu} ) \\
+		&= \frac{1}{2} \left[ P_{11} ( H^\core_{11} + F_{11} ) + P_{21} ( H^\core_{12} + F_{12} ) + P_{12} ( H^\core_{21} + F_{21} ) + P_{22} ( H^\core_{22} + F_{22} ) \right] \\
+		&= \frac{1}{2} \frac{1}{ 1 + S_{12} } \left( H^\core_{11} + F_{11} + H^\core_{12} + F_{12} + H^\core_{12} + F_{12} + H^\core_{11} + F_{11} \right) \\
+		&= \frac{ H^\core_{11} + F_{11} + H^\core_{12} + F_{12} }{ 1 + S_{12} } \\
+		&= \frac{ -1.1204 \, \au + ( -0.3655 \, \au ) + ( -0.9584 \, \au ) + ( -0.5939 \, \au ) }{ 1 + 0.6593 } = -1.8311 \, \au
+	\end{align*}
 	
+	The nuclear repulsion energy is
+	\[
+		E_{\rm nucl} = \frac{ 1 \times 1 }{ 1.4 } \au = 0.7143 \, \au ,
+	\]
+	and thus the total energy is
+	\[
+		E_{\rm tot} = E_0 + E_{\rm nucl} = -1.8311 \, \au + 0.7143 \, \au = -1.1168 \, \au
+	\]
+	
+	The final result is a little different from the result delivered by this exercise.
 	\end{solution}
 	
 	\subsection{An SCF Calculation on STO-3G \texorpdfstring{$\ce{HeH+}$}-}
+	
+	% 3.28
+	\begin{exercise}
+	Show that the above transformation produces orthonormal basis functions.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.258), we know that
+	\begin{align*}
+		\phi^\prime_1 &= \sum_{ \nu=1 } X_{\nu 1} \phi_\nu = X_{11} \phi_1 + X_{21} \phi_2 = \phi_1 , \\
+		\phi^\prime_2 &= \sum_{ \nu=1 } X_{\nu 2} \phi_\nu = X_{12} \phi_1 + X_{22} \phi_2 = \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } \phi_1 + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \phi_2 .
+	\end{align*}
+	
+	To prove that the above transformation produces orthonormal basis functions, verifying the inner product of new basis functions is enough.
+	\begin{align*}
+		\langle \phi^\prime_1 | \phi^\prime_1 \rangle &= \langle \phi_1 | \phi_1 \rangle = 1 , \\
+		\langle \phi^\prime_1 | \phi^\prime_2 \rangle &= \langle \phi_1 | \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } | \phi_2 \rangle \right) = \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_1 | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_1 | \phi_2 \rangle \\
+		&= \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } + \frac{ S_{12} }{ \sqrt{ 1 - S^2_{12} } } = 0 , \\
+		\langle \phi^\prime_2 | \phi^\prime_1 \rangle &= \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  \langle \phi_1 | + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_2 | \right) | \phi_1 \rangle = \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  \langle \phi_1 | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_2 | \phi_1 \rangle \\
+		&= \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } + \frac{ S_{12} }{ \sqrt{ 1 - S^2_{12} } } = 0 , \\
+		\langle \phi^\prime_2 | \phi^\prime_2 \rangle &= \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_1 | + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_2 | \right) \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } | \phi_2 \rangle \right) \\
+		&= \frac{ S^2_{12} }{ 1 - S^2_{12} } \langle \phi_1 | \phi_1 \rangle + \frac{ -S_{12} }{ 1 - S^2_{12} } \langle \phi_1 | \phi_2 \rangle + \frac{ -S_{12} }{ 1 - S^2_{12} } \langle \phi_2 | \phi_1 \rangle + \frac{ 1 }{ 1 - S^2_{12} } \langle \phi_2 | \phi_2 \rangle \\
+		&= \frac{ S^2_{12} }{ 1 - S^2_{12} } - \frac{ -S^2_{12} }{ 1 - S^2_{12} } - \frac{ -S^2_{12} }{ 1 - S^2_{12} } + \frac{ 1 }{ 1 - S^2_{12} } = \frac{ 1 - S^2_{12} }{ 1 - S^2_{12} } = 1 .
+	\end{align*}
+	Thus, we conclude that the above transformation produces orthonormal basis functions.
+	
+	\end{solution}
+	
+	% 3.29
+	\begin{exercise}
+	Use expression (3.184) for the electronic energy, expression (3.154) for the Fock matrix, and the asymptotic density matrix (3.281) to show that
+	\[
+		E_0( R \rightarrow \infty ) = 2 T_{11} + 2 V^1_{11} + ( \phi_1 \phi_1 | \phi_1 \phi_1 ).
+	\]
+	This is just the proper energy of the $\ce{He}$ atom, for the minimal basis, as discussed previously in the text.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Note that only $P_{11}$ in ${\bf P}$ is nonzero. Thus we care about $G_{11}$, which is 
+	\[
+		G_{11} = \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{\lambda \sigma} \left[ ( 11 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 1 ) \right] = P_{11} \left[ ( 11 | 11 ) - \frac{1}{2} ( 11 | 11 ) \right] = 2 \times \frac{1}{2} ( 11 | 11 ) = ( 11 | 11 ) .
+	\]
+	Thus,
+	\begin{align*}
+		E_0 &= \frac{1}{2} \sum_{ \mu=1 }^2 \sum_{ \nu=1 }^2 P_{ \nu \mu } ( 2 H^\core_{\mu \nu} + G_{\mu \nu} ) = \frac{1}{2} P_{11} ( 2 H^\core_{11} + G_{11} ) = 2 T_{11} + 2 V^1_{11} + ( 11 | 11 ) . 
+	\end{align*}
+	
+	\end{solution}
+	
+	\section{Polyatomic Basis Sets}
+	
+	\subsection{Contracted Gaussian Functions}
+	
+	\subsection{Minimal Basis Sets: STO-3G}
+	
+	\subsection{Double Zeta Basis Sets: 4-31G}
+	
+	% 3.30
+	\begin{exercise}
+	A 4-31G basis for $\ce{He}$ has not been officially defined. Huzinaga,${}^8$ however, in an SCF calculation on the $\ce{He}$ atom using four uncontracted $1s$ Gaussians, found the coefficients and optimum exponents of the normalized $1s$ orbital of $\ce{He}$ to be
+	\begin{center}
+	\begin{tabular}{cc} \hline
+		$\alpha_\mu$ 	& $C_{\mu i}$ 	\\ \hline
+		0.298073		& 0.51380		\\
+		1.242567		& 0.46954 		\\
+		5.782948		& 0.15457		\\
+		38.47497		& 0.02373		\\ \hline
+	\end{tabular}
+	\end{center}
+	Use the expression for overlaps given in Appendix A to derive the contraction parameters for a 4-31G $\ce{He}$ basis set.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	We choose the outer basis function as
+	\[
+		\phi_{2s} = g_{1s}( 0.298073 , \bfr ) ,
+	\]
+	and the unnormalized inner basis function as
+	\[
+		\phi^\prime_{1s}( \bfr ) = N [ 0.46954 g_{1s}( 1.242567 , \bfr ) + 0.15457 g_{1s}( 5.782948 , \bfr ) + 0.02373 g_{1s}( 38.47497 , \bfr ) ] .
+	\]
+	Note that
+	\begin{align*}
+		\langle g_{1s}( 1.242567 , \bfr ) | g_{1s}( 5.782948 , \bfr ) \rangle &= 0.666622 , \\
+		\langle g_{1s}( 1.242567 , \bfr ) | g_{1s}( 38.47497 , \bfr ) \rangle &= 0.205445 , \\
+		\langle g_{1s}( 5.782948 , \bfr ) | g_{1s}( 38.47497 , \bfr ) \rangle &= 0.553419 .
+	\end{align*}
+	Therefore, we can get the norm of $\phi^\prime_{1s}( \bfr )$, namely,
+	\begin{align*}
+		\langle \phi^\prime_{1s} | \phi^\prime_{1s} \rangle = N^2 \begin{pmatrix}
+			0.46954 ,  0.15457 , 0.02373
+		\end{pmatrix} \begin{pmatrix}
+			1 			& 0.666622 	& 0.205445 \\
+			0.666622 	& 1			& 0.553419 \\
+			0.205445	& 0.553419	& 1
+		\end{pmatrix} \begin{pmatrix}
+			0.46954 \\  0.15457 \\ 0.02373
+		\end{pmatrix} = 0.35032 N^2 .
+	\end{align*}
+	And we can obtian the normalization parameter $N$, viz.,
+	\[
+		N = \sqrt{ \frac{1}{ 0.35032 } } = 1.6895 ,
+	\]
+	and then
+	\begin{align*}
+		\phi^\prime_{1s} &= 1.6895 [ 0.46954 g_{1s}( 1.242567 , \bfr ) + 0.15457 g_{1s}( 5.782948 , \bfr ) + 0.02373 g_{1s}( 38.47497 , \bfr ) ] \\
+		&= 0.79328 g_{1s}( 1.242567 , \bfr ) + 0.26115 g_{1s}( 5.782948 , \bfr ) + 0.04009 g_{1s}( 38.47497 , \bfr ) .
+	\end{align*}
+	
+	The information of 4-31G basis set for He atoms can be seen in subdirectory \verb!./basis_sets/He!. These information is generated by ``Basis Set Exchange" whose url is \url{https://www.basissetexchange.org}.
+	
+	\end{solution}
+	
+	\subsection{Polarized Basis Sets: 6-31G* and 6-31G**}
+	
+	% 3.31
+	\begin{exercise}
+	Determine the total number of basis functions for STO-3G, 4-31G, 6-31G*, and 6-31G** calculations on benzene.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The total number of uncontracted basis functions for STO-3G, 4-31G, 6-31G*, and 6-31G** calculations on benzene has been summarized in the table below.
+	\begin{center}
+	\begin{tabular}{ccccc} \hline
+	basis set & STO-3G & 4-31G & 6-31G*(Cartesian) & 6-31G**(Cartesian) \\ \hline
+	Number of basis functions for $\ce{C}$ & $2+3\times1$ & $3+3\times2$ & $3+3\times2+6\times1$ & $3+3\times2+6\times1$ \\
+	Number of basis functions for $\ce{H}$ & 1 & 2 & 2 & $2+3\times1$ \\
+	Total number of basis functions & 36 & 66 & 102 & 120 \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	\end{solution}
+	
+	\section{Some Illustrative Closed-Shell Calculations}
+	
+	\subsection{Total Energies}
+	
+	% 3.32
+	\begin{exercise}
+	Use the results of Tables 3.11 to 3.13 to calculate, for each basis set and at the Hartree-Fock limit, the energy difference for the following two reactions,
+	\begin{align*}
+		\ce{N2} + 3 \ce{H2} &\rightarrow 2 \ce{NH3} & & \Delta E = ? \\
+		\ce{CO} + 3 \ce{H2} &\rightarrow \ce{CH4} + \ce{H2O} &  & \Delta E = ?
+	\end{align*}
+	Are the results consistent for different basis sets? Does Hartree-Fock theory predict these reactions to be exoergic or endoergic? The experimental hydrogenation energies (heats of reaction $\Delta H^\circ$) at zero degrees Kelvin are -18.604 kcal $\cdot$ mol${}^{-1}$ ($\ce{N2}$) and -45.894 kcal $\cdot$ mol${}^{-1}$ ($\ce{CO}$), with 1 $\au$ of energy equivalent to 627.51 kcal $\cdot$ mol${}^{-1}$.
+	
+	Differences in the zero-point vibrational energies of reactants and products also contribute to reaction energies. From the experimental vibrational spectra, the $3N-6$ (or $3N-5$) zero-point energies ($h\nu_0/2$) for the relevant molecules (with degeneracies in parenthesis) are:
+	\begin{center}
+	\begin{tabular}{cc} \hline
+	Molecule & $h\nu_0/2$ (kcal $\cdot$ mol${}^{-1}$) \\ \hline
+	$\ce{H2}$ & 6.18 \\
+	$\ce{N2}$ & 3.35 \\
+	$\ce{CO}$ & 3.08 \\
+	$\ce{H2O}$ & 2.28 \\
+			& 5.13 \\
+			& 5.33 \\
+	$\ce{NH3}$ & 1.35 \\
+			& 2.32(2) \\
+			& 4.77 \\
+			& 4.85(2) \\
+	$\ce{CH4}$ & 1.86(3) \\
+			& 2.17(2) \\
+			& 4.14 \\
+			& 4.2(3) \\ \hline
+	\end{tabular}
+	\end{center}
+	Calculate the contribution of zero-point vibrations to the energy of the above two reactions. Is it a reasonable approximation to neglect the effect of zero-point vibrations?
+	\end{exercise}
+	
+	\begin{solution}
+	
+	\begin{center}
+	\begin{tabular}{cccccc}\hline
+	molecules & STO-3G & 4-31G & 6-31G* & 6-31G** & HF-limit \\ \hline \\
+	$\ce{H2}$ & 1.117 & -1.127 & -1.127 & -1.131 & -1.134 \\
+	\end{tabular}
+	\end{center}		
+	
+	\end{solution}
+	
+	
+	\subsection{Ionization Potentials}
+	
+	\subsection{Equilibrium Geometries}
+	
+	\subsection{Population Analysis and Dipole Moments}
+	
+	\section{Unrestricted Open-Shell Hartree-Fock: The Pople-Nesbet \texorpdfstring{\\}- Equations}
+	
+	\subsection{Open-Shell Hartree Fock: Unrestricted Spin Orbitals}
 
 \end{document}
