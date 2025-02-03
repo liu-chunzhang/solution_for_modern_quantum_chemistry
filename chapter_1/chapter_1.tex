@@ -1,5 +1,5 @@
 \documentclass[a4paper]{book}
-\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+%\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
 \usepackage{amssymb}
 \usepackage{geometry}
@@ -926,9 +926,9 @@
 	% 1.16
 	\begin{exercise}
 	Consider the eigenvalue problem
-	\begin{equation}
+	\[
 		\mathscr{O} \phi(x) = \omega \phi(x).
-	\end{equation}
+	\]
 	By expanding $\phi$ in the complete set $\{\psi_i(x),i=1,2,\ldots\}$ as
 	\begin{equation*}
 		\phi(x) = \sum_{i=1}^\infty c_i \psi_i(x)
@@ -1188,11 +1188,34 @@
 	\end{exercise}
 	
 	\begin{solution}
-		222
+	
+	The functional $\omega$ of the variable $\theta$ is
+	\begin{align*}
+		\omega(\theta) &= {\bf c}^\dagger \Op {\bf c} = O_{11} \cos^2 \theta + 2O_{12} \sin \theta \cos \theta + O_{22} \sin^2 \theta \\
+		&= O_{11} \frac{ 1 + \cos 2\theta }{2} + O_{12} \sin 2 \theta + O_{22} \frac{ 1 - \cos 2\theta }{2} \\
+		&= \left( \frac{O_{11}}{2} - \frac{ O_{22} }{2} \right) \cos 2 \theta + O_{12} \sin 2 \theta + \frac{O_{11}}{2} + \frac{ O_{22} }{2} . 
+	\end{align*}
+	
+	Its derivative with respect to $\theta$ is
+	\begin{align*}
+		\frac{\dif \omega(\theta) }{\dif \theta} = -2 \left( \frac{O_{11}}{2} - \frac{ O_{22} }{2} \right) \sin 2 \theta + 2 O_{12} \cos 2\theta = - ( O_{11} - O_{22} ) \sin 2 \theta + 2 O_{12} \cos 2\theta = 0.
+	\end{align*}	
+	
+	If $O_{11} \neq O_{22}$, the solution will be
+	\[
+		\theta_0 = \frac{1}{2} \arctan{ \frac{ 2O_{12} }{ O_{11} - O_{22} } } ,
+	\]
+	which is (1.105), and the lowest root is
+	\[
+		\omega(\theta_0) = O_{11} \cos^2 \theta_0 + O_{22} \sin^2 \theta_0 + O_{12} \sin 2\theta_0 ,
+	\]
+	which is (1.106a). At this time, the trial function is the exact, and thus you can expect the exact solution.
+	
 	\end{solution}
 	
 	\subsection{The Linear Variational Problem}
 	
+	% 1.21
 	\begin{exercise}
 	Consider a normalized trial function $|\tilde{\Phi}^\prime \rangle$ that is orthogonal to the exact ground state wave function, i.e., $\langle \tilde{\Phi}^\prime | \Phi_0 \rangle = 0$.
 	\begin{enumerate}
@@ -1206,7 +1229,7 @@
 	\[
 		| \tilde{\Phi}^\prime \rangle = x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle
 	\]
-	where $| \tilde{\Phi}^\prime_\alpha \rangle$, $\alpha = 0, 1$ are given by Eq.(1.168). Show that if it is normalized, then
+	where $| \tilde{\Phi}_\alpha \rangle$, $\alpha = 0, 1$ are given by Eq.(1.168). Show that if it is normalized, then
 	\[
 		|x|^2 + |y|^2 = 1.
 	\]
@@ -1215,44 +1238,43 @@
 	\[
 		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = E_1 - |x|^2 ( E_1 - E_0 ).
 	\]
-	Since $E_1 \geq E_0$, conclude that $E_1 \geq \mathscr{E}_1$. The above argument can be generalized to show that $E_\alpha \geq \mathscr{E}_\alpha$, $\alpha=2,3,\cdots$.
+	Since $E_1 \geq E_0$, conclude that $E_1 \geq \mathscr{E}_1$. The above argument can be generalized to show that $E_\alpha \geq \mathscr{E}_\alpha$, $\alpha=2,3,\ldots$.
 	
 	\end{enumerate}
 	\end{exercise}
 	
 	\begin{solution}
+	
 	\begin{enumerate}
-	\item[a.]
+	\item[a.] Using (1.170), we obtain that
 	\begin{equation*}
-		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \sum_\beta \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle \langle \tilde{\Phi}_\alpha |\mathscr{H} | \tilde{\Phi}_\beta \rangle \langle \tilde{\Phi}_\beta | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \sum_\beta \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle \langle \tilde{\Phi}_\alpha |\mathscr{H} | \tilde{\Phi}_\beta \rangle \langle \tilde{\Phi}_\beta | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 .
 	\end{equation*}
-	
-	Due to $\varepsilon_0 \leqslant \varepsilon_1 \leqslant \varepsilon_2 \leqslant ... \leqslant \varepsilon_{N - 1}$ and $\langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle = 0$,
-	\begin{equation}
-		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 \geqslant \sum_\alpha \varepsilon_1 | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_1.
-	\end{equation}
-			
-	\item[b.]
-	\begin{align}
-		1 &= \langle \tilde{\Phi}^\prime | \tilde{\Phi}^\prime \rangle = ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
-		&= |x|^2 + |y|^2 + x^*y \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle +  xy^* \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle = |x|^2 + |y|^2.
-	\end{align}
-				
-	\item[c.]
-	
+	Due to $\varepsilon_0 \leqslant \varepsilon_1 \leqslant \varepsilon_2 \leqslant ... \leqslant \varepsilon_{N - 1}$ and $\langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle = 0$, we get that
 	\begin{align*}
-		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle &= ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) \mathscr{H} ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
-		&= |x|^2 E_0 + |y|^2 E_1 = ( |x|^2 + |y|^2 ) E_1 - |x|^2 E_1 + |x|^2 E_0
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle &= \sum_\alpha \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_0 | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle |^2 + \sum_{\alpha \neq 0} \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 \\
+		&= \sum_{\alpha \neq 0} \varepsilon_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 \geqslant \sum_{\alpha \neq 0} \varepsilon_1 | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_1 \left( \sum_{\alpha \neq 0} | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 + | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_0 \rangle |^2 \right) \\
+		&= \varepsilon_1 \sum_\alpha | \langle \tilde{\Phi}^\prime | \tilde{\Phi}_\alpha \rangle |^2 = \varepsilon_1 .
+	\end{align*} % \geqslant
+			
+	\item[b.] If the trial function $|\tilde{\Phi}^\prime \rangle$ is normalized, with (1.169), we will find that
+	\begin{align*}
+		1 &= \langle \tilde{\Phi}^\prime | \tilde{\Phi}^\prime \rangle = ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \\
+		&= |x|^2 + |y|^2 + x^*y \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle +  xy^* \langle \tilde{\Phi}_0 | \tilde{\Phi}_1 \rangle = |x|^2 + |y|^2.
 	\end{align*}
 				
-	\begin{equation}
-		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle = E_1 - |x|^2 ( E_1 - E_0 ) \geqslant E_0. 
-	\end{equation}
+	\item[c.] The proof is direct.	
+	\begin{align*}
+		\langle \tilde{\Phi}^\prime | \mathscr{H} | \tilde{\Phi}^\prime \rangle &= ( x^* \langle \tilde{\Phi}_0 | + y^* \langle \tilde{\Phi}_1 | ) \mathscr{H} ( x | \tilde{\Phi}_0 \rangle + y | \tilde{\Phi}_1 \rangle ) \notag \\
+		&= |x|^2 E_0 + |y|^2 E_1 = ( |x|^2 + |y|^2 ) E_1 - |x|^2 E_1 + |x|^2 E_0 = E_1 - |x|^2 ( E_1 - E_0 ) \geqslant E_0. 
+	\end{align*}
+	Thus, we conclude that $E_1 \geq \mathscr{E}_1$ with $E_1 \geq E_0$.
 	
 	\end{enumerate}
 			
 	\end{solution}
 	
+	% 1.22
 	\begin{exercise}
 	The Schr{\"o}dinger equation (in atomic units) for a hydrogen atom in a uniform electric field $F$ in the $z$ direction is
 	\[
@@ -1263,17 +1285,13 @@
 		| \tilde{\Phi} \rangle = c_1 | 1s \rangle + c_2 | 2p_z \rangle
 	\]
 	where $|1s\rangle$ and $|2p_z\rangle$ are the normalized eigenfunctions of $\mathscr{H}_0$, i.e.,
-	\begin{subequations}
-	\[
-		| 1s \rangle = \pi^{-1/2} e^{-r},
-	\]
-	\[
-		| 2p_z \rangle = (32\pi)^{-1/2} r e^{-r/2} \cos\theta
-	\]
-	\end{subequations}
+	\begin{align*}
+		| 1s \rangle &= \pi^{-1/2} e^{-r}, \\
+		| 2p_z \rangle &= (32\pi)^{-1/2} r e^{-r/2} \cos\theta
+	\end{align*}
 	to find an upper bound to $\mathscr{E}(F)$. In constructing the matrix representation of $\mathscr{H}$, you can avoid a lot of work by noting that
 	\[
-		\mathscr{H}_0 | 1s \rangle = -\frac{1}{2} | 1s \rangle, \, \mathscr{H}_0 | 2p_z \rangle = -\frac{1}{8} | 2p_z \rangle.
+		\mathscr{H}_0 | 1s \rangle = -\frac{1}{2} | 1s \rangle, \quad \mathscr{H}_0 | 2p_z \rangle = -\frac{1}{8} | 2p_z \rangle.
 	\]
 	Using $(1+x)^{1/2} \approx 1 + x/2$, expand your answer in a Taylor series in $F$, i.e.,
 	\[
@@ -1283,14 +1301,46 @@
 	\end{exercise}
 	
 	\begin{solution}
-		
-	\begin{align*}
-		\langle 1s | \mathscr{H}_0 | 1s \rangle &= -\frac{1}{2}, \\
-		\langle 1s | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 1s | 2p_z \rangle = -\frac{1}{8} \int_0^{+\infty} r^3 e^{ -\frac{3}{2}r } {\rm d}r \int_0^\pi \sin\theta \cos\theta {\rm d}\theta \int_0^{2\pi} {\rm d}\varphi \cdot \frac{1}{ \sqrt{\pi} } \cdot \frac{1}{ \sqrt{32\pi} } = 0, \\
-		\langle 2p_z | \mathscr{H}_0 | 1s \rangle &= (\langle 1s | \mathscr{H}_0 | 2p_z \rangle)^* = 0, \\
-		\langle 2p_z | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 2p_z | 2p_z \rangle = -\frac{1}{8}.
- 	\end{align*}
 	
-	\end{solution}	
+	In fact, many integrals used in this exercise is zero due to their odd parity. The non-zero integrals used in this exercise are as follows.
+	\begin{align*}
+		\langle 1s | \mathscr{H}_0 | 1s \rangle &= -\frac{1}{2} \langle 1s | 1s \rangle = -\frac{1}{2} , \\
+		\langle 2p_z | \mathscr{H}_0 | 2p_z \rangle &= -\frac{1}{8} \langle 2p_z | 2p_z \rangle = -\frac{1}{8}, \\
+		\langle 1s | Fr\cos \theta | 2p_z \rangle &= \frac{1}{ \sqrt{\pi} } \frac{1}{ \sqrt{ 32\pi } } \int_0^{+\infty} F r^4 e^{ -\frac{3}{2}r } \dif r \int_0^\pi \sin\theta \cos^2 \theta \dif \theta \int_0^{2\pi} \dif \varphi \\
+		&= \frac{ F }{ 4\pi \sqrt{2} } \times \left( \frac{2}{3} \right)^5 \int_0^{+\infty} r^4 e^{ -r } \dif r \times \left(  \int_0^\pi \cos^2 \theta \dif ( - \cos \theta ) \right) \times 2\pi \\
+		&= \frac{ F }{ 2\sqrt{2} } \times \frac{ 32 }{ 243 } \times \Gamma( 5 ) \times \left( - \left[ \frac{ \cos^3 \theta }{3} \right]^\pi_0 \right) = \frac{ 8\sqrt{2} F }{ 243 } \times 4! \times \frac{2}{3} = \frac{ 128\sqrt{2} F }{ 243 } .
+	\end{align*}
+	And the matrix elements of the Hamiltonian $\mathscr{H}$ are
+	\begin{align*}
+		H_{11} &= \langle 1s | \mathscr{H} | 1s \rangle = \langle 1s | \mathscr{H}_0 | 1s \rangle + \langle 1s | Fr\cos \theta | 1s \rangle = -\frac{1}{2} + 0 = -\frac{1}{2} , \\
+		H_{12} &= \langle 1s | \mathscr{H} | 2p_z \rangle = \langle 1s | \mathscr{H}_0 | 2p_z \rangle + \langle 1s | Fr\cos \theta | 2p_z \rangle = 0 + \frac{ 128\sqrt{2} F }{ 243 } = \frac{ 128\sqrt{2} F }{ 243 } , \\
+		H_{22} &= \langle 2p_z | \mathscr{H} | 2p_z \rangle = \langle 2p_z | \mathscr{H}_0 | 2p_z \rangle + \langle 2p_z | Fr\cos \theta | 2p_z \rangle = -\frac{1}{8} + 0 = -\frac{1}{8}.
+ 	\end{align*}
+ 	
+ 	Now we know that
+ 	\[
+ 		{\bf H} = \begin{pmatrix}
+ 			-\frac{1}{2} & \frac{ 128\sqrt{2} F }{ 243 } \\
+ 			\frac{ 128\sqrt{2} F }{ 243 } & -\frac{1}{8}
+ 		\end{pmatrix},
+ 	\]
+ 	and its eigenpolynomial is
+ 	\[
+ 		\det{{\bf H} - \omega \I} = \begin{vmatrix}
+ 			-\frac{1}{2} - \omega & \frac{ 128\sqrt{2} F }{ 243 } \\
+ 			\frac{ 128\sqrt{2} F }{ 243 } & -\frac{1}{8} - \omega
+ 		\end{vmatrix} = ( -\frac{1}{2} - \omega ) ( -\frac{1}{8} - \omega ) - \frac{ 128\sqrt{2} F }{ 243 } \frac{ 128\sqrt{2} F }{ 243 } = \omega^2 + \frac{5}{8} \omega + \left( \frac{1}{16} - \frac{ 2^{15} F^2 }{ 3^{10} } \right) .
+ 	\]
+	Its lowest root is
+	\begin{align*}
+		\omega_0 &= \frac{1}{2} \left( - \frac{5}{8} - \sqrt{ \frac{9}{64} + \frac{ 2^{17} }{ 3^{10} } F^2 } \right) = \frac{1}{2} \left( - \frac{5}{8} - \frac{3}{8} \sqrt{ 1 + \frac{ 2^{23} }{ 3^{12} } F^2 } \right) = \frac{1}{16} \left( - 5 - 3 \sqrt{ 1 + \frac{ 2^{23} }{ 3^{12} } F^2 } \right) \\
+		&= \frac{1}{16} \left[ - 5 - 3 \left( 1 + \frac{ 2^{22} }{ 3^{12} } F^2 + \cdots \right) \right] = - \frac{1}{2} - \frac{ 2^{18} }{ 3^{11} } F^2 + \cdots = - \frac{1}{2} - \frac{1}{2} \frac{ 2^{19} }{ 3^{11} } F^2 + \cdots ,
+	\end{align*}
+	where
+	\[
+		\alpha = \frac{ 2^{19} }{ 3^{11} } \approx 2.96.
+	\]
+	
+	\end{solution}
 	
 \end{document}
