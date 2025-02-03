@@ -626,11 +626,217 @@
 	
 	% 3.21
 	\begin{exercise}
-	Use definition (3.219) for the STO-1G function and the scaling relation (3.224) to show that the STO-1G overlap for an orbital exponent $\zeta$ = 1.24 at $R = 1.4\,\au$, corresponding to result (3.229), is $S_{12}$ = 0.6648. Use the formula in Appendix A for overlap integrals. Do not forget normalization.
+	Use definition (3.219) for the STO-1G function and the scaling relation (3.224) to show that the STO-1G overlap for an orbital exponent $\zeta = 1.24$ at $R = 1.4\,\au$, corresponding to result (3.229), is $S_{12} = 0.6648$. Use the formula in Appendix A for overlap integrals. Do not forget normalization.
 	\end{exercise}
 	
 	\begin{solution}
-		3-21 so
+	
+	Since $1.24^2 \times 0.270950 = 0.416613$, we get that	
+	\[
+		\phi^{\rm CGF}_{1s}( \zeta = 1.24, {\rm STO-1G} ) = \phi^{\rm GF}_{1s} (0.416613) ,
+	\]	
+	and thus using (A.1-5),
+	\begin{align*}
+		S_{12} &= \int \dif \bfr \, \phi^{\rm GF}_{1s} (0.416613 , \bfr - \bfR_A ) \phi^{\rm GF}_{1s} (0.416613 , \bfr - \bfR_B) \\
+		&= \left( \frac{ 4 \times 0.416613 \times 0.416613 }{ ( 0.416613 + 0.416613 )^2 } \right)^{\frac{3}{4}} e^{ - \frac{ 0.416613 \times 0.416613 }{ 0.416613 + 0.416613 } \times 1.4^2 } = 0.6648 .
+	\end{align*}
+
 	\end{solution}
+	
+	% 3.22
+	\begin{exercise}
+	Derive the coefficients $[2(1+S_{12})]^{-1/2}$ and $[2(1-S_{12})]^{-1/2}$ in the basis function expansion of $\psi_1$ and $\psi_2$ by requiring $\psi_1$ and $\psi_2$ to be normalized.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The solution to this exercise is not essentially different from that of Exercise 2.6.
+
+	\end{solution}
+	
+	% 3.23
+	\begin{exercise}
+	The coefficients of minimal basis ${\rm H}^+_2$ are also determined by symmetry and are identical to those of minimal basis $\ce{H2}$. Use the above result for the coefficients to solve Eq.(3.234) for the orbital energies of minimal basis ${\rm H}^+_2$ at $R = 1.4\, \au$ and show they are
+	\begin{align*}
+		\varepsilon_1 &= \frac{ H^\core_{11} + H^\core_{12} }{ 1 + S_{12} } = -1.2528  \, \au , \\
+		\varepsilon_2 &= \frac{ H^\core_{11} - H^\core_{12} }{ 1 - S_{12} } = -0.4756 \, \au .
+	\end{align*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.234), we know that
+	\[
+		\begin{pmatrix}
+			H^\core_{11} & H^\core_{12} \\ H^\core_{12} & H^\core_{22}
+		\end{pmatrix} \begin{pmatrix}
+			c_1 & c_2 \\ c_1 & -c_2 
+		\end{pmatrix} = \begin{pmatrix}
+			1 & S_{12} \\ S_{12} & 1 
+		\end{pmatrix} \begin{pmatrix}
+			c_1 & c_2 \\ c_1 & -c_2 
+		\end{pmatrix} \begin{pmatrix}
+			\varepsilon_1 & 0 \\ 0 & \varepsilon_2
+		\end{pmatrix} .
+	\]
+	Thus,
+	\begin{align*}
+		H^\core_{11} c_1 + H^\core_{12} c_1 &= ( H^\core_{11} + H^\core_{12} ) c_1 = \varepsilon_1 c_1 + S_{12} \varepsilon_1 c_1 = ( 1 + S_{12} ) \varepsilon_1 c_1 , \\
+		H^\core_{11} c_2 - H^\core_{12} c_2 &= ( H^\core_{11} - H^\core_{12} ) c_2 = \varepsilon_2 c_2 - S_{12} \varepsilon_2 c_2 = ( 1 - S_{12} ) \varepsilon_2 c_2 ,
+	\end{align*}
+	which equals
+	\begin{align*}
+		\varepsilon_1 &= \frac{ H^\core_{11} + H^\core_{12} }{ 1 + S_{12} } = \frac{ ( -1.1204 \, \au ) + ( -0.9584 \, \au ) }{ 1 + 0.6593 } = -1.2528  \, \au , \\
+		\varepsilon_2 &= \frac{ H^\core_{11} - H^\core_{12} }{ 1 - S_{12} } = \frac{ ( -1.1204 \, \au ) - ( -0.9584 \, \au ) }{ 1 - 0.6593 } = -0.4755 \, \au 
+	\end{align*}
+	
+	Here, using data from (3.229) and (3.233), the final result is a little different from the result delivered by this exercise.
+	
+	\end{solution}
+	
+	% 3.24
+	\begin{exercise}
+	Use the general definition (3.145) of the density matrix to derive (3.239). What is the corresponding density matrix for ${\rm H}^+_2$?
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using (3.145), we calculate the matrix elements of the density matrix:
+	\begin{align*}
+		P_{11} &= 2 C_{11} C^*_{11} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } , \\
+		P_{12} &= 2 C_{11} C^*_{21} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } , \\
+		P_{21} &= 2 C_{21} C^*_{11} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } , \\
+		P_{22} &= 2 C_{21} C^*_{21} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } .
+	\end{align*}
+	Thus the final density matrix of $\ce{H2}$ is
+	\[
+		{\bf P} = \begin{pmatrix}
+			P_{11} & P_{12} \\ P_{21} & P_{22} 
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} } \\ \frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} }
+		\end{pmatrix} = \frac{ 1 }{ 1 + S_{12} } \begin{pmatrix}
+			1 & 1 \\ 1 & 1
+		\end{pmatrix} .
+	\]
+	
+	Due to the same symmetry as $\ce{H2}$ but only one electron in ${\rm H}^+_2$, we get its final density matrix is
+	\[
+		{\bf P} = \frac{1}{2} \begin{pmatrix}
+			P_{11} & P_{12} \\ P_{21} & P_{22} 
+		\end{pmatrix} = \frac{1}{2}\begin{pmatrix}
+			\frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} } \\ \frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} }
+		\end{pmatrix} = \frac{ 1 }{ 2( 1 + S_{12} ) } \begin{pmatrix}
+			1 & 1 \\ 1 & 1
+		\end{pmatrix} .
+	\]
+	
+	\end{solution}
+
+	% 3.25
+	\begin{exercise}
+	Use the general definition (3.154) of the Fock matrix to show that the converged values of its elements for minimal basis $\ce{H2}$ are
+	\begin{align*}
+		F_{11} &= F_{22} = H^\core_{11} + \frac{ \frac{1}{2} ( \phi_1 \phi_1 | \phi_1 \phi_1 ) + ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) - \frac{1}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} }  = -0.3655 \, \au , \\
+		F_{12} &= F_{21} = H^\core_{12} + \frac{ -\frac{1}{2} ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) + \frac{3}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} }  = -0.5939 \, \au
+	\end{align*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.154) and (3.235), we get that
+	\begin{align*}
+		G_{11} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 11 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 1 ) \right] \\
+		&= P_{11} \left[ ( 11 | 11 ) - \frac{1}{2} ( 11 | 11 ) \right] + P_{12} \left[ ( 11 | 21 ) - \frac{1}{2} ( 11 | 21 ) \right] \\
+		&\hspace{4em} + P_{21} \left[ ( 11 | 12 ) - \frac{1}{2} ( 12 | 11 ) \right] + P_{22} \left[ ( 11 | 22 ) - \frac{1}{2} ( 12 | 21 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 12 ) + ( 11 | 22 ) - \frac{1}{2} ( 12 | 12 ) \right] = 0.7549 \, \au , \\
+		F_{11} &= H^\core_{11} + G_{11} = H^\core_{11} + \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 12 ) + ( 11 | 22 ) - \frac{1}{2} ( 12 | 12 ) \right] \\
+		&= -1.1204 \, \au + 0.7549 \, \au = -0.3655 \, \au
+	\end{align*}
+	
+	Similarly, we get other matrix elements as follows. Note that $P_{\lambda\sigma} = P_{\sigma\lambda}$, and thus
+	\begin{align*}
+		G_{\mu\nu} &= \sum_{\lambda \sigma} P_{\lambda \sigma} \left[ ( \mu \nu | \sigma \lambda ) - \frac{1}{2} ( \mu \lambda | \sigma \nu ) \right] = \sum_{\lambda \sigma} P_{\lambda \sigma} \left[ ( \nu \mu | \sigma \lambda ) - \frac{1}{2} ( \sigma \nu | \mu \lambda ) \right] \\
+		&= \sum_{\lambda \sigma} P_{\sigma \lambda} \left[ ( \nu  \mu | \lambda \sigma ) - \frac{1}{2} ( \nu \lambda | \sigma \mu ) \right] = \sum_{\lambda \sigma} P_{\lambda \sigma} \left[ ( \nu  \mu | \lambda \sigma ) - \frac{1}{2} ( \nu \lambda | \sigma \mu ) \right] = P_{\nu \mu}.
+	\end{align*}
+	Besides, note that $H^\core_{\lambda\sigma} = H^\core_{\sigma\lambda}$.
+	
+	\begin{itemize}
+	
+	\item The calculation of $F_{12}$:
+		\begin{align*}
+		G_{12} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 12 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 2 ) \right] \\
+		&= P_{11} \left[ ( 12 | 11 ) - \frac{1}{2} ( 11 | 12 ) \right] + P_{12} \left[ ( 12 | 21 ) - \frac{1}{2} ( 11 | 22 ) \right] \\
+		&\hspace{4em} + P_{21} \left[ ( 12 | 12 ) - \frac{1}{2} ( 12 | 12 ) \right] + P_{22} \left[ ( 12 | 22 ) - \frac{1}{2} ( 12 | 22 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) + \frac{1}{2} ( 12 | 22 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) + \frac{1}{2} ( 11 | 12 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) \right] = 0.3645 \, \au , \\
+		F_{12} &= H^\core_{12} + G_{12} = H^\core_{12} + \frac{1}{ 1 + S_{12} } \left[ ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) \right] \\
+		&= -0.9584 \, \au + 0.3645 \, \au = -0.5939 \, \au 
+	\end{align*}
+	
+	\item The calculation of $F_{21}$:
+	\begin{align*}
+%		G_{21} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 21 | \sigma \lambda ) - \frac{1}{2} ( 2 \lambda | \sigma 1 ) \right] = \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 12 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 2 ) \right] = G_{12} , \\
+		F_{21} &= H^\core_{21} + G_{21} = H^\core_{12} + G_{12} \\
+		&= H^\core_{12} + \frac{1}{ 1 + S_{12} } \left[ ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) \right] = -0.5939 \, \au 
+	\end{align*}
+	
+	\item The calculation of $F_{22}$:
+	\begin{align*}
+		G_{22} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 22 | \sigma \lambda ) - \frac{1}{2} ( 2 \lambda | \sigma 2 ) \right] \\
+		&= P_{11} \left[ ( 22 | 11 ) - \frac{1}{2} ( 21 | 12 ) \right] + P_{12} \left[ ( 22 | 21 ) - \frac{1}{2} ( 21 | 22 ) \right] \\
+		&\hspace{4em} + P_{21} \left[ ( 22 | 12 ) - \frac{1}{2} ( 22 | 12 ) \right] + P_{22} \left[ ( 22 | 22 ) - \frac{1}{2} ( 22 | 22 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 22 | 22 ) + ( 11 | 22 ) + ( 12 | 22 ) - \frac{1}{2} ( 12 | 12 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 22 ) + ( 11 | 12 ) - \frac{1}{2} ( 12 | 12 ) \right] = 0.7549 \, \au , \\
+		F_{22} &= H^\core_{22} + G_{22} = H^\core_{11} + \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 22 ) + ( 11 | 12 ) - \frac{1}{2} ( 12 | 12 ) \right] = -0.3655 \, \au
+	\end{align*}
+	
+	\end{itemize}
+	
+	\end{solution}
+	
+	% 3.26
+	\begin{exercise}
+	Use the result of Exercise 3.23 to show that the orbital energies of minimal basis $\ce{H2}$, that are a solution to the Roothaan equations $\F\C=\SSS\C{\bf \varepsilon}$, are
+	\begin{align*}
+		\varepsilon_1 &= \frac{ F_{11} + F_{12} }{ 1 + S_{12} } = -0.5782 \, \text{a.u.} , \\
+		\varepsilon_2 &= \frac{ F_{11} - F_{12} }{ 1 - S_{12} } = +0.6703 \, \text{a.u.} ,
+	\end{align*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Similar to Exercise 3.23, we obtain that
+	\begin{align*}
+		\varepsilon_1 &= \frac{ F_{11} + F_{12} }{ 1 + S_{12} } = \frac{ -0.3655 \, \au + ( -0.5939 \, \au ) }{ 1 + 0.6593 } = -0.5782 \, \au , \\
+		\varepsilon_2 &= \frac{ F_{11} - F_{12} }{ 1 - S_{12} } = \frac{ -0.3655 \, \au - ( -0.5939 \, \au ) }{ 1 - 0.6593 } = 0.6704 \, \au
+	\end{align*}
+	
+	Here, using data from Exercise 3.25, the final result is a little different from the result delivered by this exercise.
+	
+	\end{solution}
+	
+	% 3.27
+	\begin{exercise}
+	Use the general result (3.184) for the total electronic energy to show that the electronic energy of minimal basis $\ce{H2}$ is
+	\[
+		E_0 = \frac{ F_{11} + H^\core_{11} + F_{12} + H^\core_{12} }{ 1 + S_{12} } = -1.8310 \, \au
+	\]
+	and that the total energy including nuclear repulsion is
+	\[
+		E_{\rm tot} = -1.1167 \, \text{a.u.}
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.184), we find that
+	\begin{align*}
+		E_0 = \frac{1}{2} \sum_{ \mu=1 }^2 \sum_{ \nu=1 }^2 
+	\end{align*}		
+	
+	\end{solution}
+	
+	\subsection{An SCF Calculation on STO-3G \texorpdfstring{$\ce{HeH+}$}-}
 
 \end{document}
