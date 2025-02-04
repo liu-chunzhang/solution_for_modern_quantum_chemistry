@@ -1,3 +1,4 @@
+# solution_for_modern_quantum_chemistry
 本仓库整理了Attila Szabo和Neil S. Outlund于1982年所著《Modern Quantum Chemistry》第1章至第6章的所有习题及其详细解答。我坚信这是目前所能找到的最详细的解答。
 
 This repository compiles and organizes all the exercises and detailed solutions from chapters 1 to 6 of "Modern Quantum Chemistry" by Attila Szabo and Neil S. Ostlund, published in 1982. I am confident that this is the most comprehensive set of solutions available.
