@@ -1,5 +1,5 @@
 \documentclass[a4paper]{book}
-\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+%\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
 \usepackage{amssymb}
 \usepackage{bookmark}
@@ -1462,12 +1462,19 @@
 	
 	\begin{solution}
 	
-	From (3.382), we find that
+	From (3.362), (3.363), and (3.382), we find that
 	\begin{align*}
-		1+1
-	\end{align*}		
+		\lim_{ R \rightarrow \infty } | \Psi_0 \rangle &= \lim_{ R \rightarrow \infty } \frac{1}{2} \left[ | \psi_1 \bar{\psi}_1 \rangle - | \psi_2 \bar{\psi}_2 \rangle - \sqrt{2} | {}^3 \Psi^2_1 \rangle \right] \\
+		&= \lim_{ R \rightarrow \infty } \frac{1}{2} \left[ | \psi_1 \bar{\psi}_1 \rangle - | \psi_2 \bar{\psi}_2 \rangle - \left( | \Psi^{\bar{2}}_{\bar{1}} \rangle - | \Psi^2_1 \rangle  \right) \right] \\
+		&= \lim_{ R \rightarrow \infty } \frac{1}{2} \left[ | \psi_1 \bar{\psi}_1 \rangle - | \psi_2 \bar{\psi}_2 \rangle - | \psi_1 \bar{\psi}_2 \rangle + | \psi_2 \bar{\psi}_1 \rangle \right] \\
+		&= \lim_{ R \rightarrow \infty } \frac{1}{2} \left( \left| \frac{1}{ \sqrt{2} }( \phi_1 + \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 + \bar{\phi}_2 ) \right\rangle - \left|  \frac{1}{ \sqrt{2} }( \phi_1 - \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 - \bar{\phi}_2 ) \right\rangle \right. \\
+		&\hspace{6em} \left. - \left| \frac{1}{ \sqrt{2} }( \phi_1 + \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 - \bar{\phi}_2 ) \right\rangle + \left|  \frac{1}{ \sqrt{2} }( \phi_1 - \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 + \bar{\phi}_2 ) \right\rangle \right) \\
+		&= \frac{1}{4} \lim_{ R \rightarrow \infty } \left[ \left( | \phi_1 \bar{\phi}_1 \rangle + | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle + | \phi_2 \bar{\phi}_2 \rangle \right) - \left( | \phi_1 \bar{\phi}_1 \rangle - | \phi_1 \bar{\phi}_2 \rangle - | \phi_2 \bar{\phi}_1 \rangle + | \phi_2 \bar{\phi}_2 \rangle \right) \right. \\
+		&\hspace{4em} \left. - \left( | \phi_1 \bar{\phi}_1 \rangle - | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle - | \phi_2 \bar{\phi}_2 \rangle \right) + \left( | \phi_1 \bar{\phi}_1 \rangle + | \phi_1 \bar{\phi}_2 \rangle - | \phi_2 \bar{\phi}_1 \rangle - | \phi_2 \bar{\phi}_2 \rangle \right) \right] \\
+		&= \frac{1}{4} \lim_{ R \rightarrow \infty } 4 | \phi_1 \bar{\phi}_2 \rangle = | \phi_1 \bar{\phi}_2 \rangle .
+	\end{align*}
+	Thus, we obtain (3.382) from (3.362), (3.363), and (3.382).
 	
 	\end{solution}
 	
-
 \end{document}
