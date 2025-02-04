@@ -475,9 +475,9 @@
 		\sum_{\mu \nu} c^{i*}_\mu S_{\mu \nu} c^i_\nu = \sum_{\mu \nu} c^{i*}_\mu c^i_\nu \int \dif \bfr \phi^*_\mu( \bfr ) \phi_\nu( \bfr ) = \int \dif \bfr \left( \sum_\mu c^{i*}_\mu \phi^*_\mu( \bfr ) \right) \left( \sum_\nu c^i_\nu \phi_\nu( \bfr ) \right) > 0 .
 	\]
 	Thus, we get that
-	\begin{equation}
+	\begin{sequation}
 		s_i = \frac{ \sum_{\mu \nu} c^{i*}_\mu S_{\mu \nu} c^i_\nu }{ \sum_\mu | c^i_\mu |^2 } > 0 , \, \forall i = 1, 2, \ldots, K.
-	\end{equation}
+	\end{sequation}
 	In other words, the eigenvalues of $\SSS$ are all positive.
 	
 	\end{solution}
@@ -1174,7 +1174,87 @@
 	\end{exercise}
 	
 	\begin{solution}
-		3-34 so
+	
+	Using (3.327), we obtain that
+	\begin{align*}
+		E_0 &= \sum_{ a=1 }^2 h^\alpha_{aa} + \sum_{ a=1 }^1 h^\beta_{aa} + \frac{1}{2} \sum_{ a=1 }^2 \sum_{ a=1 }^2 ( J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} ) + \frac{1}{2} \sum_{ a=1 }^1 \sum_{ a=1 }^1 ( J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} ) + \sum_{ a=1 }^2 \sum_{ b=1 }^1 J^{\alpha\beta}_{ab} \\
+		&= h^\alpha_{11} + h^\alpha_{22} + h^\beta_{11} + \left( J^{\alpha\alpha}_{12} - K^{\alpha\alpha}_{12} \right) + \left( J^{\alpha\beta}_{11} + J^{\alpha\beta}_{21} \right) \\
+		&= h^\alpha_{11} + h^\beta_{11} + h^\alpha_{22} + J^{\alpha\alpha}_{12} - K^{\alpha\alpha}_{12} + J^{\alpha\beta}_{11} + J^{\alpha\beta}_{21} .
+	\end{align*}		
+	
+	\end{solution}
+	
+	% 3.35
+	\begin{exercise}
+	The unrestricted orbital energies are $\varepsilon^\alpha_i = ( \psi^\alpha_i | f^\alpha | \psi^\alpha_i )$ and $\varepsilon^\beta_i = ( \psi^\beta_i | f^\beta | \psi^\beta_i )$. Show that these are given by
+	\begin{align*}
+		\varepsilon^\alpha_i &= h^\alpha_{ii} + \sum^{N^\alpha}_a \left( J^{\alpha\alpha}_{ia} - K^{\alpha\alpha}_{ia} \right) + \sum^{N^\beta}_a J^{\alpha\beta}_{ia} , \\
+		 \varepsilon^\beta_i &= h^\beta_{ii} + \sum^{N^\beta}_a \left( J^{\beta\beta}_{ia} - K^{\beta\beta}_{ia} \right) + \sum^{N^\alpha}_a J^{\beta\alpha}_{ia} .
+	\end{align*}
+	Derive an expression for $E_0$ in terms of the orbital energies and the coulomb and exchange energies.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From the conclusion of Exercise 3.33, we find that
+	\begin{align*}
+		\varepsilon^\alpha_i &= ( \psi^\alpha_i | f^\alpha | \psi^\alpha_i ) = \left( \psi^\alpha_i \left| h + \sum_c^{N^\alpha} J^\alpha_c - K^\alpha_c + \sum_c^{N^\beta} J^\beta_c \right| \psi^\alpha_i \right) \\
+		&= ( \psi^\alpha_i | h | \psi^\alpha_i ) + \sum_c^{N^\alpha} ( \psi^\alpha_i | J^\alpha_c | \psi^\alpha_i ) - \sum_c^{N^\alpha} ( \psi^\alpha_i | K^\alpha_c | \psi^\alpha_i ) + \sum_c^{N^\beta} ( \psi^\alpha_i | J^\beta_c | \psi^\alpha_i ) \\
+		&= h^\alpha_{ii} + \sum_c^{N^\alpha} J^{\alpha\alpha}_{ic} - \sum_c^{N^\alpha} K^{\alpha\alpha}_{ic} + \sum_c^{N^\beta} J^{\alpha\beta}_{ic} .
+	\end{align*}
+	
+	In the same way, we can prove that
+	\[
+		\varepsilon^\beta_i = h^\beta_{ii} + \sum^{N^\beta}_a \left( J^{\beta\beta}_{ia} - K^{\beta\beta}_{ia} \right) + \sum^{N^\alpha}_a J^{\beta\alpha}_{ia} .
+	\]
+	
+	Thus, we can find that
+	\begin{align*}
+		&\hspace{1.4em} \sum_a^{N^\alpha} \varepsilon^\alpha_a + \sum_a^{N^\beta} \varepsilon^\beta_a = \sum_a^{N^\alpha} \left( h^\alpha_{aa} + \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \right) + \sum_a^{N^\beta} \left( h^\beta_{aa} + \sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum^{N^\alpha}_a J^{\beta\alpha}_{ab} \right) \\
+		&= \sum_a^{N^\alpha} h^\alpha_{aa} + \sum_a^{N^\beta} h^\beta_{aa} + \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + 2 \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \\
+		&= \left[ \sum_a^{N^\alpha} h^\alpha_{aa} + \sum_a^{N^\beta} h^\beta_{aa} + \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \right] \\
+		&\hspace{4em} + \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \\
+		&= E_0 + \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} ,
+	\end{align*}
+	which means that
+	\begin{sequation}
+		E_0 = \sum_a^{N^\alpha} \varepsilon^\alpha_a + \sum_a^{N^\beta} \varepsilon^\beta_a - \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} - \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} - \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} .
+	\end{sequation}
+	
+	\end{solution}
+	
+	\subsection{Introduction of a Basis: The Pople-Nesbet Equations}
+	
+	\subsection{Unrestricted Density Matrices}\
+	
+	% 3.36
+	\begin{exercise}
+	Use definitions (3.335) and (3.336) and Eq.(2.254) to show that the integral over all space of the spin density is $2 \langle \mathscr{S}_z \rangle$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is direct. Using (2.254), we find that
+	\begin{sequation}
+		\int \dif \bfr \, \rho^{\bf S}( \bfr ) = \int \dif \bfr \, \rho^\alpha( \bfr ) -  \rho^\beta( \bfr ) = N^\alpha - N^\beta = 2 \langle \mathscr{S}_z \rangle .
+	\end{sequation}
+	
+	\end{solution}
+	
+	% 3.37
+	\begin{exercise}
+	Carry through the missing steps that led to Eqs.(3.340) to (3.343).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.340), we can find that
+	\begin{align*}
+		\rho^\alpha( \bfr ) &= \sum_a^{N^\alpha} | \psi^\alpha_a ( \bfr ) |^2 = \sum_a^{N^\alpha} \psi^\alpha_a ( \bfr ) \psi^{\alpha*}_a ( \bfr )  = \sum_a^{N^\alpha} \left( \sum_\mu c^\alpha_{\mu a} \phi^\alpha_\mu( \bfr ) \right) \left( \sum_\nu c^\alpha_{\nu a} \phi^\alpha_\nu( \bfr ) \right)^* \\
+		&= \sum_\mu \sum_\nu \left( \sum_a^{N^\alpha} c^\alpha_{\mu a} c^{\alpha*}_{\nu a} \right) \phi^\alpha_\mu( \bfr ) \phi^\alpha_\nu( \bfr ) .
+	\end{align*}
+	If we define $P^\alpha_{\mu \nu}$ as (3.342), we will obtain that the right side of (3.340). In the same way, if we define $P^\beta_{\mu \nu}$ as (3.343), we will derive (3.341).
+	
 	\end{solution}
 
 \end{document}
