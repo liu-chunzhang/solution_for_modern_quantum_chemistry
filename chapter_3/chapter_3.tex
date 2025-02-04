@@ -1132,11 +1132,49 @@
 	
 	\begin{solution}
 	
-	From (3.115), we find that
+	From (3.115), we find that for a general $\psi^\alpha_i( \bfr_1 )$,
 	\begin{align*}
-		f^\alpha(1) &= \int \dif \omega_1 \alpha^*( \omega_1 ) \left[ \sum_c^N \int \dif \bfx_2 \chi^*_c( \bfx_2 ) r^{-1}_{12} ( 1 - \mathscr{P}_{12} ) \chi_c ( \bfx_2 ) \right] \\
+		f^\alpha( \bfx_1 ) \psi^\alpha_i( \bfr_1 ) &= \int \dif \omega_1 \, \alpha^*( \omega_1 ) h( \bfr_1) \alpha( \omega_1 ) \psi_i^\alpha( \bfr_1 ) \\
+		&\hspace{4em} + \int \dif \omega_1 \, \alpha^*( \omega_1 ) \left[ \sum_c^N \int \dif \bfx_2 \, \chi^*_c( \bfx_2 ) r^{-1}_{12} ( 1 - \mathscr{P}_{12} ) \chi_c ( \bfx_2 ) \right] \alpha( \omega_1 ) \psi_i^\alpha( \bfr_1 ) \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \sum_c^N \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \bfx_2 \, \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_2 ) \psi^\alpha_i( \bfr_1 ) \\
+		&\hspace{4em} - \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_2 ) \int \dif \bfx_2 \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_1 ) \psi^\alpha_i( \bfr_2 ) \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \left(  \sum_c^{N^\alpha} + \sum_c^{N^\beta} \right) \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \bfx_2 \, \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_2 ) \psi^\alpha_i( \bfr_1 )  \\
+		&\hspace{4em} - \left( \sum_c^{N^\alpha} + \sum_c^{N^\beta} \right) \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_2 ) \int \dif \bfx_2 \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_1 ) \psi^\alpha_i( \bfr_2 ) \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) \\
+		&\hspace{4em} + \sum_c^{N^\alpha} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \, \alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\alpha}_c ( \bfr_2 )  \psi^\alpha_i( \bfr_1 )  \\
+		&\hspace{4em} + \sum_c^{N^\beta} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \, \beta^*( \omega_2 )  \beta( \omega_2 ) \int \dif \bfr_2 \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\beta}_c ( \bfr_2 ) \psi^\alpha_i( \bfr_1 )  \\
+		&\hspace{4em} - \sum_c^{N^\alpha} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \,\alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 ) r^{-1}_{12} \psi^\alpha_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 )  \\
+		&\hspace{4em} - \sum_c^{N^\beta} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \beta( \omega_1 ) \int \dif \omega_2 \, \beta^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^\beta_c ( \bfr_1 ) \psi^\alpha_i( \bfr_2 ) \\
+%		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \sum_c^{N^\alpha} \int \dif \omega_2 \, \alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\alpha}_c ( \bfr_2 ) \psi^\alpha_i( \bfr_1 ) \\
+%		&\hspace{4em} + \sum_c^{N^\beta} \int \dif \omega_2 \, \beta^*( \omega_2 ) \beta( \omega_2 ) \int \dif \bfr_2  \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\beta}_c ( \bfr_2 )  \psi^\alpha_i( \bfr_1 )  \\
+%		&\hspace{4em} - \sum_c^{N^\alpha} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \, \alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^\alpha_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 )  \\
+%		&\hspace{4em} - \sum_c^{N^\beta} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \beta( \omega_1 ) \int \dif \omega_2 \, \beta^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^\beta_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 )  \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \sum_c^{N^\alpha} \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\alpha}_c ( \bfr_2 ) \psi^\alpha_i( \bfr_1 ) \\
+		&\hspace{4em} + \sum_c^{N^\beta} \int \dif \bfr_2  \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\beta}_c ( \bfr_2 )  \psi^\alpha_i( \bfr_1 ) - \sum_c^{N^\alpha} \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^\alpha_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 ) .
+	\end{align*}
+	Using (3.319) and (3.320), we get that
+	\begin{align*}
+		f^\alpha( \bfx_1 ) \psi^\alpha_i( \bfr_1 ) &= h( \bfr_1 ) \psi^\alpha_i( \bfr_1 ) + \sum_c^{N^\alpha} J^\alpha_c( \bfr_1 ) \psi^\alpha_i( \bfr_1 )  + \sum_c^{N^\beta} J^\beta_c( \bfr_1 ) \psi^\alpha_i( \bfr_1 ) - \sum_c^{N^\alpha} K^\alpha_c( \bfr_1 ) \psi^\alpha_i( \bfr_1 ) \\
+		&= \left[ h( \bfr_1 ) + \sum_c^{N^\alpha} J^\alpha_c( \bfr_1 ) - K^\alpha_c( \bfr_1 ) + \sum_c^{N^\beta} J^\beta_c( \bfr_1 ) \right] \psi^\alpha_i( \bfr_1 ) .
 	\end{align*}
 	
+	As $\psi^\alpha_i( \bfr_1 )$ is a general wave function, we obtain that
+	\begin{align*}
+		f^\alpha( \bfx_1 ) = h( \bfr_1 ) + \sum_c^{N^\alpha} J^\alpha_c( \bfr_1 ) - K^\alpha_c( \bfr_1 ) + \sum_c^{N^\beta} J^\beta_c( \bfr_1 ) .
+	\end{align*}
+	
+	\end{solution}
+	
+	% 3.34
+	\begin{exercise}
+	The unrestricted doublet ground state of the $\ce{Li}$ atom is $|\Psi_0 \rangle = | \psi^\alpha_1(1) \bar{\psi}^\beta_1(2) \psi_2^\alpha(3) \rangle$. Show that the energy of this state is
+	\[
+		E_0 = h^\alpha_{11} + h^\beta_{11} + h^\alpha_{22} + J^{\alpha\alpha}_{12} - K^{\alpha\alpha}_{12} + J^{\alpha\beta}_{11} + J^{\alpha\beta}_{21}.
+	\] 
+	\end{exercise}
+	
+	\begin{solution}
+		3-34 so
 	\end{solution}
 
 \end{document}
