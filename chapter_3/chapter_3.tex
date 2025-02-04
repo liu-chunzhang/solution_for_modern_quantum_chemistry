@@ -1234,10 +1234,11 @@
 	
 	\begin{solution}
 	
-	The proof is direct. Using (2.254), we find that
+	The proof is direct. 
 	\begin{sequation}
-		\int \dif \bfr \, \rho^{\bf S}( \bfr ) = \int \dif \bfr \, \rho^\alpha( \bfr ) -  \rho^\beta( \bfr ) = N^\alpha - N^\beta = 2 \langle \mathscr{S}_z \rangle .
+		\int \dif \bfr \, \rho^{\bf S}( \bfr ) = \int \dif \bfr \, \rho^\alpha( \bfr ) -  \rho^\beta( \bfr ) = N^\alpha - N^\beta = 2 \langle \mathscr{S}_z \rangle ,
 	\end{sequation}
+	where (2.254) and (3.339) has been used.
 	
 	\end{solution}
 	
@@ -1250,11 +1251,223 @@
 	
 	From (3.340), we can find that
 	\begin{align*}
-		\rho^\alpha( \bfr ) &= \sum_a^{N^\alpha} | \psi^\alpha_a ( \bfr ) |^2 = \sum_a^{N^\alpha} \psi^\alpha_a ( \bfr ) \psi^{\alpha*}_a ( \bfr )  = \sum_a^{N^\alpha} \left( \sum_\mu c^\alpha_{\mu a} \phi^\alpha_\mu( \bfr ) \right) \left( \sum_\nu c^\alpha_{\nu a} \phi^\alpha_\nu( \bfr ) \right)^* \\
-		&= \sum_\mu \sum_\nu \left( \sum_a^{N^\alpha} c^\alpha_{\mu a} c^{\alpha*}_{\nu a} \right) \phi^\alpha_\mu( \bfr ) \phi^\alpha_\nu( \bfr ) .
+		\rho^\alpha( \bfr ) &= \sum_a^{N^\alpha} | \psi^\alpha_a ( \bfr ) |^2 = \sum_a^{N^\alpha} \psi^\alpha_a ( \bfr ) \psi^{\alpha*}_a ( \bfr )  = \sum_a^{N^\alpha} \left( \sum_\mu C^\alpha_{\mu a} \phi^\alpha_\mu( \bfr ) \right) \left( \sum_\nu C^\alpha_{\nu a} \phi^\alpha_\nu( \bfr ) \right)^* \\
+		&= \sum_\mu \sum_\nu \left( \sum_a^{N^\alpha} C^\alpha_{\mu a} C^{\alpha*}_{\nu a} \right) \phi^\alpha_\mu( \bfr ) \phi^\alpha_\nu( \bfr ) .
 	\end{align*}
 	If we define $P^\alpha_{\mu \nu}$ as (3.342), we will obtain that the right side of (3.340). In the same way, if we define $P^\beta_{\mu \nu}$ as (3.343), we will derive (3.341).
 	
 	\end{solution}
+	
+	% 3.38
+	\begin{exercise}
+	Show that expectation values of spin-independent sums of one-electron operators $\displaystyle\sum_{i=1}^N h(i)$ are given by
+	\[
+		\langle \mathscr{O}_1 \rangle = \sum_\mu \sum_\nu P^T_{\mu\nu} ( \nu | h | \mu )
+	\]
+	for any unrestricted single determinant.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using (3.342) to (3.344), we find that
+	\begin{align*}
+		\langle \mathscr{O}_1 \rangle &= \sum_{ a=1 }^N \langle a | h | a \rangle = \sum_{ a=1 }^{N^\alpha} \langle a | h | a \rangle + \sum_{ \bar{a}=1 }^{N^\beta} \langle \bar{a} | h | \bar{a} \rangle = \sum_{ a=1 }^{N^\alpha} ( a | h | a ) + \sum_{ a=1 }^{N^\beta} ( a | h | a ) \\
+		&= \sum_{ a=1 }^{N^\alpha} \left( \sum_\nu C^\alpha_{\nu a} \phi_\nu \right| h \left| \sum_\mu C^\alpha_{\mu a} \phi_\mu \right) + \sum_{ a=1 }^{N^\beta} \left( \sum_\nu C^\beta_{\nu a} \phi_\nu \right| h \left| \sum_\mu C^\beta_{\mu a} \phi_\mu \right) \\
+		&= \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) \sum_{ a=1 }^{N^\alpha} C^{\alpha*}_{\nu a} C^\alpha_{\mu a} + \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) \sum_{ a=1 }^{N^\beta} C^{\beta*}_{\nu a} C^\beta_{\mu a} \\
+		&= \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) ( P^\alpha_{\mu \nu} + P^\beta_{\mu \nu} ) = \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) P^T_{\mu \nu} .
+	\end{align*}		
+	
+	\end{solution}
+	
+	% 3.39
+	\begin{exercise}
+	Consider the following spin-dependent operator which is a sum of one-electron operators,
+	\[
+		\hat{\rho}^S = 2 \sum_{i=1}^N \delta( {\bf r}_i - {\bf R} )s_z(i).
+	\]
+	Use the rules for evaluating matrix elements, given in Chapter 2, to show that the expectation value of $\hat{\rho}^S$ for any unrestricted single determinant is
+	\[
+		\langle \hat{\rho}^S \rangle = \rho^S ({\bf R}) = \tr{  {\bf P}^S {\bf A}} 
+	\]
+	where
+	\[
+		A_{\mu\nu} = \phi^*_\mu (\R) \phi_\nu (\R).
+	\]
+	This matrix element is important in the theory of the Fermi contact contribution to ESR and NMR coupling constants.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is direct.
+	\begin{align*}
+		\langle \hat{\rho}^S \rangle &= \left\langle \Psi \left| 2 \sum_{i=1}^N \delta( {\bf r}_i - {\bf R} )s_z(i) \right| \Psi \right\rangle = 2 \left\langle \Psi \left| \sum_{i=1}^N \delta( {\bf r}_i - {\bf R} )s_z(i) \right| \Psi \right\rangle \\
+		&= 2 \sum_{ a=1 }^N | a( \bfR ) |^2 \left\langle a \left| s_z(i) \right| a \right\rangle \\
+		&= 2 \left( \sum_{ a=1 }^{N^\alpha} | a( \bfR ) |^2 \left\langle a \left| s_z(i) \right| a \right\rangle + \sum_{ \bar{a}=1 }^{N^\beta} | \bar{a}( \bfR ) |^2 \left\langle \bar{a} \left| s_z(i) \right| \bar{a} \right\rangle \right) \\
+		&= 2 \left( \sum_{ a=1 }^{N^\alpha} \frac{1}{2} | a( \bfR ) |^2 + \sum_{ \bar{a}=1 }^{N^\beta} -\frac{1}{2} | \bar{a}( \bfR ) |^2 \right) \\
+		&= \sum_{ a=1 }^{N^\alpha} | a( \bfR ) |^2 - \sum_{ \bar{a}=1 }^{N^\beta} | \bar{a}( \bfR ) |^2 = \rho^\alpha ( \bfR ) - \rho^\beta ( \bfR ) = \rho^S ( \bfR ) .
+	\end{align*}
+	
+	Moreover, we can find that
+	\begin{align*}
+		\langle \hat{\rho}^S \rangle &= \sum_{ a=1 }^{N^\alpha} | a( \bfR ) |^2 - \sum_{ \bar{a}=1 }^{N^\beta} | \bar{a}( \bfR ) |^2 \\
+		&= \sum_{ a=1 }^{N^\alpha} \left( \sum_\mu C^{\alpha*}_{\mu a} \phi^*_\mu( \bfR ) \right) \left( \sum_\nu C^\alpha_{\nu a} \phi_\nu( \bfR ) \right) - \sum_{ a=1 }^{N^\beta} \left( \sum_\mu C^{\beta*}_{\mu a} \phi^*_\mu( \bfR ) \right) \left( \sum_\nu C^\beta_{\nu a} \phi_\nu( \bfR ) \right) \\
+		&= \sum_\mu \sum_\nu \phi^*_\mu( \bfR ) \phi_\nu( \bfR ) \left( \sum_{ a=1 }^{N^\alpha} C^{\alpha*}_{\mu a} C^\alpha_{\nu a} - \sum_{ a=1 }^{N^\beta} C^{\beta*}_{\mu a} C^\beta_{\nu a} \right) = \sum_\mu \sum_\nu A_{\mu \nu} ( P^\alpha_{\nu \mu} - P^\beta_{\nu \mu} ) \\
+		&= \sum_\mu \sum_\nu A_{\mu \nu} P^S_{\nu \mu} = \tr{ {\bf A} {\bf P}^S } = \tr{ {\bf P}^S {\bf A} } .
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{Expression for the Fock Matrices}
+	
+	\subsection{Solution of the Unrestricted SCF Equations}
+	
+	% 3.40
+	\begin{exercise}
+	Substitute the basis set expansion of the unrestricted molecular orbitals into Eq.(3.327) for the electronic energy $E_0$ to show that
+	\[
+		E_0 = \frac{1}{2} \sum_\mu \sum_\nu \left[ P^T_{\nu\mu} H^{\core}_{\mu\nu} + P^\alpha_{\nu\mu} F^\alpha_{\mu\nu} + P^\beta_{\nu\mu} F^\beta_{\mu\nu} \right].
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is direct but a little lengthy. Note that what we have to expand is only $\psi_b$. $\psi_a$ is no need to be expand in this derivation.
+	\begin{align*}
+		E_0 &= \sum_{ a=1 }^{ N^\alpha } h^\alpha_{aa} + \sum_{ a=1 }^{ N^\beta} h^\beta_{aa} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\alpha } ( J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} ) + \frac{1}{2} \sum_{ a=1 }^{ N^\beta } \sum_{ b=1 }^{ N^\beta } ( J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} ) + \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\beta } J^{\alpha\beta}_{ab} \\
+		&= \sum_{ a=1 }^{ N^\alpha } ( \psi^\alpha_a | h | \psi^\alpha_a ) + \sum_{ a=1 }^{ N^\beta} ( \psi^\beta_a | h | \psi^\beta_a ) + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\alpha } ( \psi^\alpha_a \psi^\alpha_a | \psi^\alpha_b \psi^\alpha_b ) - ( \psi^\alpha_a \psi^\alpha_b | \psi^\alpha_a \psi^\alpha_b ) \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta } \sum_{ b=1 }^{ N^\beta } ( \psi^\beta_a \psi^\beta_a | \psi^\beta_b \psi^\beta_b ) - ( \psi^\beta_a \psi^\beta_b | \psi^\beta_a \psi^\beta_b ) + \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\beta } ( \psi^\alpha_a \psi^\alpha_a | \psi^\beta_b \psi^\beta_b ) \\
+		&= \sum_{ a=1 }^{ N^\alpha } \left( \sum_\mu \phi_\mu C^\alpha_{\mu a} \right| h \left| \sum_\nu \phi_\nu C^\alpha_{\nu a} \right) + \sum_{ a=1 }^{ N^\beta} \left( \sum_\mu \phi_\mu C^\beta_{\mu a} \right| h \left| \sum_\nu \phi_\nu C^\beta_{\nu a} \right) \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\alpha } \left( \psi^\alpha_a \psi^\alpha_a \left| \right. \sum_\mu \phi_\mu C^\alpha_{\mu b} \sum_\nu \phi_\nu C^\alpha_{\nu b} \right) - \left( \psi^\alpha_a \sum_\nu \phi_\nu C^\alpha_{\nu b} \left| \right. \sum_\mu \phi_\mu C^\alpha_{\mu b} \psi^\alpha_a \right) \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta } \sum_{ b=1 }^{ N^\beta } \left( \psi^\beta_a \psi^\beta_a \left| \right. \sum_\mu \phi_\mu C^\beta_{\mu b} \sum_\nu \phi_\nu C^\beta_{\nu b} \right) - \left( \psi^\beta_a \sum_\nu \phi_\nu C^\beta_{\nu b} \left| \right. \sum_\mu \phi_\mu C^\beta_{\mu b} \psi^\beta_a \right) \\
+		&\hspace{4em} + \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\beta } \left( \psi^\alpha_a \psi^\alpha_a \left| \right. \sum_\mu \phi_\mu C^\beta_{\mu b} \sum_\nu \phi_\nu C^\beta_{\nu b} \right) \\
+		&= \sum_\mu \sum_\nu ( \phi_\mu | h | \phi_\nu ) \sum_{ a=1 }^{ N^\alpha } C^{\alpha*}_{\mu a} C^\alpha_{\nu a} + \sum_\mu \sum_\nu ( \phi_\mu | h | \phi_\nu ) \sum_{ a=1 }^{ N^\beta } C^{\beta*}_{\mu a} C^\beta_{\nu a} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha }\sum_\mu \sum_\nu ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) \sum_{ b=1 }^{ N^\alpha } C^{\alpha*}_{\mu b} C^\alpha_{\nu b} - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) \sum_{ b=1 }^{ N^\alpha } C^{\alpha*}_{\mu b} C^\alpha_{\nu b} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta }\sum_\mu \sum_\nu \left( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu \right) \sum_{ b=1 }^{ N^\beta } C^{\beta*}_{\mu b} C^\beta_{\nu b} - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right)\sum_{ b=1 }^{ N^\beta } C^{\beta*}_{\mu b} C^\beta_{\nu b}  \\
+		&\hspace{4em} + \sum_{ a=1 }^{ N^\alpha } \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) \sum_{ b=1 }^{ N^\beta } C^{\beta*}_{\mu b} C^\beta_{\nu b} \\
+		&= \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\alpha_{\nu \mu} + \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\beta_{\nu \mu} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha }\sum_\mu \sum_\nu ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) P^\alpha_{\nu \mu} - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) P^\alpha_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta }\sum_\mu \sum_\nu \left( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu \right) P^\beta_{\nu \mu} - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right) P^\beta_{\nu \mu} +  \sum_{ a=1 }^{ N^\alpha } \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) P^\beta_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\alpha_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\alpha} ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) \right] P^\alpha_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\beta_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\beta} ( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu ) - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right) \right] P^\beta_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{N^\alpha} \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) P^\beta_{\nu \mu} + \frac{1}{2} \sum_{ a=1 }^{N^\beta} \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) P^\alpha_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\alpha_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\beta_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\alpha} ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) + \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) \right] P^\alpha_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\beta} ( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu ) - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right) + \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) \right] P^\beta_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^T_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu F^\alpha_{\mu \nu} P^\alpha_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu F^\beta_{\mu \nu} P^\beta_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} P^T_{\nu \mu} + F^\alpha_{\mu \nu} P^\alpha_{\nu \mu} + F^\beta_{\mu \nu} P^\beta_{\nu \mu} \right] .
+	\end{align*}		
+	
+	\end{solution}
+	
+	\subsection{Illustrative Unrestricted Calculations}
+	
+	% 3.41
+	\begin{exercise}
+	Assume the unrestricted Hartree-Fock (UHF) calculations of Table 3.26 contain only the leading quartet contaminant. That is,
+	\[
+	 	\Psi_{\rm UHF} = c_1 {}^{2} \Psi + c_2 {}^{4} \Psi .
+	\]
+	If the percent contamination is defined as $\dfrac{ 100 c^2_2 }{ c^2_1 + c^2_2 }$, calculate the percent contamination of each of the four calculations from the quoted value of $\langle \mathscr{S}^2 \rangle$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	For the sake of simplicity, we request that $\Psi_{\rm UHF}$ is normalized. Thus,
+	\[
+		| c_1 |^2 + | c_2 |^2 = 1 ,
+	\]
+	and then the expectation of $\mathscr{S}^2$ is
+	\begin{align*}
+		\langle \Psi_{\rm UHF} | \mathscr{S}^2 | \Psi_{\rm UHF} \rangle &= \left( c^*_1 \langle {}^{2} \Psi | + c^*_2 \langle {}^{4} \Psi | \right) \mathscr{S}^2 \left( c_1 | {}^{2} \Psi \rangle + c_2 | {}^{4} \Psi \rangle \right) \\
+		&= | c_1 |^2 \langle {}^{2} \Psi | \mathscr{S}^2 | {}^{2} \Psi \rangle + c^*_1 c_2 \langle {}^{2} \Psi | \mathscr{S}^2 | {}^{4} \Psi \rangle + c^*_2 c_1 \langle {}^{4} \Psi | \mathscr{S}^2 | {}^{2} \Psi \rangle + | c_2 |^2 \langle {}^{4} \Psi | \mathscr{S}^2 | {}^{4} \Psi \rangle \\
+		&= | c_1 |^2 \frac{1}{2} \left( \frac{1}{2} + 1 \right) + | c_2 |^2 \frac{3}{2} \left( \frac{3}{2} + 1 \right) = \frac{3}{4} | c_1 |^2 + \frac{15}{4} | c_2 |^2 = \frac{3}{4} + 3 | c_2 |^2 ,
+	\end{align*}
+	which means
+	\[
+		| c_2 | =  \sqrt{ \frac{1}{3} \left( \langle \mathscr{S}^2 \rangle - \frac{3}{4} \right) } .
+	\]
+	
+	According to this equation, we can calcualte the percent contamination of each of the four calculations and these results are listed in \Tableref{tab:contamination}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The percent contamination of each of the four calculations.}\label{tab:contamination}
+	\begin{tabular}{c|c|c|c}\hline
+	basis set & $\langle \mathscr{S}^2 \rangle$ & $| c_2 |$ & percent contamination (\%) \\ \hline
+	STO-3G 	& 0.7652 &  0.07118 & 0.5067 \\
+	4-31G  	& 0.7622 &  0.06377	& 0.4067 \\
+	6-31G* 	& 0.7618 &	0.06272 & 0.3934 \\
+	6-31G** & 0.7614 &  0.06164 & 0.3800 \\ \hline 
+	\end{tabular}
+	\end{center}
+	
+	\end{solution}
+	
+	\subsection{The Dissociation Problem and its Unrestricted Solution}
+	
+	% 3.42
+	\begin{exercise}
+	Show that the set of $\alpha$ orbitals $\{ \psi^\alpha_1 , \psi^\alpha_2 \}$ and the set of $\beta$ orbitals $\{ \psi^\beta_1 , \psi^\beta_2 \}$ form separate orthonormal sets.
+	\end{exercise}
+	
+	\begin{solution}
+	This conclusion can be proved in the same way as Exercise 2.6.
+	\end{solution}
+	
+	% 3.43
+	\begin{exercise}
+	Use the molecular integrals given in Appendix D to show that no unrestricted solution exists for minimal basis STO-3G $\ce{H2}$ at $R = 1.4 \, \au$ Repeat the calculation for $R = 4.0 \, \au$ and show that an unrestricted solution exists with $\theta$ = 39.5${}^\circ$. Remember that $\varepsilon_1 = h_{11} + J_{11}$ and $\varepsilon_2 = h_{22} + 2 J_{12} - K_{12}$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	When $R = 1.4 \, \au$, we know that
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.5782\,\au$, & $\varepsilon_2 = 0.6703\, \au$, & $J_{11} = 0.6746\,\au$, \\
+		$J_{12} = 0.6636\,\au$, & $J_{22} = 0.6975\,\au$, & $K_{12} = 0.1813\,\au$,
+	\end{tabular}
+	\end{center}
+	and thus
+	\[
+		h_{11} = \varepsilon_1 - J_{11} = -1.2528 \, \au , \quad h_{22} = \varepsilon_2 - 2J_{12} + K_{12} = -0.4756 \, \au 
+	\]
+	Using (3.375) and (3.376), we find that
+	\[
+		\cos^2 \theta = \eta = \frac{ h_{22} - h_{11} + J_{22} -J_{12} + 2 K_{12} }{ J_{11} + J_{22} - 2 J_{12} + 4 K_{12} } = \frac{ 1.1627 }{ 0.7701 } = 1.5098 > 1 .
+	\]
+	Thus we conclude that no unrestricted solution exists for minimal basis STO-3G $\ce{H2}$ at $R = 1.4 \, \au$
+	
+	Similarly, we list all integrals at $R = 4.0\, \au$.
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.2542\,\au$, & $\varepsilon_2 = 0.0916\, \au$, & $J_{11} = 0.5026\,\au$, \\
+		$J_{12} = 0.5121\,\au$, & $J_{22} = 0.5259\,\au$, & $K_{12} = 0.2651\,\au$ ,
+	\end{tabular}
+	\end{center}
+	and thus
+	\[
+		h_{11} = \varepsilon_1 - J_{11} = -0.7568 \, \au , \quad h_{22} = \varepsilon_2 - 2J_{12} + K_{12} = -0.6675 \, \au 
+	\]
+	Using (3.375) and (3.376), we find that
+	\[
+		\cos^2 \theta^\prime = \eta^\prime = \frac{ h_{22} - h_{11} + J_{22} -J_{12} + 2 K_{12} }{ J_{11} + J_{22} - 2 J_{12} + 4 K_{12} } = \frac{ 0.6333 }{ 1.0647 } = 0.5948 \le 1 ,
+	\]
+	which leads to $\theta^\prime = \frac{1}{2} \arccos{ 2 \eta^\prime - 1 } = 0.6900 = 39.54^\circ$. Thus we conclude that an unrestricted solution exists for minimal basis STO-3G $\ce{H2}$ at $R = 4.0 \, \au$
+	
+	\end{solution}
+	
+	% 3.44
+	\begin{exercise}
+	Derive Eq.(3.379) from Eq.(3.382).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.382), we find that
+	\begin{align*}
+		1+1
+	\end{align*}		
+	
+	\end{solution}
+	
 
 \end{document}
