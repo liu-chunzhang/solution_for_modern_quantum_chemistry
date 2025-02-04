@@ -1,4 +1,4 @@
-\documentclass[a4paper]{book}
+\documentclass[a4paper,oneside]{book}
 %\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 
 \usepackage{amssymb}
@@ -23,6 +23,7 @@
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage[version=4]{mhchem}
+\usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{titlesec}
 
@@ -88,18 +89,25 @@
 \newcommand{\heff}{h_{\rm eff}}
 \newcommand{\au}{{\rm a.u.}}
 \newcommand{\bfr}{{\bf r}}
+\newcommand{\bfR}{{\bf R}}
 \newcommand{\bfx}{{\bf x}}
 \newcommand{\HP}{{\rm HP}}
+\newcommand{\core}{{\rm core}}
 
 \newcommand{\A}{{\bf A}}
 \newcommand{\B}{{\bf B}}
 \newcommand{\C}{{\bf C}}
 \newcommand{\D}{{\bf D}}
+\newcommand{\F}{{\bf F}}
 \newcommand{\I}{{\bf 1}}
 \newcommand{\U}{{\bf U}}
 \newcommand{\HH}{{\bf H}}
 \newcommand{\h}{{\bf h}}
 \newcommand{\Op}{{\bf O}}
+\newcommand{\PP}{{\bf P}}
+\newcommand{\PPP}{{\bf P}}
+\newcommand{\R}{{\bf R}}
+\newcommand{\SSS}{{\bf S}}
 
 \titleformat{\chapter}[display]
   {\bfseries\Large}
@@ -2884,10 +2892,1367 @@
 	\end{solution}
 	
 	\clearpage 
-	
-	
-	\setcounter{chapter}{3}
 
+	\chapter{The Hartree-Fock Approximation}
+	
+	\section{The Hartree-Fock Equations}
+	
+	\subsection{The Coulomb and Exchange Operators}
+	
+	\subsection{The Fock Operator}
+	
+	% 3.1
+	\begin{exercise}
+	Show that the general matrix element of the Fock operator has the form
+	\[
+		\langle \chi_i | f | \chi_j \rangle = \langle i | h | j \rangle + \sum_b [ij|bb] - [ib|bj] = \langle i | h | j \rangle + \sum_b \langle ib || jb \rangle .
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.10) and (3.11), we find that
+	\begin{align*}
+		\langle i | \mathscr{J}_b | j \rangle &= \int \dif \bfx_1 \chi^*_i( \bfx_1 ) \left[ \int \dif \bfx_2 \, \chi^*_b( \bfx_2 ) r^{-1}_{12} \chi_b( \bfx_2 ) \right] \chi_j( \bfx_1 ) \\
+		& =  \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i( \bfx_1 ) \chi^*_b( \bfx_2 ) r^{-1}_{12} \chi_j( \bfx_1 ) \chi_b( \bfx_2 ) = \langle ib | jb \rangle , \\
+		\langle i | \mathscr{K}_b | j \rangle &= \int \dif \bfx_1 \chi^*_i( \bfx_1 ) \left[ \int \dif \bfx_2 \, \chi^*_b( \bfx_2 ) r^{-1}_{12} \chi_j( \bfx_2 ) \right] \chi_b( \bfx_1 ) \\
+		& =  \int \dif \bfx_1 \int \dif \bfx_2 \, \chi^*_i( \bfx_1 ) \chi^*_b( \bfx_2 ) r^{-1}_{12} \chi_b( \bfx_1 ) \chi_j( \bfx_2 ) = \langle ib | bj \rangle .
+	\end{align*}
+	Thus, we get that
+	\begin{align*}
+		\langle \chi_i | f | \chi_j \rangle &= \langle i | h | j \rangle + \sum_b \langle i | \mathscr{J}_b | j \rangle - \langle i | \mathscr{K}_b | j \rangle = \langle i | h | j \rangle + \sum_b \langle i b | j b \rangle - \langle i b | b j \rangle \\
+		&= \langle i | h | j \rangle + \sum_b [ ij | bb ] - [ ib | bj ] = \langle i | h | j \rangle + \sum_b \langle i b || j b \rangle .
+	\end{align*}
+	
+	\end{solution}
+	
+	\section{Derivation of the Hartree-Fock Equations}
+	
+	\subsection{Functional Variation}
+	
+	\subsection{Minimization of the Energy of a Single Determinant}
+
+	% 3.2
+	\begin{exercise}
+	Prove Eq.(3.40).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.38), we find that
+	\begin{equation}
+		\mathscr{L}^* [ \{ \chi_a \} ] = E^*_0 [ \{ \chi_a \} ] - \sum_{ a=1 }^N \sum_{ b=1 }^N \varepsilon^*_{ba} \left( [a|b] - \delta_{ab} \right)^* = E^*_0 [ \{ \chi_a \} ] - \sum_{ a=1 }^N \sum_{ b=1 }^N \varepsilon^*_{ab} \left( [a|b] - \delta_{ab} \right). \tag{a}
+	\end{equation}
+	As $\mathscr{L}$ and $E_0 [ \{ \chi_a \} ]$ are real, we obtain that
+	\begin{equation}
+		\mathscr{L}^* [ \{ \chi_a \} ] = \mathscr{L} [ \{ \chi_a \} ] = E^*_0 [ \{ \chi_a \} ] - \sum_{ a=1 }^N \sum_{ b=1 }^N \varepsilon_{ba} \left( [a|b] - \delta_{ab} \right) . \tag{b}
+	\end{equation}
+	The equation (b) can be substracted by the equation (a), we obtain that
+	\[
+		\sum_{ a=1 }^N \sum_{ b=1 }^N (\varepsilon^*_{ab} - \varepsilon_{ba} ) \left( [a|b] - \delta_{ab} \right) = 0.
+	\]	
+	Due to the linear independence of $[a|b] - \delta_{ab}$, we obtain that
+	\begin{sequation}
+		\varepsilon_{ba} = \varepsilon^*_{ab} .
+	\end{sequation}
+		
+	\end{solution}
+	
+	% 3.3
+	\begin{exercise}
+	Manipulate Eq.(3.44) to show that
+	\[
+		\delta E_0 = \sum_{a=1}^N [\delta \chi_a | h | \chi_a ] + \sum_{a=1}^N \sum_{b=1}^N [\delta \chi_a \chi_a | \chi_b \chi_b] - [\delta \chi_a \chi_b | \chi_b \chi_a] + \text{complex conjugate}.
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Note that
+	\begin{align*}
+		\sum_{ a=1 }^N \sum_{ b=1 }^N [ \chi_a \chi_a | \delta \chi_b \chi_b ] &= \sum_{ a=1 }^N \sum_{ b=1 }^n [ \chi_b \chi_b | \delta \chi_a \chi_a ] = \sum_{ a=1 }^N \sum_{ b=1 }^n [ \delta \chi_a \chi_a | \chi_b \chi_b ] , \\
+		\sum_{ a=1 }^N \sum_{ b=1 }^N [ \chi_a \chi_a |  \chi_b \delta \chi_b ] &= \sum_{ a=1 }^N \sum_{ b=1 }^n [ \chi_b \chi_b | \chi_a \delta \chi_a ] = \sum_{ a=1 }^N \sum_{ b=1 }^n [ \chi_a \delta \chi_a | \chi_b \chi_b ] , \\
+		\sum_{ a=1 }^N \sum_{ b=1 }^N [ \chi_a \chi_b | \delta  \chi_b \chi_a ] &= \sum_{ a=1 }^N \sum_{ b=1 }^n [ \chi_b \chi_a | \delta \chi_a \chi_b ] = \sum_{ a=1 }^N \sum_{ b=1 }^n [ \delta \chi_a \chi_b | \chi_b \chi_a ] , \\
+		\sum_{ a=1 }^N \sum_{ b=1 }^N [ \chi_a \chi_b | \chi_b \delta \chi_a ] &= \sum_{ a=1 }^N \sum_{ b=1 }^n [ \chi_b \chi_a | \chi_a \delta \chi_b ] = \sum_{ a=1 }^N \sum_{ b=1 }^n [ \chi_a \delta \chi_b | \chi_b \chi_a ] .
+	\end{align*}
+	Hence, from (3.44), we obtain that
+	\begin{align*}
+		\delta E_0 &= \sum_{ a=1 }^N [ \delta \chi_a | h | \chi_a ] + [ \chi_a | h | \delta \chi_a ] \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^N \sum_{ b=1 }^N [ \delta \chi_a \chi_a | \chi_b \chi_b ] + [ \chi_a \delta \chi_a | \chi_b \chi_b ] + [ \chi_a \chi_a |  \delta \chi_b \chi_b ] + [ \chi_a \chi_a | \chi_b \delta \chi_b ] \\
+		&\hspace{4em} - \frac{1}{2} \sum_{ a=1 }^N \sum_{ b=1 }^N [ \delta \chi_a \chi_b | \chi_b \chi_a ] + [ \chi_a \delta \chi_b | \chi_b \chi_a ] + [ \chi_a \chi_b |  \delta \chi_b \chi_a ] + [ \chi_a \chi_b | \chi_b \delta \chi_a ] \\
+		&= \sum_{ a=1 }^N [ \delta \chi_a | h | \chi_a ] + [ \chi_a | h | \delta \chi_a ] \\
+		&\hspace{4em} + \sum_{ a=1 }^N \sum_{ b=1 }^N [ \delta \chi_a \chi_a | \chi_b \chi_b ] + [ \chi_a \delta \chi_a | \chi_b \chi_b ] - \sum_{ a=1 }^N \sum_{ b=1 }^N [ \delta \chi_a \chi_b | \chi_b \chi_a ] + [ \chi_a \delta \chi_b | \chi_b \chi_a ] \\
+		&= \sum_{a=1}^N [\delta \chi_a | h | \chi_a ] + \sum_{a=1}^N \sum_{b=1}^N [\delta \chi_a \chi_a | \chi_b \chi_b] - [\delta \chi_a \chi_b | \chi_b \chi_a] + \text{complex conjugate}.
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{The Canonical Hartree-Fock Equations}
+	
+	\section{Interpretation of Solutions to the Hartree-Fock Equations}
+	
+	\subsection{Orbital Energies and Koopmans' Theorem}
+	
+	% 3.4
+	\begin{exercise}
+	Use the result of Exercise 3.1 to show that the Fock operator is a Hermitian operator, by showing that $f_{ij}=\langle \chi_i | f | \chi_j \rangle$ is an element of a Hermitian matrix.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The verification is direct. We find that
+	\begin{align*}
+		( \langle i | f | j \rangle )^* &= ( \langle i | h | j \rangle )^* + \sum_b ( \langle ib | jb \rangle )^* - ( \langle ib | bj \rangle )^* = \langle j | h | i \rangle + \sum_b \langle jb | ib \rangle - \langle bj | ib \rangle \\
+		& = \langle j | h | i \rangle + \sum_b \langle jb | ib \rangle - \langle jb | bi \rangle = \langle j | h | i \rangle + \sum_b \langle jb || ib \rangle = \langle j | f | i \rangle .
+	\end{align*}
+	Thus, $(f_{ij})^* = f_{ji}$, which means that the Fock operator is a Hermitian operator.
+
+	\end{solution}
+	
+	% 3.5
+	\begin{exercise}
+	Show that the energy required to remove an electron from $\chi_c$ and one from $\chi_d$ to produce the $(N-2)$-electron single determinant $|^{N-2}\Psi_{cd}\rangle$ is $-\varepsilon_c - \varepsilon_d + \langle cd | cd \rangle - \langle cd | dc \rangle$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	With (3.78) and (3.79), the ionization potential is
+	\begin{align*}
+			{}^{N-2} E_{c,d} - {}^{N} E_0 &= \left[ \sum_{ a \neq c, d } \langle a | h | a \rangle + \frac{1}{2} \sum_{ a \neq c, d } \sum_{ b \neq c, d } \langle ab || ab \rangle \right] - \left[ \sum_a \langle a | h | a \rangle + \frac{1}{2} \sum_a \sum_b \langle ab || ab \rangle \right] \\
+			&= - \left[ \sum_a \langle a | h | a \rangle - \sum_{ a \neq c, d } \langle a | h | a \rangle \right] - \frac{1}{2} \left[ \sum_a \sum_b \langle ab || ab \rangle -  \sum_{ a \neq c, d } \sum_{ b \neq c, d } \langle ab || ab \rangle \right] \\
+			&= - \left( \langle c | h | c \rangle + \langle d | h | d \rangle \right) \\
+			&\hspace{4em} - \frac{1}{2} \left[ \sum_a \sum_{ b \neq c, d } \langle ab || ab \rangle + \sum_a \langle ac || ac \rangle + \sum_a \langle ad || ad \rangle - \sum_{ a \neq c, d } \sum_{ b \neq c, d } \langle ab || ab \rangle \right] \\
+			&= - \langle c | h | c \rangle - \langle d | h | d \rangle - \frac{1}{2} \sum_a \langle ac || ac \rangle - \frac{1}{2} \sum_a \langle ad || ad \rangle\\
+			&\hspace{4em} - \frac{1}{2} \left[ \sum_{ a \neq c, d} \sum_{ b \neq c, d } \langle ab || ab \rangle + \sum_{ b \neq c, d } \langle cb || cb \rangle + \sum_{ b \neq c, d } \langle db || db \rangle - \sum_{ a \neq c, d } \sum_{ b \neq c, d } \langle ab || ab \rangle \right] \\
+			&= - \langle c | h | c \rangle - \langle d | h | d \rangle - \frac{1}{2} \sum_a \langle ac || ac \rangle - \frac{1}{2} \sum_a \langle ad || ad \rangle \\
+			&\hspace{4em} - \frac{1}{2} \left[ \sum_b \langle cb || cb \rangle - \langle cc || cc \rangle - \langle cd || cd \rangle + \sum_b \langle db || db \rangle - \langle dc || dc \rangle - \langle dd || dd \rangle \right] \\
+			&= - \langle c | h | c \rangle - \langle d | h | d \rangle - \frac{1}{2} \sum_a \langle ac || ac \rangle - \frac{1}{2} \sum_a \langle ad || ad \rangle \\
+			&\hspace{4em} - \frac{1}{2} \sum_a \langle ca || ca \rangle - \frac{1}{2} \sum_a \langle da || da \rangle + \frac{1}{2} \langle cd || cd \rangle + \frac{1}{2} \langle dc || dc \rangle \\
+			&= - \langle c | h | c \rangle - \langle d | h | d \rangle - \sum_a \langle ac || ac \rangle - \sum_a \langle ad || ad \rangle + \langle cd || cd \rangle \\
+			&= - \left[ \langle c | h | c \rangle + \sum_b \langle bc || bc \rangle \right] - \left[ \langle d | h | d \rangle + \sum_b \langle bd || bd \rangle \right] + \langle cd || cd \rangle \\
+			&= - \varepsilon_c - \varepsilon_d + \langle cd | cd \rangle - \langle cd | dc \rangle .
+	\end{align*}		
+	
+	\end{solution}
+	
+	% 3.6
+	\begin{exercise}
+	Use Eq.(3.87) to obtain an expression for $^{N+1}E^r$ and then subtract it from $^NE_0$ (Eq.(3.88)) to show that
+	\[
+		{}^N E_0 - {}^{N+1} E^r = - \langle r | h | r \rangle - \sum_b \langle rb || rb \rangle .
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is direct.
+	\begin{align*}
+		{}^N E_0 - {}^{N+1} E^r &= \left[ \sum_a \langle a | h | a \rangle + \frac{1}{2} \sum_a \sum_b \langle ab || ab \rangle \right] - \left[ \sum_{a+r} \langle a | h | a \rangle + \frac{1}{2} \sum_{a+r} \sum_{b+r} \langle ab || ab \rangle \right] \\
+		&= - \left[ \sum_{a+r} \langle a | h | a \rangle - \sum_a \langle a | h | a \rangle \right] - \frac{1}{2} \left[ \sum_{a+r} \sum_{b+r} \langle ab || ab \rangle - \sum_a \sum_b \langle ab || ab \rangle \right] \\
+		&= - \langle r | h | r \rangle - \frac{1}{2} \left[ \sum_{a+r} \sum_{b} \langle ab || ab \rangle + \sum_{a+r} \langle ar || ar \rangle - \sum_a \sum_b \langle ab || ab \rangle \right] \\
+		&= - \langle r | h | r \rangle - \frac{1}{2} \left[ \sum_a \sum_b \langle ab || ab \rangle + \sum_b \langle rb || rb \rangle + \sum_a \langle ar || ar \rangle + \langle rr || rr \rangle  - \sum_a \sum_b \langle ab || ab \rangle \right] \\
+		&= - \langle r | h | r \rangle - \frac{1}{2} \left[  \sum_b \langle rb || rb \rangle + \sum_b \langle br || br \rangle \right] = - \langle r | h | r \rangle - \sum_b \langle rb || rb \rangle .
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{Brillouin's Theorem}
+	
+	\subsection{The Hartree-Fock Hamiltonian}
+	
+	% 3.7
+	\begin{exercise}
+	Use definition (2.115) of a Slater determinant and the fact that $\mathscr{H}_0$ commutes with any operator that permutes the electron labels, to show that $|\Psi_0\rangle$ is an eigenfunction of $\mathscr{H}_0$ with eigenvalue $\displaystyle \sum_a \varepsilon_a$. Why does $\mathscr{H}_0$ commute with the permutation operator?
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is not fundamentally different from that of Exercise 2.15; it only requires replacing $\mathscr{H} = \sum_{i=1}^N h(i)$ with $\mathscr{H}_0 = \sum_{i=1}^N f(i)$. The reason why $\mathscr{H}_0$ commutes with the permutation operator is that it is invariant to permutations of the electron labels.
+	
+	\end{solution}
+	
+	% 3.8
+	\begin{exercise}
+	Use expression (3.108) for $\mathscr{V}$, expression (3.18) for the Hartree-Fock potential $v^{\HF}(i)$, and the rules for evaluating matrix elements to explicitly show that $\displaystyle \langle \Psi_0 | \mathscr{V} | \Psi_0 \rangle = -\frac{1}{2} \sum_a \sum_b \langle ab || ab \rangle$ and hence that $E^{[1]}_0$ cancels the double counting of electron-electron repulsions in $\displaystyle E^{(0)}_0=\sum_a \varepsilon_a$ to give the correct Hartree-Fock energy $E_0$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (2.107), (3.18), (3.73) and (3.74), we find that
+	\begin{align*}
+		E^{[1]}_0 &= \langle \Psi_0 | \mathscr{V} | \Psi_0 \rangle = \langle \Psi_0 | \mathscr{O}_2 | \Psi_0 \rangle - \langle \Psi_0 | \sum_a v^{\HF}(a) | \Psi_0 \rangle = \langle \Psi_0 | \mathscr{O}_2 | \Psi_0 \rangle - \sum_{ a=1 }^N \langle \chi_a |  \sum_b \mathscr{J}_b - \mathscr{K}_b | \chi_a \rangle \\
+		&= \frac{1}{2} \sum_{ab} \langle ab || ab \rangle - \sum_{ab} \langle \chi_b | \mathscr{J}_a  | \chi_b \rangle - \langle \chi_b | \mathscr{K}_a  | \chi_b \rangle = \frac{1}{2} \sum_{ab} \langle ab || ab \rangle - \sum_{ab} \langle ba | ba \rangle - \langle ba | ab \rangle \\
+		&= \frac{1}{2} \sum_{ab} \langle ab || ab \rangle - \sum_{ab} \langle ba || ba \rangle = \frac{1}{2} \sum_{ab} \langle ab || ab \rangle - \sum_{ab} \langle ab || ab \rangle = - \frac{1}{2} \sum_{ab} \langle ab || ab \rangle.
+	\end{align*}
+	Hence, $E^{[1]}_0$ cancels the double counting of electron-electron repulsions in $E^{(0)}_0=\sum_a \varepsilon_a$ to give the correct Hartree-Fock energy $E_0$.
+	
+	\end{solution}
+	
+	\section{Restricted Closed-Shell Hartree-Fock: The Roothaan Equations}
+	
+	\subsection{Closed-Shell Hartree-Fock: Restricted Spin Orbitals}
+
+	% 3.9
+	\begin{exercise}
+	Convert the spin orbital expression for orbital energies
+	\[
+		\varepsilon_i = \langle \chi_i | h | \chi_i \rangle + \sum_{b}^N \langle \chi_i \chi_b || \chi_i \chi_b \rangle
+	\]
+	to the closed-shell expression
+	\begin{equation}
+		\varepsilon_i = ( \psi_i | h | \psi_i ) + \sum_{b}^{N/2} 2(ii|bb) - (ib|bi) = h_{ii} + \sum_b^{N/2} 2J_{ib} - K_{ib}. \tag{3.128}
+	\end{equation}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	When $\chi_i$ is a spatial orbital $\psi_i$ multiplied by $\alpha$, namely, $\chi_i = \psi_i$, we obtain that	
+	\begin{align*}
+		\varepsilon_i &= \langle i | h | i \rangle + \sum_b^N \langle ib || ib \rangle = \langle i | h | i \rangle + \sum_b^N \langle ib | ib \rangle - \langle ib | bi \rangle = \langle i | h | i \rangle + \sum_b^N [ ii | bb ] - [ ib | bi ] \\
+		&= ( i | h | i ) + \sum_b^{N/2} [ ii | bb ] - [ ib | bi ] + \sum_{ \bar{b} }^{N/2} [ ii | \bar{b} \bar{b} ] - [ i \bar{b} | \bar{b} i ] = ( i | h | i ) + \sum_b^{N/2} ( ii | bb ) - ( ib | bi ) + \sum_{ b }^{N/2} ( ii | bb ) \\
+		&= ( i | h | i ) + \sum_b^{N/2} 2( ii | bb ) - ( ib | bi ) = h_{ii} + \sum_b^{N/2} 2 J_{ib} - K_{ib} .
+	\end{align*}
+	When $\chi_i$ is a spatial orbital $\psi_i$ multiplied by $\beta$, namely, $\chi_i = \bar{\psi}_i$, we obtain that	
+	\begin{align*}
+		\varepsilon_{\bar{i}} &= \langle \bar{i} | h | \bar{i} \rangle + \sum_b^N \langle \bar{i}b || \bar{i}b \rangle = \langle \bar{i} | h | \bar{i} \rangle + \sum_b^N \langle \bar{i}b | \bar{i}b \rangle - \langle \bar{i}b | b\bar{i} \rangle = \langle \bar{i} | h | \bar{i} \rangle + \sum_b^N [ \bar{i}\bar{i} | bb ] - [ \bar{i}b | b\bar{i} ] \\
+		&= ( i | h | i ) + \sum_b^{N/2} [ \bar{i}\bar{i} | bb ] - [ \bar{i}b | b\bar{i} ] + \sum_{ \bar{b} }^{N/2} [ \bar{i}\bar{i} | \bar{b} \bar{b} ] - [ \bar{i}\bar{b} | \bar{b}\bar{i} ] = ( i | h | i ) + \sum_b^{N/2} ( ii | bb ) + \sum_{ b }^{N/2} ( ii | bb ) - ( ib | bi ) \\
+		&= ( i | h | i ) + \sum_b^{N/2} 2( ii | bb ) - ( ib | bi ) = h_{ii} + \sum_b^{N/2} 2 J_{ib} - K_{ib} .
+	\end{align*}
+	
+	In conclusion, we conclude that in the closed-shell structure,
+	\begin{sequation}
+		\varepsilon_i = ( \psi_i | h | \psi_i ) + \sum_{b}^{N/2} 2(ii|bb) - (ib|bi) = h_{ii} + \sum_b^{N/2} 2J_{ib} - K_{ib}. 
+	\end{sequation}
+	
+	\end{solution}
+	
+	\subsection{Introduction of a Basis: The Roothaan Equations}
+	
+	% 3.10
+	\begin{exercise}
+	Show that $\C^\dagger \SSS \C = \I$. {\it Hint}: Use the fact that the molecular orbitals $\{ \psi_i \}$ are orthonormal.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	As the molecular orbitals $\{ \psi_i \}$ are orthonormal, we can find that
+	\begin{align*}
+		\delta_{ij} &= \langle \psi_i | \psi_j \rangle = \left( \sum_{\mu=1}^K C^*_{\mu i} \langle \phi_\mu | \right) \left( \sum_{\nu=1}^K C_{\nu j} | \phi_\nu \rangle \right) = \sum_{\mu=1}^K \sum_{\nu=1}^K C^*_{\mu i} C_{\nu j} \langle \phi_\mu | \phi_\nu \rangle \\
+		&= \sum_{\mu=1}^K \sum_{\nu=1}^K \C^\dagger_{i \mu} \C_{\nu j} S_{\mu \nu} = ( \C^\dagger \SSS \C )_{ij} .
+	\end{align*}
+	Thus, we conclude that $\C^\dagger \SSS \C = \I$.
+	
+	\end{solution}
+	
+	\subsection{The Charge Density}
+	
+	% 3.11
+	\begin{exercise}
+	Use the density operator $\displaystyle \hat{\rho}( \bfr ) = \sum_{i=1}^N \delta( \bfr_i - \bfr )$, the rules for evaluating matrix elements in Chapter 2, and the rules for converting from spin orbitals to spatial orbitals, to derive (3.142) from $\rho( \bfr ) = \langle \Psi_0 | \hat{\rho}( \bfr ) | \Psi_0 \rangle$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using the rules for evaluating matrix elements in Chapter 2, we can obtain that
+	\begin{align*}
+		\langle \Psi_0 | \hat{\rho}( \bfr ) | \Psi_0 \rangle &= \sum_a \langle a | \delta( \bfr_i - \bfr ) | a \rangle = \sum_a \int \dif \bfx_1 \int \dif \bfx_2 \, \langle a | \bfx_1 \rangle \langle \bfx_1 | \delta( \bfr_2 - \bfr ) | \bfx_2 \rangle \langle \bfx_2 | a \rangle \\
+		&= \sum_a \int \dif \bfr_1 \, \psi^*_a( \bfr_1 ) \psi_a( \bfr_1 ) \delta( \bfr_1 - \bfr ) \int \dif \omega \langle a | \omega \rangle \langle \omega | a \rangle = \sum_a |\psi_a( \bfr )|^2 .
+	\end{align*}
+%	Note that for a given spin orbital, its integral over the spin variable is $\frac{1}{2}$ as it has only $\alpha$ or $\beta$, viz.,
+%	\[
+%		\int \dif \omega \langle a | \omega \rangle \langle \omega | a \rangle = \frac{1}{2} .
+%	\]
+	We find that $\langle \Psi_0 | \hat{\rho}( \bfr ) | \Psi_0 \rangle$ is independent of the spin of these spin orbitals. Thus, in a closed-shell molecule, the sum of the spin functions is converted into twice the sum of their spatial functions, viz.,
+	\begin{sequation}
+		\rho( \bfr ) = \langle \Psi_0 | \hat{\rho}( \bfr ) | \Psi_0 \rangle = \sum_a |\psi_a( \bfr )|^2 = 2 \sum_a^{N/2} |\psi_a( \bfr )|^2 .
+	\end{sequation}
+	
+	\end{solution}
+	
+	% 3.12
+	\begin{exercise}
+	A matrix $\A$ is said to be idempotent if $\A^2 = \A$. Use the result of Exercise 3.10 to show that $\PP \SSS \PP = 2\PP$, i.e., show that $\frac{1}{2}\PP$ would be idempotent in an orthonormal basis.
+	\end{exercise}
+	
+	\begin{solution}
+
+	Using the conclusion of Exercise 3.10, we know that with an orthonormal basis, we get that
+	\[
+		\delta_{ij} = ( \C^\dagger \SSS \C )_{ij} = \sum_{\lambda \sigma} C^*_{\lambda i} S_{\lambda \sigma} C_{\sigma j}
+	\]	
+	
+	With an orthonormal basis, namely, $\langle \psi_a | \psi_b \rangle = \delta_{ab}$, we find that
+	\begin{align*}
+		( \PP \SSS \PP )_{\mu \nu} &= \sum_\lambda \sum_\sigma \PP_{\mu \lambda} \SSS_{\lambda \sigma} \PP_{\sigma \nu} = \sum_\lambda \sum_\sigma \left( 2 \sum_a^{N/2} C_{\mu a} C^*_{\lambda a} \right) S_{\lambda \sigma} \left( 2 \sum_b^{N/2} C_{\sigma b} C^*_{\nu b} \right) \\
+		&= 4 \sum_a^{N/2} \sum_b^{N/2} C_{\mu a} C^*_{\nu b} \sum_{\lambda \sigma} C^*_{\lambda a} S_{\lambda \sigma} C_{\sigma b} = 4 \sum_a^{N/2} \sum_b^{N/2} C_{\mu a} C^*_{\nu b} \delta_{ab} = 4 \sum_a^{N/2} C_{\mu a} C^*_{\nu a} = 2 \PP .
+	\end{align*}
+	
+	\end{solution}
+	
+	% 3.13
+	\begin{exercise}
+	Use the expression (3.122) for the closed-shell Fock operator to show that
+	\[
+		f({\bf r}_1) = h({\bf r}_1) + v^\HF( {\bf r}_1 ) = h({\bf r}_1) + \frac{1}{2} \sum_{\lambda\sigma} P_{\lambda\sigma} \left[ \int \dif \bfr_2 \, \phi^*_\sigma( {\bf r}_2 ) ( 2 - \mathscr{P}_{12} ) r^{-1}_{12} \phi_\lambda( {\bf r}_2 ) \right].
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.122), we obtain that
+	\begin{align*}
+		f({\bf r}_1) &= h({\bf r}_1) + \sum_a^{N/2} \int \dif \bfr_2 \, \psi^*_a( {\bf r}_2 ) ( 2 - \mathscr{P}_{12} ) r^{-1}_{12} \psi_a( {\bf r}_2 ) \\
+		&= h({\bf r}_1) + \sum_a^{N/2} \int \dif \bfr_2 \, \left( \sum_\sigma \phi^*_\sigma( {\bf r}_2 ) C^*_{\sigma a} \right) ( 2 - \mathscr{P}_{12} ) r^{-1}_{12} \left( \sum_\lambda \phi_\lambda( {\bf r}_2 ) C_{\lambda a} \right) \\
+		&= h({\bf r}_1) + \sum_a^{N/2} C^*_{\sigma a} C_{\lambda a} \sum_\sigma \sum_\lambda \int \dif \bfr_2 \, \phi^*_\sigma( {\bf r}_2 )( 2 - \mathscr{P}_{12} ) r^{-1}_{12} \phi_\lambda( {\bf r}_2 ) \\
+		&= h({\bf r}_1) + \frac{1}{2} \left( 2 \sum_a^{N/2} C^*_{\sigma a} C_{\lambda a} \right) \sum_{\lambda \sigma} \int \dif \bfr_2 \, \phi^*_\sigma( {\bf r}_2 )( 2 - \mathscr{P}_{12} ) r^{-1}_{12} \phi_\lambda( {\bf r}_2 ) \\
+		&= h({\bf r}_1) + \frac{1}{2} \sum_{\lambda\sigma} P_{\lambda\sigma} \left[ \int \dif \bfr_2 \, \phi^*_\sigma( {\bf r}_2 ) ( 2 - \mathscr{P}_{12} ) r^{-1}_{12} \phi_\lambda( {\bf r}_2 ) \right].
+	\end{align*}		
+	
+	\end{solution}
+	
+	\subsection{Expression for the Fock Matrix}
+	
+	% 3.14
+	\begin{exercise}
+	Assume that the basis functions are real and use the symmetry of the two-electron integrals [$(\mu\nu|\lambda\sigma)$ = $(\nu\mu|\lambda\sigma)$ = $(\lambda\sigma|\mu\nu)$, etc.] to show that for a basis set of size $K$ = 100 there are 12,753,775 = $O(K^4/8)$ unique two-electron integrals.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Due to 8-fold symmetry of real two-electron integrals, what we have to consider is just the number of unique ``electron pairs" $(\mu\nu)$. If the number of electrons is denoted as $K$, the number of unique electron pairs will be $\frac{ K(K+1) }{2}$. For example, if there are 3 electrons, there will be 6 unique electron pairs, $(11)$, $(12)$, $(13)$, $(22)$, $(23)$ and $(33)$. For two-electron integrals, in the same way, their number is
+	\[
+		\frac{1}{2} \left[ \frac{ K(K+1) }{2} \left( \frac{ K(K+1) }{2} + 1 \right) \right] = \frac{1}{8} K (K+1) (K^2 + K + 2) = \frac{ K ( K + 1 )( K^2 + K + 2 ) }{8} .
+	\]
+	Substituting the above formula into $K = 100$, we get 12753775.
+	\end{solution}
+	
+	\subsection{Orthogonalization of the Basis}
+	
+	% 3.15
+	\begin{exercise}
+	Use the definition of $S_{\mu\nu} = \int \dif \bfr \, \phi^*_\mu \phi_\nu$ to show that the eigenvalues of $\SSS$ are all positive. {\it Hint}: consider $\sum_\nu S_{\mu\nu} c^i_\nu = s_i c^i_\mu$, multiply by $c^{i*}_\mu$ and sum, where ${\bf c}^i$ is the $i$th column of $\U$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.166), 
+	\[
+		\SSS \U = \U {\bf s} \Leftrightarrow (\SSS \U)_{\mu i} = ( \U {\bf s} )_{\mu i} \Leftrightarrow \sum_\nu S_{\mu \nu} c^i_\nu = c^i_\mu s_i,
+	\]
+	which can be multiplied by $c^{i*}_\mu$ and sum, leading to
+	\[
+		\sum_{\mu \nu} c^{i*}_\mu S_{\mu \nu} c^i_\nu = \sum_\mu s_i c^{i*}_\mu c^i_\mu = s_i \sum_\mu c^{i*}_\mu c^i_\mu = s_i \sum_\mu | c^i_\mu |^2 .
+	\]
+	
+	For any nontrivial wave function, its inner product is always positive. We can find that
+	\[
+		\sum_{\mu \nu} c^{i*}_\mu S_{\mu \nu} c^i_\nu = \sum_{\mu \nu} c^{i*}_\mu c^i_\nu \int \dif \bfr \phi^*_\mu( \bfr ) \phi_\nu( \bfr ) = \int \dif \bfr \left( \sum_\mu c^{i*}_\mu \phi^*_\mu( \bfr ) \right) \left( \sum_\nu c^i_\nu \phi_\nu( \bfr ) \right) > 0 .
+	\]
+	Thus, we get that
+	\begin{sequation}
+		s_i = \frac{ \sum_{\mu \nu} c^{i*}_\mu S_{\mu \nu} c^i_\nu }{ \sum_\mu | c^i_\mu |^2 } > 0 , \, \forall i = 1, 2, \ldots, K.
+	\end{sequation}
+	In other words, the eigenvalues of $\SSS$ are all positive.
+	
+	\end{solution}
+	
+	% 3.16
+	\begin{exercise}
+	Use (3.179), (3.180), and (3.162) to derive (3.174) and (3.177).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.133), (3.162) and (3.179), we find that
+	\[
+		\psi_i = \sum_{ \mu=1 }^K C^\prime_{\mu i} \phi^\prime_\mu = \sum_{ \mu=1 }^K C^\prime_{\mu i} \sum_{ \nu=1 }^K X_{\nu \mu} \phi_\nu = \sum_{ \nu=1 }^K \left( \sum_{ \mu=1 }^K X_{\nu \mu} C^\prime_{\mu i} \right) \phi_\nu = \sum^K_{ \nu=1 } C_{\nu i} \phi_\nu .
+	\]	
+	Due to the linear independence of $\{ \phi_\nu \}$, we get that
+	\[
+		C_{\nu i} = \sum_{ \mu=1 }^K X_{\nu \mu} C^\prime_{\mu i} ,
+	\]
+	which equals
+	\begin{sequation}
+		\C = {\bf X} \C^\prime.
+	\end{sequation}
+	
+	If ${\bf X}$ is reversible, we can obtain
+	\[
+		\C^\prime = {\bf X}^{-1} \C.
+	\]
+	Thus (3.174) has been verified.
+	
+	From (3.162) and (3.180), we can find that
+	\begin{align*}
+		F^\prime_{\mu \nu} &= \int \dif \bfr_1 \phi^{\prime*}_\mu (1) f(1) \phi^\prime_\nu(1) = \int \dif \bfr_1 \left( \sum_\lambda \phi^*_\lambda(1) X^*_{\lambda \mu} \right) f(1) \left( \sum_\sigma X_{\sigma \nu} \phi_\sigma(1) \right) \\
+		&= \sum_{\lambda\sigma} X^*_{\lambda \mu} \int \dif \bfr_1 \phi^*_\lambda(1) f(1) \phi_\sigma(1) X_{\sigma \nu} = \sum_{\lambda\sigma} X^*_{\lambda \mu} f_{\lambda \sigma} X_{\sigma \nu} = \sum_{\lambda\sigma} X^\dagger_{\mu \lambda} F_{\lambda \sigma} X_{\sigma \nu} .
+	\end{align*}
+	In other words,
+	\[
+		{\bf F}^\prime = {\bf X}^\dagger {\bf F} {\bf X}.
+	\]
+	Thus (3.177) has been verified.
+	
+	\end{solution}
+
+	\subsection{The SCF Procedure}
+	
+	\subsection{Expectation Values and Population Analysis}
+	
+	% 3.17
+	\begin{exercise}
+	Derive Equation (3.184) from (3.183).
+	\end{exercise}
+	
+	\begin{solution}
+	With (3.145) and (3.149), we find that
+	\begin{align*}
+	E_0 &= \sum_a^{N/2} h_{aa} + f_{aa} = \sum_a^{N/2} \left[ \int \dif \bfr_1 \psi^*_a(1) h(1) \psi_a(1) + \int \dif \bfr_1 \psi^*_a(1) f(1) \psi_a(1) \right] \\
+		&= \sum_a^{N/2} \left[ \int \dif \bfr_1 \left( \sum_\mu C^*_{\mu a} \phi^*_\mu(1) \right) h(1) \left( \sum_\nu C_{\nu a} \phi_\nu(1) \right) \right. \\
+		&\hspace{6em} \left. + \int \dif \bfr_1 \left( \sum_\mu C^*_{\mu a} \phi^*_\mu(1) \right) f(1) \left( \sum_\nu C_{\nu a} \phi_\nu(1) \right) \right] \\
+		&= \frac{1}{2} \sum_{\mu \nu} \left( \int \dif \bfr_1 \phi^*_\mu(1) h(1) \phi_\nu(1) + \int \dif \bfr_1 \phi^*_\mu(1) f(1) \phi_\nu(1) \right) \sum_a^{N/2} 2 C^*_{\mu a} C_{\nu a} \\
+		&= \frac{1}{2} \sum_{\mu \nu} P_{\nu \mu} \left( H^{\rm core}_{\mu \nu} + F_{\mu \nu} \right) .
+	\end{align*}		
+	
+	\end{solution}
+	
+	% 3.18
+	\begin{exercise}
+	Derive the right-hand side of Eq.(3.198), i.e., show that $\alpha$ = 1/2 is equivalent to a population analysis based on the diagonal elements of $\PPP^\prime$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.144) and (3.200), we find that
+	\begin{align*}
+		\rho( \bfr ) &= \sum_{\lambda \sigma} P_{\lambda \sigma} \phi_\lambda( \bfr ) \phi^*_\sigma( \bfr ) = \sum_{\lambda \sigma} ( \SSS^{-\frac{1}{2}} \SSS^{\frac{1}{2}} \PP \SSS^{\frac{1}{2}} \SSS^{-\frac{1}{2}} )_{\lambda \sigma} \phi_\lambda( \bfr ) \phi^*_\sigma( \bfr ) \\
+		&= \sum_{\lambda \sigma} \phi_\lambda( \bfr ) \phi^*_\sigma( \bfr ) \sum_{\mu \nu} S^{-\frac{1}{2}}_{\lambda \mu} ( \SSS^{\frac{1}{2}} \PP \SSS^{\frac{1}{2}} )_{\mu \nu} S^{-\frac{1}{2}}_{\nu \sigma} = \sum_{\mu \nu} ( \SSS^{\frac{1}{2}} \PP \SSS^{\frac{1}{2}} )_{\mu \nu} \sum_{\lambda \sigma} \phi_\lambda( \bfr ) \phi^*_\sigma( \bfr ) S^{-\frac{1}{2}}_{\lambda \mu} S^{-\frac{1}{2}}_{\nu \sigma} \\
+		&= \sum_{\mu \nu} ( \SSS^{\frac{1}{2}} \PP \SSS^{\frac{1}{2}} )_{\mu \nu} \left( \sum_\lambda S^{-\frac{1}{2}}_{\lambda \mu} \phi_\lambda( \bfr ) \right) \left( \sum_\sigma S^{-\frac{1}{2}}_{\nu \sigma} \phi^*_\sigma( \bfr ) \right) = \sum_{\mu \nu} ( \SSS^{\frac{1}{2}} \PP \SSS^{\frac{1}{2}} )_{\mu \nu} \phi^\prime_\mu( \bfr ) \phi^\prime_\nu( \bfr ) .
+	\end{align*}
+	Compared to (3.199), due to the linear independence of $\{ \phi^\prime_\mu( \bfr) \phi^\prime_\nu( \bfr) \}$, we get that
+	\begin{sequation}
+		\PP^\prime_{\mu \nu} = ( \SSS^{\frac{1}{2}} \PP \SSS^{\frac{1}{2}} )_{\mu \nu} .
+	\end{sequation}
+	Hence, we get
+	\begin{sequation}
+		\sum_\mu \PP^\prime_{\mu \mu} = \sum_\mu ( \SSS^{\frac{1}{2}} \PP \SSS^{\frac{1}{2}} )_{\mu \mu} .
+	\end{sequation}
+	
+	\end{solution}
+	
+	\section{Model Calculations on \texorpdfstring{$\ce{H2}$}- and \texorpdfstring{$\ce{HeH+}$}-}
+	
+	\subsection{The \texorpdfstring{$1s$}- Minimal STO-3G Basis set}
+	
+	% 3.19
+	\begin{exercise}
+	Derive Eq.(3.207).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Note that
+	\begin{align*}
+		&\hspace{1.4em}\phi^{\rm GF}_{1s} ( \alpha , \bfr - \bfR_A ) \phi^{\rm GF}_{1s} ( \beta , \bfr - \bfR_B ) = \left( \frac{2\alpha}{\pi} \right)^{ \frac{3}{4} } e^{-\alpha | \bfr - \bfR_A |^2 } \left( \frac{2\beta}{\pi} \right)^{ \frac{3}{4} } e^{-\beta | \bfr - \bfR_B |^2 } \\
+		&= \left( \frac{4\alpha\beta}{\pi^2} \right)^{ \frac{3}{4} } e^{-\alpha | \bfr - \bfR_A |^2 - \beta | \bfr - \bfR_B |^2 } = \left( \frac{ 2 \alpha \beta }{ ( \alpha + \beta )\pi} \right)^{ \frac{3}{4} } \left( \frac{ 2 ( \alpha + \beta ) }{\pi} \right)^{ \frac{3}{4} } e^{-\alpha | \bfr - \bfR_A |^2 - \beta | \bfr - \bfR_B |^2 } .
+	\end{align*}
+	The coefficients of the exponential part are simplified as follows.
+	\begin{align*}
+		&\hspace{1.4em}- \alpha ( \bfr - \bfR_A )^2 - \beta | \bfr - \bfR_B |^2 = - \alpha ( | \bfr |^2 - 2 \bfr \cdot \bfR_A + | \bfR_A |^2 ) - \beta ( | \bfr |^2 - 2 \bfr \cdot \bfR_B + | \bfR_B |^2 ) \\
+		&= - ( \alpha + \beta ) | \bfr |^2 + 2 ( \alpha \bfR_A + \beta \bfR_B ) \cdot \bfr - ( \alpha | \bfR_A |^2 + \beta \bfR_B |^2 ) \\
+		&= - ( \alpha + \beta ) \left[ | \bfr |^2 - 2\frac{ \alpha \bfR_A + \beta \bfR_B }{ \alpha + \beta } + \left( \frac{ \alpha \bfR_A + \beta \bfR_B }{ \alpha + \beta } \right)^2 \right] + \frac{ ( \alpha \bfR_A + \beta \bfR_B )^2 }{ \alpha + \beta } - ( \alpha | \bfR_A |^2 + \beta | \bfR_B |^2 ) \\
+		&= - ( \alpha + \beta ) \left( \bfr - \frac{ \alpha \bfR_A + \beta \bfR_B }{ \alpha + \beta } \right)^2 + \frac{ ( \alpha \bfR_A + \beta \bfR_B )^2 - ( \alpha + \beta ) ( \alpha | \bfR_A |^2 + \beta | \bfR_B |^2 ) }{ \alpha + \beta } \\
+		&= - ( \alpha + \beta ) \left( \bfr - \frac{ \alpha \bfR_A + \beta \bfR_B }{ \alpha + \beta } \right)^2 - \frac{ \alpha \beta }{ \alpha + \beta } | \bfR_A - \bfR_B |^2
+	\end{align*}
+	With (3.208), (3.209), and (3.210), we obtain that
+	\begin{align*}
+		&\hspace{1.4em}\phi^{\rm GF}_{1s} ( \alpha , \bfr - \bfR_A ) \phi^{\rm GF}_{1s} ( \beta , \bfr - \bfR_B ) = \left( \frac{ 2 \alpha \beta }{ ( \alpha + \beta )\pi} \right)^{ \frac{3}{4} } \left( \frac{ 2 ( \alpha + \beta ) }{\pi} \right)^{ \frac{3}{4} } e^{-\alpha | \bfr - \bfR_A |^2 - \beta | \bfr - \bfR_B |^2 } \\
+		&= \left( \frac{ 2 \alpha \beta }{ ( \alpha + \beta )\pi} \right)^{ \frac{3}{4} } e^{ - \frac{ \alpha \beta }{ \alpha + \beta } | \bfR_A - \bfR_B |^2 } \left( \frac{ 2 ( \alpha + \beta ) }{\pi} \right)^{ \frac{3}{4} } e^{ - p ( \bfr - \bfR_p )^2 } = K_{AB} \left( \frac{ 2 \alpha \beta }{ ( \alpha + \beta )\pi} \right)^{ \frac{3}{4} } e^{ - p ( \bfr - \bfR_p )^2 } \\
+		&= K_{AB} \phi^{\rm GF}_{1s} ( p , \bfr - \bfR_p ) .
+	\end{align*}
+	In a nutshell, we have verified (3.207).
+		
+	\end{solution}
+	
+	% 3.20
+	\begin{exercise}
+	Calculate the values of $\phi(\bfr)$ at the origin for the three STO-LG contracted functions and compare with the value of $(\pi)^{-1/2}$ for a Slater function ($\zeta= 1.0$).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The value of $\phi(\bfr)$ at the origin for the three STO-LG contracted functions are:
+	\begin{align*}
+		&\hspace{1.4em}\phi^{\rm CGF}_{1s}(\zeta = 1.0, {\rm STO-1G}, (0,0,0)) = \left( \frac{ 2 \times 0.270950 }{ \pi } \right)^{ \frac{3}{4} } = 0.267656 , \\
+		&\hspace{1.4em}\phi^{\rm CGF}_{1s}(\zeta = 1.0, {\rm STO-2G}, (0,0,0)) \\
+		&= 0.678914 \times \left( \frac{ 2 \times 0.151623 }{ \pi } \right)^{ \frac{3}{4} } + 0.430129 \times \left( \frac{ 2 \times 0.851819 }{ \pi } \right)^{ \frac{3}{4} } = 0.389383 , \\
+		&\hspace{1.4em}\phi^{\rm CGF}_{1s}(\zeta = 1.0, {\rm STO-3G}, (0,0,0)) \\
+		&= 0.444635 \times \left( \frac{ 2 \times 0.109818 }{ \pi } \right)^{ \frac{3}{4} } + 0.535328 \times \left( \frac{ 2 \times 0.405771 }{ \pi } \right)^{ \frac{3}{4} } + 0.154329 \times \left( \frac{ 2 \times 2.22766 }{ \pi } \right)^{ \frac{3}{4} } \\
+		&= 0.454986 ,
+	\end{align*}
+	while the value of $\phi(\bfr)$ at the origin for a Slater function ($\zeta= 1.0$) is
+	\begin{align*}
+		\phi^{\rm SF}_{1s}(\zeta = 1.0, (0,0,0)) &= \left( \frac{ 1.0^3 }{ \pi } \right)^{ \frac{1}{2} } = \pi^{-\frac{1}{2}} = 0.564189 .
+	\end{align*}
+	At the origin, the difference between the STO-LG contracted functions ($L=1,2,3$) and the Slater function is very large.
+	
+	\end{solution}
+	
+	\subsection{STO-3G \texorpdfstring{$\ce{H2}$}-}
+	
+	% 3.21
+	\begin{exercise}
+	Use definition (3.219) for the STO-1G function and the scaling relation (3.224) to show that the STO-1G overlap for an orbital exponent $\zeta = 1.24$ at $R = 1.4\,\au$, corresponding to result (3.229), is $S_{12} = 0.6648$. Use the formula in Appendix A for overlap integrals. Do not forget normalization.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Since $1.24^2 \times 0.270950 = 0.416613$, we get that	
+	\[
+		\phi^{\rm CGF}_{1s}( \zeta = 1.24, {\rm STO-1G} ) = \phi^{\rm GF}_{1s} (0.416613) ,
+	\]	
+	and thus using (A.1-5),
+	\begin{align*}
+		S_{12} &= \int \dif \bfr \, \phi^{\rm GF}_{1s} (0.416613 , \bfr - \bfR_A ) \phi^{\rm GF}_{1s} (0.416613 , \bfr - \bfR_B) \\
+		&= \left( \frac{ 4 \times 0.416613 \times 0.416613 }{ ( 0.416613 + 0.416613 )^2 } \right)^{\frac{3}{4}} e^{ - \frac{ 0.416613 \times 0.416613 }{ 0.416613 + 0.416613 } \times 1.4^2 } = 0.6648 .
+	\end{align*}
+
+	\end{solution}
+	
+	% 3.22
+	\begin{exercise}
+	Derive the coefficients $[2(1+S_{12})]^{-1/2}$ and $[2(1-S_{12})]^{-1/2}$ in the basis function expansion of $\psi_1$ and $\psi_2$ by requiring $\psi_1$ and $\psi_2$ to be normalized.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The solution to this exercise is not essentially different from that of Exercise 2.6.
+
+	\end{solution}
+	
+	% 3.23
+	\begin{exercise}
+	The coefficients of minimal basis ${\rm H}^+_2$ are also determined by symmetry and are identical to those of minimal basis $\ce{H2}$. Use the above result for the coefficients to solve Eq.(3.234) for the orbital energies of minimal basis ${\rm H}^+_2$ at $R = 1.4\, \au$ and show they are
+	\begin{align*}
+		\varepsilon_1 &= \frac{ H^\core_{11} + H^\core_{12} }{ 1 + S_{12} } = -1.2528  \, \au , \\
+		\varepsilon_2 &= \frac{ H^\core_{11} - H^\core_{12} }{ 1 - S_{12} } = -0.4756 \, \au .
+	\end{align*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.234), we know that
+	\[
+		\begin{pmatrix}
+			H^\core_{11} & H^\core_{12} \\ H^\core_{12} & H^\core_{22}
+		\end{pmatrix} \begin{pmatrix}
+			c_1 & c_2 \\ c_1 & -c_2 
+		\end{pmatrix} = \begin{pmatrix}
+			1 & S_{12} \\ S_{12} & 1 
+		\end{pmatrix} \begin{pmatrix}
+			c_1 & c_2 \\ c_1 & -c_2 
+		\end{pmatrix} \begin{pmatrix}
+			\varepsilon_1 & 0 \\ 0 & \varepsilon_2
+		\end{pmatrix} .
+	\]
+	Thus,
+	\begin{align*}
+		H^\core_{11} c_1 + H^\core_{12} c_1 &= ( H^\core_{11} + H^\core_{12} ) c_1 = \varepsilon_1 c_1 + S_{12} \varepsilon_1 c_1 = ( 1 + S_{12} ) \varepsilon_1 c_1 , \\
+		H^\core_{11} c_2 - H^\core_{12} c_2 &= ( H^\core_{11} - H^\core_{12} ) c_2 = \varepsilon_2 c_2 - S_{12} \varepsilon_2 c_2 = ( 1 - S_{12} ) \varepsilon_2 c_2 ,
+	\end{align*}
+	which equals
+	\begin{align*}
+		\varepsilon_1 &= \frac{ H^\core_{11} + H^\core_{12} }{ 1 + S_{12} } = \frac{ ( -1.1204 \, \au ) + ( -0.9584 \, \au ) }{ 1 + 0.6593 } = -1.2528  \, \au , \\
+		\varepsilon_2 &= \frac{ H^\core_{11} - H^\core_{12} }{ 1 - S_{12} } = \frac{ ( -1.1204 \, \au ) - ( -0.9584 \, \au ) }{ 1 - 0.6593 } = -0.4755 \, \au 
+	\end{align*}
+	
+	Here, using data from (3.229) and (3.233), the final result is a little different from the result delivered by this exercise.
+	
+	\end{solution}
+	
+	% 3.24
+	\begin{exercise}
+	Use the general definition (3.145) of the density matrix to derive (3.239). What is the corresponding density matrix for ${\rm H}^+_2$?
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using (3.145), we calculate the matrix elements of the density matrix:
+	\begin{align*}
+		P_{11} &= 2 C_{11} C^*_{11} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } , \\
+		P_{12} &= 2 C_{11} C^*_{21} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } , \\
+		P_{21} &= 2 C_{21} C^*_{11} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } , \\
+		P_{22} &= 2 C_{21} C^*_{21} = 2 \times \frac{1}{ \sqrt{ 2(1+S_{12}) } } \times \frac{1}{ \sqrt{ 2(1+S_{12}) } }  = \frac{ 1 }{ 1 + S_{12} } .
+	\end{align*}
+	Thus the final density matrix of $\ce{H2}$ is
+	\[
+		{\bf P} = \begin{pmatrix}
+			P_{11} & P_{12} \\ P_{21} & P_{22} 
+		\end{pmatrix} = \begin{pmatrix}
+			\frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} } \\ \frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} }
+		\end{pmatrix} = \frac{ 1 }{ 1 + S_{12} } \begin{pmatrix}
+			1 & 1 \\ 1 & 1
+		\end{pmatrix} .
+	\]
+	
+	Due to the same symmetry as $\ce{H2}$ but only one electron in ${\rm H}^+_2$, we get its final density matrix is
+	\[
+		{\bf P} = \frac{1}{2} \begin{pmatrix}
+			P_{11} & P_{12} \\ P_{21} & P_{22} 
+		\end{pmatrix} = \frac{1}{2}\begin{pmatrix}
+			\frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} } \\ \frac{ 1 }{ 1 + S_{12} } & \frac{ 1 }{ 1 + S_{12} }
+		\end{pmatrix} = \frac{ 1 }{ 2( 1 + S_{12} ) } \begin{pmatrix}
+			1 & 1 \\ 1 & 1
+		\end{pmatrix} .
+	\]
+	
+	\end{solution}
+
+	% 3.25
+	\begin{exercise}
+	Use the general definition (3.154) of the Fock matrix to show that the converged values of its elements for minimal basis $\ce{H2}$ are
+	\begin{align*}
+		F_{11} &= F_{22} = H^\core_{11} + \frac{ \frac{1}{2} ( \phi_1 \phi_1 | \phi_1 \phi_1 ) + ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) - \frac{1}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} }  = -0.3655 \, \au , \\
+		F_{12} &= F_{21} = H^\core_{12} + \frac{ -\frac{1}{2} ( \phi_1 \phi_1 | \phi_2 \phi_2 ) + ( \phi_1 \phi_1 | \phi_1 \phi_2 ) + \frac{3}{2} ( \phi_1 \phi_2 | \phi_1 \phi_2 ) }{ 1+S_{12} } = -0.5939 \, \au
+	\end{align*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.154) and (3.235), we get that
+	\begin{align*}
+		G_{11} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 11 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 1 ) \right] \\
+		&= P_{11} \left[ ( 11 | 11 ) - \frac{1}{2} ( 11 | 11 ) \right] + P_{12} \left[ ( 11 | 21 ) - \frac{1}{2} ( 11 | 21 ) \right] \\
+		&\hspace{4em} + P_{21} \left[ ( 11 | 12 ) - \frac{1}{2} ( 12 | 11 ) \right] + P_{22} \left[ ( 11 | 22 ) - \frac{1}{2} ( 12 | 21 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 12 ) + ( 11 | 22 ) - \frac{1}{2} ( 12 | 12 ) \right] = 0.7549 \, \au , \\
+		F_{11} &= H^\core_{11} + G_{11} = H^\core_{11} + \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 12 ) + ( 11 | 22 ) - \frac{1}{2} ( 12 | 12 ) \right] \\
+		&= -1.1204 \, \au + 0.7549 \, \au = -0.3655 \, \au
+	\end{align*}
+	
+	Similarly, we get other matrix elements as follows. Note that $P_{\lambda\sigma} = P_{\sigma\lambda}$, and thus
+	\begin{align*}
+		G_{\mu\nu} &= \sum_{\lambda \sigma} P_{\lambda \sigma} \left[ ( \mu \nu | \sigma \lambda ) - \frac{1}{2} ( \mu \lambda | \sigma \nu ) \right] = \sum_{\lambda \sigma} P_{\lambda \sigma} \left[ ( \nu \mu | \sigma \lambda ) - \frac{1}{2} ( \sigma \nu | \mu \lambda ) \right] \\
+		&= \sum_{\lambda \sigma} P_{\sigma \lambda} \left[ ( \nu  \mu | \lambda \sigma ) - \frac{1}{2} ( \nu \lambda | \sigma \mu ) \right] = \sum_{\lambda \sigma} P_{\lambda \sigma} \left[ ( \nu  \mu | \lambda \sigma ) - \frac{1}{2} ( \nu \lambda | \sigma \mu ) \right] = P_{\nu \mu}.
+	\end{align*}
+	Besides, note that $H^\core_{\lambda\sigma} = H^\core_{\sigma\lambda}$.
+	
+	\begin{itemize}
+	
+	\item The calculation of $F_{12}$:
+		\begin{align*}
+		G_{12} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 12 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 2 ) \right] \\
+		&= P_{11} \left[ ( 12 | 11 ) - \frac{1}{2} ( 11 | 12 ) \right] + P_{12} \left[ ( 12 | 21 ) - \frac{1}{2} ( 11 | 22 ) \right] \\
+		&\hspace{4em} + P_{21} \left[ ( 12 | 12 ) - \frac{1}{2} ( 12 | 12 ) \right] + P_{22} \left[ ( 12 | 22 ) - \frac{1}{2} ( 12 | 22 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) + \frac{1}{2} ( 12 | 22 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) + \frac{1}{2} ( 11 | 12 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) \right] = 0.3645 \, \au , \\
+		F_{12} &= H^\core_{12} + G_{12} = H^\core_{12} + \frac{1}{ 1 + S_{12} } \left[ ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) \right] \\
+		&= -0.9584 \, \au + 0.3645 \, \au = -0.5939 \, \au 
+	\end{align*}
+	
+	\item The calculation of $F_{21}$:
+	\begin{align*}
+%		G_{21} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 21 | \sigma \lambda ) - \frac{1}{2} ( 2 \lambda | \sigma 1 ) \right] = \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 12 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 2 ) \right] = G_{12} , \\
+		F_{21} &= H^\core_{21} + G_{21} = H^\core_{12} + G_{12} \\
+		&= H^\core_{12} + \frac{1}{ 1 + S_{12} } \left[ ( 11 | 12 ) + \frac{3}{2}( 12 | 12 ) - \frac{1}{2}( 11 | 22 ) \right] = -0.5939 \, \au 
+	\end{align*}
+	
+	\item The calculation of $F_{22}$:
+	\begin{align*}
+		G_{22} &= \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{ \lambda \sigma } \left[ ( 22 | \sigma \lambda ) - \frac{1}{2} ( 2 \lambda | \sigma 2 ) \right] \\
+		&= P_{11} \left[ ( 22 | 11 ) - \frac{1}{2} ( 21 | 12 ) \right] + P_{12} \left[ ( 22 | 21 ) - \frac{1}{2} ( 21 | 22 ) \right] \\
+		&\hspace{4em} + P_{21} \left[ ( 22 | 12 ) - \frac{1}{2} ( 22 | 12 ) \right] + P_{22} \left[ ( 22 | 22 ) - \frac{1}{2} ( 22 | 22 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 22 | 22 ) + ( 11 | 22 ) + ( 12 | 22 ) - \frac{1}{2} ( 12 | 12 ) \right] \\
+		&= \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 22 ) + ( 11 | 12 ) - \frac{1}{2} ( 12 | 12 ) \right] = 0.7549 \, \au , \\
+		F_{22} &= H^\core_{22} + G_{22} = H^\core_{11} + \frac{1}{ 1 + S_{12} } \left[ \frac{1}{2} ( 11 | 11 ) + ( 11 | 22 ) + ( 11 | 12 ) - \frac{1}{2} ( 12 | 12 ) \right] = -0.3655 \, \au
+	\end{align*}
+	
+	\end{itemize}
+	
+	\end{solution}
+	
+	% 3.26
+	\begin{exercise}
+	Use the result of Exercise 3.23 to show that the orbital energies of minimal basis $\ce{H2}$, that are a solution to the Roothaan equations $\F\C=\SSS\C{\bf \varepsilon}$, are
+	\begin{align*}
+		\varepsilon_1 &= \frac{ F_{11} + F_{12} }{ 1 + S_{12} } = -0.5782 \, \text{a.u.} , \\
+		\varepsilon_2 &= \frac{ F_{11} - F_{12} }{ 1 - S_{12} } = +0.6703 \, \text{a.u.} ,
+	\end{align*}
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Similar to Exercise 3.23, we obtain that
+	\begin{align*}
+		\varepsilon_1 &= \frac{ F_{11} + F_{12} }{ 1 + S_{12} } = \frac{ -0.3655 \, \au + ( -0.5939 \, \au ) }{ 1 + 0.6593 } = -0.5782 \, \au , \\
+		\varepsilon_2 &= \frac{ F_{11} - F_{12} }{ 1 - S_{12} } = \frac{ -0.3655 \, \au - ( -0.5939 \, \au ) }{ 1 - 0.6593 } = 0.6704 \, \au
+	\end{align*}
+	
+	Here, using data from Exercise 3.25, the final result is a little different from the result delivered by this exercise.
+	
+	\end{solution}
+	
+	% 3.27
+	\begin{exercise}
+	Use the general result (3.184) for the total electronic energy to show that the electronic energy of minimal basis $\ce{H2}$ is
+	\[
+		E_0 = \frac{ F_{11} + H^\core_{11} + F_{12} + H^\core_{12} }{ 1 + S_{12} } = -1.8310 \, \au
+	\]
+	and that the total energy including nuclear repulsion is
+	\[
+		E_{\rm tot} = -1.1167 \, \text{a.u.}
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.184) and Exercise 3.25, we find that
+	\begin{align*}
+		E_0 &= \frac{1}{2} \sum_{ \mu=1 }^2 \sum_{ \nu=1 }^2 P_{\nu \mu} ( H^\core_{\mu \nu} + F_{\mu \nu} ) \\
+		&= \frac{1}{2} \left[ P_{11} ( H^\core_{11} + F_{11} ) + P_{21} ( H^\core_{12} + F_{12} ) + P_{12} ( H^\core_{21} + F_{21} ) + P_{22} ( H^\core_{22} + F_{22} ) \right] \\
+		&= \frac{1}{2} \frac{1}{ 1 + S_{12} } \left( H^\core_{11} + F_{11} + H^\core_{12} + F_{12} + H^\core_{12} + F_{12} + H^\core_{11} + F_{11} \right) \\
+		&= \frac{ H^\core_{11} + F_{11} + H^\core_{12} + F_{12} }{ 1 + S_{12} } \\
+		&= \frac{ -1.1204 \, \au + ( -0.3655 \, \au ) + ( -0.9584 \, \au ) + ( -0.5939 \, \au ) }{ 1 + 0.6593 } = -1.8311 \, \au
+	\end{align*}
+	
+	The nuclear repulsion energy is
+	\[
+		E_{\rm nucl} = \frac{ 1 \times 1 }{ 1.4 } \au = 0.7143 \, \au ,
+	\]
+	and thus the total energy is
+	\[
+		E_{\rm tot} = E_0 + E_{\rm nucl} = -1.8311 \, \au + 0.7143 \, \au = -1.1168 \, \au
+	\]
+	
+	The final result is a little different from the result delivered by this exercise.
+	\end{solution}
+	
+	\subsection{An SCF Calculation on STO-3G \texorpdfstring{$\ce{HeH+}$}-}
+	
+	% 3.28
+	\begin{exercise}
+	Show that the above transformation produces orthonormal basis functions.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.258), we know that
+	\begin{align*}
+		\phi^\prime_1 &= \sum_{ \nu=1 } X_{\nu 1} \phi_\nu = X_{11} \phi_1 + X_{21} \phi_2 = \phi_1 , \\
+		\phi^\prime_2 &= \sum_{ \nu=1 } X_{\nu 2} \phi_\nu = X_{12} \phi_1 + X_{22} \phi_2 = \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } \phi_1 + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \phi_2 .
+	\end{align*}
+	
+	To prove that the above transformation produces orthonormal basis functions, verifying the inner product of new basis functions is enough.
+	\begin{align*}
+		\langle \phi^\prime_1 | \phi^\prime_1 \rangle &= \langle \phi_1 | \phi_1 \rangle = 1 , \\
+		\langle \phi^\prime_1 | \phi^\prime_2 \rangle &= \langle \phi_1 | \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } | \phi_2 \rangle \right) = \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_1 | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_1 | \phi_2 \rangle \\
+		&= \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } + \frac{ S_{12} }{ \sqrt{ 1 - S^2_{12} } } = 0 , \\
+		\langle \phi^\prime_2 | \phi^\prime_1 \rangle &= \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  \langle \phi_1 | + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_2 | \right) | \phi_1 \rangle = \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  \langle \phi_1 | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_2 | \phi_1 \rangle \\
+		&= \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } + \frac{ S_{12} }{ \sqrt{ 1 - S^2_{12} } } = 0 , \\
+		\langle \phi^\prime_2 | \phi^\prime_2 \rangle &= \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_1 | + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } \langle \phi_2 | \right) \left( \frac{ -S_{12} }{ \sqrt{ 1 - S^2_{12} } }  | \phi_1 \rangle + \frac{ 1 }{ \sqrt{ 1 - S^2_{12} } } | \phi_2 \rangle \right) \\
+		&= \frac{ S^2_{12} }{ 1 - S^2_{12} } \langle \phi_1 | \phi_1 \rangle + \frac{ -S_{12} }{ 1 - S^2_{12} } \langle \phi_1 | \phi_2 \rangle + \frac{ -S_{12} }{ 1 - S^2_{12} } \langle \phi_2 | \phi_1 \rangle + \frac{ 1 }{ 1 - S^2_{12} } \langle \phi_2 | \phi_2 \rangle \\
+		&= \frac{ S^2_{12} }{ 1 - S^2_{12} } - \frac{ -S^2_{12} }{ 1 - S^2_{12} } - \frac{ -S^2_{12} }{ 1 - S^2_{12} } + \frac{ 1 }{ 1 - S^2_{12} } = \frac{ 1 - S^2_{12} }{ 1 - S^2_{12} } = 1 .
+	\end{align*}
+	Thus, we conclude that the above transformation produces orthonormal basis functions.
+	
+	\end{solution}
+	
+	% 3.29
+	\begin{exercise}
+	Use expression (3.184) for the electronic energy, expression (3.154) for the Fock matrix, and the asymptotic density matrix (3.281) to show that
+	\[
+		E_0( R \rightarrow \infty ) = 2 T_{11} + 2 V^1_{11} + ( \phi_1 \phi_1 | \phi_1 \phi_1 ).
+	\]
+	This is just the proper energy of the $\ce{He}$ atom, for the minimal basis, as discussed previously in the text.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Note that only $P_{11}$ in ${\bf P}$ is nonzero. Thus we care about $G_{11}$, which is 
+	\[
+		G_{11} = \sum_{ \lambda=1 }^2 \sum_{ \sigma=1 }^2 P_{\lambda \sigma} \left[ ( 11 | \sigma \lambda ) - \frac{1}{2} ( 1 \lambda | \sigma 1 ) \right] = P_{11} \left[ ( 11 | 11 ) - \frac{1}{2} ( 11 | 11 ) \right] = 2 \times \frac{1}{2} ( 11 | 11 ) = ( 11 | 11 ) .
+	\]
+	Thus,
+	\begin{align*}
+		E_0 &= \frac{1}{2} \sum_{ \mu=1 }^2 \sum_{ \nu=1 }^2 P_{ \nu \mu } ( 2 H^\core_{\mu \nu} + G_{\mu \nu} ) = \frac{1}{2} P_{11} ( 2 H^\core_{11} + G_{11} ) = 2 T_{11} + 2 V^1_{11} + ( 11 | 11 ) . 
+	\end{align*}
+	
+	\end{solution}
+	
+	\section{Polyatomic Basis Sets}
+	
+	\subsection{Contracted Gaussian Functions}
+	
+	\subsection{Minimal Basis Sets: STO-3G}
+	
+	\subsection{Double Zeta Basis Sets: 4-31G}
+	
+	% 3.30
+	\begin{exercise}
+	A 4-31G basis for $\ce{He}$ has not been officially defined. Huzinaga,${}^8$ however, in an SCF calculation on the $\ce{He}$ atom using four uncontracted $1s$ Gaussians, found the coefficients and optimum exponents of the normalized $1s$ orbital of $\ce{He}$ to be
+	\begin{center}
+	\begin{tabular}{cc} \hline
+		$\alpha_\mu$ 	& $C_{\mu i}$ 	\\ \hline
+		0.298073		& 0.51380		\\
+		1.242567		& 0.46954 		\\
+		5.782948		& 0.15457		\\
+		38.47497		& 0.02373		\\ \hline
+	\end{tabular}
+	\end{center}
+	Use the expression for overlaps given in Appendix A to derive the contraction parameters for a 4-31G $\ce{He}$ basis set.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	We choose the outer basis function as
+	\[
+		\phi_{2s} = g_{1s}( 0.298073 , \bfr ) ,
+	\]
+	and the unnormalized inner basis function as
+	\[
+		\phi^\prime_{1s}( \bfr ) = N [ 0.46954 g_{1s}( 1.242567 , \bfr ) + 0.15457 g_{1s}( 5.782948 , \bfr ) + 0.02373 g_{1s}( 38.47497 , \bfr ) ] .
+	\]
+	Note that
+	\begin{align*}
+		\langle g_{1s}( 1.242567 , \bfr ) | g_{1s}( 5.782948 , \bfr ) \rangle &= 0.666622 , \\
+		\langle g_{1s}( 1.242567 , \bfr ) | g_{1s}( 38.47497 , \bfr ) \rangle &= 0.205445 , \\
+		\langle g_{1s}( 5.782948 , \bfr ) | g_{1s}( 38.47497 , \bfr ) \rangle &= 0.553419 .
+	\end{align*}
+	Therefore, we can get the norm of $\phi^\prime_{1s}( \bfr )$, namely,
+	\begin{align*}
+		\langle \phi^\prime_{1s} | \phi^\prime_{1s} \rangle = N^2 \begin{pmatrix}
+			0.46954 ,  0.15457 , 0.02373
+		\end{pmatrix} \begin{pmatrix}
+			1 			& 0.666622 	& 0.205445 \\
+			0.666622 	& 1			& 0.553419 \\
+			0.205445	& 0.553419	& 1
+		\end{pmatrix} \begin{pmatrix}
+			0.46954 \\  0.15457 \\ 0.02373
+		\end{pmatrix} = 0.35032 N^2 .
+	\end{align*}
+	And we can obtian the normalization parameter $N$, viz.,
+	\[
+		N = \sqrt{ \frac{1}{ 0.35032 } } = 1.6895 ,
+	\]
+	and then
+	\begin{align*}
+		\phi^\prime_{1s} &= 1.6895 [ 0.46954 g_{1s}( 1.242567 , \bfr ) + 0.15457 g_{1s}( 5.782948 , \bfr ) + 0.02373 g_{1s}( 38.47497 , \bfr ) ] \\
+		&= 0.79328 g_{1s}( 1.242567 , \bfr ) + 0.26115 g_{1s}( 5.782948 , \bfr ) + 0.04009 g_{1s}( 38.47497 , \bfr ) .
+	\end{align*}
+	
+	The information of 4-31G basis set for He atoms can be seen in subdirectory \verb!./basis_sets/He!. These information is generated by ``Basis Set Exchange" whose url is \url{https://www.basissetexchange.org}.
+	
+	\end{solution}
+	
+	\subsection{Polarized Basis Sets: 6-31G* and 6-31G**}
+	
+	% 3.31
+	\begin{exercise}
+	Determine the total number of basis functions for STO-3G, 4-31G, 6-31G*, and 6-31G** calculations on benzene.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The total number of uncontracted basis functions for STO-3G, 4-31G, 6-31G*, and 6-31G** calculations on benzene has been summarized in the table below.
+	\begin{center}
+	\begin{tabular}{ccccc} \hline
+	basis set & STO-3G & 4-31G & 6-31G*(Cartesian) & 6-31G**(Cartesian) \\ \hline
+	Number of basis functions for $\ce{C}$ & $2+3\times1$ & $3+3\times2$ & $3+3\times2+6\times1$ & $3+3\times2+6\times1$ \\
+	Number of basis functions for $\ce{H}$ & 1 & 2 & 2 & $2+3\times1$ \\
+	Total number of basis functions & 36 & 66 & 102 & 120 \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	\end{solution}
+	
+	\section{Some Illustrative Closed-Shell Calculations}
+	
+	\subsection{Total Energies}
+	
+	% 3.32
+	\begin{exercise}
+	Use the results of Tables 3.11 to 3.13 to calculate, for each basis set and at the Hartree-Fock limit, the energy difference for the following two reactions,
+	\begin{align*}
+		\ce{N2} + 3 \ce{H2} &\rightarrow 2 \ce{NH3} & & \Delta E = ? \\
+		\ce{CO} + 3 \ce{H2} &\rightarrow \ce{CH4} + \ce{H2O} &  & \Delta E = ?
+	\end{align*}
+	Are the results consistent for different basis sets? Does Hartree-Fock theory predict these reactions to be exoergic or endoergic? The experimental hydrogenation energies (heats of reaction $\Delta H^\circ$) at zero degrees Kelvin are -18.604 kcal $\cdot$ mol${}^{-1}$ ($\ce{N2}$) and -45.894 kcal $\cdot$ mol${}^{-1}$ ($\ce{CO}$), with 1 $\au$ of energy equivalent to 627.51 kcal $\cdot$ mol${}^{-1}$.
+	
+	Differences in the zero-point vibrational energies of reactants and products also contribute to reaction energies. From the experimental vibrational spectra, the $3N-6$ (or $3N-5$) zero-point energies ($h\nu_0/2$) for the relevant molecules (with degeneracies in parenthesis) are:
+	\begin{center}
+	\begin{tabular}{cc} \hline
+	Molecule & $h\nu_0/2$ (kcal $\cdot$ mol${}^{-1}$) \\ \hline
+	$\ce{H2}$ & 6.18 \\
+	$\ce{N2}$ & 3.35 \\
+	$\ce{CO}$ & 3.08 \\
+	$\ce{H2O}$ & 2.28 \\
+			& 5.13 \\
+			& 5.33 \\
+	$\ce{NH3}$ & 1.35 \\
+			& 2.32(2) \\
+			& 4.77 \\
+			& 4.85(2) \\
+	$\ce{CH4}$ & 1.86(3) \\
+			& 2.17(2) \\
+			& 4.14 \\
+			& 4.2(3) \\ \hline
+	\end{tabular}
+	\end{center}
+	Calculate the contribution of zero-point vibrations to the energy of the above two reactions. Is it a reasonable approximation to neglect the effect of zero-point vibrations?
+	\end{exercise}
+	
+	\begin{solution}
+	
+	All SCF total energy data used in this exercise can be listed in \Tableref{tab:scf_total_energy}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{SCF total energy ($\au$) for several molecules with the standard basis sets.}\label{tab:scf_total_energy}
+	\begin{tabular}{c|c|c|c|c|c}\hline
+	\multirow{2}*{molecules} & \multicolumn{5}{c}{basis set} \\ \cline{2-6}
+	 & STO-3G & 4-31G & 6-31G* & 6-31G** & HF-limit \\ \hline 
+	$\ce{H2}$ & -1.117 & -1.127 & -1.127 & -1.131 & -1.134 \\
+	$\ce{N2}$ & -107.496 & -108.754 & -108.942 & -108.942 & -108.997 \\
+	$\ce{CO}$ & -111.225 & -112.552 & -112.737 & -112.737 & -112.791 \\
+	$\ce{NH3}$ & -55.454 & -56.102 & -56.184 & -56.195 &  -56.225 \\
+	$\ce{CH4}$ & -39.727 & -40.140 & -40.195 & -40.202 & -40.225 \\
+	$\ce{H2O}$ & -74.963 & -75.907 & -76.011 & -76.023 & -76.065 \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	The enthalpy change of reaction 1 is
+	\begin{align*}
+		\Delta H({\rm STO-3G}) &= 2 H( \ce{NH3} , {\rm STO-3G } ) - 3 H( \ce{H2} , {\rm STO-3G } ) - H( \ce{N2} , {\rm STO-3G } ) \\
+		&= 2 \times ( -55.454 \, \au ) - 3 \times ( -1.117 \, \au ) - ( -107.496 \, \au ) \\
+		&= -0.061 \, \au = -0.061 \, \au \times 627.51 \, {\rm kcal \cdot mol^{-1} } / \au = -38.3 \, {\rm kcal \cdot mol^{-1} }.
+	\end{align*}
+	
+	In the same way, we can calculate the enthalpy change of the reaction 1 under various basis sets. These results are listed in \Tableref{tab:enthalpy_1}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The enthalpy change of the reaction 1 under various standard basis sets.}\label{tab:enthalpy_1}
+	\begin{tabular}{c|c|c|c} \hline
+	basis set & $\Delta H (\au)$ & $\Delta H ({\rm kcal\cdot mol^{-1}})$ & excergic or endoergic \\ \hline
+	STO-3G 		& -0.061	& -38.3 & exoergic \\
+	4-31G 		& -0.069 	& -43.3 & exoergic \\
+	6-31G* 		& -0.045	& -28.2 & exoergic \\
+	6-31G** 	& -0.055	& -34.5 & exoergic \\
+	HF-limit 	& -0.051	& -32.0 & exoergic \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	Similarly, we summarize the results of the enthalpy change of the reaction 2 under various basis sets. These results are listed in \Tableref{tab:enthalpy_2}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The enthalpy change of the reaction 2 under various standard basis sets.}\label{tab:enthalpy_2}
+	\begin{tabular}{c|c|c|c} \hline
+	basis set & $\Delta H (\au)$ & $\Delta H ({\rm kcal\cdot mol^{-1}})$ & excergic or endoergic \\ \hline
+	STO-3G 		& -0.114	& -71.5 & exoergic \\
+	4-31G 		& -0.114 	& -71.5 & exoergic \\
+	6-31G* 		& -0.088	& -55.2 & exoergic \\
+	6-31G** 	& -0.095	& -59.6 & exoergic \\
+	HF-limit 	& -0.097	& -60.9 & exoergic \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	Now pay attention to the zero-point energy. For example, as for $\ce{CH4}$, it is a nonlinear molecule and there are 5 atoms, thus it has $3\times5-6=9$ degress of freedom, and its total zero-point energy is
+	\[
+		( 1.86 \times 3 + 2.17 \times 2 + 4.14 + 4.2 \times 3 ) \, {\rm kcal \cdot mol^{-1}} = 26.66 \, {\rm kcal \cdot mol^{-1}}.
+	\]
+	And we can establish the table of the zero-point energy of these molecules, as shown in \Tableref{tab:zero_point_energy}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The zero-point energy of several molecules .}\label{tab:zero_point_energy}
+	\begin{tabular}{c|c|c|c|c}\hline
+	molecules & $N$ & linear or nonlinear & degrees of freedom & total zero-point energy (${\rm kcal \cdot mol^{-1}}$) \\ \hline
+	$\ce{H2}$ & 2 & linear & 1 & 6.18 \\
+	$\ce{N2}$ & 2 & linear & 1 & 3.35 \\
+	$\ce{CO}$ & 2 & linear & 1 & 3.08 \\
+	$\ce{H2O}$ & 3 & nonlinear & 3 & 12.74 \\
+	$\ce{NH3}$ & 4 & nonlinear & 6 & 20.46 \\
+	$\ce{CH4}$ & 5 & nonlinear & 9 & 26.66 \\ \hline
+	\end{tabular}
+	\end{center}
+	
+	For the reaction 1, its zero-point energy is
+	\[
+		( 2 \times 20.46 - 3 \times 6.18 - 1 \times 3.35 ) \, {\rm kcal \cdot mol^{-1}} = 19.03 \, {\rm kcal \cdot mol^{-1}} .
+	\]
+	And for the reaction 1, its zero-point energy is
+	\[
+		( 1 \times 26.66 + 1 \times 12.74 - 3 \times 6.18 - 1 \times 3.08 ) \, {\rm kcal \cdot mol^{-1}} = 17.78 \, {\rm kcal \cdot mol^{-1}} .
+	\]
+	
+	It is evident that the effect of zero-point vibrations should not be ignored in the reaction 1 and 2.
+	
+	\end{solution}
+	
+	\subsection{Ionization Potentials}
+	
+	\subsection{Equilibrium Geometries}
+	
+	\subsection{Population Analysis and Dipole Moments}
+	
+	\section{Unrestricted Open-Shell Hartree-Fock: The Pople-Nesbet \texorpdfstring{\\}- Equations}
+	
+	\subsection{Open-Shell Hartree Fock: Unrestricted Spin Orbitals}
+
+	% 3.33
+	\begin{exercise}
+	Rather than use the simple technique of writing down $f^\alpha(1)$ by inspection of the possible interactions, as we have done above, use expression (3.314) for $f^\alpha(1)$  and explicitly integrate over spin and carry through the algebra, as was done in Subsection 3.4.1 for the restricted closed-shell case, to derive
+	\[
+		f^\alpha(1) = h(1) + \sum_a^{N^\alpha} \left[ J^\alpha_a(1) - K^\alpha_a(1) \right] + \sum_a^{N^\beta} J^\beta_a(1).
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.115), we find that for a general $\psi^\alpha_i( \bfr_1 )$,
+	\begin{align*}
+		f^\alpha( \bfx_1 ) \psi^\alpha_i( \bfr_1 ) &= \int \dif \omega_1 \, \alpha^*( \omega_1 ) h( \bfr_1) \alpha( \omega_1 ) \psi_i^\alpha( \bfr_1 ) \\
+		&\hspace{4em} + \int \dif \omega_1 \, \alpha^*( \omega_1 ) \left[ \sum_c^N \int \dif \bfx_2 \, \chi^*_c( \bfx_2 ) r^{-1}_{12} ( 1 - \mathscr{P}_{12} ) \chi_c ( \bfx_2 ) \right] \alpha( \omega_1 ) \psi_i^\alpha( \bfr_1 ) \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \sum_c^N \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \bfx_2 \, \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_2 ) \psi^\alpha_i( \bfr_1 ) \\
+		&\hspace{4em} - \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_2 ) \int \dif \bfx_2 \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_1 ) \psi^\alpha_i( \bfr_2 ) \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \left(  \sum_c^{N^\alpha} + \sum_c^{N^\beta} \right) \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \bfx_2 \, \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_2 ) \psi^\alpha_i( \bfr_1 )  \\
+		&\hspace{4em} - \left( \sum_c^{N^\alpha} + \sum_c^{N^\beta} \right) \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_2 ) \int \dif \bfx_2 \chi^*_c( \bfx_2 ) r^{-1}_{12} \chi_c ( \bfx_1 ) \psi^\alpha_i( \bfr_2 ) \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) \\
+		&\hspace{4em} + \sum_c^{N^\alpha} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \, \alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\alpha}_c ( \bfr_2 )  \psi^\alpha_i( \bfr_1 )  \\
+		&\hspace{4em} + \sum_c^{N^\beta} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \, \beta^*( \omega_2 )  \beta( \omega_2 ) \int \dif \bfr_2 \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\beta}_c ( \bfr_2 ) \psi^\alpha_i( \bfr_1 )  \\
+		&\hspace{4em} - \sum_c^{N^\alpha} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \,\alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 ) r^{-1}_{12} \psi^\alpha_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 )  \\
+		&\hspace{4em} - \sum_c^{N^\beta} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \beta( \omega_1 ) \int \dif \omega_2 \, \beta^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^\beta_c ( \bfr_1 ) \psi^\alpha_i( \bfr_2 ) \\
+%		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \sum_c^{N^\alpha} \int \dif \omega_2 \, \alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\alpha}_c ( \bfr_2 ) \psi^\alpha_i( \bfr_1 ) \\
+%		&\hspace{4em} + \sum_c^{N^\beta} \int \dif \omega_2 \, \beta^*( \omega_2 ) \beta( \omega_2 ) \int \dif \bfr_2  \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\beta}_c ( \bfr_2 )  \psi^\alpha_i( \bfr_1 )  \\
+%		&\hspace{4em} - \sum_c^{N^\alpha} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \alpha( \omega_1 ) \int \dif \omega_2 \, \alpha^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^\alpha_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 )  \\
+%		&\hspace{4em} - \sum_c^{N^\beta} \int \dif \omega_1 \, \alpha^*( \omega_1 ) \beta( \omega_1 ) \int \dif \omega_2 \, \beta^*( \omega_2 ) \alpha( \omega_2 ) \int \dif \bfr_2 \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^\beta_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 )  \\
+		&= h( \bfr_1 ) \psi^\alpha_i( \bfr_1) + \sum_c^{N^\alpha} \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\alpha}_c ( \bfr_2 ) \psi^\alpha_i( \bfr_1 ) \\
+		&\hspace{4em} + \sum_c^{N^\beta} \int \dif \bfr_2  \, \psi^{\beta*}_c( \bfr_2 )  r^{-1}_{12} \psi^{\beta}_c ( \bfr_2 )  \psi^\alpha_i( \bfr_1 ) - \sum_c^{N^\alpha} \int \dif \bfr_2 \, \psi^{\alpha*}_c( \bfr_2 )  r^{-1}_{12} \psi^\alpha_c ( \bfr_1 )  \psi^\alpha_i( \bfr_2 ) .
+	\end{align*}
+	Using (3.319) and (3.320), we get that
+	\begin{align*}
+		f^\alpha( \bfx_1 ) \psi^\alpha_i( \bfr_1 ) &= h( \bfr_1 ) \psi^\alpha_i( \bfr_1 ) + \sum_c^{N^\alpha} J^\alpha_c( \bfr_1 ) \psi^\alpha_i( \bfr_1 )  + \sum_c^{N^\beta} J^\beta_c( \bfr_1 ) \psi^\alpha_i( \bfr_1 ) - \sum_c^{N^\alpha} K^\alpha_c( \bfr_1 ) \psi^\alpha_i( \bfr_1 ) \\
+		&= \left[ h( \bfr_1 ) + \sum_c^{N^\alpha} J^\alpha_c( \bfr_1 ) - K^\alpha_c( \bfr_1 ) + \sum_c^{N^\beta} J^\beta_c( \bfr_1 ) \right] \psi^\alpha_i( \bfr_1 ) .
+	\end{align*}
+	
+	As $\psi^\alpha_i( \bfr_1 )$ is a general wave function, we obtain that
+	\begin{align*}
+		f^\alpha( \bfx_1 ) = h( \bfr_1 ) + \sum_c^{N^\alpha} J^\alpha_c( \bfr_1 ) - K^\alpha_c( \bfr_1 ) + \sum_c^{N^\beta} J^\beta_c( \bfr_1 ) .
+	\end{align*}
+	
+	\end{solution}
+	
+	% 3.34
+	\begin{exercise}
+	The unrestricted doublet ground state of the $\ce{Li}$ atom is $|\Psi_0 \rangle = | \psi^\alpha_1(1) \bar{\psi}^\beta_1(2) \psi_2^\alpha(3) \rangle$. Show that the energy of this state is
+	\[
+		E_0 = h^\alpha_{11} + h^\beta_{11} + h^\alpha_{22} + J^{\alpha\alpha}_{12} - K^{\alpha\alpha}_{12} + J^{\alpha\beta}_{11} + J^{\alpha\beta}_{21}.
+	\] 
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using (3.327), we obtain that
+	\begin{align*}
+		E_0 &= \sum_{ a=1 }^2 h^\alpha_{aa} + \sum_{ a=1 }^1 h^\beta_{aa} + \frac{1}{2} \sum_{ a=1 }^2 \sum_{ a=1 }^2 ( J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} ) + \frac{1}{2} \sum_{ a=1 }^1 \sum_{ a=1 }^1 ( J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} ) + \sum_{ a=1 }^2 \sum_{ b=1 }^1 J^{\alpha\beta}_{ab} \\
+		&= h^\alpha_{11} + h^\alpha_{22} + h^\beta_{11} + \left( J^{\alpha\alpha}_{12} - K^{\alpha\alpha}_{12} \right) + \left( J^{\alpha\beta}_{11} + J^{\alpha\beta}_{21} \right) \\
+		&= h^\alpha_{11} + h^\beta_{11} + h^\alpha_{22} + J^{\alpha\alpha}_{12} - K^{\alpha\alpha}_{12} + J^{\alpha\beta}_{11} + J^{\alpha\beta}_{21} .
+	\end{align*}		
+	
+	\end{solution}
+	
+	% 3.35
+	\begin{exercise}
+	The unrestricted orbital energies are $\varepsilon^\alpha_i = ( \psi^\alpha_i | f^\alpha | \psi^\alpha_i )$ and $\varepsilon^\beta_i = ( \psi^\beta_i | f^\beta | \psi^\beta_i )$. Show that these are given by
+	\begin{align*}
+		\varepsilon^\alpha_i &= h^\alpha_{ii} + \sum^{N^\alpha}_a \left( J^{\alpha\alpha}_{ia} - K^{\alpha\alpha}_{ia} \right) + \sum^{N^\beta}_a J^{\alpha\beta}_{ia} , \\
+		 \varepsilon^\beta_i &= h^\beta_{ii} + \sum^{N^\beta}_a \left( J^{\beta\beta}_{ia} - K^{\beta\beta}_{ia} \right) + \sum^{N^\alpha}_a J^{\beta\alpha}_{ia} .
+	\end{align*}
+	Derive an expression for $E_0$ in terms of the orbital energies and the coulomb and exchange energies.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From the conclusion of Exercise 3.33, we find that
+	\begin{align*}
+		\varepsilon^\alpha_i &= ( \psi^\alpha_i | f^\alpha | \psi^\alpha_i ) = \left( \psi^\alpha_i \left| h + \sum_c^{N^\alpha} J^\alpha_c - K^\alpha_c + \sum_c^{N^\beta} J^\beta_c \right| \psi^\alpha_i \right) \\
+		&= ( \psi^\alpha_i | h | \psi^\alpha_i ) + \sum_c^{N^\alpha} ( \psi^\alpha_i | J^\alpha_c | \psi^\alpha_i ) - \sum_c^{N^\alpha} ( \psi^\alpha_i | K^\alpha_c | \psi^\alpha_i ) + \sum_c^{N^\beta} ( \psi^\alpha_i | J^\beta_c | \psi^\alpha_i ) \\
+		&= h^\alpha_{ii} + \sum_c^{N^\alpha} J^{\alpha\alpha}_{ic} - \sum_c^{N^\alpha} K^{\alpha\alpha}_{ic} + \sum_c^{N^\beta} J^{\alpha\beta}_{ic} .
+	\end{align*}
+	
+	In the same way, we can prove that
+	\[
+		\varepsilon^\beta_i = h^\beta_{ii} + \sum^{N^\beta}_a \left( J^{\beta\beta}_{ia} - K^{\beta\beta}_{ia} \right) + \sum^{N^\alpha}_a J^{\beta\alpha}_{ia} .
+	\]
+	
+	Thus, we can find that
+	\begin{align*}
+		&\hspace{1.4em} \sum_a^{N^\alpha} \varepsilon^\alpha_a + \sum_a^{N^\beta} \varepsilon^\beta_a = \sum_a^{N^\alpha} \left( h^\alpha_{aa} + \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \right) + \sum_a^{N^\beta} \left( h^\beta_{aa} + \sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum^{N^\alpha}_a J^{\beta\alpha}_{ab} \right) \\
+		&= \sum_a^{N^\alpha} h^\alpha_{aa} + \sum_a^{N^\beta} h^\beta_{aa} + \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + 2 \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \\
+		&= \left[ \sum_a^{N^\alpha} h^\alpha_{aa} + \sum_a^{N^\beta} h^\beta_{aa} + \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \right] \\
+		&\hspace{4em} + \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} \\
+		&= E_0 + \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} + \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} + \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} ,
+	\end{align*}
+	which means that
+	\begin{sequation}
+		E_0 = \sum_a^{N^\alpha} \varepsilon^\alpha_a + \sum_a^{N^\beta} \varepsilon^\beta_a - \frac{1}{2} \sum_a^{N^\alpha} \sum_b^{N^\alpha} J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} - \frac{1}{2} \sum_a^{N^\beta}\sum^{N^\beta}_b J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} - \sum_a^{N^\alpha} \sum_b^{N^\beta} J^{\alpha\beta}_{ab} .
+	\end{sequation}
+	
+	\end{solution}
+	
+	\subsection{Introduction of a Basis: The Pople-Nesbet Equations}
+	
+	\subsection{Unrestricted Density Matrices}\
+	
+	% 3.36
+	\begin{exercise}
+	Use definitions (3.335) and (3.336) and Eq.(2.254) to show that the integral over all space of the spin density is $2 \langle \mathscr{S}_z \rangle$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is direct. 
+	\begin{sequation}
+		\int \dif \bfr \, \rho^{\bf S}( \bfr ) = \int \dif \bfr \, \rho^\alpha( \bfr ) -  \rho^\beta( \bfr ) = N^\alpha - N^\beta = 2 \langle \mathscr{S}_z \rangle ,
+	\end{sequation}
+	where (2.254) and (3.339) has been used.
+	
+	\end{solution}
+	
+	% 3.37
+	\begin{exercise}
+	Carry through the missing steps that led to Eqs.(3.340) to (3.343).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.340), we can find that
+	\begin{align*}
+		\rho^\alpha( \bfr ) &= \sum_a^{N^\alpha} | \psi^\alpha_a ( \bfr ) |^2 = \sum_a^{N^\alpha} \psi^\alpha_a ( \bfr ) \psi^{\alpha*}_a ( \bfr )  = \sum_a^{N^\alpha} \left( \sum_\mu C^\alpha_{\mu a} \phi^\alpha_\mu( \bfr ) \right) \left( \sum_\nu C^\alpha_{\nu a} \phi^\alpha_\nu( \bfr ) \right)^* \\
+		&= \sum_\mu \sum_\nu \left( \sum_a^{N^\alpha} C^\alpha_{\mu a} C^{\alpha*}_{\nu a} \right) \phi^\alpha_\mu( \bfr ) \phi^\alpha_\nu( \bfr ) .
+	\end{align*}
+	If we define $P^\alpha_{\mu \nu}$ as (3.342), we will obtain that the right side of (3.340). In the same way, if we define $P^\beta_{\mu \nu}$ as (3.343), we will derive (3.341).
+	
+	\end{solution}
+	
+	% 3.38
+	\begin{exercise}
+	Show that expectation values of spin-independent sums of one-electron operators $\displaystyle\sum_{i=1}^N h(i)$ are given by
+	\[
+		\langle \mathscr{O}_1 \rangle = \sum_\mu \sum_\nu P^T_{\mu\nu} ( \nu | h | \mu )
+	\]
+	for any unrestricted single determinant.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	Using (3.342) to (3.344), we find that
+	\begin{align*}
+		\langle \mathscr{O}_1 \rangle &= \sum_{ a=1 }^N \langle a | h | a \rangle = \sum_{ a=1 }^{N^\alpha} \langle a | h | a \rangle + \sum_{ \bar{a}=1 }^{N^\beta} \langle \bar{a} | h | \bar{a} \rangle = \sum_{ a=1 }^{N^\alpha} ( a | h | a ) + \sum_{ a=1 }^{N^\beta} ( a | h | a ) \\
+		&= \sum_{ a=1 }^{N^\alpha} \left( \sum_\nu C^\alpha_{\nu a} \phi_\nu \right| h \left| \sum_\mu C^\alpha_{\mu a} \phi_\mu \right) + \sum_{ a=1 }^{N^\beta} \left( \sum_\nu C^\beta_{\nu a} \phi_\nu \right| h \left| \sum_\mu C^\beta_{\mu a} \phi_\mu \right) \\
+		&= \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) \sum_{ a=1 }^{N^\alpha} C^{\alpha*}_{\nu a} C^\alpha_{\mu a} + \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) \sum_{ a=1 }^{N^\beta} C^{\beta*}_{\nu a} C^\beta_{\mu a} \\
+		&= \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) ( P^\alpha_{\mu \nu} + P^\beta_{\mu \nu} ) = \sum_\mu \sum_\nu ( \phi_\nu | h | \phi_\mu ) P^T_{\mu \nu} .
+	\end{align*}		
+	
+	\end{solution}
+	
+	% 3.39
+	\begin{exercise}
+	Consider the following spin-dependent operator which is a sum of one-electron operators,
+	\[
+		\hat{\rho}^S = 2 \sum_{i=1}^N \delta( {\bf r}_i - {\bf R} )s_z(i).
+	\]
+	Use the rules for evaluating matrix elements, given in Chapter 2, to show that the expectation value of $\hat{\rho}^S$ for any unrestricted single determinant is
+	\[
+		\langle \hat{\rho}^S \rangle = \rho^S ({\bf R}) = \tr{  {\bf P}^S {\bf A}} 
+	\]
+	where
+	\[
+		A_{\mu\nu} = \phi^*_\mu (\R) \phi_\nu (\R).
+	\]
+	This matrix element is important in the theory of the Fermi contact contribution to ESR and NMR coupling constants.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is direct.
+	\begin{align*}
+		\langle \hat{\rho}^S \rangle &= \left\langle \Psi \left| 2 \sum_{i=1}^N \delta( {\bf r}_i - {\bf R} )s_z(i) \right| \Psi \right\rangle = 2 \left\langle \Psi \left| \sum_{i=1}^N \delta( {\bf r}_i - {\bf R} )s_z(i) \right| \Psi \right\rangle \\
+		&= 2 \sum_{ a=1 }^N | a( \bfR ) |^2 \left\langle a \left| s_z(i) \right| a \right\rangle \\
+		&= 2 \left( \sum_{ a=1 }^{N^\alpha} | a( \bfR ) |^2 \left\langle a \left| s_z(i) \right| a \right\rangle + \sum_{ \bar{a}=1 }^{N^\beta} | \bar{a}( \bfR ) |^2 \left\langle \bar{a} \left| s_z(i) \right| \bar{a} \right\rangle \right) \\
+		&= 2 \left( \sum_{ a=1 }^{N^\alpha} \frac{1}{2} | a( \bfR ) |^2 + \sum_{ \bar{a}=1 }^{N^\beta} -\frac{1}{2} | \bar{a}( \bfR ) |^2 \right) \\
+		&= \sum_{ a=1 }^{N^\alpha} | a( \bfR ) |^2 - \sum_{ \bar{a}=1 }^{N^\beta} | \bar{a}( \bfR ) |^2 = \rho^\alpha ( \bfR ) - \rho^\beta ( \bfR ) = \rho^S ( \bfR ) .
+	\end{align*}
+	
+	Moreover, we can find that
+	\begin{align*}
+		\langle \hat{\rho}^S \rangle &= \sum_{ a=1 }^{N^\alpha} | a( \bfR ) |^2 - \sum_{ \bar{a}=1 }^{N^\beta} | \bar{a}( \bfR ) |^2 \\
+		&= \sum_{ a=1 }^{N^\alpha} \left( \sum_\mu C^{\alpha*}_{\mu a} \phi^*_\mu( \bfR ) \right) \left( \sum_\nu C^\alpha_{\nu a} \phi_\nu( \bfR ) \right) - \sum_{ a=1 }^{N^\beta} \left( \sum_\mu C^{\beta*}_{\mu a} \phi^*_\mu( \bfR ) \right) \left( \sum_\nu C^\beta_{\nu a} \phi_\nu( \bfR ) \right) \\
+		&= \sum_\mu \sum_\nu \phi^*_\mu( \bfR ) \phi_\nu( \bfR ) \left( \sum_{ a=1 }^{N^\alpha} C^{\alpha*}_{\mu a} C^\alpha_{\nu a} - \sum_{ a=1 }^{N^\beta} C^{\beta*}_{\mu a} C^\beta_{\nu a} \right) = \sum_\mu \sum_\nu A_{\mu \nu} ( P^\alpha_{\nu \mu} - P^\beta_{\nu \mu} ) \\
+		&= \sum_\mu \sum_\nu A_{\mu \nu} P^S_{\nu \mu} = \tr{ {\bf A} {\bf P}^S } = \tr{ {\bf P}^S {\bf A} } .
+	\end{align*}
+	
+	\end{solution}
+	
+	\subsection{Expression for the Fock Matrices}
+	
+	\subsection{Solution of the Unrestricted SCF Equations}
+	
+	% 3.40
+	\begin{exercise}
+	Substitute the basis set expansion of the unrestricted molecular orbitals into Eq.(3.327) for the electronic energy $E_0$ to show that
+	\[
+		E_0 = \frac{1}{2} \sum_\mu \sum_\nu \left[ P^T_{\nu\mu} H^{\core}_{\mu\nu} + P^\alpha_{\nu\mu} F^\alpha_{\mu\nu} + P^\beta_{\nu\mu} F^\beta_{\mu\nu} \right].
+	\]
+	\end{exercise}
+	
+	\begin{solution}
+	
+	The proof is direct but a little lengthy. Note that what we have to expand is only $\psi_b$. $\psi_a$ is no need to be expand in this derivation.
+	\begin{align*}
+		E_0 &= \sum_{ a=1 }^{ N^\alpha } h^\alpha_{aa} + \sum_{ a=1 }^{ N^\beta} h^\beta_{aa} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\alpha } ( J^{\alpha\alpha}_{ab} - K^{\alpha\alpha}_{ab} ) + \frac{1}{2} \sum_{ a=1 }^{ N^\beta } \sum_{ b=1 }^{ N^\beta } ( J^{\beta\beta}_{ab} - K^{\beta\beta}_{ab} ) + \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\beta } J^{\alpha\beta}_{ab} \\
+		&= \sum_{ a=1 }^{ N^\alpha } ( \psi^\alpha_a | h | \psi^\alpha_a ) + \sum_{ a=1 }^{ N^\beta} ( \psi^\beta_a | h | \psi^\beta_a ) + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\alpha } ( \psi^\alpha_a \psi^\alpha_a | \psi^\alpha_b \psi^\alpha_b ) - ( \psi^\alpha_a \psi^\alpha_b | \psi^\alpha_a \psi^\alpha_b ) \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta } \sum_{ b=1 }^{ N^\beta } ( \psi^\beta_a \psi^\beta_a | \psi^\beta_b \psi^\beta_b ) - ( \psi^\beta_a \psi^\beta_b | \psi^\beta_a \psi^\beta_b ) + \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\beta } ( \psi^\alpha_a \psi^\alpha_a | \psi^\beta_b \psi^\beta_b ) \\
+		&= \sum_{ a=1 }^{ N^\alpha } \left( \sum_\mu \phi_\mu C^\alpha_{\mu a} \right| h \left| \sum_\nu \phi_\nu C^\alpha_{\nu a} \right) + \sum_{ a=1 }^{ N^\beta} \left( \sum_\mu \phi_\mu C^\beta_{\mu a} \right| h \left| \sum_\nu \phi_\nu C^\beta_{\nu a} \right) \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\alpha } \left( \psi^\alpha_a \psi^\alpha_a \left| \right. \sum_\mu \phi_\mu C^\alpha_{\mu b} \sum_\nu \phi_\nu C^\alpha_{\nu b} \right) - \left( \psi^\alpha_a \sum_\nu \phi_\nu C^\alpha_{\nu b} \left| \right. \sum_\mu \phi_\mu C^\alpha_{\mu b} \psi^\alpha_a \right) \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta } \sum_{ b=1 }^{ N^\beta } \left( \psi^\beta_a \psi^\beta_a \left| \right. \sum_\mu \phi_\mu C^\beta_{\mu b} \sum_\nu \phi_\nu C^\beta_{\nu b} \right) - \left( \psi^\beta_a \sum_\nu \phi_\nu C^\beta_{\nu b} \left| \right. \sum_\mu \phi_\mu C^\beta_{\mu b} \psi^\beta_a \right) \\
+		&\hspace{4em} + \sum_{ a=1 }^{ N^\alpha } \sum_{ b=1 }^{ N^\beta } \left( \psi^\alpha_a \psi^\alpha_a \left| \right. \sum_\mu \phi_\mu C^\beta_{\mu b} \sum_\nu \phi_\nu C^\beta_{\nu b} \right) \\
+		&= \sum_\mu \sum_\nu ( \phi_\mu | h | \phi_\nu ) \sum_{ a=1 }^{ N^\alpha } C^{\alpha*}_{\mu a} C^\alpha_{\nu a} + \sum_\mu \sum_\nu ( \phi_\mu | h | \phi_\nu ) \sum_{ a=1 }^{ N^\beta } C^{\beta*}_{\mu a} C^\beta_{\nu a} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha }\sum_\mu \sum_\nu ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) \sum_{ b=1 }^{ N^\alpha } C^{\alpha*}_{\mu b} C^\alpha_{\nu b} - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) \sum_{ b=1 }^{ N^\alpha } C^{\alpha*}_{\mu b} C^\alpha_{\nu b} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta }\sum_\mu \sum_\nu \left( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu \right) \sum_{ b=1 }^{ N^\beta } C^{\beta*}_{\mu b} C^\beta_{\nu b} - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right)\sum_{ b=1 }^{ N^\beta } C^{\beta*}_{\mu b} C^\beta_{\nu b}  \\
+		&\hspace{4em} + \sum_{ a=1 }^{ N^\alpha } \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) \sum_{ b=1 }^{ N^\beta } C^{\beta*}_{\mu b} C^\beta_{\nu b} \\
+		&= \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\alpha_{\nu \mu} + \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\beta_{\nu \mu} + \frac{1}{2} \sum_{ a=1 }^{ N^\alpha }\sum_\mu \sum_\nu ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) P^\alpha_{\nu \mu} - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) P^\alpha_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{ N^\beta }\sum_\mu \sum_\nu \left( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu \right) P^\beta_{\nu \mu} - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right) P^\beta_{\nu \mu} +  \sum_{ a=1 }^{ N^\alpha } \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) P^\beta_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\alpha_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\alpha} ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) \right] P^\alpha_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\beta_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\beta} ( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu ) - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right) \right] P^\beta_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_{ a=1 }^{N^\alpha} \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) P^\beta_{\nu \mu} + \frac{1}{2} \sum_{ a=1 }^{N^\beta} \sum_\mu \sum_\nu \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) P^\alpha_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\alpha_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^\beta_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\alpha} ( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu ) - \left( \psi^\alpha_a \phi_\nu | \phi_\mu \psi^\alpha_a \right) + \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) \right] P^\alpha_{\nu \mu} \\
+		&\hspace{4em} + \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} + \sum_a^{N^\beta} ( \psi^\beta_a \psi^\beta_a | \phi_\mu \phi_\nu ) - \left( \psi^\beta_a \phi_\nu | \phi_\mu \psi^\beta_a \right) + \left( \psi^\alpha_a \psi^\alpha_a | \phi_\mu \phi_\nu \right) \right] P^\beta_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu H^\core_{\mu \nu} P^T_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu F^\alpha_{\mu \nu} P^\alpha_{\nu \mu} + \frac{1}{2} \sum_\mu \sum_\nu F^\beta_{\mu \nu} P^\beta_{\nu \mu} \\
+		&= \frac{1}{2} \sum_\mu \sum_\nu \left[ H^\core_{\mu \nu} P^T_{\nu \mu} + F^\alpha_{\mu \nu} P^\alpha_{\nu \mu} + F^\beta_{\mu \nu} P^\beta_{\nu \mu} \right] .
+	\end{align*}		
+	
+	\end{solution}
+	
+	\subsection{Illustrative Unrestricted Calculations}
+	
+	% 3.41
+	\begin{exercise}
+	Assume the unrestricted Hartree-Fock (UHF) calculations of Table 3.26 contain only the leading quartet contaminant. That is,
+	\[
+	 	\Psi_{\rm UHF} = c_1 {}^{2} \Psi + c_2 {}^{4} \Psi .
+	\]
+	If the percent contamination is defined as $\dfrac{ 100 c^2_2 }{ c^2_1 + c^2_2 }$, calculate the percent contamination of each of the four calculations from the quoted value of $\langle \mathscr{S}^2 \rangle$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	For the sake of simplicity, we request that $\Psi_{\rm UHF}$ is normalized. Thus,
+	\[
+		| c_1 |^2 + | c_2 |^2 = 1 ,
+	\]
+	and then the expectation of $\mathscr{S}^2$ is
+	\begin{align*}
+		\langle \Psi_{\rm UHF} | \mathscr{S}^2 | \Psi_{\rm UHF} \rangle &= \left( c^*_1 \langle {}^{2} \Psi | + c^*_2 \langle {}^{4} \Psi | \right) \mathscr{S}^2 \left( c_1 | {}^{2} \Psi \rangle + c_2 | {}^{4} \Psi \rangle \right) \\
+		&= | c_1 |^2 \langle {}^{2} \Psi | \mathscr{S}^2 | {}^{2} \Psi \rangle + c^*_1 c_2 \langle {}^{2} \Psi | \mathscr{S}^2 | {}^{4} \Psi \rangle + c^*_2 c_1 \langle {}^{4} \Psi | \mathscr{S}^2 | {}^{2} \Psi \rangle + | c_2 |^2 \langle {}^{4} \Psi | \mathscr{S}^2 | {}^{4} \Psi \rangle \\
+		&= | c_1 |^2 \frac{1}{2} \left( \frac{1}{2} + 1 \right) + | c_2 |^2 \frac{3}{2} \left( \frac{3}{2} + 1 \right) = \frac{3}{4} | c_1 |^2 + \frac{15}{4} | c_2 |^2 = \frac{3}{4} + 3 | c_2 |^2 ,
+	\end{align*}
+	which means
+	\[
+		| c_2 | =  \sqrt{ \frac{1}{3} \left( \langle \mathscr{S}^2 \rangle - \frac{3}{4} \right) } .
+	\]
+	
+	According to this equation, we can calcualte the percent contamination of each of the four calculations and these results are listed in \Tableref{tab:contamination}.
+	\vspace{-1em}
+	\begin{center}
+	\captionof{table}{The percent contamination of each of the four calculations.}\label{tab:contamination}
+	\begin{tabular}{c|c|c|c}\hline
+	basis set & $\langle \mathscr{S}^2 \rangle$ & $| c_2 |$ & percent contamination (\%) \\ \hline
+	STO-3G 	& 0.7652 &  0.07118 & 0.5067 \\
+	4-31G  	& 0.7622 &  0.06377	& 0.4067 \\
+	6-31G* 	& 0.7618 &	0.06272 & 0.3934 \\
+	6-31G** & 0.7614 &  0.06164 & 0.3800 \\ \hline 
+	\end{tabular}
+	\end{center}
+	
+	\end{solution}
+	
+	\subsection{The Dissociation Problem and its Unrestricted Solution}
+	
+	% 3.42
+	\begin{exercise}
+	Show that the set of $\alpha$ orbitals $\{ \psi^\alpha_1 , \psi^\alpha_2 \}$ and the set of $\beta$ orbitals $\{ \psi^\beta_1 , \psi^\beta_2 \}$ form separate orthonormal sets.
+	\end{exercise}
+	
+	\begin{solution}
+	This conclusion can be proved in the same way as Exercise 2.6.
+	\end{solution}
+	
+	% 3.43
+	\begin{exercise}
+	Use the molecular integrals given in Appendix D to show that no unrestricted solution exists for minimal basis STO-3G $\ce{H2}$ at $R = 1.4 \, \au$ Repeat the calculation for $R = 4.0 \, \au$ and show that an unrestricted solution exists with $\theta$ = 39.5${}^\circ$. Remember that $\varepsilon_1 = h_{11} + J_{11}$ and $\varepsilon_2 = h_{22} + 2 J_{12} - K_{12}$.
+	\end{exercise}
+	
+	\begin{solution}
+	
+	When $R = 1.4 \, \au$, we know that
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.5782\,\au$, & $\varepsilon_2 = 0.6703\, \au$, & $J_{11} = 0.6746\,\au$, \\
+		$J_{12} = 0.6636\,\au$, & $J_{22} = 0.6975\,\au$, & $K_{12} = 0.1813\,\au$,
+	\end{tabular}
+	\end{center}
+	and thus
+	\[
+		h_{11} = \varepsilon_1 - J_{11} = -1.2528 \, \au , \quad h_{22} = \varepsilon_2 - 2J_{12} + K_{12} = -0.4756 \, \au 
+	\]
+	Using (3.375) and (3.376), we find that
+	\[
+		\cos^2 \theta = \eta = \frac{ h_{22} - h_{11} + J_{22} -J_{12} + 2 K_{12} }{ J_{11} + J_{22} - 2 J_{12} + 4 K_{12} } = \frac{ 1.1627 }{ 0.7701 } = 1.5098 > 1 .
+	\]
+	Thus we conclude that no unrestricted solution exists for minimal basis STO-3G $\ce{H2}$ at $R = 1.4 \, \au$
+	
+	Similarly, we list all integrals at $R = 4.0\, \au$.
+	\begin{center}
+	\begin{tabular}{ccc}
+		$\varepsilon_1 = -0.2542\,\au$, & $\varepsilon_2 = 0.0916\, \au$, & $J_{11} = 0.5026\,\au$, \\
+		$J_{12} = 0.5121\,\au$, & $J_{22} = 0.5259\,\au$, & $K_{12} = 0.2651\,\au$ ,
+	\end{tabular}
+	\end{center}
+	and thus
+	\[
+		h_{11} = \varepsilon_1 - J_{11} = -0.7568 \, \au , \quad h_{22} = \varepsilon_2 - 2J_{12} + K_{12} = -0.6675 \, \au 
+	\]
+	Using (3.375) and (3.376), we find that
+	\[
+		\cos^2 \theta^\prime = \eta^\prime = \frac{ h_{22} - h_{11} + J_{22} -J_{12} + 2 K_{12} }{ J_{11} + J_{22} - 2 J_{12} + 4 K_{12} } = \frac{ 0.6333 }{ 1.0647 } = 0.5948 \le 1 ,
+	\]
+	which leads to $\theta^\prime = \frac{1}{2} \arccos{ 2 \eta^\prime - 1 } = 0.6900 = 39.54^\circ$. Thus we conclude that an unrestricted solution exists for minimal basis STO-3G $\ce{H2}$ at $R = 4.0 \, \au$
+	
+	\end{solution}
+	
+	% 3.44
+	\begin{exercise}
+	Derive Eq.(3.379) from Eq.(3.382).
+	\end{exercise}
+	
+	\begin{solution}
+	
+	From (3.362), (3.363), and (3.382), we find that
+	\begin{align*}
+		\lim_{ R \rightarrow \infty } | \Psi_0 \rangle &= \lim_{ R \rightarrow \infty } \frac{1}{2} \left[ | \psi_1 \bar{\psi}_1 \rangle - | \psi_2 \bar{\psi}_2 \rangle - \sqrt{2} | {}^3 \Psi^2_1 \rangle \right] \\
+		&= \lim_{ R \rightarrow \infty } \frac{1}{2} \left[ | \psi_1 \bar{\psi}_1 \rangle - | \psi_2 \bar{\psi}_2 \rangle - \left( | \Psi^{\bar{2}}_{\bar{1}} \rangle - | \Psi^2_1 \rangle  \right) \right] \\
+		&= \lim_{ R \rightarrow \infty } \frac{1}{2} \left[ | \psi_1 \bar{\psi}_1 \rangle - | \psi_2 \bar{\psi}_2 \rangle - | \psi_1 \bar{\psi}_2 \rangle + | \psi_2 \bar{\psi}_1 \rangle \right] \\
+		&= \lim_{ R \rightarrow \infty } \frac{1}{2} \left( \left| \frac{1}{ \sqrt{2} }( \phi_1 + \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 + \bar{\phi}_2 ) \right\rangle - \left|  \frac{1}{ \sqrt{2} }( \phi_1 - \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 - \bar{\phi}_2 ) \right\rangle \right. \\
+		&\hspace{6em} \left. - \left| \frac{1}{ \sqrt{2} }( \phi_1 + \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 - \bar{\phi}_2 ) \right\rangle + \left|  \frac{1}{ \sqrt{2} }( \phi_1 - \phi_2 ) \frac{1}{ \sqrt{2} }( \bar{\phi}_1 + \bar{\phi}_2 ) \right\rangle \right) \\
+		&= \frac{1}{4} \lim_{ R \rightarrow \infty } \left[ \left( | \phi_1 \bar{\phi}_1 \rangle + | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle + | \phi_2 \bar{\phi}_2 \rangle \right) - \left( | \phi_1 \bar{\phi}_1 \rangle - | \phi_1 \bar{\phi}_2 \rangle - | \phi_2 \bar{\phi}_1 \rangle + | \phi_2 \bar{\phi}_2 \rangle \right) \right. \\
+		&\hspace{4em} \left. - \left( | \phi_1 \bar{\phi}_1 \rangle - | \phi_1 \bar{\phi}_2 \rangle + | \phi_2 \bar{\phi}_1 \rangle - | \phi_2 \bar{\phi}_2 \rangle \right) + \left( | \phi_1 \bar{\phi}_1 \rangle + | \phi_1 \bar{\phi}_2 \rangle - | \phi_2 \bar{\phi}_1 \rangle - | \phi_2 \bar{\phi}_2 \rangle \right) \right] \\
+		&= \frac{1}{4} \lim_{ R \rightarrow \infty } 4 | \phi_1 \bar{\phi}_2 \rangle = | \phi_1 \bar{\phi}_2 \rangle .
+	\end{align*}
+	Thus, we obtain (3.382) from (3.362), (3.363), and (3.382).
+	
+	\end{solution}
+	
+	\clearpage
+	
 	\chapter{Configuration Interaction}
 	
 	\section{Multiconfigurational Wave Functions and the Structure of the Full CI Matrix}
